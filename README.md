@@ -1,8 +1,4 @@
-# RX-Care-Fullstack-Capstone
-This is a full-stack project that allows doctors to easily connect with their patients and monitor their prescriptions. It is built using C#.Net and React technologies and uses Figma for design, Dbdiagram for database schema design, and SQL for database management.
-# App Name
-
-[RX-Care]
+# RX-Care
 
 ## Description
 
