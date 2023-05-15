@@ -39,7 +39,7 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License.
 
 ## Screenshots
 
