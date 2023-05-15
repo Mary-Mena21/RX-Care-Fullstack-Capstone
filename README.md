@@ -1,7 +1,5 @@
 # RX-Care
 
-## Description
-
 This is a full-stack application developed using C#.Net and React. The purpose of this application is to provide an easy and efficient platform for doctors to connect with their patients, monitor prescriptions, and ensure medication adherence. The app enables doctors to assign new prescriptions, adjust dosages, and track patients' medication intake. Patients can sign in to the app, check off when they take their medicine, and communicate with their doctors seamlessly.
 
 ## Features
@@ -28,7 +26,7 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 
 ## Installation
 
-1. Clone the repository: `git clone [repository URL]`
+1. Clone the repository: `git clone https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone.git`
 2. Install the required dependencies for the frontend and backend:
    - For the frontend, navigate to the `frontend` directory and run `npm install`.
    - For the backend, navigate to the `backend` directory and restore the NuGet packages.
