@@ -78,7 +78,7 @@ VALUES
 -------------------------------------------------------------------------------------------------------
 
 -- Insert sample data for prescription table
-INSERT INTO [prescription] ([Id], [MedicineId], [Dosage], [Quantity], [PatientId])
+INSERT INTO [Prescription] ([Id], [MedicineId], [Dosage], [Quantity], [PatientId])
 VALUES
   (1, 1, '1 tablet twice daily', 30, 1),
   (2, 2, '1 capsule daily', 60, 2),
