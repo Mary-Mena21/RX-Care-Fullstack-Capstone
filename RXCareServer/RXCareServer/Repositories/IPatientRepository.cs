@@ -5,6 +5,7 @@ namespace RXCareServer.Repositories
     public interface IPatientRepository
     {
         List<PatientInfo> GetDoctorPatients(int DoctorId);
-        List<Patient> GetPatients();
+        PatientInfo GetPatientById(int Id);
+        //List<Patient> GetPatients();
     }
 }

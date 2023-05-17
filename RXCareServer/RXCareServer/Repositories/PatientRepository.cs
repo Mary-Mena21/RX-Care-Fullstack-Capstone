@@ -73,15 +73,60 @@ namespace RXCareServer.Repositories
 
         //----------------GetAllPatients( )--------------------//
 
-        public List<Patient> GetPatients()
+        //public List<Patient> GetPatients()
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"SELECT [Patient].[Id]
+        //                                      ,[Patient].[UserId]
+        //                                      ,[Patient].[DoctorId]
+        //                                      ,[Patient].[DoB]
+        //                                      ,[Patient].[Address]
+        //                                      ,[Patient].[Phone]
+        //                                      ,[Patient].[Height]
+        //                                      ,[Patient].[Weight]
+        //                                      ,[Patient].[Note]
+        //                                  FROM [RXCareDb].[dbo].[Patient]";
+        //            //INNER JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
+        //            var reader = cmd.ExecuteReader();
+        //            var patients = new List<Patient>();
+        //            while (reader.Read())
+        //            {
+        //                var patient = new Patient()
+        //                {
+        //                    Id = DbUtils.GetInt(reader, "Id"),
+        //                    UserId = DbUtils.GetInt(reader, "UserId"),
+        //                    DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+        //                    DoB = DbUtils.GetDateTime(reader, "DoB"),
+        //                    Address = DbUtils.GetString(reader, "Address"),
+        //                    Phone = DbUtils.GetString(reader, "Phone"),
+        //                    Height = DbUtils.GetDecimal(reader, "Height"),
+        //                    Weight = DbUtils.GetDecimal(reader, "Weight"),
+        //                    Note = DbUtils.GetString(reader, "Note"),
+        //                };
+        //                patients.Add(patient);
+        //            }
+        //            conn.Close();
+        //            return patients;
+        //        }
+
+        //    }
+
+        //}
+
+        //----------------GetPatientById( )--------------------//
+
+        public PatientInfo GetPatientById(int Id)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT [Patient].[Id]
-                                              ,[Patient].[UserId]
+                    cmd.CommandText = @"SELECT [Patient].[Id] 
                                               ,[Patient].[DoctorId]
                                               ,[Patient].[DoB]
                                               ,[Patient].[Address]
@@ -89,16 +134,23 @@ namespace RXCareServer.Repositories
                                               ,[Patient].[Height]
                                               ,[Patient].[Weight]
                                               ,[Patient].[Note]
-                                          FROM [RXCareDb].[dbo].[Patient]";
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                          FROM [RXCareDb].[dbo].[Patient]
+                                          INNER JOIN [User] ON [User].Id = [Patient].UserId
+                                          WHERE [Patient].Id = @Id;";
                     //INNER JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
+                    DbUtils.AddParameter(cmd, "@Id", Id);
                     var reader = cmd.ExecuteReader();
-                    var patients = new List<Patient>();
+                    var patient = new PatientInfo();
                     while (reader.Read())
                     {
-                        var patient = new Patient()
+                         patient = new PatientInfo()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            UserId = DbUtils.GetInt(reader, "UserId"),
                             DoctorId = DbUtils.GetInt(reader, "DoctorId"),
                             DoB = DbUtils.GetDateTime(reader, "DoB"),
                             Address = DbUtils.GetString(reader, "Address"),
@@ -106,18 +158,25 @@ namespace RXCareServer.Repositories
                             Height = DbUtils.GetDecimal(reader, "Height"),
                             Weight = DbUtils.GetDecimal(reader, "Weight"),
                             Note = DbUtils.GetString(reader, "Note"),
+                            User = new User()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Type = DbUtils.GetString(reader, "Type"),
+                                Img = DbUtils.GetString(reader, "Img"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                Email = DbUtils.GetString(reader, "Email"),
+
+                            }
                         };
-                        patients.Add(patient);
                     }
                     conn.Close();
-                    return patients;
+                    return patient;
                 }
 
             }
 
         }
-
-
 
 
 
