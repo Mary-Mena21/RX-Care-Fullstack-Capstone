@@ -17,19 +17,29 @@ namespace RXCareServer.Controllers
         }
         //-----------------------------------------------------------
         // GET: api/<PatientController>
-        [HttpGet("Patients")]
-        public IActionResult GetAllPatients()
-        {
-            return Ok(_patientRepository.GetPatients());
-        }
+        //[HttpGet("Patients")]
+        //public IActionResult GetAllPatients()
+        //{
+        //    return Ok(_patientRepository.GetPatients());
+        //}
 
         //-----------------------------------------------------------
         // GET: api/<PatientController>
-        [HttpGet("{DoctorId}")]
+        [HttpGet("All/{DoctorId}")]
         public IActionResult GetPatients(int DoctorId)
         {
             return Ok(_patientRepository.GetDoctorPatients(DoctorId));
         }
+
+        //-----------------------------------------------------------
+        // GET: api/<PatientController>
+        [HttpGet("{Id}")]
+        public IActionResult GetById(int Id)
+        {
+            return Ok(_patientRepository.GetPatientById(Id));
+        }
+
+
 
         //// GET api/<PatientController>/5
         //[HttpGet("{id}")]
