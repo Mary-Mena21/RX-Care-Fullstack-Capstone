@@ -265,7 +265,7 @@ namespace RXCareServer.Repositories
                     DbUtils.AddParameter(cmd, "@Weight", patient.Weight);
                     DbUtils.AddParameter(cmd, "@Note", patient.Note);
                     patient.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
-                    //patient.UserId = (int)cmd.ExecuteScalar();//needs output inserted.id
+                    patient.UserId = (int)cmd.ExecuteScalar();//needs output inserted.id
                 }
             }
 
