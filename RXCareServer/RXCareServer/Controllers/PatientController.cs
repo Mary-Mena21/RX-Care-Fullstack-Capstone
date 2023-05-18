@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RXCareServer.Models;
 using RXCareServer.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,7 +40,25 @@ namespace RXCareServer.Controllers
             return Ok(_patientRepository.GetPatientById(Id));
         }
 
+        //-----------------------------------------------------------
 
+        // POST api/<PatientController>
+        [HttpPost("/PatientAdd")]
+        public IActionResult Post(PatientAdd2 patient)
+        {
+            _patientRepository.AddPatient(patient);
+            return Created("", patient);
+        }
+
+        //-----------------------------------------------------------
+
+        // POST api/<PatientController>
+        [HttpPost("/Add")]
+        public IActionResult Post(Patient patient)
+        {
+            _patientRepository.AddPatient(patient);
+            return Created("", patient);
+        }
 
         //// GET api/<PatientController>/5
         //[HttpGet("{id}")]
