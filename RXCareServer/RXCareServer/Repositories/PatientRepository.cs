@@ -19,6 +19,7 @@ namespace RXCareServer.Repositories
                 using(var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT [Patient].[Id]
+                                              ,[Patient].[UserId]
                                               ,[Patient].[DoctorId]
                                               ,[Patient].[DoB]
                                               ,[Patient].[Address]
@@ -26,6 +27,7 @@ namespace RXCareServer.Repositories
                                               ,[Patient].[Height]
                                               ,[Patient].[Weight]
                                               ,[Patient].[Note]
+                                              ,[User].[Id] As UId
                                               ,[User].Type
                                               ,[User].Img
                                               ,[User].FirstName
@@ -34,7 +36,7 @@ namespace RXCareServer.Repositories
                                           FROM [RXCareDb].[dbo].[Patient]
                                           INNER JOIN [User] ON [User].Id = [Patient].UserId
                                           WHERE [Patient].DoctorId = @DoctorId;";
-                    //INNER JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
+                                        //INNER JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
                     DbUtils.AddParameter(cmd, "@DoctorId", DoctorId);
                     var reader = cmd.ExecuteReader();
                     var patients = new List<PatientInfo>();
@@ -43,6 +45,7 @@ namespace RXCareServer.Repositories
                         var patient = new PatientInfo()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
                             DoctorId = DbUtils.GetInt(reader, "DoctorId"),
                             DoB = DbUtils.GetDateTime(reader, "DoB"),
                             Address = DbUtils.GetString(reader, "Address"),
@@ -52,7 +55,7 @@ namespace RXCareServer.Repositories
                             Note = DbUtils.GetString(reader, "Note"),
                             User = new User()
                             {
-                                Id = DbUtils.GetInt(reader, "Id"),
+                                Id = DbUtils.GetInt(reader, "UId"),
                                 Type = DbUtils.GetString(reader, "Type"),
                                 Img =DbUtils.GetString(reader, "Img"),
                                 FirstName = DbUtils.GetString(reader, "FirstName"),
@@ -128,12 +131,14 @@ namespace RXCareServer.Repositories
                 {
                     cmd.CommandText = @"SELECT [Patient].[Id] 
                                               ,[Patient].[DoctorId]
+                                              ,[Patient].[UserId]
                                               ,[Patient].[DoB]
                                               ,[Patient].[Address]
                                               ,[Patient].[Phone]
                                               ,[Patient].[Height]
                                               ,[Patient].[Weight]
                                               ,[Patient].[Note]
+                                              ,[User].[Id] As UId
                                               ,[User].Type
                                               ,[User].Img
                                               ,[User].FirstName
@@ -152,6 +157,7 @@ namespace RXCareServer.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
                             DoB = DbUtils.GetDateTime(reader, "DoB"),
                             Address = DbUtils.GetString(reader, "Address"),
                             Phone = DbUtils.GetString(reader, "Phone"),
@@ -160,7 +166,7 @@ namespace RXCareServer.Repositories
                             Note = DbUtils.GetString(reader, "Note"),
                             User = new User()
                             {
-                                Id = DbUtils.GetInt(reader, "Id"),
+                                Id = DbUtils.GetInt(reader, "UId"),
                                 Type = DbUtils.GetString(reader, "Type"),
                                 Img = DbUtils.GetString(reader, "Img"),
                                 FirstName = DbUtils.GetString(reader, "FirstName"),
@@ -177,6 +183,119 @@ namespace RXCareServer.Repositories
             }
 
         }
+
+        //----------------AddPatient( )-------Test1-------------//
+
+        public void AddPatient(Patient patient)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [dbo].[Patient]
+                                                   (
+                                                   [DoctorId]
+                                                   ,[DoB]
+                                                   ,[Address]
+                                                   ,[Phone]
+                                                   ,[Height]
+                                                   ,[Weight]
+                                                   ,[Note])
+                                             OUTPUT INSERTED.Id
+                                             VALUES
+                                                   (
+                                                   @DoctorId
+                                                   ,@DoB
+                                                   ,@Address
+                                                   ,@Phone
+                                                   ,@Height
+                                                   ,@Weight
+                                                   ,@Note)";
+                    //DbUtils.AddParameter(cmd, "@UserId", patient.UserId);
+                    DbUtils.AddParameter(cmd, "@DoctorId", patient.DoctorId);
+                    DbUtils.AddParameter(cmd, "@DoB", patient.DoB);
+                    DbUtils.AddParameter(cmd, "@Address", patient.Address);
+                    DbUtils.AddParameter(cmd, "@Phone", patient.Phone);
+                    DbUtils.AddParameter(cmd, "@Height", patient.Height);
+                    DbUtils.AddParameter(cmd, "@Weight", patient.Weight);
+                    DbUtils.AddParameter(cmd, "@Note", patient.Note);
+                    patient.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+                    //patient.UserId = (int)cmd.ExecuteScalar();//needs output inserted.id
+                }
+            }
+        }
+
+
+        //----------------AddPatient( )------Test2--------------//
+
+
+        public void AddPatient(PatientAdd2 patient)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [dbo].[Patient]
+                                                   (
+                                                   [DoctorId]
+                                                   ,[DoB]
+                                                   ,[Address]
+                                                   ,[Phone]
+                                                   ,[Height]
+                                                   ,[Weight]
+                                                   ,[Note])
+                                             OUTPUT INSERTED.Id
+                                             VALUES
+                                                   (
+                                                   @DoctorId
+                                                   ,@DoB
+                                                   ,@Address
+                                                   ,@Phone
+                                                   ,@Height
+                                                   ,@Weight
+                                                   ,@Note)";
+                    //DbUtils.AddParameter(cmd, "@UserId", patient.UserId);
+                    DbUtils.AddParameter(cmd, "@DoctorId", patient.DoctorId);
+                    DbUtils.AddParameter(cmd, "@DoB", patient.DoB);
+                    DbUtils.AddParameter(cmd, "@Address", patient.Address);
+                    DbUtils.AddParameter(cmd, "@Phone", patient.Phone);
+                    DbUtils.AddParameter(cmd, "@Height", patient.Height);
+                    DbUtils.AddParameter(cmd, "@Weight", patient.Weight);
+                    DbUtils.AddParameter(cmd, "@Note", patient.Note);
+                    patient.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+                    //patient.UserId = (int)cmd.ExecuteScalar();//needs output inserted.id
+                }
+            }
+
+        }
+
+
+   /* {
+  "id": 0,
+  "userId": 0,
+  "doctorId": 1,
+  "doB": "2003-08-17",
+  "address": "123 Main St, Nashville, TN 37213",
+  "phone": "901-555-2345",
+  "height": 70,
+  "weight": 180,
+  "note": "string",
+  "user": {
+    "id": 0,
+    "type": "patient",
+    "img": "patient16.jpg",
+    "firstName": "Sophia",
+    "lastName": "Harris",
+    "email": "sophiaharris@example.com"
+      }
+    } */
+        //------------------------------EditPatient( )--------------------------------------
+
+
+
+
 
 
 
