@@ -57,4 +57,12 @@ namespace RXCareServer.Models
         public string? Note { get; set; }
         public User? User { get; set; }
     }
+
+    public class PatientEdit
+    {
+        public decimal Height { get; set; }
+        public decimal Weight { get; set; }
+        public string? Note { get; set; }
+        public User? User { get; set; }
+    }
 }
