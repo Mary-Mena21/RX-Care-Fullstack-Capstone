@@ -23,5 +23,21 @@ namespace RXCareServer.Controllers
             _userRepository.AddUser(User);
             return Created("", User);
         }
+
+        //-----------------------------------------------------------
+
+        [HttpPut("UpdateUserkById/{Id}")]
+        public IActionResult Put(int Id, UserAdd User)
+        {
+            if (Id != User.Id)
+            {
+                return BadRequest();
+            }
+            _userRepository.EditUser(User);
+            //return NoContent();
+            return Ok(User);
+        }
+
+
     }
 }

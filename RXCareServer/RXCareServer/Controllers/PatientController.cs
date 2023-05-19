@@ -53,11 +53,38 @@ namespace RXCareServer.Controllers
         //-----------------------------------------------------------
 
         // POST api/<PatientController>
-        [HttpPost("/Add")]
-        public IActionResult Post(Patient patient)
+        //[HttpPost("/Add")]
+        //public IActionResult Post(Patient patient)
+        //{
+        //    _patientRepository.AddPatient(patient);
+        //    return Created("", patient);
+        //}
+
+        //-----------------------------------------------------------
+
+        ////POST api/<PatientController>
+        //[HttpPost("/AddPatient")]
+        //public IActionResult Post(Patient patient, User user)
+        //{
+
+        //_patientRepository.AddPatient(patient,user);
+        //    return CreatedAtRoute("", patient,user);
+        //}
+
+        //-----------------------------------------------------------
+
+        //-----------------------------------------------------------
+
+        [HttpPut("UpdatePatientById/{Id}")]
+        public IActionResult Put(int Id, PatientAdd2 Patient)
         {
-            _patientRepository.AddPatient(patient);
-            return Created("", patient);
+            if (Id != Patient.Id)
+            {
+                return BadRequest();
+            }
+            _patientRepository.EditPatient(Patient);
+            //return NoContent();
+            return Ok(User);
         }
 
         //// GET api/<PatientController>/5
