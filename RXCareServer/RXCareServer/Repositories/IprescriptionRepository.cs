@@ -4,6 +4,10 @@ namespace RXCareServer.Repositories
 {
     public interface IprescriptionRepository
     {
-        List<PrescriptionInfo> GetPrescriptionById(int id);
+        void AddPrescription(Prescription prescription);
+        void DeletePrescriptionByPrescriptionId(int id);
+        void EditPrescription(Prescription prescription);
+        List<PrescriptionInfo> GetPrescriptionByPatientId(int id);
+        Prescription GetPrescriptionByPrescriptionId(int Id);
     }
 }

@@ -10,8 +10,8 @@ namespace RXCareServer.Repositories
         public prescriptionRepository(IConfiguration configuration) : base(configuration) { }
 
         //-----------------------------Backend-GetPrescriptionById( )#19-----------works---------------------
-
-        public List<PrescriptionInfo> GetPrescriptionById(int id)//5
+        //GetPrescriptionByPrescriptionId Prescription
+        public List<PrescriptionInfo> GetPrescriptionByPatientId(int id)//5
         {
             using (var conn = Connection)
             {
@@ -61,8 +61,151 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //------------------------------Backend-AddPrescription( )#15-------------------------------
+        //------------------------------Backend-GetPrescriptionByPrescriptionId( )#31-------------
+
+        public Prescription GetPrescriptionByPrescriptionId(int Id)//5
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Prescription].Id 
+                                              ,[Prescription].MedicineId
+                                              ,[Prescription].Dosage
+                                              ,[Prescription].Quantity
+                                              ,[Prescription].PatientId
+                                         FROM [RXCareDb].[dbo].[Prescription]
+                                         WHERE [Prescription].Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    Prescription prescription = null;
+                    while (reader.Read())
+                    {
+                        if (prescription == null)
+                        {
+                            prescription = new Prescription()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                Dosage = DbUtils.GetString(reader, "Dosage"),
+                                Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+
+                            };
+                        }
+                    }
+                    conn.Close();
+                    return prescription;
+                }
+            }
+        }
+
+        //------------------------------Backend-AddPrescription( )#15----------works!-------------
+
+        public void AddPrescription(Prescription prescription)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [Prescription]
+                                                   ([MedicineId]
+                                                   ,[Dosage]
+                                                   ,[Quantity]
+                                                   ,[PatientId])
+                                             OUTPUT INSERTED.Id APID
+                                             VALUES
+                                                   (@MedicineId
+                                                   ,@Dosage
+                                                   ,@Quantity
+                                                   ,@PatientId)";
+                    DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
+                    DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
+                    DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
+                    DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+
+                    prescription.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+                }
+            }
+        }
+
+        //------------------------------Backend-EditPrescription( )#16---------works!---------------------
+
+
+        public void EditPrescription(Prescription prescription)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE [dbo].[Prescription]
+                                           SET [MedicineId] = @MedicineId
+                                              ,[Dosage] = @Dosage
+                                              ,[Quantity] = @Quantity
+                                              ,[PatientId] = @PatientId
+                                         WHERE [Id] = @Id";
+                    DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
+                    DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
+                    DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
+                    DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+                    DbUtils.AddParameter(cmd, "@Id", prescription.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //-------------------------------Backend-DeletePrescription( )#17--------------------------------------
+
+
+        public void DeletePrescriptionByPrescriptionId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Prescription WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
 }
+
+
+/*
+ {
+  "id": 0,
+  "medicineId":1,
+  "dosage": "1 capsule daily",
+  "quantity": 60,
+  "patientId": 39
+}
+ */
