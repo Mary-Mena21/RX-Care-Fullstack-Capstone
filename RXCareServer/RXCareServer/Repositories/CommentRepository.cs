@@ -1,4 +1,5 @@
-﻿using ReadersRendezvous.Utils;
+﻿using Microsoft.AspNetCore.Mvc;
+using ReadersRendezvous.Utils;
 using RXCareServer.Models;
 
 namespace RXCareServer.Repositories
@@ -185,16 +186,21 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+        //------------------------------Backend-DeletePatientComment( )#36-----------------------------------
 
-
-
-
-
-
-
-
-
-
+        public void DeleteCommentById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [dbo].[Comment] WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
 
 

@@ -58,9 +58,11 @@ namespace RXCareServer.Controllers
 
         //-----------------------------------------------------------
         // DELETE api/<CommentController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("DeleteCommentById/{Id}")]
+        public IActionResult DeleteById(int Id)
         {
+            _commentRepository.DeleteCommentById(Id);
+            return NoContent();
         }
     }
 }
