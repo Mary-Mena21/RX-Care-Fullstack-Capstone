@@ -6,6 +6,7 @@ namespace RXCareServer.Repositories
     {
         void AddPrescription(Prescription prescription);
         void EditPrescription(Prescription prescription);
-        List<PrescriptionInfo> GetPrescriptionById(int id);
+        List<PrescriptionInfo> GetPrescriptionByPatientId(int id);
+        Prescription GetPrescriptionByPrescriptionId(int Id);
     }
 }

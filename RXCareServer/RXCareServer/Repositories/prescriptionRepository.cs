@@ -10,8 +10,8 @@ namespace RXCareServer.Repositories
         public prescriptionRepository(IConfiguration configuration) : base(configuration) { }
 
         //-----------------------------Backend-GetPrescriptionById( )#19-----------works---------------------
-
-        public List<PrescriptionInfo> GetPrescriptionById(int id)//5
+        //GetPrescriptionByPrescriptionId Prescription
+        public List<PrescriptionInfo> GetPrescriptionByPatientId(int id)//5
         {
             using (var conn = Connection)
             {
@@ -61,6 +61,58 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+        //------------------------------Backend-GetPrescriptionByPrescriptionId( )#31-------------
+
+        public Prescription GetPrescriptionByPrescriptionId(int Id)//5
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Prescription].Id 
+                                              ,[Prescription].MedicineId
+                                              ,[Prescription].Dosage
+                                              ,[Prescription].Quantity
+                                              ,[Prescription].PatientId
+                                         FROM [RXCareDb].[dbo].[Prescription]
+                                         WHERE [Prescription].Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    Prescription prescription = null;
+                    while (reader.Read())
+                    {
+                        if (prescription == null)
+                        {
+                            prescription = new Prescription()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                Dosage = DbUtils.GetString(reader, "Dosage"),
+                                Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+
+                            };
+                        }
+                    }
+                    conn.Close();
+                    return prescription;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
         public void AddPrescription(Prescription prescription)
@@ -90,6 +142,7 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+
         //------------------------------Backend-EditPrescription( )#16---------works!---------------------
 
 
