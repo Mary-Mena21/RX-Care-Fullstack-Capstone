@@ -2,6 +2,8 @@
 using RXCareServer.Models;
 using System.Net;
 using System.Numerics;
+using System.Xml.Linq;
+using static Azure.Core.HttpHeader;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace RXCareServer.Repositories
@@ -10,80 +12,141 @@ namespace RXCareServer.Repositories
     {
         public UserRepository(IConfiguration configuration) : base(configuration) { }
 
-        ////----------------AddPatient( )------Test2--------------//
+        //----------------.GetUserById(id) ---------------Works need null values---------------------//
+        public UserInfo3 GetUserById(int id)
+        {
+            using(var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] 
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                              ,[Patient].[Id] As PatId
+                                              ,[Patient].[DoctorId]
+                                              ,[Patient].[UserId]
+                                              ,[Patient].[DoB]
+                                              ,[Patient].[Address]
+                                              ,[Patient].[Phone]
+                                              ,[Patient].[Height]
+                                              ,[Patient].[Weight]
+                                              ,[Patient].[Note]
+                                              ,[Prescription].Id AS PreId
+                                              ,[Prescription].MedicineId
+                                              ,[Prescription].Dosage
+                                              ,[Prescription].Quantity
+                                              ,[Prescription].PatientId
+                                              ,[Medicine].Id As MedId
+                                              ,[Medicine].MedicineName
+                                              ,[Medicine].ImgUrl
+                                              ,[Medicine].Form
+                                              ,[Medicine].SideEffects
+                                              ,[Medicine].DrugInfo
+                                              ,[Comment].Id AS ComId
+                                              ,[Comment].PatientId
+                                              ,[Comment].MedicineId
+                                              ,[Comment].PComment
+                                              ,[Comment].PCommentDate
+                                              ,[Comment].DComment
+                                              ,[Comment].DCommentDate
+                                          FROM [RXCareDb].[dbo].[User]
+                                          LEFT JOIN [Patient] ON [User].Id = [Patient].UserId
+                                          LEFT JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
+                                          LEFT JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
+                                          LEFT JOIN [Comment] ON [Patient].Id = [Comment].PatientId
+                                          WHERE [User].[Id] = @Id";
 
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    var reader = cmd.ExecuteReader();
+                    UserInfo3 user = null;
 
-        //public void AddUser(UserAdd User)
-        ////public void AddUser(User User)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"INSERT INTO [dbo].[User]
-        //                                           ([Type]
-        //                                           ,[Img]
-        //                                           ,[FirstName]
-        //                                           ,[LastName]
-        //                                           ,[Email])
-        //                                     OUTPUT INSERTED.Id As UID
-        //                                     VALUES
-        //                                           (@Type
-        //                                           ,@Img
-        //                                           ,@FirstName
-        //                                           ,@LastName
-        //                                           ,@Email)
+                    while (reader.Read()) 
+                    {
+                        if (user == null) {
+                            user = new UserInfo3()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Type = DbUtils.GetString(reader, "Type"),
+                                Img = DbUtils.GetString(reader, "Img"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                Email = DbUtils.GetString(reader, "Email"),
 
-        //                                INSERT INTO [dbo].[Patient]
-        //                                           ([UserId]
-        //                                           ,[DoctorId]
-        //                                           ,[DoB]
-        //                                           ,[Address]
-        //                                           ,[Phone]
-        //                                           ,[Height]
-        //                                           ,[Weight]
-        //                                           ,[Note])
-        //                                     OUTPUT INSERTED.Id APID
-        //                                     VALUES
-        //                                           (@UserId
-        //                                           ,@DoctorId
-        //                                           ,@DoB
-        //                                           ,@Address
-        //                                           ,@Phone
-        //                                           ,@Height
-        //                                           ,@Weight
-        //                                           ,@Note)
-        //                                                    ";
-        //            //DbUtils.AddParameter(cmd, "@UserId", patient.UserId);
-        //            DbUtils.AddParameter(cmd, "@Type", User.Type);
-        //            DbUtils.AddParameter(cmd, "@Img", User.Img);
-        //            DbUtils.AddParameter(cmd, "@FirstName", User.FirstName);
-        //            DbUtils.AddParameter(cmd, "@LastName", User.LastName);
-        //            DbUtils.AddParameter(cmd, "@Email", User.Email);
+                                Patient = new PatientInfo3()
+                                {
+                                    Id = DbUtils.GetInt(reader, "PatId"),
+                                    DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+                                    UserId = DbUtils.GetInt(reader, "UserId"),
+                                    DoB = DbUtils.GetDateTime(reader, "DoB"),
+                                    Address = DbUtils.GetString(reader, "Address"),
+                                    Phone = DbUtils.GetString(reader, "Phone"),
+                                    Height = DbUtils.GetDecimal(reader, "Height"),
+                                    Weight = DbUtils.GetDecimal(reader, "Weight"),
+                                    Note = DbUtils.GetString(reader, "Note"),
+                                    Prescriptions = new List<PrescriptionInfo>()
+                                    {
+                                         new PrescriptionInfo()
+                                        {
+                                            Id = DbUtils.GetInt(reader, "PreId"),
+                                            MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                            Dosage = DbUtils.GetString(reader, "Dosage"),
+                                            Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                            PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                            Medicine = new Medicine()
+                                            {
+                                                Id = DbUtils.GetInt(reader, "MedId"),
+                                                MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                                ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                                Form = DbUtils.GetString(reader, "Form"),
+                                                SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                                DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
 
-        //            DbUtils.AddParameter(cmd, "@UserId", User.Patient.UserId);
-        //            DbUtils.AddParameter(cmd, "@DoctorId", User.Patient.DoctorId);
-        //            DbUtils.AddParameter(cmd, "@DoB", User.Patient.DoB);
-        //            DbUtils.AddParameter(cmd, "@Address", User.Patient.Address);
-        //            DbUtils.AddParameter(cmd, "@Phone", User.Patient.Phone);
-        //            DbUtils.AddParameter(cmd, "@Height", User.Patient.Height);
-        //            DbUtils.AddParameter(cmd, "@Weight", User.Patient.Weight);
-        //            DbUtils.AddParameter(cmd, "@Note", User.Patient.Note);
+                                            }
+                                        },
 
-        //            User.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
-        //            User.Patient.UserId = User.Id;//needs output inserted.id
-        //            User.Patient.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+                                    },
 
-        //        }
-        //    }
+                                    Comment = new CommentInfo()
+                                    {
+                                        Id = DbUtils.GetInt(reader, "ComId"),
+                                        PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                        MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                        PComment = DbUtils.GetString(reader, "PComment"),
+                                        PCommentDate = DbUtils.GetDateTime(reader, "PCommentDate"),
+                                        DComment = DbUtils.GetString(reader, "DComment"),
+                                        DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
+                                        Medicine = new Medicine()
+                                        {
+                                            Id = DbUtils.GetInt(reader, "MedId"),
+                                            MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                            ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                            Form = DbUtils.GetString(reader, "Form"),
+                                            SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                            DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
 
-        //}
+                                        },
+                                    },
+
+                                },
+
+                            };
+                        }
+
+                    }
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
+    
 
         //----------------AddPatient( )------Test3-----Works !!!👌👏---------//
 
-
-        public void AddUser(UserAdd User)
+        public void AddUser(UserInfo2 User)
         //public void AddUser(User User)
         {
             using (var conn = Connection)
@@ -151,8 +214,7 @@ namespace RXCareServer.Repositories
 
         }
         //----------------EditPatient( )------Test3------it works--------//
-
-        public void EditUser(UserAdd User)
+        public void EditUser(UserInfo2 User)
         {
             using (var conn = Connection)
             {
@@ -204,7 +266,22 @@ namespace RXCareServer.Repositories
 
         }
 
-
+        /*------------------DeleteBook()--2--------------------*/
+        public void DeleteUserById(int id)
+        {
+            //using (var conn = Connection)
+            //{
+            //    conn.Open();
+            //    using (var cmd = conn.CreateCommand())
+            //    {
+            //        cmd.CommandText = "Delete FROM Prescription WHERE PatientId = ";
+            //        cmd.CommandText = "Delete From Patient WHERE UserId = @Id";
+            //        cmd.CommandText = "DELETE FROM User WHERE Id = @Id";
+            //        DbUtils.AddParameter(cmd, "@Id", id);
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
+        }
 
 
 

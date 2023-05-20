@@ -18,7 +18,7 @@ namespace RXCareServer.Controllers
 
         // POST api/<PatientController>
         [HttpPost("/addUser")]
-        public IActionResult Post(UserAdd User)
+        public IActionResult Post(UserInfo2 User)
         {
             _userRepository.AddUser(User);
             return Created("", User);
@@ -27,7 +27,7 @@ namespace RXCareServer.Controllers
         //-----------------------------------------------------------
 
         [HttpPut("UpdateUserkById/{Id}")]
-        public IActionResult Put(int Id, UserAdd User)
+        public IActionResult Put(int Id, UserInfo2 User)
         {
             if (Id != User.Id)
             {
@@ -37,7 +37,36 @@ namespace RXCareServer.Controllers
             //return NoContent();
             return Ok(User);
         }
+        //-----------------------------------------------------------
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            UserInfo3 user = (UserInfo3)_userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            _userRepository.DeleteUserById(user.Id);
+            return NoContent();
+        }
 
+        //------------------------------------------------------------------------
+        [HttpGet("GetById/{id}")]
+        public IActionResult GetById(int id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            UserInfo3 user = _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound($"{id} Not Found!");
+            }
+            return Ok(user);
+
+        }
+        //======================================
     }
 }

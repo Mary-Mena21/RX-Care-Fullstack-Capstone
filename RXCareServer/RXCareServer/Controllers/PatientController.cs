@@ -43,14 +43,19 @@ namespace RXCareServer.Controllers
         //-----------------------------------------------------------
 
         // POST api/<PatientController>
-        [HttpPost("/PatientAdd")]
-        public IActionResult Post(PatientAdd2 patient)
-        {
-            _patientRepository.AddPatient(patient);
-            return Created("", patient);
-        }
+        //[HttpPost("/PatientAdd")]
+        //public IActionResult Post(PatientInfo2 patient)
+        //{
+        //    _patientRepository.AddPatient(patient);
+        //    return Created("", patient);
+        //}
 
         //-----------------------------------------------------------
+
+
+
+
+
 
         // POST api/<PatientController>
         //[HttpPost("/Add")]
@@ -76,7 +81,7 @@ namespace RXCareServer.Controllers
         //-----------------------------------------------------------
 
         [HttpPut("UpdatePatientById/{Id}")]
-        public IActionResult Put(int Id, PatientAdd2 Patient)
+        public IActionResult Put(int Id, PatientInfo2 Patient)
         {
             if (Id != Patient.Id)
             {
