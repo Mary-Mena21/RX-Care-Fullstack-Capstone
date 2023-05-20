@@ -44,9 +44,16 @@ namespace RXCareServer.Controllers
 
         //-----------------------------------------------------------
         // PUT api/<CommentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("UpdateComment/{Id}")]
+        public IActionResult Put(int Id, Comment comment)
         {
+            if (Id != comment.Id)
+            {
+                return BadRequest();
+            }
+            _commentRepository.EditPatientComment(comment);
+            //return NoContent();
+            return Ok(comment);
         }
 
         //-----------------------------------------------------------

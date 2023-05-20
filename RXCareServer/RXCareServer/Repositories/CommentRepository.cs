@@ -75,8 +75,8 @@ namespace RXCareServer.Repositories
                                               ,[Medicine].SideEffects
                                               ,[Medicine].DrugInfo
                                           FROM [RXCareDb].[dbo].[Comment]
-                                          LEFT JOIN [Medicine] ON [Comment].MedicineId = [Medicine].Id 
-                                          WHERE [Comment].PatientId = 14";
+                                          JOIN [Medicine] ON [Comment].MedicineId = [Medicine].Id 
+                                          WHERE [Comment].PatientId = @PatientId";
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();
                     CommentInfo comment = null;
@@ -156,9 +156,35 @@ namespace RXCareServer.Repositories
   "dComment": "We may need to adjust the dosage or switch to a different medication.",
   "dCommentDate": "2023-05-21T14:50:25.514Z"
 }*/
-        //------------------------------Backend-AddPatientComment( )#34-----------------------------------
+        //------------------------------Backend-EditPatientComment( )#35-----------------------------------
 
+        public void EditPatientComment(Comment comment)
+        {
+            using(var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE [dbo].[Comment]
+                                           SET [PatientId] = @PatientId
+                                              ,[MedicineId] = @MedicineId
+                                              ,[PComment] = @PComment
+                                              ,[PCommentDate] = @PCommentDate
+                                              ,[DComment] = @DComment
+                                              ,[DCommentDate] = @DCommentDate
+                                         WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", comment.Id);
+                    DbUtils.AddParameter(cmd, "@PatientId", comment.PatientId);
+                    DbUtils.AddParameter(cmd, "@MedicineId", comment.MedicineId);
+                    DbUtils.AddParameter(cmd, "@PComment", comment.PComment);
+                    DbUtils.AddParameter(cmd, "@PCommentDate", comment.PCommentDate);
+                    DbUtils.AddParameter(cmd, "@DComment", comment.DComment);
+                    DbUtils.AddParameter(cmd, "@DCommentDate", comment.DCommentDate);
+                    cmd.ExecuteNonQuery();
 
+                }
+            }
+        }
 
 
 
