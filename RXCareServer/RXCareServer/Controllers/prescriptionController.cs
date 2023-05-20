@@ -30,6 +30,18 @@ namespace RXCareServer.Controllers
             _prescriptionRepository.AddPrescription(prescription);
             return Created("", prescription);
         }
+        //----------------------------------------------------------
+        [HttpPut("UpdatePrescriptionById/{Id}")]
+        public IActionResult Put(int Id, Prescription prescription)
+        {
+            if (Id != prescription.Id)
+            {
+                return BadRequest();
+            }
+            _prescriptionRepository.EditPrescription(prescription);
+            //return NoContent();
+            return Ok(prescription);
+        }
 
 
     }

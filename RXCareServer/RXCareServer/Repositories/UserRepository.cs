@@ -12,7 +12,7 @@ namespace RXCareServer.Repositories
     {
         public UserRepository(IConfiguration configuration) : base(configuration) { }
 
-        //----------------.GetUserById(id) ---------------Works need null values---------------------//
+        //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
         public UserInfo3 GetUserById(int id)
         {
             using(var conn = Connection)

@@ -61,7 +61,7 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //------------------------------Backend-AddPrescription( )#15----------works!---------------------
+        //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
         public void AddPrescription(Prescription prescription)
         {
@@ -90,7 +90,55 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //------------------------------------------------------------------------------------------
+        //------------------------------Backend-EditPrescription( )#16---------works!---------------------
+
+
+        public void EditPrescription(Prescription prescription)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE [dbo].[Prescription]
+                                           SET [MedicineId] = @MedicineId
+                                              ,[Dosage] = @Dosage
+                                              ,[Quantity] = @Quantity
+                                              ,[PatientId] = @PatientId
+                                         WHERE [Id] = @Id";
+                    DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
+                    DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
+                    DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
+                    DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+                    DbUtils.AddParameter(cmd, "@Id", prescription.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
