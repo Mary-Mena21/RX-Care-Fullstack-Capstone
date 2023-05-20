@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RXCareServer.Models;
 using RXCareServer.Repositories;
 
 namespace RXCareServer.Controllers
@@ -22,7 +23,13 @@ namespace RXCareServer.Controllers
             return Ok(_prescriptionRepository.GetPrescriptionById(Id));
         }
         //-----------------------------------------------------------
-
+        // POST api/<prescriptionController>
+        [HttpPost("/AddPrescription")]
+        public IActionResult Post(Prescription prescription)
+        {
+            _prescriptionRepository.AddPrescription(prescription);
+            return Created("", prescription);
+        }
 
 
     }

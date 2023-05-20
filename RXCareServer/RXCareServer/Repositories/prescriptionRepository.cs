@@ -61,8 +61,50 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //------------------------------Backend-AddPrescription( )#15-------------------------------
+        //------------------------------Backend-AddPrescription( )#15----------works!---------------------
+
+        public void AddPrescription(Prescription prescription)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [Prescription]
+                                                   ([MedicineId]
+                                                   ,[Dosage]
+                                                   ,[Quantity]
+                                                   ,[PatientId])
+                                             OUTPUT INSERTED.Id APID
+                                             VALUES
+                                                   (@MedicineId
+                                                   ,@Dosage
+                                                   ,@Quantity
+                                                   ,@PatientId)";
+                    DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
+                    DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
+                    DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
+                    DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+
+                    prescription.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+                }
+            }
+        }
+        //------------------------------------------------------------------------------------------
+
+
 
 
     }
 }
+
+
+/*
+ {
+  "id": 0,
+  "medicineId":1,
+  "dosage": "1 capsule daily",
+  "quantity": 60,
+  "patientId": 39
+}
+ */
