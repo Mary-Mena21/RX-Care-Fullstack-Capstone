@@ -52,11 +52,6 @@ namespace RXCareServer.Controllers
 
         //-----------------------------------------------------------
 
-
-
-
-
-
         // POST api/<PatientController>
         //[HttpPost("/Add")]
         //public IActionResult Post(Patient patient)
@@ -75,8 +70,6 @@ namespace RXCareServer.Controllers
         //_patientRepository.AddPatient(patient,user);
         //    return CreatedAtRoute("", patient,user);
         //}
-
-        //-----------------------------------------------------------
 
         //-----------------------------------------------------------
 

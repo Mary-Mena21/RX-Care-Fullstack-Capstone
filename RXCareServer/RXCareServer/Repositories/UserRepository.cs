@@ -15,10 +15,10 @@ namespace RXCareServer.Repositories
         //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
         public UserInfo3 GetUserById(int id)
         {
-            using(var conn = Connection)
+            using (var conn = Connection)
             {
                 conn.Open();
-                using(var cmd = conn.CreateCommand())
+                using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT [User].[Id] 
                                               ,[User].Type
@@ -57,16 +57,17 @@ namespace RXCareServer.Repositories
                                           LEFT JOIN [Patient] ON [User].Id = [Patient].UserId
                                           LEFT JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
                                           LEFT JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
-                                          LEFT JOIN [Comment] ON [Patient].Id = [Comment].PatientId
+                                          LEFT JOIN [Comment] ON [Patient].Id = [Comment].PatientId AND [Medicine].Id = [Comment].MedicineId 
                                           WHERE [User].[Id] = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
                     var reader = cmd.ExecuteReader();
-                    UserInfo3 user = null;
+                    UserInfo3? user = null;
 
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
-                        if (user == null) {
+                        if (user == null)
+                        {
                             user = new UserInfo3()
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
@@ -87,62 +88,63 @@ namespace RXCareServer.Repositories
                                     Height = DbUtils.GetDecimal(reader, "Height"),
                                     Weight = DbUtils.GetDecimal(reader, "Weight"),
                                     Note = DbUtils.GetString(reader, "Note"),
-                                    Prescriptions = new List<PrescriptionInfo>()
-                                    {
-                                         new PrescriptionInfo()
-                                        {
-                                            Id = DbUtils.GetInt(reader, "PreId"),
-                                            MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                                            Dosage = DbUtils.GetString(reader, "Dosage"),
-                                            Quantity = DbUtils.GetInt(reader, "Quantity"),
-                                            PatientId = DbUtils.GetInt(reader, "PatientId"),
-                                            Medicine = new Medicine()
-                                            {
-                                                Id = DbUtils.GetInt(reader, "MedId"),
-                                                MedicineName = DbUtils.GetString(reader, "MedicineName"),
-                                                ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
-                                                Form = DbUtils.GetString(reader, "Form"),
-                                                SideEffects = DbUtils.GetString(reader, "SideEffects"),
-                                                DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
-
-                                            }
-                                        },
-
-                                    },
-
-                                    Comment = new CommentInfo()
-                                    {
-                                        Id = DbUtils.GetInt(reader, "ComId"),
-                                        PatientId = DbUtils.GetInt(reader, "PatientId"),
-                                        MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                                        PComment = DbUtils.GetString(reader, "PComment"),
-                                        PCommentDate = DbUtils.GetDateTime(reader, "PCommentDate"),
-                                        DComment = DbUtils.GetString(reader, "DComment"),
-                                        DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
-                                        Medicine = new Medicine()
-                                        {
-                                            Id = DbUtils.GetInt(reader, "MedId"),
-                                            MedicineName = DbUtils.GetString(reader, "MedicineName"),
-                                            ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
-                                            Form = DbUtils.GetString(reader, "Form"),
-                                            SideEffects = DbUtils.GetString(reader, "SideEffects"),
-                                            DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
-
-                                        },
-                                    },
-
-                                },
-
+                                    Prescriptions = new List<PrescriptionInfo>(),
+                                }
                             };
                         }
+                        if(DbUtils.GetNullableInt(reader, "PreId") != null) {
+                            user.Patient.Prescriptions.Add(new PrescriptionInfo()
 
+                            {
+                                 Id = DbUtils.GetInt(reader, "PreId"),
+                                 MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                 Dosage = DbUtils.GetString(reader, "Dosage"),
+                                 Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                 PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                 Medicine = new Medicine()
+                                 {
+                                     Id = DbUtils.GetInt(reader, "MedId"),
+                                     MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                     ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                     Form = DbUtils.GetString(reader, "Form"),
+                                     SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                     DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+
+                                 }
+                             });
+                        }
+                        //--------------------------------------------------------------
+                        if (DbUtils.GetNullableInt(reader, "ComId") != null)
+                        {
+                            user.Patient.Comment = new CommentInfo()
+
+                            {
+                                Id = DbUtils.GetInt(reader, "ComId"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                PComment = DbUtils.GetString(reader, "PComment"),
+                                PCommentDate = DbUtils.GetDateTime(reader, "PCommentDate"),
+                                DComment = DbUtils.GetString(reader, "DComment"),
+                                DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
+                                Medicine = new Medicine()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MedId"),
+                                    MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                    ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                    Form = DbUtils.GetString(reader, "Form"),
+                                    SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                    DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+
+                                },
+                            };
+                        }
                     }
                     reader.Close();
                     return user;
                 }
             }
         }
-    
+
 
         //----------------AddPatient( )------Test3-----Works !!!👌👏---------//
 

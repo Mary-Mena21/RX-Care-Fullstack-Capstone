@@ -20,6 +20,6 @@
         public DateTime PCommentDate { get; set; }
         public string? DComment { get; set; }
         public DateTime DCommentDate { get; set; }
-        public Medicine Medicine { get; set; }
+        public Medicine? Medicine { get; set; }
     }
 }
