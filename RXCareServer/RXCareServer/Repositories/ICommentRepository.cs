@@ -4,6 +4,9 @@ namespace RXCareServer.Repositories
 {
     public interface ICommentRepository
     {
-        CommentInfo GetPatientComment(int id);
+        void AddPatientComment(Comment comment);
+        Comment GetPatientComment(int id);
+
+        CommentInfo GetPatientCommentOnMedicine(int PatientId);
     }
 }

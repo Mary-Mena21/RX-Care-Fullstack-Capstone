@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RXCareServer.Models;
 using RXCareServer.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,35 +10,46 @@ namespace RXCareServer.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        //private readonly ICommentRepository _commentRepository;
+        private readonly ICommentRepository _commentRepository;
 
+        public CommentController(ICommentRepository CommentRepository)
+        {
+            _commentRepository = CommentRepository;
+        }
 
+        //-----------------------------------------------------------
         // GET: api/<CommentController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{PatientId}")]
+        public IActionResult GetByPatientId(int PatientId)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_commentRepository.GetPatientComment(PatientId));
         }
 
-        // GET api/<CommentController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        //-----------------------------------------------------------
+        // GET: api/<CommentController>
+        [HttpGet("commentOnMedicine/{PatientId}")]
+        public IActionResult GeCommentByPatientId(int PatientId)
         {
-            return "value";
+            return Ok(_commentRepository.GetPatientCommentOnMedicine(PatientId));
         }
 
+        //-----------------------------------------------------------
         // POST api/<CommentController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Comment comment)
         {
+            _commentRepository.AddPatientComment(comment);
+            return Created("",comment);
         }
 
+        //-----------------------------------------------------------
         // PUT api/<CommentController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
+        //-----------------------------------------------------------
         // DELETE api/<CommentController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

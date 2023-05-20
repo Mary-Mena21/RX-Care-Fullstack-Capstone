@@ -93,11 +93,9 @@ namespace RXCareServer.Repositories
                             };
                         }
                         if(DbUtils.GetNullableInt(reader, "PreId") != null) {
-                            user.Patient.Prescriptions.Add(
+                            user.Patient.Prescriptions.Add(new PrescriptionInfo()
 
-                             new PrescriptionInfo()
-                             {
-                                 //if(Prescriptions != null){
+                            {
                                  Id = DbUtils.GetInt(reader, "PreId"),
                                  MedicineId = DbUtils.GetInt(reader, "MedicineId"),
                                  Dosage = DbUtils.GetString(reader, "Dosage"),
@@ -113,7 +111,6 @@ namespace RXCareServer.Repositories
                                      DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
 
                                  }
-                                 //};
                              });
                         }
                         //--------------------------------------------------------------
