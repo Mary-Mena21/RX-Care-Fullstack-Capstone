@@ -52,7 +52,18 @@ namespace RXCareServer.Controllers
             //return NoContent();
             return Ok(prescription);
         }
+        //----------------------------------------------------------
 
-
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Prescription Prescription = (Prescription)_prescriptionRepository.GetPrescriptionByPrescriptionId(id);
+            if (Prescription == null)
+            {
+                return NotFound();
+            }
+            _prescriptionRepository.DeletePrescriptionByPrescriptionId(Prescription.Id);
+            return NoContent();
+        }
     }
 }
