@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Lobster&family=Montserrat:ital@1&family=Oswald:wght@200;400&family=Palanquin:wght@200;300;500&family=Rubik+Puddles&family=Rubik+Vinyl&family=Sail&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+body {
+    padding: 0;
+    top: 0;
+    margin: 0;
+}
+
+.sidebar {
+    background: #6d7c8e;
+    color: #f3b530;
+    height: 100vh;
+    transition: all 0.5s;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: -webkit-sticky;
+    position: fixed;
+}
+
+.top_section {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.logo {
+    font-size: 30px;
+    color: #f3b530;
+    font-family: "Cinzel Decorative", "Lobster", " cursive", "Josefin Sans",
+        "sans-serif";
+    margin: 0;
+    padding: 10px;
+}
+.bars {
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.link {
+    display: flex;
+    color: #fff;
+    padding: 6px 15px;
+    gap: 10px;
+    transition: all 0.5s;
+    text-decoration: none;
+    font-family: "Roboto", "Open sans", "sans-serif";
+}
+
+a.github_icon {
+    color: #f3b530;
+}
+a.github_icon:hover {
+    color: #0b1c3b;
+    transition: all 0.5s;
+}
+
+.link:hover {
+    background: #dcb677;
+    color: #0b1c3b;
+    transition: all 0.5s;
+}
+.active {
+    background: lightskyblue;
+    color: #000;
+}
+.icon,
+.link_text {
+    font-size: 1.1rem;
+}
+.link_text {
+    justify-content: center;
+}
+
+.logout_link {
+    position: -webkit-sticky;
+    position: fixed;
+    text-decoration: none;
+    right: 2rem;
+    top: 5px;
+    cursor: pointer;
+    color: #f3b530;
+    font-family: "Open Sans", "Josefin Sans", "sans-serif";
+}
+
+X {
+    font-family: "Cinzel Decorative", cursive;
+    font-family: "Dancing Script", cursive;
+    font-family: "Great Vibes", cursive;
+    font-family: "Lobster", cursive;
+    font-family: "Montserrat", sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-family: "Palanquin", sans-serif;
+    font-family: "Rubik Puddles", cursive;
+    font-family: "Rubik Vinyl", cursive;
+    font-family: "Sail", cursive;
+}
+
+.hr_nav {
+    color: #ffffff;
+    background-color: #ffffff;
+}

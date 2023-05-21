@@ -215,6 +215,36 @@ namespace RXCareServer.Repositories
             }
 
         }
+
+
+
+
+        //----------------AddPatient( )------Test3-----Works !!!👌👏---------//
+
+        public void AddLoginUser(UserLogin User)
+        //public void AddUser(User User)
+        {
+            //using (var conn = Connection)
+            //{
+            //    conn.Open();
+            //    using (var cmd = conn.CreateCommand())
+            //    {
+            //        cmd.CommandText = @"INSERT INTO [dbo].[User]
+            //                                       ([Type]
+            //                                       ,[Email])
+            //                                 OUTPUT INSERTED.Id As UID
+            //                                 VALUES
+            //                                       (@Type
+            //                                       ,@Email) ";
+            //        //DbUtils.AddParameter(cmd, "@UserId", patient.UserId);
+            //        DbUtils.AddParameter(cmd, "@Type", User.Type);
+            //        DbUtils.AddParameter(cmd, "@Email", User.Email);
+            //        User.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
+
+            //    }
+            //}
+
+        }
         //----------------EditPatient( )------Test3------it works--------//
         public void EditUser(UserInfo2 User)
         {
@@ -285,6 +315,43 @@ namespace RXCareServer.Repositories
             //}
         }
 
+        //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
+        public UserLogin GetUserLoginByEmail(string Email)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] 
+                                              ,[User].Type
+                                              ,[User].Email
+                                          FROM [RXCareDb].[dbo].[User]
+                                          WHERE [User].[Email] = @Email";
+
+                    DbUtils.AddParameter(cmd, "@Email", Email);
+                    var reader = cmd.ExecuteReader();
+                    UserLogin? user = null;
+
+                    while (reader.Read())
+                    {
+                        if (user == null)
+                        {
+                            user = new UserLogin
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Type = DbUtils.GetString(reader, "Type"),
+                                Email = DbUtils.GetString(reader, "Email"),
+
+                            };
+                        }
+         
+                    }
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
 
 
 

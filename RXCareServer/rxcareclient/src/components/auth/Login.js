@@ -4,11 +4,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
 import LoginBackGroundPhoto from "../images/LoginBackGroundPhoto.jpg";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
 
-  const [userName, setUserName] = useState("");
-  const [passwordHash, setPasswordHash] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Type, setType] = useState("");
 
 
   const navigate = useNavigate();
@@ -16,11 +17,11 @@ export const Login = () => {
   const validateLogin = async () => {
     try {
       const response = await fetch(
-        `https://localhost:7229/api/Login/loginvalidate`,
+        `https://localhost:7183/api/Login/loginvalidate`,
         {
           body: JSON.stringify({
-            email: userName,
-            password: passwordHash,
+            email: Email,
+            type: Type,
           }),
           credentials: "include",
           method: "post",
@@ -29,17 +30,20 @@ export const Login = () => {
       );
 
       const loginResponse = await response.json();
+console.log(loginResponse);
+      //if (loginResponse.user) {
+        if (response.ok) {
+    const userData = { ...loginResponse.user};
+    console.log(userData);
 
-      if (response.ok) {
-        const userData = { ...loginResponse?.user };
-        userData.isAdmin = userData.userType === "Admin" ? true : false;
+         userData.isAdmin = userData.userType === "Admin" ? true : false;
         localStorage.setItem("app_user", JSON.stringify(userData));
-        navigate("/home");
+          navigate("/");
       } else {
         console.log(response);
         window.alert("Invalid login");
         throw new Error(`Error! status: ${response.status}`);
-      }
+     }
 
     } catch (error) {
       console.log(error);
@@ -55,9 +59,9 @@ export const Login = () => {
     <div className="Container">
       <div className="ImageContainer">
         <div className="shadow"></div>
-        <h1 className="LoginHeader">RX-Care</h1>
+        <h1 className="LoginHeader">Readers Rendezvous</h1>
         <img className="LoginImage" src={LoginBackGroundPhoto} />
-        <div className="LoginQuote">"Track Your RX"<br/> -Norman Cousins</div>
+        <div className="LoginQuote">"Welcome To RX-CARE"<br/> -Norman Cousins</div>
       </div>
       <div className="InputContainer">
         <div className="emailInput">
@@ -65,16 +69,19 @@ export const Login = () => {
           <input
             type="text"
             className='input'
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
+            value={Email}
+            onChange={(event) => setEmail(event.target.value)}
           ></input>
         </div>
         <div className="buttonContainer">
         <div className="button" onClick={(e) => submissionHandler(e)}>
-          Login
+        Login
+        </div>
+        {/* <section className="link--register"> */}
+        <Link to="/register">NEW Patient?</Link>
+   {/*  </section> */}
         </div>
         </div>
-      </div>
     </div>
     </>
   );

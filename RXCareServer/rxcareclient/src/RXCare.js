@@ -1,33 +1,28 @@
 import { Route, Routes } from "react-router-dom";
-// import { Authorized } from "./views/Authorized";
-// import { ApplicationViews } from "./views/ApplicationViews";
-// import { Navbar } from "./nav/Navbar";
-// import { Login } from "./auth/Login";
-// import { Register } from "./auth/Register";
-// import { Footer } from "./footer/Footer";
 import "./RXCare.css";
-import React from "react";
-// import { RegisterUser } from "./auth/Register";
+import React  from 'react';
+import { Login } from "./components/auth/Login";
+import { Register } from "./components/auth/Register";
+import { NavBar } from "./components/nav/NavBar";
+import { ApplicationViews } from "./components/views/ApplicationViews";
+import { Authorized } from "./components/views/Authorized";
 
 export const RXCare = () => {
-  return (
-    <>
-      <Routes>
-{/*         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="Register" element={<RegisterUser />} /> */}
-        <Route
-          path="*"
-          element={
-   {/*          <Authorized>
-              <>
-                <Navbar />
-                <ApplicationViews /> 
-              </>
-            </Authorized>*/}
-          }
-        />
-      </Routes>
-    </>
-  );
+    return (
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+                path="*"
+                element={
+                    <Authorized>
+                        <>
+                            <NavBar />
+                            <ApplicationViews />
+                        </>
+                    </Authorized>
+                }
+            />
+        </Routes>
+    );
 };

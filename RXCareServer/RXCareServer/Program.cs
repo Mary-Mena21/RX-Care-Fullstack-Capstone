@@ -14,9 +14,18 @@ builder.Services.AddTransient<IPatientRepository, PatientRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IprescriptionRepository, prescriptionRepository>();
 builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 
 var app = builder.Build();
 
+
+//for react ------------------- 
+app.UseCors(policy => policy.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials());
+
+//-----------------------------
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
