@@ -1,9 +1,9 @@
-﻿using RXCareServer.Models;
+﻿//using RXCareServer.Models;
 
-namespace RXCareServer.Repositories
-{
-    public interface ILoginRepository
-    {
-        UserLogin LoginWithCredentials(LoginRequest loginRequest);
-    }
-}
+//namespace RXCareServer.Repositories
+//{
+//    public interface ILoginRepository
+//    {
+//        UserLogin LoginWithCredentials(LoginRequest loginRequest);
+//    }
+//}
