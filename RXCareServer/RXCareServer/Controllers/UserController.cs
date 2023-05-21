@@ -26,6 +26,16 @@ namespace RXCareServer.Controllers
 
         //-----------------------------------------------------------
 
+        // POST api/<PatientController>
+        [HttpPost("/addLoginUser")]
+        public IActionResult Post(UserLogin User)
+        {
+            _userRepository.AddLoginUser(User);
+            return Created("", User);
+        }
+
+        //-----------------------------------------------------------
+
         [HttpPut("UpdateUserkById/{Id}")]
         public IActionResult Put(int Id, UserInfo2 User)
         {
@@ -68,5 +78,38 @@ namespace RXCareServer.Controllers
 
         }
         //======================================
+
+        [HttpGet("GetLoginByEmail/{Email}")]
+        public IActionResult GetByEmail(string Email)
+        {
+            if (Email == null)
+            {
+                return BadRequest();
+            }
+            UserLogin user = _userRepository.GetUserLoginByEmail(Email);
+            if (user == null)
+            {
+                return NotFound($"{Email} Not Found!");
+            }
+            return Ok(user);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
