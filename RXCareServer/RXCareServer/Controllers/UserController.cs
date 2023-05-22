@@ -33,7 +33,15 @@ namespace RXCareServer.Controllers
             _userRepository.AddLoginUser(User);
             return Created("", User);
         }
+        //-----------------------------------------------------------
 
+        // POST api/<PatientController>
+        [HttpPost("/AddRegisterUser")]
+        public IActionResult Post(User User)
+        {
+            _userRepository.AddRegisterUser(User);
+            return Created("", User);
+        }
         //-----------------------------------------------------------
 
         [HttpPut("UpdateUserkById/{Id}")]

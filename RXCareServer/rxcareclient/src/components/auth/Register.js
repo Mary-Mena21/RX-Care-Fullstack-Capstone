@@ -3,8 +3,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Router } from "react-router-dom";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 export const Register = () => {
-  const [Type, setType] = useState("");
+  //const [Type, setType] = useState("");
   const [Img, setImg] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -21,24 +24,25 @@ export const Register = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://localhost:7183/addUser`,
+        //`https://localhost:7183/addUser`
+        `https://localhost:7183/AddRegisterUser`,
         {
           body: JSON.stringify({
-            Type: Type,
+            Type: "Patient",
             Img:Img,
             FirstName: FirstName,
             LastName: LastName,
-            Email: Email,
-            PATIENT: {
-              UserId: UserId,
-              DoctorId: DoctorId,
-              DoB: DoB,
-              Address: Address,
-              Phone: Phone,
-              Height: Height,
-              Weight: Weight,
-              Note: Note,
-            }
+            Email: Email
+            // ,PATIENT: {
+            //   UserId: UserId,
+            //   DoctorId: DoctorId,
+            //   DoB: DoB,
+            //   Address: Address,
+            //   Phone: Phone,
+            //   Height: Height,
+            //   Weight: Weight,
+            //   Note: Note,
+            // }
           }),
           credentials: "include",
           method: "post",
@@ -58,11 +62,114 @@ export const Register = () => {
     event.preventDefault();
     fetchData();
   };
-//TODO: implement Patient Form
+//TODO: implement Rest of Patient Form
   return (
     <>
-      <form onSubmit={submissionHandler}>
-        <h1>Patient Form</h1>
+    {/*   <form onSubmit={submissionHandler}> */}
+    <section className="form_container container col-lg-7">
+    <h1 className="page_studentForm_form">Patient Form</h1>
+            <fieldset className=" page_container_form">
+                <form onSubmit={submissionHandler}>
+                    <Form.Floating className="mb-2">
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="text"
+                            name="FirstName"
+                            placeholder="First Name"
+                            value={FirstName}
+                            onChange={(evt) => setFirstName(evt.target.value)}
+                        />
+                        <label htmlFor="name">First Name</label>
+                    </Form.Floating>
+
+                    <Form.Floating className="mb-2">
+                    <Form.Control
+                        required
+                        autoFocus
+                        type="text"
+                        name="LastName"
+                        placeholder="Last Name"
+                        value={LastName}
+                        onChange={(evt) => setLastName(evt.target.value)}
+                    />
+                    <label htmlFor="name">Last Name</label>
+                </Form.Floating>
+            
+                    <Form.Floating className="mb-2">
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="email"
+                            name="email"
+                            placeholder="name@example.com"
+                            value={Email}
+                            onChange={(evt) => setEmail(evt.target.value)}
+                        />
+                        <label htmlFor="email">Email address</label>
+                    </Form.Floating>
+
+                    <Form.Floating className="mb-2">
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="date"
+                            name="dob"
+                            placeholder="date"
+                            value={DoB}
+                            onChange={(evt) => {new Date(DoB); setDoB(evt.target.value)}}
+                        />
+                        <label htmlFor="date">Date of birth</label>
+                    </Form.Floating>
+
+                    <Form.Floating className="mb-2">
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="telephone"
+                            name="phone"
+                            placeholder="Cell phone"
+                            //pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            value={Phone}
+                            onChange={(event) => setPhone(event.target.value)}
+                        />
+                        <label htmlFor="phone">Cell phone</label>
+                    </Form.Floating>
+
+                    <Form.Floating className="mb-2">
+                        <Form.Group>
+                            <Form.Label className="">
+                                upload Image
+                            </Form.Label>
+                            <Form.Control
+                  size="lg"
+                  id="imgs"
+                  type="file"
+                  accept="image/png,image/jpeg"
+                  path="..\components\images"
+                  files={Img}
+                  onChange={(evt) => setImg(evt.target.files[0].name)}
+                            />
+                        </Form.Group>
+                    </Form.Floating>
+
+                    <Button
+                        className="button_form"
+                        type="submit"
+                        variant="secondary"
+                        size="lg"
+                    >
+                        SUBMIT
+                    </Button>
+                </form>
+            </fieldset>
+        </section>
+
+{/* 
+      </form> */}
+    </>
+  );
+};
 {/*         <label>
           First Name:
           <input
@@ -156,7 +263,3 @@ export const Register = () => {
         <label>
           <input type="submit" value="submit"></input>
         </label> */}
-      </form>
-    </>
-  );
-};

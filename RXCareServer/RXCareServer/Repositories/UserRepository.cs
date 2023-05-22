@@ -354,8 +354,41 @@ namespace RXCareServer.Repositories
         }
 
 
+        //---------------------------------AddRegisterUser()---------------------------------------------------
 
+        public void AddRegisterUser(User User)
+        //public void AddUser(User User)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [dbo].[User]
+                                                   ([Type]
+                                                   ,[Img]
+                                                   ,[FirstName]
+                                                   ,[LastName]
+                                                   ,[Email])
+                                             OUTPUT INSERTED.Id As UID
+                                             VALUES
+                                                   (@Type
+                                                   ,@Img
+                                                   ,@FirstName
+                                                   ,@LastName
+                                                   ,@Email) ";
+                    //DbUtils.AddParameter(cmd, "@UserId", patient.UserId);
+                    DbUtils.AddParameter(cmd, "@Type", User.Type);
+                    DbUtils.AddParameter(cmd, "@Img", User.Img);
+                    DbUtils.AddParameter(cmd, "@FirstName", User.FirstName);
+                    DbUtils.AddParameter(cmd, "@LastName", User.LastName);
+                    DbUtils.AddParameter(cmd, "@Email", User.Email);
+                    User.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
 
+                }
+            }
+
+        }
 
 
 

@@ -5,6 +5,7 @@ namespace RXCareServer.Repositories
     public interface IUserRepository
     {
         void AddLoginUser(UserLogin User);
+        void AddRegisterUser(User User);
         void AddUser(UserInfo2 User);
         void DeleteUserById(int id);
         void EditUser(UserInfo2 User);
