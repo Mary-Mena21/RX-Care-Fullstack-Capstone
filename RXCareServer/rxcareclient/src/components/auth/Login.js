@@ -30,11 +30,11 @@ export const Login = () => {
       );
 
       const loginResponse = await response.json();
-console.log(loginResponse);
+      console.log(loginResponse);
       //if (loginResponse.user) {
         if (response.ok) {
     const userData = { ...loginResponse.user};
-    console.log(userData);
+          console.log(userData);
 
          userData.isAdmin = userData.userType === "Admin" ? true : false;
         localStorage.setItem("app_user", JSON.stringify(userData));
@@ -59,9 +59,9 @@ console.log(loginResponse);
     <div className="Container">
       <div className="ImageContainer">
         <div className="shadow"></div>
-        <h1 className="LoginHeader">Readers Rendezvous</h1>
+        <h1 className="LoginHeader">RX-Care</h1>
         <img className="LoginImage" src={LoginBackGroundPhoto} />
-        <div className="LoginQuote">"Welcome To RX-CARE"<br/> -Norman Cousins</div>
+        <div className="LoginQuote">"Welcome To RX-CARE"<br/> --</div>
       </div>
       <div className="InputContainer">
         <div className="emailInput">
