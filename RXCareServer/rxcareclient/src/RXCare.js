@@ -11,7 +11,7 @@ import { Login3D } from "./components/auth/Login3D";
 export const RXCare = () => {
     return (
         <Routes>
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/login3d" element={<Login3D />} />
             <Route path="/register" element={<Register />} />
             <Route

@@ -53,8 +53,8 @@ export const Login = () => {
 
     return (
         <>
-            <div className="Container">
-                <div className="ImageContainer">
+            {/* <div className="Container"> */}
+{/*                 <div className="ImageContainer">
                     <div className="shadow"></div>
                     <h1 className="LoginHeader">RX-Care</h1>
                     <img className="LoginImage" src={LoginBackGroundPhoto} />
@@ -62,7 +62,7 @@ export const Login = () => {
                         "Welcome To RX-CARE"
                         <br /> --
                     </div>
-                </div>
+                </div> */}
                 {/*       <div className="InputContainer">
         <div className="emailInput">
           <h3>Email</h3>
@@ -83,8 +83,8 @@ export const Login = () => {
         </div>
         </div> */}
 
-                {/* <div class="container"> */}
-                <div class="InputContainer">
+                <div class="container"> 
+              {/*   <div class="InputContainer"> */}
                     <div class="login-form">
                         <div class="main-div">
                             <div class="panel">
@@ -126,8 +126,8 @@ export const Login = () => {
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
+                {/* </div> */}
+             </div> 
         </>
     );
 };

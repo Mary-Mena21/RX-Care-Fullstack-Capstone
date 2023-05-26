@@ -7,6 +7,8 @@ export const Home = () => {
 console.log(appUserObject.id);
 
     return <>
-    <h1>WElcome home</h1>
+        <div className="container">
+        <h1>WElcome home</h1>
+        </div>
     </>
 }
