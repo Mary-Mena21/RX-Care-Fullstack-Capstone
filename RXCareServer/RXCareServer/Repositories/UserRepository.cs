@@ -92,26 +92,27 @@ namespace RXCareServer.Repositories
                                 }
                             };
                         }
-                        if(DbUtils.GetNullableInt(reader, "PreId") != null) {
+                        if (DbUtils.GetNullableInt(reader, "PreId") != null)
+                        {
                             user.Patient.Prescriptions.Add(new PrescriptionInfo()
 
                             {
-                                 Id = DbUtils.GetInt(reader, "PreId"),
-                                 MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                                 Dosage = DbUtils.GetString(reader, "Dosage"),
-                                 Quantity = DbUtils.GetInt(reader, "Quantity"),
-                                 PatientId = DbUtils.GetInt(reader, "PatientId"),
-                                 Medicine = new Medicine()
-                                 {
-                                     Id = DbUtils.GetInt(reader, "MedId"),
-                                     MedicineName = DbUtils.GetString(reader, "MedicineName"),
-                                     ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
-                                     Form = DbUtils.GetString(reader, "Form"),
-                                     SideEffects = DbUtils.GetString(reader, "SideEffects"),
-                                     DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+                                Id = DbUtils.GetInt(reader, "PreId"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                Dosage = DbUtils.GetString(reader, "Dosage"),
+                                Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                Medicine = new Medicine()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MedId"),
+                                    MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                    ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                    Form = DbUtils.GetString(reader, "Form"),
+                                    SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                    DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
 
-                                 }
-                             });
+                                }
+                            });
                         }
                         //--------------------------------------------------------------
                         if (DbUtils.GetNullableInt(reader, "ComId") != null)
@@ -345,7 +346,7 @@ namespace RXCareServer.Repositories
 
                             };
                         }
-         
+
                     }
                     reader.Close();
                     return user;
@@ -389,6 +390,108 @@ namespace RXCareServer.Repositories
             }
 
         }
+
+        //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
+        public User GetUserProfileById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] 
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                          FROM [RXCareDb].[dbo].[User]
+                                          WHERE [User].[Id] = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    User? user = null;
+
+                    while (reader.Read())
+                    {
+                        if (user == null)
+                        {
+                            user = new User()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Type = DbUtils.GetString(reader, "Type"),
+                                Img = DbUtils.GetString(reader, "Img"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                Email = DbUtils.GetString(reader, "Email"),
+
+                            };
+                        }
+
+                    }
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
+
+        //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
+        public List<User> GetDctorsList()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] 
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                          FROM [RXCareDb].[dbo].[User]
+                                          WHERE [User].[Type] = 'Doctor'";
+
+                    //DbUtils.AddParameter(cmd, "@Doctor", "Doctor");
+                    var reader = cmd.ExecuteReader();
+                    var users = new List<User>();
+
+                    while (reader.Read())
+                    {
+
+                        User user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Type = DbUtils.GetString(reader, "Type"),
+                            Img = DbUtils.GetString(reader, "Img"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+
+                        };
+
+                        users.Add(user);
+                    }
+                    reader.Close();
+                    return users;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

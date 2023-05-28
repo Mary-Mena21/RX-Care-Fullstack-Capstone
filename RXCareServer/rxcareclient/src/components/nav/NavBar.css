@@ -12,7 +12,7 @@ body {
 }
 
 .sidebar {
-    background: #6d7c8e;
+    background: #005CBF;
     color: #f3b530;
     height: 100vh;
     transition: all 0.5s;
@@ -104,4 +104,10 @@ X {
 .hr_nav {
     color: #ffffff;
     background-color: #ffffff;
+}
+.hr2_nav {
+    color: #ffffff;
+    background-color: #00A99D ;
+    padding: 0;
+    margin: 5px 50px 0px 5px;
 }

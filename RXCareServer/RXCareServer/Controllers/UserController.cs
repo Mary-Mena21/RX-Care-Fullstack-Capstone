@@ -85,6 +85,22 @@ namespace RXCareServer.Controllers
             return Ok(user);
 
         }
+        //------------------------------------------------------------------------
+        [HttpGet("GetProfileById/{Id}")]
+        public IActionResult GetProfileById(int Id)
+        {
+            if (Id == null)
+            {
+                return BadRequest();
+            }
+            User user = _userRepository.GetUserProfileById(Id);
+            if (user == null)
+            {
+                return NotFound($"{Id} Not Found!");
+            }
+            return Ok(user);
+
+        }
         //======================================
 
         [HttpGet("GetLoginByEmail/{Email}")]
@@ -103,7 +119,16 @@ namespace RXCareServer.Controllers
 
         }
 
+        //------------------------------------------------------------------------
+        [HttpGet("GetDoctorList")]
+        public IActionResult GetDoctorList()
+        {
 
+            List<User> users = _userRepository.GetDctorsList();
+            return Ok(users);
+
+        }
+        //======================================
 
 
 
