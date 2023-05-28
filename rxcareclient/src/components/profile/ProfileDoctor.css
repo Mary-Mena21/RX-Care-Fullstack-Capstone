@@ -1,0 +1,23 @@
+.container{
+    padding:2%;
+}
+.container {
+    text-align:center;
+}
+
+.img{
+    text-align:center;}
+
+.container .details{
+    border-left:3px solid #c13689;
+}
+.container .details p{
+    font-size:15px;
+    font-weight:bold;
+}
+
+img:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  
