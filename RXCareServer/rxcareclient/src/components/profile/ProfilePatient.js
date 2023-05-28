@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ProfilePatient.css";
 
-export const PatientProfile = ({ Img, FirstName, LastName, DoB }) => {
-    console.log(Img);
-    console.log("DOB :", DoB);
-    console.log(`../images/${Img}`);
+export const PatientProfile = ({ Image, FirstName, LastName, DoB }) => {
+    // console.log(Img);
+    // console.log("DOB :", DoB);
+    // console.log(`../images/${Img}`);
     return (
         <>
             <div class="container emp-profile">
@@ -14,8 +14,8 @@ export const PatientProfile = ({ Img, FirstName, LastName, DoB }) => {
                         <div class="col-md-4">
                             <div class="profile-img">
                                 <img
-                                    src={require(`../images/patient5.jpg`)}
-                                    //src={require(`../../components/images/${Img}`)}
+                                    //src={require(`../images/patient5.jpg`)}
+                                    src={require(`../images/${Image}`)}
                                     className="patientImg"
                                     alt=""
                                 />
