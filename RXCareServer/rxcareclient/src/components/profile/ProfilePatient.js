@@ -12,12 +12,11 @@ export const PatientProfile = ({ Image, FirstName, LastName, DoB }) => {
                 <form method="post">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="profile-img">
+                            <div class="profile-img img">
                                 <img
                                     //src={require(`../images/patient5.jpg`)}
-                                    src={require(`../images/${Image}`)}
+                                    //src={require(`../images/${Image}`)}
                                     className="patientImg"
-                                    alt=""
                                 />
                                 <div class="file btn btn-lg btn-primary">
                                     Change Photo

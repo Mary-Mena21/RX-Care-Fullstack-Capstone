@@ -8,6 +8,7 @@ import { DataTexture } from "three";
 
 export const Profile = () => {
     //const { userId } = useParams()
+    const [userInfo, setUserInfo] = useState([]);
     const [user, setUser] = useState([]);
     const [user2, setUser2] = useState([]);
     const [user3, setUser3] = useState([]);
@@ -30,13 +31,24 @@ export const Profile = () => {
             setUser2(Patient);
             console.log(Patient);
 
-            const Prescriptions = singlePatient.prescriptions;
+            const Prescriptions = singlePatient.patient.prescriptions;
             setUser3(Prescriptions);
             console.log(Prescriptions);
         };
         fetchData();
     }, []);
 
+    //-----------------UserInfo----------------------
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/User/GetProfileById/${Id}`
+            );
+            const singlePatientInfo = await response.json();
+            setUserInfo(singlePatientInfo);
+        };
+        fetchData();
+    }, []);
     return (
         <>
             <div className="">
@@ -52,6 +64,8 @@ export const Profile = () => {
                     Height={user2.height}
                     Weight={user2.weight}
                     Note={user2.note}
+                    Prescriptions={user3.prescriptions}
+                    
                 />
                 {/* -------------------------- */}
             </div>
