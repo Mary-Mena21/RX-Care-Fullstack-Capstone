@@ -9,22 +9,7 @@ import { DataTexture } from "three";
 export const Profile = () => {
     //const { userId } = useParams()
     const [user, setUser] = useState([]);
-    // useState <
-    // User >
-    // {
-    //     Id: 0,
-    //     firstName: "",
-    //     LastName: "",
-    //     Patient: {
-    //         Id: 0,
-    //         userId: 0,
-    //         doctorId: 0,
-    //         DoB: "",
-    //         Height: 0,
-    //         Weight: 0,
-    //     },
-    // };
-
+    const [user2, setUser2] = useState([]);
     //---------------------------------------------
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
@@ -37,48 +22,25 @@ export const Profile = () => {
                 `https://localhost:7183/api/User/GetById/${Id}`
             );
             const singlePatient = await response.json();
-
-            // const response = await fetch(
-            setUser(singlePatient);
-            //     `https://localhost:7183/api/User/GetById/${Id}`
-            // ).then((response) => {
-            //     //const singlePatient = response.json();
-            //     console.log("Response: ", response.json());
-            //     //setUser(response.json());
-            // });
-
-            console.log("singlePatient: ", singlePatient);
-            // setUser(singlePatient);
-            console.log(user);
+            setUser(singlePatient);    
+            const Patient = singlePatient.patient;
+            setUser2(Patient)
         };
         fetchData();
     }, []);
-    //console.log(user.patient.doB);
-    //const userPatient = user.patient.doB
-    //console.log(userPatient);
-    // let PatientImg = Patient.img;
-    // console.log(PatientImg);
 
     return (
         <>
             <div className="">
-                {/*                         <section className="patient" key={`patient--${Id}`}>
-        <Link to={`/patients/${Id}`}>
-             <img src={require(`../images/${patientImg}`)} className="patientImg" /> 
-        <h5>
-            {FirstName} {LastName}
-        </h5>
-    </section>   */}
                 {/* -------------------------- */}
                 <PatientProfile
                     Img={user.img}
                     FirstName={user.firstName}
                     LastName={user.lastName}
                     Email={user.email}
-                    //DoB={user.patient.doB}
+                    DoB={user2.doB}
                 />
                 {/* -------------------------- */}
-                {/*  <h5>Dob: {user?.patient?.doB}</h5> */}
             </div>
         </>
     );

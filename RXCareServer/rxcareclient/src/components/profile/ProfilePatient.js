@@ -30,7 +30,7 @@ export const PatientProfile = ({ Img, FirstName, LastName, DoB }) => {
                                 <h5>
                                     {FirstName} {LastName}
                                 </h5>
-                                {/*   <h6>-----------{DoB}-------------</h6> */}
+                                   <h6>-----------{DoB}-------------</h6> 
                                 <p class="proile-rating">
                                     DOCTOR : <span>8/10</span>
                                 </p>
