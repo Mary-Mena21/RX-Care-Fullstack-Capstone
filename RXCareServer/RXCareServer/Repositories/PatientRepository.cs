@@ -256,8 +256,6 @@ namespace RXCareServer.Repositories
                     cmd.ExecuteNonQuery();
 
 
-
-
                 }
             }
 
@@ -266,6 +264,84 @@ namespace RXCareServer.Repositories
 
 
 
+        /*---------------------------GetDoctorInfoByPatientId()------------------------------------*/
+
+        public PatientInfo5 GetDoctorInfoByPatientId(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Patient].[Id] 
+                                                          ,[Patient].[DoctorId]
+                                                          ,[Patient].[UserId]
+                                                          ,[Doctor].[Id] AS DId
+                                                          ,[Clinic].[Id] AS ClinicId
+                                                          ,[Clinic].[Address]
+                                                          ,[Clinic].[Phone]
+                                                          ,[Clinic].[Facility]
+                                                          ,[Clinic].[Type]
+                                                          ,[Clinic].[Location]
+                                                          ,[User].Id AS DUI
+                                                          ,[User].Type
+                                                          ,[User].Img
+                                                          ,[User].FirstName
+                                                          ,[User].LastName
+                                                          ,[User].Email
+                                                      FROM [RXCareDb].[dbo].[Patient]
+                                                      JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
+                                                      JOIN [User] ON [Doctor].UserId = [User].Id
+                                                      JOIN [Clinic] ON [Doctor].ClinicId = [Clinic].Id
+                                                      WHERE [Patient].UserId = @Id;";
+                    //INNER JOIN [Doctor] ON [Doctor].Id = [Patient].DoctorId
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    var patient = new PatientInfo5();
+                    while (reader.Read())
+                    {
+                        patient = new PatientInfo5()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                            Doctor = new DoctorInfo()
+                            {
+                                Id = DbUtils.GetInt(reader, "DId"),
+                                User = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "DUI"),
+                                    Type = DbUtils.GetString(reader, "Type"),
+                                    Img = DbUtils.GetString(reader, "Img"),
+                                    FirstName = DbUtils.GetString(reader, "FirstName"),
+                                    LastName = DbUtils.GetString(reader, "LastName"),
+                                    Email = DbUtils.GetString(reader, "Email"),
+                                   
+                                },
+                                Clinic = new Clinic()
+                                {
+                                    Id = DbUtils.GetInt(reader, "ClinicId"),
+                                    Address = DbUtils.GetString(reader, "Address"),
+                                    Phone = DbUtils.GetString(reader, "Phone"),
+                                    Facility = DbUtils.GetString(reader, "Facility"),
+                                    Type = DbUtils.GetString(reader, "Type"),
+                                    Location = DbUtils.GetString(reader, "Location"),
+
+
+
+                                }
+
+
+                            }
+                        };
+                    }
+                    conn.Close();
+                    return patient;
+                }
+
+            }
+
+        }
 
 
 

@@ -12,5 +12,6 @@ namespace RXCareServer.Repositories
         //void AddPatient(Patient patient, User user);
         void EditPatient(PatientInfo2 Patient);
         void EditPatient(Patient Patient);
+        PatientInfo5 GetDoctorInfoByPatientId(int Id);
     }
 }

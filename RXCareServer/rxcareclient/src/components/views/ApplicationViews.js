@@ -47,6 +47,8 @@ export const ApplicationViews = () => {
                     <Route path="doctorList" element={<DoctorsList />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="patientsList" element={<PatientsList />} />
+{/*                     <Route path="profile#health" element={<PatientsList />} /> */}
+                    ///profile#home
                 </Route>
             </Routes>
         </React.StrictMode>

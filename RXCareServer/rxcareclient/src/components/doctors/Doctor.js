@@ -24,7 +24,8 @@ export const Doctor = ({
                 <div class="row">
                     <div class="col-md-6 img">
                         <img
-                            src={require(`../images/${doctorImg}`)}
+                            //src={require(`../images/${doctorImg}`)}
+                            src={doctorImg}
                             className="doctorImg"
                         />
                     </div>

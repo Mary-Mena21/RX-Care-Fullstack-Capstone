@@ -15,4 +15,5 @@
         public Clinic? Clinic { get; set; }
 
     }
+
 }
