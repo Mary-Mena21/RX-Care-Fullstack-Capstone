@@ -41,6 +41,14 @@ namespace RXCareServer.Controllers
         }
 
         //-----------------------------------------------------------
+        // GET: api/<PatientController>
+        [HttpGet("GetDoctorInfoByPatientId/{Id}")]
+        public IActionResult GetDoctorInfoByPatientId(int Id)
+        {
+            return Ok(_patientRepository.GetDoctorInfoByPatientId(Id));
+        }
+
+        //-----------------------------------------------------------
 
         // POST api/<PatientController>
         //[HttpPost("/PatientAdd")]

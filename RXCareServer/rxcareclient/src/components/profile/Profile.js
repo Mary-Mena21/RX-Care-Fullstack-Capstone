@@ -8,64 +8,118 @@ import { DataTexture } from "three";
 
 export const Profile = () => {
     //const { userId } = useParams()
+    const [userId, setUserId] = useState("");
     const [userInfo, setUserInfo] = useState([]);
-    const [user, setUser] = useState([]);
+    const [user1, setUser1] = useState([]);
     const [user2, setUser2] = useState([]);
-    const [user3, setUser3] = useState([]);
+    const [user3, setUser3] = useState(0);
+    const [user4, setUser4] = useState([]);
+    const [user5, setUser5] = useState([]);
+    const [doctorInfo, setDoctorInfo] = useState([]);
+    const [doctor1, setDoctor1] = useState([]);
+    const [doctor2, setDoctor2] = useState([]);
     //---------------------------------------------
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.id);
     const Id = appUserObject.id;
+    //-----------------------------------------------------
+    const fetchData = async () => {
+        const response = await fetch(
+            `https://localhost:7183/api/User/GetById/${Id}`
+        );
+        const singlePatient = await response.json();
+        setUser1(singlePatient);
+        console.log(singlePatient.img);
+
+        /* --------patientIdNumber----------- */
+        const patientIdNumber =
+            singlePatient.lastName.slice(0, 3) +
+            singlePatient.id +
+            singlePatient.firstName.slice(0, 3);
+        setUserId(patientIdNumber);
+        console.log(patientIdNumber);
+        //-------------------------------------
+        const Patient = singlePatient.patient;
+        setUser2(Patient);
+        console.log(Patient.doB);
+        /* --------DateOfBirth-----Age------ */
+        const DateOfBirth = new Date(singlePatient.patient.doB);
+        const YoB = DateOfBirth.getUTCFullYear();
+        console.log(YoB);
+        setUser4(YoB);
+
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var age = currentYear - YoB;
+        setUser3(age)
+        console.log(age);
+        //-------------------------------------
+        const Prescriptions = singlePatient.patient.prescriptions;
+        setUser5(Prescriptions);
+        console.log(Prescriptions);
+    };
+
+    //-----------------DoctorInfo--------------------
+    const fetchDoctorData = async () => {
+        const response = await fetch(
+            `https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/${Id}`
+        );
+        const Data = await response.json();
+        setDoctorInfo(Data);
+        console.log(Data.doctor.user.firstName);
+        const Doctor = Data.doctor.user;
+        const Clinic = Data.doctor.clinic;
+        setDoctor1(Doctor);
+        setDoctor2(Clinic);
+        console.log(Doctor);
+        console.log(Clinic);
+    };
+    //https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/10
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                `https://localhost:7183/api/User/GetById/${Id}`
-            );
-            const singlePatient = await response.json();
-            setUser(singlePatient);
-            console.log(singlePatient.img);
-
-            const Patient = singlePatient.patient;
-            setUser2(Patient);
-            console.log(Patient);
-
-            const Prescriptions = singlePatient.patient.prescriptions;
-            setUser3(Prescriptions);
-            console.log(Prescriptions);
-        };
         fetchData();
+        fetchDoctorData();
     }, []);
 
     //-----------------UserInfo----------------------
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                `https://localhost:7183/api/User/GetProfileById/${Id}`
-            );
-            const singlePatientInfo = await response.json();
-            setUserInfo(singlePatientInfo);
-        };
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData2 = async () => {
+    //         const response = await fetch(
+    //             `https://localhost:7183/api/User/GetProfileById/${Id}`
+    //         );
+    //         const singlePatientInfo = await response.json();
+    //         setUserInfo(singlePatientInfo);
+    //     };
+    //     fetchData2();
+    // }, []);
     return (
         <>
             <div className="">
                 {/* -------------------------- */}
                 <PatientProfile
-                    Image={user.img}
-                    FirstName={user.firstName}
-                    LastName={user.lastName}
-                    Email={user.email}
+                    Image={user1.img}
+                    FirstName={user1.firstName}
+                    LastName={user1.lastName}
+                    Email={user1.email}
                     DoB={user2.doB}
+                    YoB={user4}
+                    Age={user3}
                     Address={user2.address}
                     Phone={user2.phone}
                     Height={user2.height}
                     Weight={user2.weight}
                     Note={user2.note}
-                    Prescriptions={user3.prescriptions}
-                    
+                    DoctorFirstName={doctor1.firstName}
+                    DoctorLastName={doctor1.lastName}
+                    DoctorEmail={doctor1.email}
+                    ClinicPhone={doctor2.phone}
+                    ClinicAddress={doctor2.address}
+                    ClinicFacility={doctor2.facility}
+                    ClinicType={doctor2.type}
+                    ClinicLocation={doctor2.location}
+                    Prescriptions={user5.prescriptions}
+                    patientIdNumber={userId}
                 />
                 {/* -------------------------- */}
             </div>

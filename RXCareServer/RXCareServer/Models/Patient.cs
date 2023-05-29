@@ -58,14 +58,6 @@ namespace RXCareServer.Models
         public User? User { get; set; }
     }
 
-    public class PatientInfo4
-    {
-        public decimal Height { get; set; }
-        public decimal Weight { get; set; }
-        public string? Note { get; set; }
-        public User? User { get; set; }
-    }
-
     public class PatientInfo3
     {
         public int Id { get; set; }
@@ -82,5 +74,19 @@ namespace RXCareServer.Models
     }
 
 
+    public class PatientInfo4
+    {
+        public decimal Height { get; set; }
+        public decimal Weight { get; set; }
+        public string? Note { get; set; }
+        public User? User { get; set; }
+    }
 
+    public class PatientInfo5
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int DoctorId { get; set; }
+        public DoctorInfo? Doctor { get; set; }
+    }
 }
