@@ -13,6 +13,9 @@ export const PatientProfile = ({
     Phone,
     patientIdNumber,
     Address,
+    Height,
+    Weight,
+    Note,
     DoctorFirstName,
     DoctorLastName,
     DoctorEmail,
@@ -200,56 +203,62 @@ export const PatientProfile = ({
                                         >
                                             <br />
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Experience</label>
+                                                <div class="col-md-3">
+                                                    <label>Height</label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Hourly Rate</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>10$/hr</p>
+                                                <div class="col-md-9">
+                                                    <p>{Height} / Inch</p>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>
-                                                        Total Projects
-                                                    </label>
+                                                <div class="col-md-3">
+                                                    <label>Weight</label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <p>230</p>
+                                                <div class="col-md-9">
+                                                    <p>{Weight} / Pound</p>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>English Level</label>
+                                                <div class="col-md-3">
+                                                    <label>Note</label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Availability</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>6 months</p>
+                                                <div class="col-md-9">
+                                                    <p>{Note}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Prescription</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Prescription</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>comment</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>comment</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Report</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Report</p>
+                                                </div>
+                                            </div>
+
+{/*                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label>Your Bio</label>
-                                                    <br />
                                                     <p>
-                                                        Your detail description
+                                                    Prescription
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </div> */}
+
                                         </div>
                                     </div>
                                 </div>
