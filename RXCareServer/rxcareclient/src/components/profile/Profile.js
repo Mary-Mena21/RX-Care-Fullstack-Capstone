@@ -107,9 +107,11 @@ export const Profile = () => {
                     Age={user3}
                     Address={user2.address}
                     Phone={user2.phone}
+
                     Height={user2.height}
                     Weight={user2.weight}
                     Note={user2.note}
+                    
                     DoctorFirstName={doctor1.firstName}
                     DoctorLastName={doctor1.lastName}
                     DoctorEmail={doctor1.email}
