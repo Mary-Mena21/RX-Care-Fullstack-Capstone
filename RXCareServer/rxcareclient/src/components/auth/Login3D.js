@@ -85,7 +85,7 @@ export const Login3D = () => {
         <>
             <canvas id="bg"></canvas>
 
-            <main>
+            <main className="login_main">
                 <header>
                     <h1 className="shadows">RX-CARE</h1>
                 </header>

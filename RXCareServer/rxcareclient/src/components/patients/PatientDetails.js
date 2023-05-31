@@ -36,18 +36,19 @@ export const PatientDetails = () => {
         const singlePatient = await response.json();
         setUser1(singlePatient);
        console.log(singlePatient);
-const patientId = singlePatient.Id
-        // /* --------patientIdNumber----------- */
-        // const patientIdNumber =
-        //     singlePatient.lastName.slice(0, 3) +
-        //     singlePatient.id +
-        //     singlePatient.firstName.slice(0, 3);
-        // setUserId(patientIdNumber);
-        // console.log(patientIdNumber);
+
         // //-------------------------------------
         const Patient = singlePatient.user;
         setUser2(Patient);
         console.log(Patient);
+        const patientId = singlePatient.Id
+        // /* --------patientIdNumber----------- */
+        const patientIdNumber =
+            Patient.lastName.slice(0, 3) +
+            Patient.id +
+            Patient.firstName.slice(0, 3);
+        setUserId(patientIdNumber);
+        console.log(patientIdNumber);
         // /* --------DateOfBirth-----Age------ */
         const DateOfBirth = new Date(singlePatient.doB);
         const YoB = DateOfBirth.getUTCFullYear();
@@ -91,6 +92,7 @@ const patientId = singlePatient.Id
             <div className="">
                 {/* -------------------------- */}
                 <PatientProfileDetails
+                    patient_Id={patient_Id}
                     Image={user2.img}
                     FirstName={user2.firstName}
                     LastName={user2.lastName}
