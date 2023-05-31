@@ -7,7 +7,7 @@ import { DataTexture } from "three";
 import { PatientProfileDetails } from "./PatientProfileDetails";
 
 //import { User } from "./types";
-
+//from user prespective
 export const PatientDetails = () => {
 
     const { patient_Id } = useParams()
