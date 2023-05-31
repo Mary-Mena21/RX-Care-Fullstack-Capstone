@@ -116,7 +116,7 @@ export const PatientDetails = () => {
                     ClinicType={doctor2.type}
                     ClinicLocation={doctor2.location}
                     //Prescriptions={user5.prescriptions}
-                    //patientIdNumber={userId}
+                    patientIdNumber={userId}
                 />
                 {/* -------------------------- */}
             </div>

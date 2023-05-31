@@ -33,10 +33,10 @@ export const PatientProfileDetails = ({
     const toggleTab = (index) => {
         setToggleState(index);
     };
-console.log(DoB);
+    console.log(DoB);
     return (
         <>
-          <div class="container emp-profile ">
+            <div class="container emp-profile ">
                 <form>
                     <div class="row">
                         <div class="col-md-4">
@@ -54,12 +54,25 @@ console.log(DoB);
                                     {FirstName} {LastName}
                                 </h5>
                                 <h6>------------------------</h6>
-                                <p class="proile-rating">
+                                {/*                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
                                         {DoctorFirstName} {DoctorLastName}
                                     </span>
-                                </p>
+                                </p> */}
+                            </div>
+                            <div class="profile-head">
+                                <ul class="nav nav-tabs ">
+                                    <li class="nav-item">
+                                        <a class="nav-link ">PRESCRIPTION</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link "> COMMENTS </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link "> REPORT </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -68,7 +81,9 @@ console.log(DoB);
                                 class="profile-edit-btn"
                                 name="btnAddMore"
                                 value="Edit Profile"
-                                onClick={()=>navigate (`patientsList/edit/${patient_Id}`)}
+                                onClick={() =>
+                                    navigate(`patientsList/edit/${patient_Id}`)
+                                }
                             />
                         </div>
                     </div>
@@ -95,7 +110,6 @@ console.log(DoB);
                         </div>
 
                         <div className="col-md-8">
-                           
                             <div className="bloc-tabs">
                                 <button
                                     className={
@@ -115,7 +129,7 @@ console.log(DoB);
                                     }
                                     onClick={() => toggleTab(2)}
                                 >
-                                Health Check
+                                    Health Check
                                 </button>
                             </div>
                             <div className="content-tabs profile-tab ">
@@ -127,9 +141,7 @@ console.log(DoB);
                                     }
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -195,9 +207,7 @@ console.log(DoB);
                                     }
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -246,16 +256,15 @@ console.log(DoB);
                                                 <div class="col-md-9">
                                                     <p>Report</p>
                                                 </div>
-                                            </div> 
+                                            </div>
 
-{/*                                             <div class="row">
+                                            {/*                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>
                                                     Prescription
                                                     </p>
                                                 </div>
                                             </div> */}
- 
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +272,7 @@ console.log(DoB);
                         </div>
                     </div>
                 </form>
-            </div> 
+            </div>
         </>
     );
 };
