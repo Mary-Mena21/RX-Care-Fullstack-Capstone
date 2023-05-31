@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./ProfilePatient.css";
+import "../profile/ProfilePatient.css";
 
-export const PatientProfile = ({
+export const PatientProfileDetails = ({
     Image,
     FirstName,
     LastName,
@@ -31,10 +31,10 @@ export const PatientProfile = ({
     const toggleTab = (index) => {
         setToggleState(index);
     };
-
+console.log(DoB);
     return (
         <>
-            <div class="container emp-profile">
+          <div class="container emp-profile ">
                 <form>
                     <div class="row">
                         <div class="col-md-4">
@@ -92,7 +92,7 @@ export const PatientProfile = ({
                         </div>
 
                         <div className="col-md-8">
-                            {/*  */}
+                           
                             <div className="bloc-tabs">
                                 <button
                                     className={
@@ -112,7 +112,7 @@ export const PatientProfile = ({
                                     }
                                     onClick={() => toggleTab(2)}
                                 >
-                                    Health Check
+                                Health Check
                                 </button>
                             </div>
                             <div className="content-tabs profile-tab ">
@@ -126,9 +126,6 @@ export const PatientProfile = ({
                                     <div class="row">
                                         <div
                                             class="tab-pane show active"
-                                            id="profile"
-                                            role="tabpanel"
-                                            aria-labelledby="profile-tab"
                                         >
                                             <br />
                                             <div class="row">
@@ -197,9 +194,6 @@ export const PatientProfile = ({
                                     <div class="row">
                                         <div
                                             class="tab-pane show active"
-                                            id="profile"
-                                            role="tabpanel"
-                                            aria-labelledby="profile-tab"
                                         >
                                             <br />
                                             <div class="row">
@@ -249,7 +243,7 @@ export const PatientProfile = ({
                                                 <div class="col-md-9">
                                                     <p>Report</p>
                                                 </div>
-                                            </div>
+                                            </div> 
 
 {/*                                             <div class="row">
                                                 <div class="col-md-12">
@@ -258,7 +252,7 @@ export const PatientProfile = ({
                                                     </p>
                                                 </div>
                                             </div> */}
-
+ 
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +260,7 @@ export const PatientProfile = ({
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> 
         </>
     );
 };

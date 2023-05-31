@@ -57,10 +57,10 @@ namespace RXCareServer.Controllers
         }
         //-----------------------------------------------------------
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{Id}")]
+        public IActionResult Delete(int Id)
         {
-            UserInfo3 user = (UserInfo3)_userRepository.GetUserById(id);
+            UserInfo2 user = (UserInfo2)_userRepository.GetUserInfoById(Id);
             if (user == null)
             {
                 return NotFound();
@@ -94,6 +94,23 @@ namespace RXCareServer.Controllers
                 return BadRequest();
             }
             User user = _userRepository.GetUserProfileById(Id);
+            if (user == null)
+            {
+                return NotFound($"{Id} Not Found!");
+            }
+            return Ok(user);
+
+        }
+
+        //-------------------------------------------------------------------------
+        [HttpGet("GetUserInfoById/{Id}")]
+        public IActionResult GetUserInfoById(int Id)
+        {
+            if (Id == null)
+            {
+                return BadRequest();
+            }
+            UserInfo2 user = _userRepository.GetUserInfoById(Id);
             if (user == null)
             {
                 return NotFound($"{Id} Not Found!");
