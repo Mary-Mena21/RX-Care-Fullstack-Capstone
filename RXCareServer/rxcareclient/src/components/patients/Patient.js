@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
+export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="">
@@ -72,6 +75,11 @@ export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
                                     class="profile-edit-btn"
                                     name="btnAddMore"
                                     value="Edit Profile"
+
+
+                                    onClick={() =>
+                                        navigate(`/patientsList/${Id}/patientsList/edit/${Id}`)
+                                    }
                                 />
                             </div>
                         </div>
@@ -82,3 +90,5 @@ export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
         </>
     );
 };
+//http://localhost:3002/patientsList/7/patientsList/edit/7
+//http://localhost:3002/patientsList/7patientsList/edit/7

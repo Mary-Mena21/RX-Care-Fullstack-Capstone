@@ -8,7 +8,7 @@ import { DataTexture } from "three";
 //import { User } from "./types";
 
 export const Profile = () => {
-    //const { patient_Id } = useParams()
+   // const { patient_Id } = useParams()
     const [userId, setUserId] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     const [user1, setUser1] = useState([]);
@@ -44,7 +44,7 @@ export const Profile = () => {
         //-------------------------------------
         const Patient = singlePatient.patient;
         setUser2(Patient);
-        console.log(Patient.doB);
+        console.log(Patient);
         /* --------DateOfBirth-----Age------ */
         const DateOfBirth = new Date(singlePatient.patient.doB);
         const YoB = DateOfBirth.getUTCFullYear();
@@ -100,6 +100,7 @@ export const Profile = () => {
             <div className="">
                 {/* -------------------------- */}
                 <PatientProfile
+                    //patient_Id={patient_Id}
                     Image={user1.img}
                     FirstName={user1.firstName}
                     LastName={user1.lastName}

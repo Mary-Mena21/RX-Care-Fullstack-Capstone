@@ -97,12 +97,6 @@ export const PatientEdit = () => {
                         />
                         <h3>Welcome</h3>
                         <p>RX-Care Your Health Gard!</p>
-                        {/*                         <input
-                            type="submit"
-                            name=""
-                            value="Login"
-                            onClick={() => navigate("../login3d")}
-                        /> */}
                         <br />
                     </div>
                     <div class="col-md-7 register-right">
@@ -165,7 +159,7 @@ export const PatientEdit = () => {
                                                         placeholder={
                                                             patient.doB
                                                         }
-                                                        value={patient.doB}
+                                                        value={new Date(patient.doB)}
                                                         // onChange={(evt) => {
                                                         //     new Date(DoB);
                                                         //     setUpdatePatient(
@@ -173,9 +167,9 @@ export const PatientEdit = () => {
                                                         //     );
                                                         // }}
                                                         onChange={(evt) => {
+                                                            //new Date(doB);
                                                             const copy = { ...patient };
-                                                            copy.doB = evt.target.value;
-                                                            //new Date(DoB);
+                                                            copy.doB =  evt.target.value;
                                                             setUpdatePatient(copy);
                                                         }}
                                                     />
@@ -299,7 +293,7 @@ export const PatientEdit = () => {
                                                             menu
                                                         </option>
                                                         <option value="1">
-                                                            Dr.John Doe
+                                                            Dr. John Doe
                                                         </option>
                                                         <option value="2">
                                                             Dr. Jane Smith
@@ -389,7 +383,7 @@ export const PatientEdit = () => {
                                             className="btnRegister"
                                             type="submit"
                                         >
-                                            Update Book
+                                            Update Patient
                                         </button>
 
                                         </Form>

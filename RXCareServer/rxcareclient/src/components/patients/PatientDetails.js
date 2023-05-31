@@ -7,7 +7,7 @@ import { DataTexture } from "three";
 import { PatientProfileDetails } from "./PatientProfileDetails";
 
 //import { User } from "./types";
-
+//from user prespective
 export const PatientDetails = () => {
 
     const { patient_Id } = useParams()
@@ -51,6 +51,7 @@ export const PatientDetails = () => {
         console.log(patientIdNumber);
         // /* --------DateOfBirth-----Age------ */
         const DateOfBirth = new Date(singlePatient.doB);
+        //console.log(DateOfBirth);
         const YoB = DateOfBirth.getUTCFullYear();
         console.log(YoB);
         setUser4(YoB);
@@ -116,7 +117,7 @@ export const PatientDetails = () => {
                     ClinicType={doctor2.type}
                     ClinicLocation={doctor2.location}
                     //Prescriptions={user5.prescriptions}
-                    //patientIdNumber={userId}
+                    patientIdNumber={userId}
                 />
                 {/* -------------------------- */}
             </div>

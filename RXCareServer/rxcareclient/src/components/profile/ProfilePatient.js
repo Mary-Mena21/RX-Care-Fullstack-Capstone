@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProfilePatient.css";
+import { PrescriptionList } from "../prescription/PrescriptionList";
+import Accordion from "react-bootstrap/Accordion";
 
 export const PatientProfile = ({
     Image,
@@ -32,9 +34,11 @@ export const PatientProfile = ({
         setToggleState(index);
     };
 
+    //console.log(Id);
     return (
         <>
             <div class="container emp-profile">
+                <h1>patient profile</h1>
                 <form>
                     <div class="row">
                         <div class="col-md-4">
@@ -59,6 +63,7 @@ export const PatientProfile = ({
                                     </span>
                                 </p>
                             </div>
+                               {/*  <PrescriptionList patient_Id={Id} />   */}
                         </div>
 {/*                         <div class="col-md-2">
                             <input
