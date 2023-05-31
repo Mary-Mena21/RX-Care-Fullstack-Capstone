@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 
 export const PatientProfileDetails = ({
+    patient_Id,
     Image,
     FirstName,
     LastName,
@@ -27,6 +28,7 @@ export const PatientProfileDetails = ({
     Prescriptions,
 }) => {
     const [toggleState, setToggleState] = useState(1);
+    const navigate = useNavigate();
 
     const toggleTab = (index) => {
         setToggleState(index);
@@ -66,6 +68,7 @@ console.log(DoB);
                                 class="profile-edit-btn"
                                 name="btnAddMore"
                                 value="Edit Profile"
+                                onClick={()=>navigate (`patientsList/edit/${patient_Id}`)}
                             />
                         </div>
                     </div>
