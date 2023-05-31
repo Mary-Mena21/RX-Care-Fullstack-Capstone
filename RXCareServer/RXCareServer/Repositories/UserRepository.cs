@@ -54,9 +54,9 @@ namespace RXCareServer.Repositories
                                               ,[Comment].DComment
                                               ,[Comment].DCommentDate
                                           FROM [RXCareDb].[dbo].[User]
-                                          LEFT JOIN [Patient] ON [User].Id = [Patient].UserId
-                                          LEFT JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
-                                          LEFT JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
+                                           JOIN [Patient] ON [User].Id = [Patient].UserId
+                                           JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
+                                           JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
                                           LEFT JOIN [Comment] ON [Patient].Id = [Comment].PatientId AND [Medicine].Id = [Comment].MedicineId 
                                           WHERE [User].[Id] = @Id";
 
@@ -299,18 +299,20 @@ namespace RXCareServer.Repositories
 
         }
 
-        /*------------------DeleteBook()--2--------------------*/
-        public void DeleteUserById(int id)
+        /*------------------Delete()--2--------------------*/
+        public void DeleteUserById(int Id)
         {
             //using (var conn = Connection)
             //{
             //    conn.Open();
             //    using (var cmd = conn.CreateCommand())
             //    {
-            //        cmd.CommandText = "Delete FROM Prescription WHERE PatientId = ";
-            //        cmd.CommandText = "Delete From Patient WHERE UserId = @Id";
+            //        //cmd.CommandText = "Delete FROM Prescription WHERE PatientId = ";
+            //        cmd.CommandText = "Delete FROM Patient WHERE UserId = @Id";
+            //        DbUtils.AddParameter(cmd, "@Id", Id);
+            //        cmd.ExecuteNonQuery();
             //        cmd.CommandText = "DELETE FROM User WHERE Id = @Id";
-            //        DbUtils.AddParameter(cmd, "@Id", id);
+            //        DbUtils.AddParameter(cmd, "@Id", Id);
             //        cmd.ExecuteNonQuery();
             //    }
             //}
@@ -478,10 +480,73 @@ namespace RXCareServer.Repositories
             }
         }
 
+        //------------------------------------------------------------------------
 
 
+        public UserInfo2 GetUserInfoById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] As UsId
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                              ,[Patient].[Id] 
+                                              ,[Patient].[DoctorId]
+                                              ,[Patient].[UserId]
+                                              ,[Patient].[DoB]
+                                              ,[Patient].[Address]
+                                              ,[Patient].[Phone]
+                                              ,[Patient].[Height]
+                                              ,[Patient].[Weight]
+                                              ,[Patient].[Note]
+                                          FROM [RXCareDb].[dbo].[User]
+                                          JOIN [Patient] ON [User].Id = [Patient].UserId
+                                          WHERE [Patient].[Id] = @Id";
 
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    UserInfo2? user = null;
 
+                    while (reader.Read())
+                    {
+                      
+                       
+                            user = new UserInfo2()
+                            {
+                                Id = DbUtils.GetInt(reader, "UsId"),
+                                Type = DbUtils.GetString(reader, "Type"),
+                                Img = DbUtils.GetString(reader, "Img"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                Email = DbUtils.GetString(reader, "Email"),
+
+                                Patient = new Patient()
+                                {
+                                    Id = DbUtils.GetInt(reader, "Id"),
+                                    DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+                                    UserId = DbUtils.GetInt(reader, "UserId"),
+                                    DoB = DbUtils.GetDateTime(reader, "DoB"),
+                                    Address = DbUtils.GetString(reader, "Address"),
+                                    Phone = DbUtils.GetString(reader, "Phone"),
+                                    Height = DbUtils.GetDecimal(reader, "Height"),
+                                    Weight = DbUtils.GetDecimal(reader, "Weight"),
+                                    Note = DbUtils.GetString(reader, "Note")
+                                }
+                            };
+                        
+                       
+                    }
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
 
 
 

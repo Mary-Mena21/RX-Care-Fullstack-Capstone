@@ -4,10 +4,11 @@ import React from "react";
 import { PatientProfile } from "./ProfilePatient";
 import { Link } from "react-router-dom";
 import { DataTexture } from "three";
+
 //import { User } from "./types";
 
 export const Profile = () => {
-    //const { userId } = useParams()
+    //const { patient_Id } = useParams()
     const [userId, setUserId] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     const [user1, setUser1] = useState([]);
@@ -23,6 +24,7 @@ export const Profile = () => {
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.id);
     const Id = appUserObject.id;
+    //patient_Id= Id
     //-----------------------------------------------------
     const fetchData = async () => {
         const response = await fetch(

@@ -23,6 +23,8 @@ import { ProfileDoctor } from "../profile/ProfileDoctor";
 import { Doctor } from "../doctors/Doctor";
 import { DoctorsList } from "../doctors/DoctorsList";
 import { PatientsList } from "../patients/PatientsList";
+import { PatientDetails } from "../patients/PatientDetails";
+import { PatientProfileDetails } from "../patients/PatientProfileDetails";
 
 
 export const ApplicationViews = () => {
@@ -46,6 +48,9 @@ export const ApplicationViews = () => {
                    {/*  <Route path="doctor" element={<Doctor />} /> */}
                     <Route path="doctorList" element={<DoctorsList />} />
                     <Route path="profile" element={<Profile />} />
+                    {/* <Route path="patientsList/:patient_Id" element={<Profile />}/> */}
+                    <Route path="patientsList/:patient_Id" element={<PatientDetails />} />
+                     <Route path="patientDetails" element={<PatientDetails />} /> 
                     <Route path="patientsList" element={<PatientsList />} />
 {/*                     <Route path="profile#health" element={<PatientsList />} /> */}
                     ///profile#home
