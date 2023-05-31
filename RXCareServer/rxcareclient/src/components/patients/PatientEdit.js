@@ -293,7 +293,7 @@ export const PatientEdit = () => {
                                                             menu
                                                         </option>
                                                         <option value="1">
-                                                            Dr.John Doe
+                                                            Dr. John Doe
                                                         </option>
                                                         <option value="2">
                                                             Dr. Jane Smith

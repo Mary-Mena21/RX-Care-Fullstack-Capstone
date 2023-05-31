@@ -26,7 +26,7 @@ import { PatientsList } from "../patients/PatientsList";
 import { PatientDetails } from "../patients/PatientDetails";
 import { PatientProfileDetails } from "../patients/PatientProfileDetails";
 import { PatientEdit } from "../patients/PatientEdit";
-
+import { PrescriptionList } from "../prescription/PrescriptionList";
 
 export const ApplicationViews = () => {
     var appUser = localStorage.getItem("app_user");
@@ -46,15 +46,22 @@ export const ApplicationViews = () => {
                 >
                     <Route path="/" element={<Home />} />
                     <Route path="profileDoctor" element={<ProfileDoctor />} />
-                   {/*  <Route path="doctor" element={<Doctor />} /> */}
+                    {/*  <Route path="doctor" element={<Doctor />} /> */}
                     <Route path="doctorList" element={<DoctorsList />} />
                     <Route path="profile" element={<Profile />} />
                     {/* <Route path="patientsList/:patient_Id" element={<Profile />}/> */}
-                    <Route path="patientsList/:patient_Id" element={<PatientDetails />} />
-                    <Route path="patientsList/:patient_Id/patientsList/edit/:patient_Id" element={<PatientEdit />} />
-                     {/* <Route path="patientDetails" element={<PatientDetails />} />  */}
+                    <Route
+                        path="patientsList/:patient_Id"
+                        element={<PatientDetails />}
+                    />
+                    <Route
+                        path="patientsList/:patient_Id/patientsList/edit/:patient_Id"
+                        element={<PatientEdit />}
+                    />
+                    {/* <Route path="patientDetails" element={<PatientDetails />} />  */}
                     <Route path="patientsList" element={<PatientsList />} />
-{/*                     <Route path="profile#health" element={<PatientsList />} /> */}
+                    {/* <Route path="prescriptions" element={<Prescriptions />} /> */}
+                    {/*                     <Route path="profile#health" element={<PatientsList />} /> */}
                     ///profile#home
                 </Route>
             </Routes>

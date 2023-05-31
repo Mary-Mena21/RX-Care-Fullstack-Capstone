@@ -5,6 +5,7 @@ import { Patient } from "./Patient";
 
 export const PatientsList = () => {
     const [Patients, setPatients] = useState([]);
+    
 
     //---------------------------------------------
     var appUser = localStorage.getItem("app_user");
@@ -26,7 +27,7 @@ export const PatientsList = () => {
     return (
         <>
             <div className="container ">
-                <h1>All Patients</h1>
+                {/* <h1>All Patients</h1> */}
                 <section key={`Patients`} className="patients patientContainer">
                     {Patients.map((patient) => {
                         return (

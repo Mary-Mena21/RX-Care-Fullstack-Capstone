@@ -51,6 +51,7 @@ export const PatientDetails = () => {
         console.log(patientIdNumber);
         // /* --------DateOfBirth-----Age------ */
         const DateOfBirth = new Date(singlePatient.doB);
+        //console.log(DateOfBirth);
         const YoB = DateOfBirth.getUTCFullYear();
         console.log(YoB);
         setUser4(YoB);

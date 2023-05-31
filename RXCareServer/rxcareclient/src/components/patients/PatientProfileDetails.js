@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
+import { PrescriptionList } from "../prescription/PrescriptionList";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -64,16 +65,17 @@ export const PatientProfileDetails = ({
                             <div class="profile-head">
                                 <ul class="nav nav-tabs ">
                                     <li class="nav-item">
-                                        <a class="nav-link ">PRESCRIPTION</a>
+                                        <a class="nav-link ">PRESCRIPTIONS</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link "> COMMENTS </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "> REPORT </a>
+                                        <a class="nav-link "> REPORTS </a>
                                     </li>
                                 </ul>
                             </div>
+                            <PrescriptionList patient_Id={ patient_Id} /> 
                         </div>
                         <div class="col-md-2">
                             <input
