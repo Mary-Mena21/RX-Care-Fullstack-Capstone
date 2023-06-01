@@ -86,25 +86,29 @@ namespace RXCareServer.Repositories
                              WHERE [Prescription].PatientId = @Id";
                     DbUtils.AddParameter(cmd, "@Id", Id);
                     var reader = cmd.ExecuteReader();
+                    PrescriptionInfo prescription = null;
                     var Prescriptions = new List<PrescriptionInfo>();
                     while (reader.Read())
                     {
-                        var prescription = new PrescriptionInfo()
+                        if (prescription == null)
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                            Dosage = DbUtils.GetString(reader, "Dosage"),
-                            Quantity = DbUtils.GetInt(reader, "Quantity"),
-                            PatientId = DbUtils.GetInt(reader, "PatientId"),
-                            Medicine = new Medicine()
+                            prescription = new PrescriptionInfo()
                             {
-                                Id = DbUtils.GetInt(reader, "MedId"),
-                                MedicineName = DbUtils.GetString(reader, "MedicineName"),
-                                ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
-                                Form = DbUtils.GetString(reader, "Form"),
-                                SideEffects = DbUtils.GetString(reader, "SideEffects"),
-                                DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
-                            }
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                Dosage = DbUtils.GetString(reader, "Dosage"),
+                                Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                Medicine = new Medicine()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MedId"),
+                                    MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                    ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                    Form = DbUtils.GetString(reader, "Form"),
+                                    SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                    DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+                                }
+                            };
                         };
                         Prescriptions.Add(prescription);
                     }

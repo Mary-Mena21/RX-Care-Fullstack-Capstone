@@ -18,6 +18,7 @@ export const Profile = () => {
     const [user5, setUser5] = useState([]);
     const [user6, setUser6] = useState([]);
     const [user7, setUser7] = useState([]);
+    const [Prescription, setPrescription] = useState([]);
     const [doctorInfo, setDoctorInfo] = useState([]);
     const [doctor1, setDoctor1] = useState([]);
     const [doctor2, setDoctor2] = useState([]);
@@ -26,8 +27,10 @@ export const Profile = () => {
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.id);
     const Id = appUserObject.id;
+    console.log(Id);
     //patient_Id= Id
     //-----------------------------------------------------
+    let PatientId
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
@@ -46,8 +49,10 @@ export const Profile = () => {
             console.log(patientIdNumber);
             //-------------------------------------
             const Patient = singlePatient.patient;
+            PatientId = singlePatient.patient.id;
             setUser2(Patient);
-            console.log(Patient);
+            console.log(Patient.id);
+            console.log(PatientId);
             /* --------DateOfBirth-----Age------ */
             const DateOfBirth = new Date(singlePatient.patient.doB);
             const YoB = DateOfBirth.getUTCFullYear();
@@ -66,12 +71,31 @@ export const Profile = () => {
             //---------------Comments----------------------
             const Comments = singlePatient.patient.comment;
             setUser6(Comments);
-            console.log(Comments);
-            //---------------Medicine----------------------
-            const Medicine = singlePatient.patient.prescriptions.medicine;
-            setUser7(Medicine);
-            console.log(Medicine);
+            console.log(Comments); // TODO: How can I deal with null comments (values)?
+            //---------------Medicine----------------------.med.Medicine
+            //  const Medicine = singlePatient.patient.prescriptions.medicine;
+            // setUser7(Medicine);
+            // console.log(Medicine);
+               
         };
+
+
+        //---------------Prescriptions--2--------------------
+        // const fetchPrescriptionsData = async () => {
+        //     console.log(PatientId);
+        //     const response = await fetch(
+        //         `https://localhost:7183/api/prescription/Patient/${PatientId}`
+        //     );
+        //     const Data = await response.json();
+        //     setPrescription(Data);
+        //     console.log(Data);
+        // };
+
+
+
+
+
+
 
         //-----------------DoctorInfo--------------------
         const fetchDoctorData = async () => {
@@ -92,6 +116,7 @@ export const Profile = () => {
 
         fetchData();
         fetchDoctorData();
+        //fetchPrescriptionsData();
     }, []);
 
     //-----------------UserInfo----------------------
@@ -111,7 +136,7 @@ export const Profile = () => {
                 {/* -------------------------- */}
                 <PatientProfile
                     //patient_Id={user2.id}
-                    patientUser={user2.id}
+                    patientIdUser={user2.id}
                     image={user1.img}
                     firstName={user1.firstName}
                     lastName={user1.lastName}

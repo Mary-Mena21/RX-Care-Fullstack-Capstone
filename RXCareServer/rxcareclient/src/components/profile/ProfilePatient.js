@@ -5,8 +5,12 @@ import { PrescriptionList } from "../prescription/PrescriptionList";
 import Accordion from "react-bootstrap/Accordion";
 import { PrescriptionListUser } from "../prescription/PrescriptionListUser";
 
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+
 export const PatientProfile = ({
     patient_Id,
+    patientIdUser,
     image,
     patientUser,
     firstName,
@@ -34,8 +38,11 @@ export const PatientProfile = ({
     medicine,
 }) => {
     const [toggleState, setToggleState] = useState(1);
-    // const [Prescriptions, setPrescriptions] = useState([]);
-    console.log(patientUser);
+
+    const [currentTab, setCurrentTab] = useState(1);
+
+    //const [Prescriptions, setPrescriptions] = useState([]);
+    console.log(patientIdUser);
     console.log(firstName);
     console.log(prescriptions);
     console.log(comment);
@@ -44,11 +51,11 @@ export const PatientProfile = ({
         //----------------------------------------------------------------
     };
 
-    // console.log(patientUser);
+    // console.log(patientIdUser);
 
     //     const fetchData = async () => {
     //         const response = await fetch(
-    //             `https://localhost:7183/api/prescription/Patient/${patientUser}`
+    //             `https://localhost:7183/api/prescription/Patient2/${patientIdUser}`
     //         );
     //         const PrescriptionListArray = await response.json();
     //         setPrescriptions(PrescriptionListArray);
@@ -59,6 +66,8 @@ export const PatientProfile = ({
     // }, []);
 
     //console.log(Id);
+    //----------------------------------------------------------------
+
     return (
         <>
             <div class="container emp-profile">
@@ -86,6 +95,7 @@ export const PatientProfile = ({
                                     </span>
                                 </p>
                                 {/*-------------------------------------- */}
+
                                 <div>
                                     <Accordion>
                                         <Accordion.Item eventKey="0">
@@ -256,16 +266,31 @@ export const PatientProfile = ({
                                             </Accordion.Body>
                                         </Accordion.Item>
 
-                                       <Accordion.Item eventKey="1">
+                                        <Accordion.Item eventKey="1">
                                             <Accordion.Header>
                                                 COMMENTS
                                             </Accordion.Header>
                                             <Accordion.Body>
+                                                {/* Some people have comment, but others haven't. */}
+                                                {/*                                                {comment }?
+                                                
+                                                    <>
+                                                        <p>
+                                                            P:{" "}
+                                                            {comment.pComment}
+                                                        </p>
+                                                        <p>
+                                                            D:{" "}
+                                                            {comment.dComment}
+                                                        </p>
+                                                    </>
+                                                
+                                                :{""} */}
                                                 {/* <h5>{medicine.medicineName}</h5> */}
-                                               {/*  <p>P: {comment.pComment}</p>
+                                                {/*              <p>P: {comment.pComment}</p>
                                                 <p>D: {comment.dComment}</p> */}
                                             </Accordion.Body>
-                                        </Accordion.Item> 
+                                        </Accordion.Item>
 
                                         <Accordion.Item eventKey="2">
                                             <Accordion.Header>
@@ -310,45 +335,22 @@ export const PatientProfile = ({
                             </div>
                         </div>
 
+                        {/* -------------TABS-------------- */}
                         <div className="col-md-8">
-                            {/*  */}
-                            <div className="bloc-tabs">
-                                <button
-                                    className={
-                                        toggleState === 1
-                                            ? "tabs active-tabs"
-                                            : "tabs"
-                                    }
-                                    //onClick={() =>}
-                                >
-                                    Patient Information
-                                </button>
-                                <button
-                                    className={
-                                        toggleState === 2
-                                            ? "tabs active-tabs"
-                                            : "tabs"
-                                    }
-                                    onClick={() => toggleTab(2)}
-                                >
-                                    Health Check
-                                </button>
-                            </div>
-                            <div className="content-tabs profile-tab ">
-                                <div
-                                    className={
-                                        toggleState === 1
-                                            ? "content  active-content"
-                                            : "content"
-                                    }
+                            <Tabs
+                                defaultActiveKey="profile"
+                                id="fill-tab-example"
+                                className="mb-6 "
+                                fill
+                            >
+                                <Tab
+                                    eventKey="home"
+                                    title="Home"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                            // id="profile"
-                                            // role="tabpanel"
-                                            // aria-labelledby="profile-tab"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -404,22 +406,16 @@ export const PatientProfile = ({
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Tab>
 
-                                <div
-                                    className={
-                                        toggleState === 2
-                                            ? "content  active-content"
-                                            : "content"
-                                    }
+                                <Tab
+                                    eventKey="profile"
+                                    title="Profile"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                            // id="profile"
-                                            // role="tabpanel"
-                                            // aria-labelledby="profile-tab"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -470,18 +466,19 @@ export const PatientProfile = ({
                                                 </div>
                                             </div>
 
-                                            {/*                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <p>
-                                                    Prescription
-                                                    </p>
-                                                </div>
-                                            </div> */}
+                                            {/*<div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                    Prescription
+                                    </p>
+                                </div>
+                            </div> */}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </Tab>
+                            </Tabs>
                         </div>
+                        {/* -------------TABS-------------- */}
                     </div>
                 </form>
             </div>

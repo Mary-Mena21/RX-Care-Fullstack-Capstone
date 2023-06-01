@@ -3,20 +3,20 @@
     public class Prescription
     {
         public int Id { get; set; }
-        public int MedicineId { get; set; }
+        public int? MedicineId { get; set; }
         public string? Dosage { get; set; }
-        public int Quantity { get; set; }
-        public int PatientId { get; set; }
+        public int? Quantity { get; set; }
+        public int? PatientId { get; set; }
 
     }
     public class PrescriptionInfo
     {
         public int Id { get; set; }
-        public int MedicineId { get; set; }
+        public int? MedicineId { get; set; }
         public string? Dosage { get; set; }
-        public int Quantity { get; set; }
-        public int PatientId { get; set; }
-        public Medicine Medicine { get; set; }
+        public int? Quantity { get; set; }
+        public int? PatientId { get; set; }
+        public Medicine? Medicine { get; set; }
 
     }
 }

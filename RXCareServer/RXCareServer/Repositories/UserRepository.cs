@@ -54,9 +54,9 @@ namespace RXCareServer.Repositories
                                               ,[Comment].DComment
                                               ,[Comment].DCommentDate
                                           FROM [RXCareDb].[dbo].[User]
-                                           JOIN [Patient] ON [User].Id = [Patient].UserId
-                                           JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
-                                           JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
+                                          LEFT JOIN [Patient] ON [User].Id = [Patient].UserId
+                                          LEFT JOIN [Prescription] ON [Patient].Id = [Prescription].PatientId
+                                          LEFT JOIN [Medicine] ON [Prescription].MedicineId = [Medicine].Id
                                           LEFT JOIN [Comment] ON [Patient].Id = [Comment].PatientId AND [Medicine].Id = [Comment].MedicineId 
                                           WHERE [User].[Id] = @Id";
 
