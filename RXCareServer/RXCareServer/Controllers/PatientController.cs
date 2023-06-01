@@ -39,7 +39,15 @@ namespace RXCareServer.Controllers
         {
             return Ok(_patientRepository.GetPatientById(Id));
         }
+        //-----------------------------------------------------------
+        // GET: api/<PatientController>
+        [HttpGet("byUseId/{UserId}")]
+        public IActionResult GetPatientByUserId(int UserId)
+        {
+            return Ok(_patientRepository.GetPatientByUserId(UserId));
+        }
 
+        //-----------------------------------------------------------
         //-----------------------------------------------------------
         // GET: api/<PatientController>
         [HttpGet("GetDoctorInfoByPatientId/{Id}")]

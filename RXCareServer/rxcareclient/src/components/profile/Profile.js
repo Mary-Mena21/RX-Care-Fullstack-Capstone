@@ -16,6 +16,7 @@ export const Profile = () => {
     const [user3, setUser3] = useState(0);
     const [user4, setUser4] = useState([]);
     const [user5, setUser5] = useState([]);
+    const [user6, setUser6] = useState(0);
     const [doctorInfo, setDoctorInfo] = useState([]);
     const [doctor1, setDoctor1] = useState([]);
     const [doctor2, setDoctor2] = useState([]);
@@ -33,7 +34,7 @@ export const Profile = () => {
         );
         const singlePatient = await response.json();
         setUser1(singlePatient);
-        console.log(singlePatient.img);
+        console.log(singlePatient);
 
         /* --------patientIdNumber----------- */
         const patientIdNumber =
@@ -102,6 +103,7 @@ export const Profile = () => {
                 {/* -------------------------- */}
                 <PatientProfile
                     //patient_Id={user2.id}
+                    patientUser={user2.id}
                     image={user1.img}
                     firstName={user1.firstName}
                     lastName={user1.lastName}

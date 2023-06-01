@@ -86,7 +86,7 @@ export const PatientDetails = () => {
     useEffect(() => {
         fetchData();
         fetchDoctorData();
-    }, [patient_Id]);
+    }, []);
 
     return (
         <>
