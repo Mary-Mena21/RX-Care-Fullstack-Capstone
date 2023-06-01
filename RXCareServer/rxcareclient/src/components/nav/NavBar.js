@@ -207,7 +207,7 @@ export const NavBar = ({ children }) => {
                 className: "sidebar_2",
             },
             {
-                path: "/profileDoctor",
+                path: "/#",
                 name: "PD",
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",

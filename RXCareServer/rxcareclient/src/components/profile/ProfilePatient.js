@@ -5,28 +5,28 @@ import { PrescriptionList } from "../prescription/PrescriptionList";
 import Accordion from "react-bootstrap/Accordion";
 
 export const PatientProfile = ({
-    Image,
-    FirstName,
-    LastName,
-    DoB,
-    YoB,
-    Age,
-    Email,
-    Phone,
+    image,
+    firstName,
+    lastName,
+    email,
+    doB,
+    yoB,
+    age,
+    address,
+    phone,
     patientIdNumber,
-    Address,
-    Height,
-    Weight,
-    Note,
-    DoctorFirstName,
-    DoctorLastName,
-    DoctorEmail,
-    ClinicPhone,
-    ClinicAddress,
-    ClinicFacility,
-    ClinicType,
-    ClinicLocation,
-    Prescriptions,
+    height,
+    weight,
+    note,
+    doctorFirstName,
+    doctorLastName,
+    doctorEmail,
+    clinicPhone,
+    clinicAddress,
+    clinicFacility,
+    clinicType,
+    clinicLocation,
+    prescriptions,
 }) => {
     const [toggleState, setToggleState] = useState(1);
 
@@ -43,7 +43,7 @@ export const PatientProfile = ({
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-img">
-                                <img src={Image} className="patientImg" />
+                                <img src={image} className="patientImg" />
                                 <div class="file btn btn-lg btn-primary">
                                     Change Photo
                                     <input type="file" name="file" />
@@ -53,13 +53,13 @@ export const PatientProfile = ({
                         <div class="col-md-6">
                             <div class="profile-head">
                                 <h5>
-                                    {FirstName} {LastName}
+                                    {firstName} {lastName}
                                 </h5>
                                 <h6>------------------------</h6>
                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
-                                        {DoctorFirstName} {DoctorLastName}
+                                        {doctorFirstName} {doctorLastName}
                                     </span>
                                 </p>
                             </div>
@@ -80,18 +80,18 @@ export const PatientProfile = ({
                             <div class="profile-work">
                                 <p>DOCTOR INFO</p>
                                 <a href="">
-                                    Dr: {DoctorFirstName} {DoctorLastName}
+                                    Dr: {doctorFirstName} {doctorLastName}
                                 </a>
                                 <br />
-                                <a href="">{DoctorEmail}</a>
+                                <a href="">{doctorEmail}</a>
                                 <p>CLINIC</p>
-                                <a href="">{ClinicPhone}</a>
+                                <a href="">{clinicPhone}</a>
                                 <br />
-                                <a href="">{ClinicAddress}</a>
+                                <a href="">{clinicAddress}</a>
                                 <br />
-                                <a href="">{ClinicFacility}</a>
+                                <a href="">{clinicFacility}</a>
                                 <br />
-                                <a href="">{ClinicLocation}</a>
+                                <a href="">{clinicLocation}</a>
                                 <br />
                             </div>
                         </div>
@@ -105,7 +105,7 @@ export const PatientProfile = ({
                                             ? "tabs active-tabs"
                                             : "tabs"
                                     }
-                                    onClick={() => toggleTab(1)}
+                                    //onClick={() =>}
                                 >
                                     Patient Information
                                 </button>
@@ -131,9 +131,9 @@ export const PatientProfile = ({
                                     <div class="row">
                                         <div
                                             class="tab-pane show active"
-                                            id="profile"
-                                            role="tabpanel"
-                                            aria-labelledby="profile-tab"
+                                            // id="profile"
+                                            // role="tabpanel"
+                                            // aria-labelledby="profile-tab"
                                         >
                                             <br />
                                             <div class="row">
@@ -150,7 +150,7 @@ export const PatientProfile = ({
                                                 </div>
                                                 <div class="col-md-9">
                                                     <p>
-                                                        {FirstName} {LastName}
+                                                        {firstName} {lastName}
                                                     </p>
                                                 </div>
                                             </div>
@@ -159,7 +159,7 @@ export const PatientProfile = ({
                                                     <label>Email</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Email}</p>
+                                                    <p>{email}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -168,7 +168,7 @@ export const PatientProfile = ({
                                                 </div>
                                                 <div class="col-md-9">
                                                     <p>
-                                                        {YoB} - {Age}
+                                                        {yoB} - {age}
                                                     </p>
                                                 </div>
                                             </div>
@@ -177,7 +177,7 @@ export const PatientProfile = ({
                                                     <label>Phone</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Phone}</p>
+                                                    <p>{phone}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -185,7 +185,7 @@ export const PatientProfile = ({
                                                     <label>Address</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Address}</p>
+                                                    <p>{address}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,9 +202,9 @@ export const PatientProfile = ({
                                     <div class="row">
                                         <div
                                             class="tab-pane show active"
-                                            id="profile"
-                                            role="tabpanel"
-                                            aria-labelledby="profile-tab"
+                                            // id="profile"
+                                            // role="tabpanel"
+                                            // aria-labelledby="profile-tab"
                                         >
                                             <br />
                                             <div class="row">
@@ -212,7 +212,7 @@ export const PatientProfile = ({
                                                     <label>Height</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Height} / Inch</p>
+                                                    <p>{height} / Inch</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -220,7 +220,7 @@ export const PatientProfile = ({
                                                     <label>Weight</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Weight} / Pound</p>
+                                                    <p>{weight} / Pound</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -228,7 +228,7 @@ export const PatientProfile = ({
                                                     <label>Note</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p>{Note}</p>
+                                                    <p>{note}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
