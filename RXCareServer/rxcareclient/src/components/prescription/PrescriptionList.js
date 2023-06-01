@@ -36,24 +36,36 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                 <div class="tab-pane show active2">
                                                     <br />
 
-                                                <div class="profile-head">
-                                                    <ul class="nav nav-tabs ">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link "> UPDATE</a>
-                                                        </li>
+                                                    <div class="profile-head">
+                                                        <ul class="nav nav-tabs ">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link ">
+                                                                    {" "}
+                                                                    UPDATE
+                                                                </a>
+                                                            </li>
 
-                                                        <li class="nav-item">
-                                                            <a class="nav-link "> REPORT </a>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link ">
+                                                                    {" "}
+                                                                    REPORT{" "}
+                                                                </a>
                                                             </li>
                                                             <li class="nav-item">
-                                                            <a class="nav-link "> DELETE</a>
+                                                                <a class="nav-link ">
+                                                                    {" "}
+                                                                    DELETE
+                                                                </a>
                                                             </li>
                                                             <li class="nav-item">
-                                                            <a class="nav-link "> ADD-COMMENT </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                    
+                                                                <a class="nav-link ">
+                                                                    {" "}
+                                                                    ADD-COMMENT{" "}
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <label>
@@ -158,7 +170,6 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                 }
                                                             </p>
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,8 +178,6 @@ export const PrescriptionList = ({ patient_Id }) => {
                                 );
                             })}
                             {/* <p>{Prescription. dosage}</p> */}
-
-
                         </Accordion.Body>
                     </Accordion.Item>
 

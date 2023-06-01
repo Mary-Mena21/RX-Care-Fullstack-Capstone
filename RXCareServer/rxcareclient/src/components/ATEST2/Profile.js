@@ -16,7 +16,7 @@ export const Profile = () => {
     const [user3, setUser3] = useState(0);
     const [user4, setUser4] = useState([]);
     const [user5, setUser5] = useState([]);
-    const [user6, setUser6] = useState();
+    const [user6, setUser6] = useState([]);
     const [doctorInfo, setDoctorInfo] = useState([]);
     const [doctor1, setDoctor1] = useState([]);
     const [doctor2, setDoctor2] = useState([]);
@@ -62,10 +62,10 @@ export const Profile = () => {
         var age = currentYear - YoB;
         setUser3(age)
         console.log(age);
-        // //-------------------------------------
-        // //const Prescriptions = singlePatient.patient.prescriptions;
-        // //setUser5(Prescriptions);
-        // //console.log(Prescriptions);
+        //-------------------------------------
+        const Prescriptions = singlePatient.patient.prescriptions;
+        setUser6(Prescriptions);
+        console.log(Prescriptions);
     };
 
     //-----------------DoctorInfo--------------------
