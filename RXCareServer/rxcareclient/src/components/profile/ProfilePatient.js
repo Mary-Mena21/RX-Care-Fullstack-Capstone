@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProfilePatient.css";
 import { PrescriptionList } from "../prescription/PrescriptionList";
 import Accordion from "react-bootstrap/Accordion";
+import { PrescriptionListUser } from "../prescription/PrescriptionListUser";
+
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 
 export const PatientProfile = ({
+    patient_Id,
+    patientIdUser,
     image,
+    patientUser,
     firstName,
     lastName,
     email,
@@ -27,18 +34,43 @@ export const PatientProfile = ({
     clinicType,
     clinicLocation,
     prescriptions,
+    comment,
+    medicine,
 }) => {
     const [toggleState, setToggleState] = useState(1);
 
+    const [currentTab, setCurrentTab] = useState(1);
+
+    //const [Prescriptions, setPrescriptions] = useState([]);
+    console.log(patientIdUser);
+    console.log(firstName);
+    console.log(prescriptions);
+    console.log(comment);
     const toggleTab = (index) => {
         setToggleState(index);
+        //----------------------------------------------------------------
     };
 
+    // console.log(patientIdUser);
+
+    //     const fetchData = async () => {
+    //         const response = await fetch(
+    //             `https://localhost:7183/api/prescription/Patient2/${patientIdUser}`
+    //         );
+    //         const PrescriptionListArray = await response.json();
+    //         setPrescriptions(PrescriptionListArray);
+    //         console.log(PrescriptionListArray);
+    // };
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
     //console.log(Id);
+    //----------------------------------------------------------------
+
     return (
         <>
             <div class="container emp-profile">
-                <h1>patient profile</h1>
                 <form>
                     <div class="row">
                         <div class="col-md-4">
@@ -62,10 +94,217 @@ export const PatientProfile = ({
                                         {doctorFirstName} {doctorLastName}
                                     </span>
                                 </p>
+                                {/*-------------------------------------- */}
+
+                                <div>
+                                    <Accordion>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                PRESCRIPTION
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                {prescriptions.map((pres) => {
+                                                    return (
+                                                        <>
+                                                            <div class="content-tabs profile-tab">
+                                                                <div class="row">
+                                                                    <div class="tab-pane show active2">
+                                                                        <br />
+
+                                                                        <div class="profile-head">
+                                                                            <ul class="nav nav-tabs ">
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link ">
+                                                                                        {" "}
+                                                                                        UPDATE
+                                                                                    </a>
+                                                                                </li>
+
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link ">
+                                                                                        {" "}
+                                                                                        REPORT{" "}
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link ">
+                                                                                        {" "}
+                                                                                        DELETE
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link ">
+                                                                                        {" "}
+                                                                                        ADD-COMMENT{" "}
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    Drug
+                                                                                    Name
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres
+                                                                                            .medicine
+                                                                                            .medicineName
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label></label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    <img
+                                                                                        src={
+                                                                                            pres
+                                                                                                .medicine
+                                                                                                .imgUrl
+                                                                                        }
+                                                                                        className="medical-img"
+                                                                                    />
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    Dosage
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres.dosage
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    Quantity
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres.quantity
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    Form
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres
+                                                                                            .medicine
+                                                                                            .form
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    SideEffects
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres
+                                                                                            .medicine
+                                                                                            .sideEffects
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <label>
+                                                                                    Drug
+                                                                                    Info
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <p>
+                                                                                    {
+                                                                                        pres
+                                                                                            .medicine
+                                                                                            .drugInfo
+                                                                                    }
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    );
+                                                })}
+                                                {/* <p>{Prescription. dosage}</p> */}
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item eventKey="1">
+                                            <Accordion.Header>
+                                                COMMENTS
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                {/* Some people have comment, but others haven't. */}
+                                                {/*                                                {comment }?
+                                                
+                                                    <>
+                                                        <p>
+                                                            P:{" "}
+                                                            {comment.pComment}
+                                                        </p>
+                                                        <p>
+                                                            D:{" "}
+                                                            {comment.dComment}
+                                                        </p>
+                                                    </>
+                                                
+                                                :{""} */}
+                                                {/* <h5>{medicine.medicineName}</h5> */}
+                                                {/*              <p>P: {comment.pComment}</p>
+                                                <p>D: {comment.dComment}</p> */}
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item eventKey="2">
+                                            <Accordion.Header>
+                                                REPORT
+                                            </Accordion.Header>
+                                            <Accordion.Body>DEF</Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                    <br />
+                                </div>
+                                {/* ------------------------------------- */}
                             </div>
-                               {/*  <PrescriptionList patient_Id={Id} />   */}
                         </div>
-{/*                         <div class="col-md-2">
+                        {/*                         <div class="col-md-2">
                             <input
                                 type="submit"
                                 class="profile-edit-btn"
@@ -96,45 +335,22 @@ export const PatientProfile = ({
                             </div>
                         </div>
 
+                        {/* -------------TABS-------------- */}
                         <div className="col-md-8">
-                            {/*  */}
-                            <div className="bloc-tabs">
-                                <button
-                                    className={
-                                        toggleState === 1
-                                            ? "tabs active-tabs"
-                                            : "tabs"
-                                    }
-                                    //onClick={() =>}
-                                >
-                                    Patient Information
-                                </button>
-                                <button
-                                    className={
-                                        toggleState === 2
-                                            ? "tabs active-tabs"
-                                            : "tabs"
-                                    }
-                                    onClick={() => toggleTab(2)}
-                                >
-                                    Health Check
-                                </button>
-                            </div>
-                            <div className="content-tabs profile-tab ">
-                                <div
-                                    className={
-                                        toggleState === 1
-                                            ? "content  active-content"
-                                            : "content"
-                                    }
+                            <Tabs
+                                defaultActiveKey="profile"
+                                id="fill-tab-example"
+                                className="mb-6 "
+                                fill
+                            >
+                                <Tab
+                                    eventKey="home"
+                                    title="Home"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                            // id="profile"
-                                            // role="tabpanel"
-                                            // aria-labelledby="profile-tab"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -190,22 +406,16 @@ export const PatientProfile = ({
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Tab>
 
-                                <div
-                                    className={
-                                        toggleState === 2
-                                            ? "content  active-content"
-                                            : "content"
-                                    }
+                                <Tab
+                                    eventKey="profile"
+                                    title="Profile"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div
-                                            class="tab-pane show active"
-                                            // id="profile"
-                                            // role="tabpanel"
-                                            // aria-labelledby="profile-tab"
-                                        >
+                                        <div class="tab-pane show active">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -256,19 +466,19 @@ export const PatientProfile = ({
                                                 </div>
                                             </div>
 
-{/*                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <p>
-                                                    Prescription
-                                                    </p>
-                                                </div>
-                                            </div> */}
-
+                                            {/*<div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                    Prescription
+                                    </p>
+                                </div>
+                            </div> */}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </Tab>
+                            </Tabs>
                         </div>
+                        {/* -------------TABS-------------- */}
                     </div>
                 </form>
             </div>

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 //import { useParams } from "react-router-dom"
 import React from "react";
-import { PatientProfile } from "./ProfilePatient";
+import { PatientProfile } from "../profile/ProfilePatient";
 import { Link } from "react-router-dom";
 import { DataTexture } from "three";
 
 //from user prespective
 
 export const Profile = () => {
-   // const { patient_Id } = useParams()
+    // const { patient_Id } = useParams()
     const [userId, setUserId] = useState("");
     const [userInfo, setUserInfo] = useState([]);
     const [user1, setUser1] = useState([]);
@@ -16,6 +16,7 @@ export const Profile = () => {
     const [user3, setUser3] = useState(0);
     const [user4, setUser4] = useState([]);
     const [user5, setUser5] = useState([]);
+    const [user6, setUser6] = useState([]);
     const [doctorInfo, setDoctorInfo] = useState([]);
     const [doctor1, setDoctor1] = useState([]);
     const [doctor2, setDoctor2] = useState([]);
@@ -23,31 +24,35 @@ export const Profile = () => {
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.id);
-    const Id = appUserObject.id;
+    const UserId = appUserObject.id;
     //patient_Id= Id
     //-----------------------------------------------------
-    useEffect(() => {
+    
     const fetchData = async () => {
         const response = await fetch(
-            `https://localhost:7183/api/User/GetById/${Id}`
+            `https://localhost:7183/api/Patient/byUseId/${UserId}`
         );
         const singlePatient = await response.json();
+        console.log(singlePatient.id);
+        setUser6(singlePatient.id)
         setUser1(singlePatient);
-        console.log(singlePatient.img);
-
-        /* --------patientIdNumber----------- */
+        const X = singlePatient
+        console.log(X.id);
+        console.log(singlePatient);
+        const Patient = singlePatient.user;
+        setUser2(Patient);
+        console.log(Patient.id);
+        const patientId = singlePatient.Id
+        // /* --------patientIdNumber----------- */
         const patientIdNumber =
-            singlePatient.lastName.slice(0, 3) +
-            singlePatient.id +
-            singlePatient.firstName.slice(0, 3);
+            Patient.lastName.slice(0, 3) +
+            Patient.id +
+            Patient.firstName.slice(0, 3);
         setUserId(patientIdNumber);
         console.log(patientIdNumber);
-        //-------------------------------------
-        const Patient = singlePatient.patient;
-        setUser2(Patient);
-        console.log(Patient);
-        /* --------DateOfBirth-----Age------ */
-        const DateOfBirth = new Date(singlePatient.patient.doB);
+        // /* --------DateOfBirth-----Age------ */
+        const DateOfBirth = new Date(singlePatient.doB);
+        //console.log(DateOfBirth);
         const YoB = DateOfBirth.getUTCFullYear();
         console.log(YoB);
         setUser4(YoB);
@@ -59,14 +64,14 @@ export const Profile = () => {
         console.log(age);
         //-------------------------------------
         const Prescriptions = singlePatient.patient.prescriptions;
-        setUser5(Prescriptions);
+        setUser6(Prescriptions);
         console.log(Prescriptions);
     };
 
     //-----------------DoctorInfo--------------------
     const fetchDoctorData = async () => {
         const response = await fetch(
-            `https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/${Id}`
+            `https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/${UserId}`
         );
         const Data = await response.json();
         setDoctorInfo(Data);
@@ -80,7 +85,7 @@ export const Profile = () => {
     };
     //https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/10
 
-    
+    useEffect(() => {
         fetchData();
         fetchDoctorData();
     }, []);
@@ -101,20 +106,21 @@ export const Profile = () => {
             <div className="">
                 {/* -------------------------- */}
                 <PatientProfile
-                    //patient_Id={user2.id}
-                    image={user1.img}
-                    firstName={user1.firstName}
-                    lastName={user1.lastName}
-                    email={user1.email}
-                    doB={user2.doB}
+                patient_Id={user1.id}
+                patientUser={user6}
+                    image={user2.img}
+                    firstName={user2.firstName}
+                    lastName={user2.lastName}
+                    email={user2.email}
+                    doB={user1.doB}
                     yoB={user4}
                     age={user3}
-                    address={user2.address}
-                    phone={user2.phone}
+                    address={user1.address}
+                    phone={user1.phone}
 
-                    height={user2.height}
-                    weight={user2.weight}
-                    note={user2.note}
+                    height={user1.height}
+                    weight={user1.weight}
+                    note={user1.note}
                     
                     doctorFirstName={doctor1.firstName}
                     doctorLastName={doctor1.lastName}

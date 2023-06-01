@@ -29,7 +29,7 @@ namespace RXCareServer.Repositories
                                           WHERE [Comment].PatientId = @PatientId";
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();
-                    Comment comment = null;
+                    Comment? comment = null;
                     while (reader.Read())
                     {
                         if(comment == null)

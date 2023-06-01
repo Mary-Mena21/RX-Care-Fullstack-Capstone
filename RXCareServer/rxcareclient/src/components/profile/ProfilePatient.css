@@ -155,7 +155,7 @@ body{
   
   
   
-  button {
+/*   button {
     border: none;
     
   }
@@ -184,4 +184,32 @@ body{
   }
   .active-content {
     display: block;
-  }
+  } */
+/*   -----------Tabs----------------- */
+
+.Tabs {
+  background-color: lightgray;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  padding: 25px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease-out;
+}
+
+.Tabs:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.15);
+  background:linear-gradient(25deg, #3931af -25%, #00c6ff 75%);
+/*   background: -webkit-linear-gradient(left, #3931af, #00c6ff); */
+  color: white;
+}
+
+/* .Tabs {
+  background: linear-gradient(245.39deg, #3931af -25%, #00c6ff 75%);
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  color: white;
+}
+.k
+{background: #3931af, #00c6ff} */

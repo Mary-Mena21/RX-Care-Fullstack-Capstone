@@ -26,6 +26,15 @@ namespace RXCareServer.Controllers
         //-----------------------------------------------------------
 
         // GET: api/<prescriptionController>
+        [HttpGet("Patient2/{Id}")]
+        public IActionResult ByPatientId2(int Id)
+        {
+            return Ok(_prescriptionRepository.GetPrescriptionByPatientId2(Id));
+        }
+
+        //-----------------------------------------------------------
+
+        // GET: api/<prescriptionController>
         [HttpGet("Prescription/{Id}")]
         public IActionResult GetByPrescriptionId(int Id)
         {
