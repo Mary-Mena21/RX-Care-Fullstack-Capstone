@@ -29,14 +29,14 @@ export const Login = () => {
 
             const loginResponse = await response.json();
             console.log(loginResponse);
-            //if (loginResponse.user) {
+           // if (loginResponse.user) {
             if (response.ok) {
                 const userData = { ...loginResponse.user };
                 console.log(userData);
 
                 userData.isAdmin = userData.userType === "Admin" ? true : false;
                 localStorage.setItem("app_user", JSON.stringify(userData));
-                navigate("/");
+                navigate("/home");
             } else {
                 console.log(response);
                 window.alert("Invalid login");
