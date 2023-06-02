@@ -70,7 +70,7 @@ namespace RXCareServer.Models
         public decimal Weight { get; set; }
         public string? Note { get; set; }
         public List<PrescriptionInfo>? Prescriptions { get; set; }
-        public CommentInfo? Comment { get; set; }
+        public List<CommentInfo>? Comments { get; set; }
     }
 
 

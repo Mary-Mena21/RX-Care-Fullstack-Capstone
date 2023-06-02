@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReadersRendezvous.Utils;
 using RXCareServer.Models;
+using System.Xml.Linq;
 
 namespace RXCareServer.Repositories
 {
@@ -11,7 +12,7 @@ namespace RXCareServer.Repositories
 
         //------------------------------Backend-GetPatientComment( )#33-----------------------------------
 
-        public Comment GetPatientComment(int PatientId)
+        public List<Comment> GetPatientComment(int PatientId)
         {
             using(var conn = Connection)
             {
@@ -30,6 +31,7 @@ namespace RXCareServer.Repositories
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();
                     Comment? comment = null;
+                    var comments = new List<Comment>();
                     while (reader.Read())
                     {
                         if(comment == null)
@@ -45,16 +47,17 @@ namespace RXCareServer.Repositories
                                 DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
                             };
                         }
+                        comments.Add(comment);
                     }
             conn.Close();
-            return comment;
+            return comments;
                 }
             }
         }
 
         //------------------------------Backend-GetPatientComment( )#33-----------------------------------
 
-        public CommentInfo GetPatientCommentOnMedicine(int PatientId)
+        public List<CommentInfo> GetPatientCommentOnMedicine(int PatientId)
         {
             using (var conn = Connection)
             {
@@ -81,6 +84,7 @@ namespace RXCareServer.Repositories
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();
                     CommentInfo comment = null;
+                    var comments = new List<CommentInfo>();
                     while (reader.Read())
                     {
                         if (comment == null)
@@ -105,10 +109,11 @@ namespace RXCareServer.Repositories
 
                                 }
                             };
+                            comments.Add(comment);
                         }
                     }
                     conn.Close();
-                    return comment;
+                    return comments;
                 }
             }
         }

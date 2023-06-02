@@ -7,14 +7,16 @@ import { Button } from "bootstrap";
 
 export const CommentList = ({ patient_Id }) => {
     const [Comment, setComment] = useState([]);
+    const [Medicine, setMedicine] = useState([]);
     console.log(patient_Id);
     /* -------------Display CommentList----------------- */
-//TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
+    //TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
                 //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
                 `https://localhost:7183/api/Comment/${patient_Id}`
+                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
             );
             const CommentData = await response.json();
             setComment(CommentData);
@@ -23,7 +25,33 @@ export const CommentList = ({ patient_Id }) => {
         fetchData();
     }, []);
 
-    /* -------------Display CommentList----------------- */
+    /* -------------Display Medicine----------------- */
+    // useEffect(() => {
+    //     const fetchMedicineData = async () => {
+    //         const response = await fetch(
+    //             `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
+    //         );
+    //         const CommentData = await response.json();
+    //         setMedicine(CommentData.medicine);
+    //         console.log(CommentData.medicine);
+    //     };
+    //     fetchMedicineData();
+    // }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -68,23 +96,32 @@ export const CommentList = ({ patient_Id }) => {
     // const [Prescription, setPrescription] = useState([]);
 
     /* -------------Display PrescriptionList----------------- */
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const response = await fetch(
-//                 `https://localhost:7183/api/prescription/Patient/${patient_Id}`
-//             );
-//             const PrescriptionListArray = await response.json();
-//             setPrescription(PrescriptionListArray);
-//             console.log(PrescriptionListArray);
-//         };
-//         fetchData();
-//     }, []);
+    //     useEffect(() => {
+    //         const fetchData = async () => {
+    //             const response = await fetch(
+    //                 `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+    //             );
+    //             const PrescriptionListArray = await response.json();
+    //             setPrescription(PrescriptionListArray);
+    //             console.log(PrescriptionListArray);
+    //         };
+    //         fetchData();
+    //     }, []);
 
     return (
         <>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>COMMENTS</Accordion.Header>
-                <Accordion.Body>DEF   { Comment.pComment} </Accordion.Body>
+                <Accordion.Body>
+                    {Comment.map((comment) => {
+                        return <>
+                            <p>P:{comment.pComment }</p>
+                            <p>D:{comment.dComment }</p>
+                            </>;
+                        })}
+                        {/* DEF   { Comment.pComment} */}{" "}
+                       {/*  <p>D:{Medicine.medicineName}</p>  */}
+                </Accordion.Body>
             </Accordion.Item>
         </>
     );

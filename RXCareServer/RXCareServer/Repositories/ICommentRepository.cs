@@ -7,8 +7,8 @@ namespace RXCareServer.Repositories
         void AddPatientComment(Comment comment);
         void DeleteCommentById(int id);
         void EditPatientComment(Comment comment);
-        Comment GetPatientComment(int id);
+        List<Comment> GetPatientComment(int PatientId);
 
-        CommentInfo GetPatientCommentOnMedicine(int PatientId);
+        List<CommentInfo> GetPatientCommentOnMedicine(int PatientId);
     }
 }

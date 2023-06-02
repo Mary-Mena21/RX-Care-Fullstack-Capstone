@@ -89,6 +89,7 @@ namespace RXCareServer.Repositories
                                     Weight = DbUtils.GetDecimal(reader, "Weight"),
                                     Note = DbUtils.GetString(reader, "Note"),
                                     Prescriptions = new List<PrescriptionInfo>(),
+                                    Comments = new List<CommentInfo>(),
                                 }
                             };
                         }
@@ -117,7 +118,7 @@ namespace RXCareServer.Repositories
                         //--------------------------------------------------------------
                         if (DbUtils.GetNullableInt(reader, "ComId") != null)
                         {
-                            user.Patient.Comment = new CommentInfo()
+                            user.Patient.Comments.Add(new CommentInfo()
 
                             {
                                 Id = DbUtils.GetInt(reader, "ComId"),
@@ -137,7 +138,7 @@ namespace RXCareServer.Repositories
                                     DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
 
                                 },
-                            };
+                            });
                         }
                     }
                     reader.Close();
