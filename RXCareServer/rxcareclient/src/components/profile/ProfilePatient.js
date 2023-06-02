@@ -34,50 +34,52 @@ export const PatientProfile = ({
     clinicType,
     clinicLocation,
     prescriptions,
-    comment,
+    comments,
     medicine,
 }) => {
-    const [Prescriptions, setPrescriptions] = useState([]);
-    const [Comment, setComment] = useState([]);
-    //const {patient_Id} = useParams()
-    console.log(patient_Id);
+    console.log(comments);
+    // const [Prescriptions, setPrescriptions] = useState([]);
+    // const [Comment, setComment] = useState([]);
+    // //const {patient_Id} = useParams()
+    // console.log(patient_Id);
 
-    //---------------Display PrescriptionList------------------
-    //TODO: Cant read {patient_Id} in fech call ???????
-    const fetchData = async () => {
-        const response = await fetch(
-            `https://localhost:7183/api/prescription/GetPrescriptionOnlyByPatientId/${patient_Id}`
-        );
-        const PrescriptionListArray = await response.json();
-        setPrescriptions(PrescriptionListArray);
-        console.log(PrescriptionListArray);
-    };
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // //---------------Display PrescriptionList------------------
+    // //TODO: Cant read {patient_Id} in fech call ???????
+    // const fetchData = async () => {
+    //     const response = await fetch(
+    //         `https://localhost:7183/api/prescription/GetPrescriptionOnlyByPatientId/${patient_Id}`
+    //     );
+    //     const PrescriptionListArray = await response.json();
+    //     setPrescriptions(PrescriptionListArray);
+    //     console.log(PrescriptionListArray);
+    // };
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
-    /* -------------Display CommentList----------------- */
-    //TODO: Cant read {patient_Id} in fech call ???????
-    //TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-                `https://localhost:7183/api/Comment/${patient_Id}`
-            );
-            const CommentData = await response.json();
-            setComment(CommentData);
-            console.log(CommentData);
-            
-            // if(!CommentData) {
-            //     setComment(CommentData)
-            // } else {
-            //     CommentData = {}
-            // }
-        };
-        fetchData();
-    }, []);
+    // /* -------------Display CommentList----------------- */
+    // //TODO: Cant read {patient_Id} in fech call ???????
+    // //TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
+    // useEffect(() => {
+    //     const fetchData2 = async () => {
+    //         const response = await fetch(
+    //             //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
+    //             `https://localhost:7183/api/Comment/${patient_Id}`
+    //         );
+    //         const CommentData = await response.json();
+    //         setComment(CommentData);
+    //         console.log(CommentData);
+
+    //         // if(!CommentData) {
+    //         //     setComment(CommentData)
+    //         // } else {
+    //         //     CommentData = {}
+    //         // }
+    //     };
+    //     fetchData2();
+    // }, []);
     //----------------------------------------------------------------
+    //typeof products.map() !== undefined
 
     return (
         <>
@@ -98,7 +100,9 @@ export const PatientProfile = ({
                                 <h5>
                                     {firstName} {lastName}
                                 </h5>
-                                <h6>------------Y----USER----HI----{ patient_Id}</h6>
+                                <h6>
+                                    ------------Y----USER----HI----{patient_Id}
+                                </h6>
                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
@@ -300,6 +304,52 @@ export const PatientProfile = ({
                                                 {/* <h5>{Prescriptions.medicine.medicineName}</h5>  */}
                                                 {/* <p>P: {comment.pComment}</p>
                                                 <p>D: {comment.dComment}</p> */}
+                                                {/*  <div> */}
+                                                {comments.map((comment) => {
+                                                    return (
+                                                        <>
+                                                            <fieldset className="active">
+                                                                <h5>
+                                                                    {
+                                                                        comment
+                                                                            .medicine
+                                                                            .medicineName
+                                                                    }
+                                                                </h5>
+                                                                <span>
+                                                                    {" "}
+                                                                    (
+                                                                    {
+                                                                        comment.pCommentDate
+                                                                    }
+                                                                    )
+                                                                </span>
+                                                                <p>
+                                                                    P:
+                                                                    {
+                                                                        comment.pComment
+                                                                    }
+                                                                </p>
+                                                                <span>
+                                                                    (
+                                                                    {
+                                                                        comment.dCommentDate
+                                                                    }
+                                                                    )
+                                                                </span>
+                                                                <p>
+                                                                    D:
+                                                                    {
+                                                                        comment.dComment
+                                                                    }
+                                                                </p>
+                                                            </fieldset>
+                                                        </>
+                                                    );
+                                                })}
+                                                {/*                                                 DEF   { Comment.pComment} 
+                                                 <p>D:{Medicine.medicineName}</p>   */}
+                                                {/* </div> */}
                                             </Accordion.Body>
                                         </Accordion.Item>
 
@@ -357,7 +407,7 @@ export const PatientProfile = ({
                             >
                                 <Tab
                                     eventKey="home"
-                                    title="Home"
+                                    title="Patient Info"
                                     tabClassName="Tabs"
                                     className="content-tabs profile-tab container"
                                 >
@@ -422,7 +472,7 @@ export const PatientProfile = ({
 
                                 <Tab
                                     eventKey="profile"
-                                    title="Profile"
+                                    title="Health Check"
                                     tabClassName="Tabs"
                                     className="content-tabs profile-tab container"
                                 >
@@ -504,3 +554,23 @@ export const PatientProfile = ({
         </>
     );
 };
+//TODO: Check isArray?
+/* 
+ <div>
+     {Array.isArray(comments)
+         ? comments.map(
+               (com) => {
+                   return (
+                       <h2>
+                           {
+                               com
+                                   .medicine
+                                   .medicineName
+                           }
+                       </h2>
+                   );
+               }
+           )
+         : null}
+ </div> 
+*/
