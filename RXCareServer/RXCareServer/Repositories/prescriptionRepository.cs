@@ -157,7 +157,46 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-
+        //------------------------------Backend-GetPrescriptionByPrescriptionId( )#31-------------
+        public List<Prescription> GetPrescriptionOnlyByPatientId(int Id)//5
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Prescription].Id 
+                                              ,[Prescription].MedicineId
+                                              ,[Prescription].Dosage
+                                              ,[Prescription].Quantity
+                                              ,[Prescription].PatientId
+                             FROM [RXCareDb].[dbo].[Prescription]
+                             WHERE [Prescription].PatientId = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    Prescription prescription = null;
+                    var Prescriptions = new List<Prescription>();
+                    while (reader.Read())
+                    {
+                        if (prescription == null)
+                        {
+                            prescription = new Prescription()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                Dosage = DbUtils.GetString(reader, "Dosage"),
+                                Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                PatientId = DbUtils.GetInt(reader, "PatientId"),
+                               
+                            };
+                        };
+                        Prescriptions.Add(prescription);
+                    }
+                    conn.Close();
+                    return Prescriptions;
+                }
+            }
+        }
         //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
         public void AddPrescription(Prescription prescription)

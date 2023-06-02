@@ -29,7 +29,9 @@ namespace RXCareServer.Controllers
         [HttpGet("All/{DoctorId}")]
         public IActionResult GetPatients(int DoctorId)
         {
-            return Ok(_patientRepository.GetDoctorPatients(DoctorId));
+            var Patient =  _patientRepository.GetDoctorPatients(DoctorId);
+            if (Patient == null) { return NotFound(); }
+            return Ok(Patient);
         }
 
         //-----------------------------------------------------------
@@ -37,14 +39,20 @@ namespace RXCareServer.Controllers
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_patientRepository.GetPatientById(Id));
+            var Patient = _patientRepository.GetPatientById(Id);
+
+            if (Patient == null) { return NotFound(); }
+            return Ok(Patient);
+
         }
         //-----------------------------------------------------------
         // GET: api/<PatientController>
         [HttpGet("byUseId/{UserId}")]
         public IActionResult GetPatientByUserId(int UserId)
         {
-            return Ok(_patientRepository.GetPatientByUserId(UserId));
+            var Patient = _patientRepository.GetPatientByUserId(UserId);
+            if (Patient == null) { return NotFound(); }
+            return Ok(Patient);
         }
 
         //-----------------------------------------------------------
@@ -53,7 +61,9 @@ namespace RXCareServer.Controllers
         [HttpGet("GetDoctorInfoByPatientId/{Id}")]
         public IActionResult GetDoctorInfoByPatientId(int Id)
         {
-            return Ok(_patientRepository.GetDoctorInfoByPatientId(Id));
+            var Doctor = _patientRepository.GetDoctorInfoByPatientId(Id);
+            if (Doctor == null) { return NotFound(); }
+            return Ok(Doctor);
         }
 
         //-----------------------------------------------------------
@@ -62,7 +72,9 @@ namespace RXCareServer.Controllers
         [HttpGet("GetDoctorInfoByPatientId2/{Id}")]
         public IActionResult GetDoctorInfoByPatientId2(int Id)
         {
-            return Ok(_patientRepository.GetDoctorInfoByPatientId2(Id));
+            var Doctor = _patientRepository.GetDoctorInfoByPatientId2(Id);
+            if (Doctor == null) { return NotFound(); }
+            return Ok(Doctor);
         }
 
         //-----------------------------------------------------------
