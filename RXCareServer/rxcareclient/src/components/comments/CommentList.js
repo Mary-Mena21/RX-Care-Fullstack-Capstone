@@ -13,9 +13,8 @@ export const CommentList = ({ patient_Id }) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
                 `https://localhost:7183/api/Comment/${patient_Id}`
-                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
+        //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
             );
             const CommentData = await response.json();
             setComment(CommentData);
