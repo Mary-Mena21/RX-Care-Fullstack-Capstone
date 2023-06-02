@@ -1,28 +1,22 @@
-// import { fireEvent } from "@testing-library/react";
 import React from "react";
 import { useState } from "react";
-// import { Router } from "react-router-dom";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 
 export const AddPrescription = () => {
-    // let X = Number({patient_Id});
-    // console.log(X);
     console.log(patient_Id);
+
     const navigate = useNavigate();
     const { patient_Id } = useParams();
+
     const [Prescription, setAddPrescription] = useState({
         //id: 0,
         medicineId: 0,
         dosage: "",
         quantity: 0,
-        patientId: 53,
+        patientId: patient_Id,
     });
-
+    /* --------------AddComment---------------- */
     const fetchData = async (SendToAPI) => {
         const fetchOptions = {
             method: "POST",
@@ -36,48 +30,20 @@ export const AddPrescription = () => {
             `https://localhost:7183/AddPrescription`,
             fetchOptions
         );
-
         navigate(`../patientsList/${patient_Id}`);
         const responseJson = await response.json();
         return responseJson;
     };
-
+    /* ------------------------------ */
     const submissionHandler = (event) => {
         event.preventDefault();
         fetchData(Prescription);
-        //setAddPrescription(Prescription);
-        //navigate(`../patientsList/${patient_Id}`);
     };
     // //TODO: implement Rest of Patient Form
-
-    /* -------------Add Prescription----------------- */
-    // const sendNewPrescription = async (SendToAPI) => {
-    //     const fetchOptions = {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(SendToAPI),
-    //     };
-    //     const response = await fetch(
-    //         `https://localhost:7183/AddPrescription`,
-    //         fetchOptions
-    //     );
-    //     //navigate(`../patientsList/${patient_Id}`)
-    //     const responseJson = await response.json();
-    //     return responseJson;
-    // };
-    // /* ------------------------------ */
-    // const submissionHandler = (event) => {
-    //     event.preventDefault();
-    //     sendNewPrescription(Prescription);
-    //     navigate(`../patientsList/${patient_Id}`)
-    // };
     /* ------------------------------ */
 
     return (
         <>
-            {/*  <div class="container register"> */}
             <div class=" register">
                 <div class="row g-3">
                     <div class="col-md-3 register-left">
@@ -224,33 +190,3 @@ export const AddPrescription = () => {
         </>
     );
 };
-    //console.log(patient_Id);
-    /* -------------Add Prescription----------------- */
-    // const fetchData = async () => {
-    //     console.log(patient_Id);
-    //     let X = parseInt(patient_Id, 10);
-    //     console.log(X);
-    //     try {
-    //         const response = await fetch(
-    //             `https://localhost:7183/AddPrescription`,
-    //             {
-    //                 body: JSON.stringify({
-    //                     id: 0,
-    //                     medicineId: 0,
-    //                     dosage: "",
-    //                     quantity: 0,
-    //                     patientId: X,
-    //                 }),
-    //                 credentials: "include",
-    //                 method: "POST",
-    //                 headers: { "Content-Type": "application/json" },
-    //             }
-    //         );
-    //         navigate(`../patientsList/${patient_Id}`);
-    //         const data = await response.json();
-    //         console.log(data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    //     //fetchData();
-    // };

@@ -31,6 +31,7 @@ import { PrescriptionList } from "../prescription/PrescriptionList";
 import { CommentList } from "../comments/CommentList";
 import { AddPrescriptionForm } from "../prescription/Modal";
 import { AddPrescription } from "../prescription/AddPrescription";
+import { AddComment } from "../comments/AddComment";
 
 
 export const ApplicationViews = () => {
@@ -69,7 +70,10 @@ export const ApplicationViews = () => {
                         element={<AddPrescription />}
                     />
 
-
+                    <Route
+                        path="patientsList/:patient_Id/addComment/add/:patient_Id"
+                        element={<AddComment/>}
+                    />
 
                     //AddPrescriptionForm
                     <Route path="patientsList" element={<PatientsList />} />
@@ -81,3 +85,4 @@ export const ApplicationViews = () => {
         </React.StrictMode>
     );
 };
+//PrescriptionForm

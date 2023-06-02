@@ -127,7 +127,7 @@ export const PatientProfileDetails = ({
                                     value="Add Comment"
                                     onClick={() =>
                                         navigate(
-                                            `patientsList/edit/${patient_Id}`
+                                            `addComment/add/${patient_Id}`
                                         )
                                     }
                                 />
