@@ -4,6 +4,9 @@ import "../profile/ProfilePatient.css";
 import { PrescriptionList } from "../prescription/PrescriptionList";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Accordion from "react-bootstrap/Accordion";
+import { Button } from "bootstrap";
+import { CommentList } from "../comments/CommentList";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -77,7 +80,12 @@ export const PatientProfileDetails = ({
                                     </li>
                                 </ul>
                             </div>
-                            <PrescriptionList patient_Id={ patient_Id} /> 
+                            {/* ******Accordion****** */}
+                            <Accordion>
+                                <PrescriptionList patient_Id={patient_Id} />
+                                <CommentList patient_Id={patient_Id} />
+                            </Accordion>
+                            {/* ************ */}
                         </div>
                         <div class="col-md-2">
                             <input
@@ -112,149 +120,149 @@ export const PatientProfileDetails = ({
                                 <br />
                             </div>
                         </div>
-  {/* -------------TABS-------------- */}
-  <div className="col-md-8">
-  <Tabs
-      defaultActiveKey="profile"
-      id="fill-tab-example"
-      className="mb-3"
-  >
-      <Tab
-          eventKey="home"
-          title="Home"
-          tabClassName="Tabs"
-          className="content-tabs profile-tab container"
-      >
-          <div class="row">
-              <div class="tab-pane show active">
-                  <br />
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>PatientId</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{patientIdNumber}</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Name</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>
-                              {FirstName} {LastName}
-                          </p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Email</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Email}</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>YoB - Age</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>
-                              {YoB} - {Age}
-                          </p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Phone</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Phone}</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Address</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Address}</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </Tab>
+                        {/* -------------TABS-------------- */}
+                        <div className="col-md-8">
+                            <Tabs
+                                defaultActiveKey="profile"
+                                id="fill-tab-example"
+                                className="mb-3"
+                            >
+                                <Tab
+                                    eventKey="home"
+                                    title="Home"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
+                                >
+                                    <div class="row">
+                                        <div class="tab-pane show active">
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>PatientId</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{patientIdNumber}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Name</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>
+                                                        {FirstName} {LastName}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Email}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>YoB - Age</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>
+                                                        {YoB} - {Age}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Phone</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Phone}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Address</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Address}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Tab>
 
-      <Tab
-          eventKey="profile"
-          title="Profile"
-          tabClassName="Tabs"
-          className="content-tabs profile-tab container"
-      >
-          <div class="row">
-              <div class="tab-pane show active">
-                  <br />
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Height</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Height} / Inch</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Weight</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Weight} / Pound</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Note</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>{Note}</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Prescription</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>Prescription</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>comment</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>comment</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <label>Report</label>
-                      </div>
-                      <div class="col-md-9">
-                          <p>Report</p>
-                      </div>
-                  </div>
+                                <Tab
+                                    eventKey="profile"
+                                    title="Profile"
+                                    tabClassName="Tabs"
+                                    className="content-tabs profile-tab container"
+                                >
+                                    <div class="row">
+                                        <div class="tab-pane show active">
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Height</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Height} / Inch</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Weight</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Weight} / Pound</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Note</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{Note}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Prescription</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Prescription</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>comment</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>comment</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Report</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Report</p>
+                                                </div>
+                                            </div>
 
-                  {/*<div class="row">
+                                            {/*<div class="row">
       <div class="col-md-12">
           <p>
           Prescription
           </p>
       </div>
   </div> */}
-              </div>
-          </div>
-      </Tab>
-  </Tabs>
-</div>
-{/* -------------TABS-------------- */}
+                                        </div>
+                                    </div>
+                                </Tab>
+                            </Tabs>
+                        </div>
+                        {/* -------------TABS-------------- */}
                     </div>
                 </form>
             </div>

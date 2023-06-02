@@ -27,6 +27,9 @@ import { PatientDetails } from "../patients/PatientDetails";
 import { PatientProfileDetails } from "../patients/PatientProfileDetails";
 import { PatientEdit } from "../patients/PatientEdit";
 import { PrescriptionList } from "../prescription/PrescriptionList";
+//import { PrescriptionEdit } from "../prescription/PrescriptionEdit";
+import { CommentList } from "../comments/CommentList";
+
 
 export const ApplicationViews = () => {
     var appUser = localStorage.getItem("app_user");

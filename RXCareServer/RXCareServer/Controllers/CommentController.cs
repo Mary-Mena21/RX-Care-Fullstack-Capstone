@@ -22,7 +22,11 @@ namespace RXCareServer.Controllers
         [HttpGet("{PatientId}")]
         public IActionResult GetByPatientId(int PatientId)
         {
-            return Ok(_commentRepository.GetPatientComment(PatientId));
+            var Comments = _commentRepository.GetPatientComment(PatientId);
+            if (Comments == null) { return NotFound(); }
+
+            //return Ok(_commentRepository.GetPatientComment(PatientId));
+            return Ok(Comments);
         }
 
         //-----------------------------------------------------------
@@ -30,7 +34,9 @@ namespace RXCareServer.Controllers
         [HttpGet("commentOnMedicine/{PatientId}")]
         public IActionResult GeCommentByPatientId(int PatientId)
         {
-            return Ok(_commentRepository.GetPatientCommentOnMedicine(PatientId));
+            var Comments = _commentRepository.GetPatientCommentOnMedicine(PatientId);
+            if (Comments == null) { return NotFound(); }
+            return Ok(Comments);
         }
 
         //-----------------------------------------------------------

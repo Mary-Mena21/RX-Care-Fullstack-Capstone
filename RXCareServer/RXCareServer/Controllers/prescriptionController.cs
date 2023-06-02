@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RXCareServer.Models;
 using RXCareServer.Repositories;
+using System.Xml.Linq;
 
 namespace RXCareServer.Controllers
 {
@@ -20,7 +21,22 @@ namespace RXCareServer.Controllers
         [HttpGet("Patient/{Id}")]
         public IActionResult ByPatientId(int Id)
         {
-            return Ok(_prescriptionRepository.GetPrescriptionByPatientId(Id));
+           var Prescriptions= _prescriptionRepository.GetPrescriptionByPatientId(Id);
+
+            if (Prescriptions == null) { return NotFound(); }
+            return Ok(Prescriptions);
+        }
+
+        //-----------------------------------------------------------
+
+        // GET: api/<prescriptionController>
+        [HttpGet("GetPrescriptionOnlyByPatientId/{Id}")]
+        public IActionResult GetPrescriptionOnlyByPatientId(int Id)
+        {
+            var Prescriptions = _prescriptionRepository.GetPrescriptionOnlyByPatientId(Id);
+
+            if (Prescriptions == null) { return NotFound(); }
+            return Ok(Prescriptions);
         }
 
         //-----------------------------------------------------------
@@ -29,7 +45,9 @@ namespace RXCareServer.Controllers
         [HttpGet("Patient2/{Id}")]
         public IActionResult ByPatientId2(int Id)
         {
-            return Ok(_prescriptionRepository.GetPrescriptionByPatientId2(Id));
+            var Prescriptions =_prescriptionRepository.GetPrescriptionByPatientId2(Id);
+            if (Prescriptions == null) { return NotFound(); }
+            return Ok(Prescriptions);
         }
 
         //-----------------------------------------------------------
@@ -38,7 +56,9 @@ namespace RXCareServer.Controllers
         [HttpGet("Prescription/{Id}")]
         public IActionResult GetByPrescriptionId(int Id)
         {
-            return Ok(_prescriptionRepository.GetPrescriptionByPrescriptionId(Id));
+            var Prescriptions =_prescriptionRepository.GetPrescriptionByPatientId(Id);
+            if (Prescriptions == null) { return NotFound(); }
+            return Ok(Prescriptions);
 
         }
             //-----------------------------------------------------------

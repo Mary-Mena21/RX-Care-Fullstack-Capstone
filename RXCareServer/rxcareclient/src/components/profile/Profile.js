@@ -135,8 +135,8 @@ export const Profile = () => {
             <div className="">
                 {/* -------------------------- */}
                 <PatientProfile
-                    //patient_Id={user2.id}
-                    patientIdUser={user2.id}
+                    patient_Id={user2.id}
+                    //patientIdUser={user2.id}
                     image={user1.img}
                     firstName={user1.firstName}
                     lastName={user1.lastName}
