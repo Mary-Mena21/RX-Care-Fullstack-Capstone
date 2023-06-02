@@ -10,36 +10,36 @@ import Col from "react-bootstrap/Col";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 export const AddPrescription = () => {
-    const [Prescription, setAddPrescription] = useState("");
+    // let X = Number({patient_Id});
+    // console.log(X);
+    console.log(patient_Id);
     const navigate = useNavigate();
     const { patient_Id } = useParams();
-    console.log(patient_Id);
+    const [Prescription, setAddPrescription] = useState({
+        //id: 0,
+        medicineId: 0,
+        dosage: "",
+        quantity: 0,
+        patientId: 53,
+    });
 
-    /* -------------Add Prescription----------------- */
-    const fetchData = async () => {
-        console.log(patient_Id);
-        try {
-            const response = await fetch(
-                `https://localhost:7183/AddPrescription`,
-                {
-                    body: JSON.stringify({
-                        id: 0,
-                        medicineId: 0,
-                        dosage: "string",
-                        quantity: 0,
-                        patientId: { patient_Id },
-                    }),
-                    credentials: "include",
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                }
-            );
-            navigate(`../patientsList/${patient_Id}`);
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
+    const fetchData = async (SendToAPI) => {
+        const fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(SendToAPI),
+        };
+        console.log(fetchOptions);
+        const response = await fetch(
+            `https://localhost:7183/AddPrescription`,
+            fetchOptions
+        );
+
+        navigate(`../patientsList/${patient_Id}`);
+        const responseJson = await response.json();
+        return responseJson;
     };
 
     const submissionHandler = (event) => {
@@ -117,14 +117,18 @@ export const AddPrescription = () => {
                                                             Prescription.medicineId
                                                         }
                                                         className="form-select"
-                                                        onChange={(evt) =>
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            copy.medicineId = parseInt(
+                                                                evt.target.value
+                                                            );
+
                                                             setAddPrescription(
-                                                                parseInt(
-                                                                    evt.target
-                                                                        .value
-                                                                )
-                                                            )
-                                                        }
+                                                                copy
+                                                            );
+                                                        }}
                                                     >
                                                         <option value="">
                                                             Open this select
@@ -161,11 +165,16 @@ export const AddPrescription = () => {
                                                         value={
                                                             Prescription.dosage
                                                         }
-                                                        onChange={(evt) =>
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            copy.dosage =
+                                                                evt.target.value;
                                                             setAddPrescription(
-                                                                evt.target.value
-                                                            )
-                                                        }
+                                                                copy
+                                                            );
+                                                        }}
                                                     />
                                                     <label htmlFor="Dosage">
                                                         Dosage
@@ -182,11 +191,16 @@ export const AddPrescription = () => {
                                                         value={
                                                             Prescription.quantity
                                                         }
-                                                        onChange={(evt) =>
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            copy.quantity =
+                                                                evt.target.value;
                                                             setAddPrescription(
-                                                                evt.target.value
-                                                            )
-                                                        }
+                                                                copy
+                                                            );
+                                                        }}
                                                     />
                                                     <label htmlFor="Quantity">
                                                         Quantity
@@ -210,3 +224,33 @@ export const AddPrescription = () => {
         </>
     );
 };
+    //console.log(patient_Id);
+    /* -------------Add Prescription----------------- */
+    // const fetchData = async () => {
+    //     console.log(patient_Id);
+    //     let X = parseInt(patient_Id, 10);
+    //     console.log(X);
+    //     try {
+    //         const response = await fetch(
+    //             `https://localhost:7183/AddPrescription`,
+    //             {
+    //                 body: JSON.stringify({
+    //                     id: 0,
+    //                     medicineId: 0,
+    //                     dosage: "",
+    //                     quantity: 0,
+    //                     patientId: X,
+    //                 }),
+    //                 credentials: "include",
+    //                 method: "POST",
+    //                 headers: { "Content-Type": "application/json" },
+    //             }
+    //         );
+    //         navigate(`../patientsList/${patient_Id}`);
+    //         const data = await response.json();
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    //     //fetchData();
+    // };
