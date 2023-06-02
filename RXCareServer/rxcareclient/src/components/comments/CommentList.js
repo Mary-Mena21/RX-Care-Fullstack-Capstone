@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
 
-
 export const CommentList = ({ patient_Id }) => {
     const [Comment, setComment] = useState([]);
     const [Medicine, setMedicine] = useState([]);
@@ -13,8 +12,8 @@ export const CommentList = ({ patient_Id }) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                `https://localhost:7183/api/Comment/${patient_Id}`
-        //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
+                //`https://localhost:7183/api/Comment/${patient_Id}`
+                `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
             );
             const CommentData = await response.json();
             setComment(CommentData);
@@ -22,20 +21,7 @@ export const CommentList = ({ patient_Id }) => {
         };
         fetchData();
     }, []);
-
-    /* -------------Display Medicine----------------- */
-    // useEffect(() => {
-    //     const fetchMedicineData = async () => {
-    //         const response = await fetch(
-    //             `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
-    //         );
-    //         const CommentData = await response.json();
-    //         setMedicine(CommentData.medicine);
-    //         console.log(CommentData.medicine);
-    //     };
-    //     fetchMedicineData();
-    // }, []);
-//---------------------------------------------------------------
+    //-----------------------------------------------------
 
     return (
         <>
@@ -43,13 +29,19 @@ export const CommentList = ({ patient_Id }) => {
                 <Accordion.Header>COMMENTS</Accordion.Header>
                 <Accordion.Body>
                     {Comment.map((comment) => {
-                        return <>
-                            <p>P:{comment.pComment }</p>
-                            <p>D:{comment.dComment }</p>
-                            </>;
-                        })}
-                        {/* DEF   { Comment.pComment} */}{" "}
-                       {/*  <p>D:{Medicine.medicineName}</p>  */}
+                        console.log(comment);
+                        return (
+                            <>
+                                <h5>
+                                    medicineName:{comment.medicine.medicineName}
+                                </h5>
+                                <p>P:{comment.pComment}</p>
+                                <p>D:{comment.dComment}</p>
+                            </>
+                        );
+                    })}
+                    {/* DEF   { Comment.pComment} */}{" "}
+                    {/*  <p>D:{Medicine.medicineName}</p>  */}
                 </Accordion.Body>
             </Accordion.Item>
         </>

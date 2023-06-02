@@ -32,6 +32,7 @@ import { CommentList } from "../comments/CommentList";
 import { AddPrescriptionForm } from "../prescription/Modal";
 import { AddPrescription } from "../prescription/AddPrescription";
 import { AddComment } from "../comments/AddComment";
+import { AddCommentFromDoctor } from "../comments/AddCommentFromDoctor";
 
 
 export const ApplicationViews = () => {
@@ -73,6 +74,11 @@ export const ApplicationViews = () => {
                     <Route
                         path="patientsList/:patient_Id/addComment/add/:patient_Id"
                         element={<AddComment/>}
+                    />
+
+                    <Route
+                        path="patientsList/:patient_Id/addCommentFromDoctor/add/:patient_Id"
+                        element={<AddCommentFromDoctor/>}
                     />
 
                     //AddPrescriptionForm

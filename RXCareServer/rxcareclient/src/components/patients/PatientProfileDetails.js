@@ -132,6 +132,22 @@ export const PatientProfileDetails = ({
                                     }
                                 />
                                 <br />
+
+                                <div>
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn"
+                                    name="btnAddMore"
+                                    value="AddCFDoctor"
+                                    onClick={() =>
+                                        navigate(
+                                            `addCommentFromDoctor/add/${patient_Id}`
+                                        )
+                                    }
+                                />
+                                <br />
+                            </div>
+
                             </div>
                         </div>
                     </div>
