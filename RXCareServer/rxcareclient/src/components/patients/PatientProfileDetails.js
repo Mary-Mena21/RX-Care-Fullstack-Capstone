@@ -88,15 +88,51 @@ export const PatientProfileDetails = ({
                             {/* ************ */}
                         </div>
                         <div class="col-md-2">
-                            <input
-                                type="submit"
-                                class="profile-edit-btn"
-                                name="btnAddMore"
-                                value="Edit Profile"
-                                onClick={() =>
-                                    navigate(`patientsList/edit/${patient_Id}`)
-                                }
-                            />
+                            <br />
+
+                            <div>
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn"
+                                    name="btnAddMore"
+                                    value="Edit Profile"
+                                    onClick={() =>
+                                        navigate(
+                                            `patientsList/edit/${patient_Id}`
+                                        )
+                                    }
+                                />
+                            </div>
+                            <br />
+                            <div>
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn"
+                                    name="btnAddMore"
+                                    value="Add Prescription"
+                                    onClick={() =>
+                                        navigate(
+                                            `addPrescription/add/${patient_Id}`
+                                        )
+                                    }
+                                />
+                            </div>
+                            <br />
+
+                            <div>
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn"
+                                    name="btnAddMore"
+                                    value="Add Comment"
+                                    onClick={() =>
+                                        navigate(
+                                            `addComment/add/${patient_Id}`
+                                        )
+                                    }
+                                />
+                                <br />
+                            </div>
                         </div>
                     </div>
 

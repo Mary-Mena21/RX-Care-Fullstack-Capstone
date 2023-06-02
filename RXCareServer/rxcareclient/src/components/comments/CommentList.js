@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
-//import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
-import { Button } from "bootstrap";
+
 
 export const CommentList = ({ patient_Id }) => {
     const [Comment, setComment] = useState([]);

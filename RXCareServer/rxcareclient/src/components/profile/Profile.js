@@ -22,15 +22,14 @@ export const Profile = () => {
     const [doctorInfo, setDoctorInfo] = useState([]);
     const [doctor1, setDoctor1] = useState([]);
     const [doctor2, setDoctor2] = useState([]);
-    //---------------------------------------------
+    //----------------------------------------------
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.id);
     const Id = appUserObject.id;
     console.log(Id);
-    //patient_Id= Id
-    //-----------------------------------------------------
-    let PatientId
+    //----------------------------------------------
+    let PatientId;
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
@@ -47,7 +46,7 @@ export const Profile = () => {
                 singlePatient.firstName.slice(0, 3);
             setUserId(patientIdNumber);
             console.log(patientIdNumber);
-            //-------------------------------------
+            /* -------------patient---------------*/
             const Patient = singlePatient.patient;
             PatientId = singlePatient.patient.id;
             setUser2(Patient);
@@ -64,39 +63,16 @@ export const Profile = () => {
             var age = currentYear - YoB;
             setUser3(age);
             console.log(age);
-            //---------------Prescriptions----------------------
+            /* ---------------Prescriptions---------------*/
             const Prescriptions = singlePatient.patient.prescriptions;
             setUser5(Prescriptions);
             console.log(Prescriptions);
-            //---------------Comments----------------------
+            /* ---------------Comments--------------------*/
             const Comments = singlePatient.patient.comments;
             setUser6(Comments);
-            console.log(Comments); // TODO: How can I deal with null comments (values)?
-            //---------------Medicine----------------------.med.Medicine
-            //  const Medicine = singlePatient.patient.prescriptions.medicine;
-            // setUser7(Medicine);
-            // console.log(Medicine);
-               
+            console.log(Comments);
+            // TODO: How can I deal with null comments (values)?
         };
-
-
-        //---------------Prescriptions--2--------------------
-        // const fetchPrescriptionsData = async () => {
-        //     console.log(PatientId);
-        //     const response = await fetch(
-        //         `https://localhost:7183/api/prescription/Patient/${PatientId}`
-        //     );
-        //     const Data = await response.json();
-        //     setPrescription(Data);
-        //     console.log(Data);
-        // };
-
-
-
-
-
-
-
         //-----------------DoctorInfo--------------------
         const fetchDoctorData = async () => {
             const response = await fetch(
@@ -112,24 +88,11 @@ export const Profile = () => {
             console.log(Doctor);
             console.log(Clinic);
         };
-        //https://localhost:7183/api/Patient/GetDoctorInfoByPatientId/10
 
         fetchData();
         fetchDoctorData();
-        //fetchPrescriptionsData();
     }, []);
 
-    //-----------------UserInfo----------------------
-    // useEffect(() => {
-    //     const fetchData2 = async () => {
-    //         const response = await fetch(
-    //             `https://localhost:7183/api/User/GetProfileById/${Id}`
-    //         );
-    //         const singlePatientInfo = await response.json();
-    //         setUserInfo(singlePatientInfo);
-    //     };
-    //     fetchData2();
-    // }, []);
     return (
         <>
             <div className="">

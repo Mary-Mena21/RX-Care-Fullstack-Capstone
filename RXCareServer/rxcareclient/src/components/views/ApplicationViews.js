@@ -29,6 +29,9 @@ import { PatientEdit } from "../patients/PatientEdit";
 import { PrescriptionList } from "../prescription/PrescriptionList";
 //import { PrescriptionEdit } from "../prescription/PrescriptionEdit";
 import { CommentList } from "../comments/CommentList";
+import { AddPrescriptionForm } from "../prescription/Modal";
+import { AddPrescription } from "../prescription/AddPrescription";
+import { AddComment } from "../comments/AddComment";
 
 
 export const ApplicationViews = () => {
@@ -61,7 +64,18 @@ export const ApplicationViews = () => {
                         path="patientsList/:patient_Id/patientsList/edit/:patient_Id"
                         element={<PatientEdit />}
                     />
-                    {/* <Route path="patientDetails" element={<PatientDetails />} />  */}
+
+                    <Route
+                        path="patientsList/:patient_Id/addPrescription/add/:patient_Id"
+                        element={<AddPrescription />}
+                    />
+
+                    <Route
+                        path="patientsList/:patient_Id/addComment/add/:patient_Id"
+                        element={<AddComment/>}
+                    />
+
+                    //AddPrescriptionForm
                     <Route path="patientsList" element={<PatientsList />} />
                     {/* <Route path="prescriptions" element={<Prescriptions />} /> */}
                     {/*                     <Route path="profile#health" element={<PatientsList />} /> */}
@@ -71,3 +85,4 @@ export const ApplicationViews = () => {
         </React.StrictMode>
     );
 };
+//PrescriptionForm

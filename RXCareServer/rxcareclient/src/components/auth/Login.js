@@ -29,12 +29,13 @@ export const Login = () => {
 
             const loginResponse = await response.json();
             console.log(loginResponse);
-           // if (loginResponse.user) {
+            // if (loginResponse.user) {
             if (response.ok) {
                 const userData = { ...loginResponse.user };
                 console.log(userData);
 
-                userData.isAdmin = userData.userType === "Admin" ? true : false;
+                //userData.isAdmin = userData.userType === "Admin" ? true : false;
+                userData.isAdmin = true;
                 localStorage.setItem("app_user", JSON.stringify(userData));
                 navigate("/home");
             } else {
@@ -54,7 +55,7 @@ export const Login = () => {
     return (
         <>
             {/* <div className="Container"> */}
-{/*                 <div className="ImageContainer">
+            {/*                 <div className="ImageContainer">
                     <div className="shadow"></div>
                     <h1 className="LoginHeader">RX-Care</h1>
                     <img className="LoginImage" src={LoginBackGroundPhoto} />
@@ -63,7 +64,7 @@ export const Login = () => {
                         <br /> --
                     </div>
                 </div> */}
-                {/*       <div className="InputContainer">
+            {/*       <div className="InputContainer">
         <div className="emailInput">
           <h3>Email</h3>
           <input
@@ -83,27 +84,29 @@ export const Login = () => {
         </div>
         </div> */}
 
-                <div class="container"> 
-              {/*   <div class="InputContainer"> */}
-                    <div class="login-form">
-                        <div class="main-div">
-                            <div class="panel">
-                                <h2>Login for RX-Care</h2>
-                                <p>Please enter your email</p>
+            <div class="container">
+                {/*   <div class="InputContainer"> */}
+                <div class="login-form">
+                    <div class="main-div">
+                        <div class="panel">
+                            <h2>Login for RX-Care</h2>
+                            <p>Please enter your email</p>
+                        </div>
+                        <form id="Login">
+                            <div class="form-group">
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="inputEmail"
+                                    placeholder="Email Address"
+                                    value={Email}
+                                    onChange={(event) =>
+                                        setEmail(event.target.value)
+                                    }
+                                />
                             </div>
-                            <form id="Login">
-                                <div class="form-group">
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="inputEmail"
-                      placeholder="Email Address"
-                      value={Email}
-                      onChange={(event) => setEmail(event.target.value)}
-                                    />
-                                </div>
 
-                                {/*                                 <div class="form-group">
+                            {/*                                 <div class="form-group">
                                     <input
                                         type="password"
                                         class="form-control"
@@ -111,23 +114,23 @@ export const Login = () => {
                                         placeholder="Password"
                                     />
                                 </div> */}
-                                <div class="forgot">
-                                    <Link to="/register">
-                                        Register NEW Patient?
-                                    </Link>
-                                </div>
-                                <button
-                                    type="submit"
-                                    class="btn btn-primary"
-                                    onClick={(e) => submissionHandler(e)}
-                                >
-                                    Login
-                                </button>
-                            </form>
-                        </div>
+                            <div class="forgot">
+                                <Link to="/register">
+                                    Register NEW Patient?
+                                </Link>
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                onClick={(e) => submissionHandler(e)}
+                            >
+                                Login
+                            </button>
+                        </form>
                     </div>
+                </div>
                 {/* </div> */}
-             </div> 
+            </div>
         </>
     );
 };
