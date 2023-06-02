@@ -37,76 +37,7 @@ export const CommentList = ({ patient_Id }) => {
     //     };
     //     fetchMedicineData();
     // }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await fetch(
-    //             //`https://localhost:7183/api/Comment/commentOnMedicine/7`
-    //             `https://localhost:7183/api/Comment/{patient_Id}`
-    //         );
-
-    //         // if (!response.ok) {
-    //         //     reject(res);
-    //         // } else {
-    //             const CommentData = await response.json();
-    //             setComment(CommentData);
-    //             console.log(CommentData);
-    //         // }
-    //     };
-    //     fetchData();
-    // }, []);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch(
-    //             `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-    //         );
-
-    //         const CommentData = await res.json();
-    //         setComment(CommentData);
-    //         console.log(CommentData);
-    //         //if (!res.ok) return reject(res);
-
-    //         //const contentType = res.headers.get(String);
-
-    //         // if (contentType && contentType.indexOf() !== -1) {
-    //         //     res.json().then((json) => {
-    //         //         resolve(json);
-    //         //     });
-    //         // }
-    //     };
-    //     fetchData();
-    // }, []);
-
-    // const [Prescription, setPrescription] = useState([]);
-
-    /* -------------Display PrescriptionList----------------- */
-    //     useEffect(() => {
-    //         const fetchData = async () => {
-    //             const response = await fetch(
-    //                 `https://localhost:7183/api/prescription/Patient/${patient_Id}`
-    //             );
-    //             const PrescriptionListArray = await response.json();
-    //             setPrescription(PrescriptionListArray);
-    //             console.log(PrescriptionListArray);
-    //         };
-    //         fetchData();
-    //     }, []);
+//---------------------------------------------------------------
 
     return (
         <>

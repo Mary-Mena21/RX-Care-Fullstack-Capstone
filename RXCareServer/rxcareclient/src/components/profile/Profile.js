@@ -69,7 +69,7 @@ export const Profile = () => {
             setUser5(Prescriptions);
             console.log(Prescriptions);
             //---------------Comments----------------------
-            const Comments = singlePatient.patient.comment;
+            const Comments = singlePatient.patient.comments;
             setUser6(Comments);
             console.log(Comments); // TODO: How can I deal with null comments (values)?
             //---------------Medicine----------------------.med.Medicine
@@ -158,7 +158,7 @@ export const Profile = () => {
                     clinicType={doctor2.type}
                     clinicLocation={doctor2.location}
                     prescriptions={user5}
-                    comment={user6}
+                    comments={user6}
                     patientIdNumber={userId}
                     medicine={user7}
                 />
