@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
+import { Comment } from "./Comment";
 
 export const CommentList = ({ patient_Id }) => {
-    const [Comment, setComment] = useState([]);
+    const [comment, setComment] = useState([]);
     const [Medicine, setMedicine] = useState([]);
     console.log(patient_Id);
     /* -------------Display CommentList----------------- */
@@ -22,28 +23,52 @@ export const CommentList = ({ patient_Id }) => {
         fetchData();
     }, []);
     //-----------------------------------------------------
-
-    return (
-        <>
+//TODO: DISPLAY CommentList----------------
+    return(<>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>COMMENTS</Accordion.Header>
-                <Accordion.Body>
-                    {Comment.map((comment) => {
-                        console.log(comment);
+
+                    {comment.map((com) => {
+                        console.log(com);
                         return (
                             <>
+                            <Accordion.Body>
                                 <h5>
-                                    medicineName:{comment.medicine.medicineName}
+                                    medicineName:{com.medicine.medicineName}
                                 </h5>
-                                <p>P:{comment.pComment}</p>
-                                <p>D:{comment.dComment}</p>
+                                <p>P:{com.pComment}</p>
+                                <p>D:{com.dComment}</p>
+                                </Accordion.Body>
                             </>
                         );
                     })}
-                    {/* DEF   { Comment.pComment} */}{" "}
-                    {/*  <p>D:{Medicine.medicineName}</p>  */}
-                </Accordion.Body>
+  
             </Accordion.Item>
-        </>
-    );
+        </>)
+
 };
+
+
+
+
+/*     (
+        <>
+{            <section key={`books`} className="books">
+                {comment.map((com) => {
+                    return (
+                        <>
+                            <Comment
+                                patient_Id={patient_Id}
+                                medicineId={com?.medicineId}
+                                pComment={com?.pComment}
+                                pCommentDate={com?.pCommentDate}
+                                dComment={com?.dComment}
+                                dCommentDate={com?.dCommentDate}
+                                medicineName={com?.medicine?.medicineName}
+                            />
+                        </>
+                    );
+                })}
+            </section>}
+        </>
+    ); */

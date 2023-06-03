@@ -1,8 +1,0 @@
-import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import "../profile/ProfilePatient.css";
-// import Accordion from "react-bootstrap/Accordion";
-
-export const Comment = () => {
-    return
-};

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const AddCommentFromDoctor = () => {
+export const AddCommentFromPatient = () => {
     console.log(patient_Id);
 
     const navigate = useNavigate();
@@ -14,9 +14,9 @@ export const AddCommentFromDoctor = () => {
     const [Comment, setAddComment] = useState({
         patientId: patient_Id,
         medicineId: 0,
-        pComment: "comment",
+        pComment: "",
         pCommentDate: new Date().toISOString(),
-        dComment: "",
+        dComment: " comment from doctor",
         dCommentDate: new Date().toISOString(),
     });
     /* --------------AddComment---------------- */
@@ -33,7 +33,8 @@ export const AddCommentFromDoctor = () => {
             `https://localhost:7183/api/Comment`,
             fetchOptions
         );
-        navigate(`../patientsList/${patient_Id}`);
+        //navigate(`../patientsList/${patient_Id}`);
+        navigate(`../profile`);
         const responseJson = await response.json();
         return responseJson;
     };
@@ -58,17 +59,17 @@ export const AddCommentFromDoctor = () => {
     }, []);
 
     /* -------------Display PrescriptionList----------------- */
-        useEffect(() => {
-            const fetchData = async () => {
-                const response = await fetch(
-                    `https://localhost:7183/api/prescription/Patient/${patient_Id}`
-                );
-                const PrescriptionListArray = await response.json();
-                setPrescription(PrescriptionListArray);
-                console.log(PrescriptionListArray);
-            };
-            fetchData();
-        }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+            );
+            const PrescriptionListArray = await response.json();
+            setPrescription(PrescriptionListArray);
+            console.log(PrescriptionListArray);
+        };
+        fetchData();
+    }, []);
     //-----------------------------------------------------
 
     return (
@@ -87,7 +88,7 @@ export const AddCommentFromDoctor = () => {
                             name=""
                             value="Back to Patient"
                             onClick={() =>
-                                navigate(`../patientsList/${patient_Id}`)
+                                navigate(`../profile`)
                             }
                         />
                         <br />
@@ -97,7 +98,7 @@ export const AddCommentFromDoctor = () => {
                         <div class="tab-content" id="myTabContent">
                             <div id="home">
                                 <h3 class="register-heading">
-                                    Add new Comment [To EDIT]
+                                    Add new Comment From Patient
                                 </h3>
                                 <div class="row register-form">
                                     <div class="col-md-12">
@@ -105,7 +106,7 @@ export const AddCommentFromDoctor = () => {
 
                                         <Form onSubmit={submissionHandler}>
                                             <div className="row g-3">
-                                                 <Form.Floating className="form-group  col-sm-8">
+                                                <Form.Floating className="form-group  col-sm-8">
                                                     <Form.Select
                                                         required
                                                         value={
@@ -146,10 +147,10 @@ export const AddCommentFromDoctor = () => {
                                                             TheraTears
                                                         </option>
                                                     </Form.Select>
-                                                </Form.Floating> 
+                                                </Form.Floating>
 
-                                               {/*  //----------------------Medicine Options----------------------------- */}
-{/*                                                  <Form.Floating className="form-group  col-sm-8">
+                                                {/*  //----------------------Medicine Options----------------------------- */}
+                                                {/*                                                  <Form.Floating className="form-group  col-sm-8">
                                                     <Form.Select
                                                         required
                                                         value={
@@ -178,36 +179,9 @@ export const AddCommentFromDoctor = () => {
                                                     })}                                                       
                                                     </Form.Select>
                                                 </Form.Floating>  */}
-
-                                                {/* //----------------------P------------------------------- */}
-{/*                                                 <Form.Floating className="form-group  col-sm-8">
-                                                <Form.Control
-                                                    required
-                                                    autoFocus
-                                                    type="text"
-                                                    name="pComment"
-                                                    placeholder="pComment"
-                                                    value={
-                                                        Comment.pComment
-                                                    }
-                                                    onChange={(evt) => {
-                                                        const copy = {
-                                                            ...Comment,
-                                                        };
-                                                        copy.pComment =
-                                                            evt.target.value;
-                                                        setAddComment(
-                                                            copy
-                                                        );
-                                                    }}
-                                                />
-                                                <label htmlFor="pComment">
-                                                Patient Comment
-                                                </label>
-                                            </Form.Floating> */}
                                                 {/* //----------------------D------------------------------- */}
 
-                                                <Form.Floating className="form-group  col-sm-8">
+{/*                                                 <Form.Floating className="form-group  col-sm-8">
                                                     <Form.Control
                                                         required
                                                         autoFocus
@@ -226,6 +200,29 @@ export const AddCommentFromDoctor = () => {
                                                     />
                                                     <label htmlFor="dComment">
                                                         Doctor Comment
+                                                    </label>
+                                                </Form.Floating> */}
+                                                {/* //--------------------------P--------------------------- */}
+
+                                                <Form.Floating className="form-group  col-sm-8">
+                                                    <Form.Control
+                                                        required
+                                                        autoFocus
+                                                        type="text"
+                                                        name="pComment"
+                                                        placeholder="pComment"
+                                                        value={Comment.pComment}
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Comment,
+                                                            };
+                                                            copy.pComment =
+                                                                evt.target.value;
+                                                            setAddComment(copy);
+                                                        }}
+                                                    />
+                                                    <label htmlFor="pComment">
+                                                        Patient Comment
                                                     </label>
                                                 </Form.Floating>
                                             </div>
