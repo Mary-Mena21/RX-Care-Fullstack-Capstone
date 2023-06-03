@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
 import { Comment } from "./Comment";
+import { Button } from "bootstrap";
 
 export const CommentList = ({ patient_Id }) => {
     const [comment, setComment] = useState([]);
@@ -23,33 +24,48 @@ export const CommentList = ({ patient_Id }) => {
         fetchData();
     }, []);
     //-----------------------------------------------------
-//TODO: DISPLAY CommentList----------------
-    return(<>
+    //TODO: DISPLAY CommentList----------------
+
+    //TODO: Why comment appears one insted of two comments
+    return (
+        <>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>COMMENTS</Accordion.Header>
-
+                
                     {comment.map((com) => {
                         console.log(com);
                         return (
                             <>
                             <Accordion.Body>
-                                <h5>
-                                    medicineName:{com.medicine.medicineName}
-                                </h5>
-                                <p>P:{com.pComment}</p>
-                                <p>D:{com.dComment}</p>
-                                </Accordion.Body>
+                                <div className="container active">
+                                    <h5>
+                                        medicineName:{com.medicine.medicineName}
+                                        XXX
+                                    </h5>
+                                    <p>P:{com.pComment}XXX</p>
+                                    <p>D:{com.dComment}</p>
+
+                                    <input
+                                    type="submit"
+                                    class="profile-edit-btn nav-item"
+                                    name="btnAddMore"
+                                    value="ADD-REPLY"
+                                    onClick={() =>
+                                        navigate(
+                                            `AddCommentFromPatient/${patient_Id}`
+                                        )
+                                    } />
+                                    
+                                    </div>
+                                    </Accordion.Body>
                             </>
                         );
                     })}
-  
+                
             </Accordion.Item>
-        </>)
-
+        </>
+    );
 };
-
-
-
 
 /*     (
         <>

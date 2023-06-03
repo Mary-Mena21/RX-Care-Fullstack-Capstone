@@ -90,8 +90,8 @@ namespace RXCareServer.Repositories
                     var Prescriptions = new List<PrescriptionInfo>();
                     while (reader.Read())
                     {
-                        if (prescription == null)
-                        {
+                        //if (prescription == null)
+                        //{
                             prescription = new PrescriptionInfo()
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
@@ -109,7 +109,7 @@ namespace RXCareServer.Repositories
                                     DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
                                 }
                             };
-                        };
+                       // };
                         Prescriptions.Add(prescription);
                     }
                     conn.Close();
