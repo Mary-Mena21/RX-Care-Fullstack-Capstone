@@ -41,8 +41,8 @@ export const PatientProfile = ({
     console.log(patient_Id);
     console.log(comments);
     console.log(prescriptions);
-    let commentsX = [...new Set(comments)]
-    console.log(commentsX);
+    //let commentsX = [...new Set(comments)]
+    //console.log(commentsX);
     //console.log(comments);
     // const [Prescriptions, setPrescriptions] = useState([]);
     const [CommentOnly, setCommentOnly] = useState([]);
@@ -156,10 +156,10 @@ export const PatientProfile = ({
                                             <Accordion.Header>
                                                 PRESCRIPTION
                                             </Accordion.Header>
-                                            <Accordion.Body>
-                                                {prescriptions.map((pres) => {
-                                                    return (
-                                                        <>
+                                            {prescriptions.map((pres) => {
+                                                return (
+                                                    <>
+                                                    <Accordion.Body>
                                                             <div class="content-tabs profile-tab">
                                                                 <div class="row">
                                                                     <div class="tab-pane show active2">
@@ -336,40 +336,24 @@ export const PatientProfile = ({
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </Accordion.Body>
                                                         </>
                                                     );
                                                 })}
                                                 {/* <p>{Prescription. dosage}</p> */}
-                                            </Accordion.Body>
                                         </Accordion.Item>
+{/* --------------------------------comment--------------------------------------------- */}
 
                                         <Accordion.Item eventKey="1">
                                             <Accordion.Header>
                                                 COMMENTS
                                             </Accordion.Header>
-                                            <Accordion.Body>
-                                                {/* Some people have comment, but others haven't. */}
-                                                {/*                                                {comment }?
-                                                
+                                            
+                                            {comments.map((com) => {
+                                                console.log(com);
+                                                return (
                                                     <>
-                                                        <p>
-                                                            P:{" "}
-                                                            {comment.pComment}
-                                                        </p>
-                                                        <p>
-                                                            D:{" "}
-                                                            {comment.dComment}
-                                                        </p>
-                                                    </>
-                                                
-                                                :{""} */}
-                                                {/* <h5>{Prescriptions.medicine.medicineName}</h5>  */}
-                                                {/* <p>P: {comment.pComment}</p>
-                                                <p>D: {comment.dComment}</p> */}
-                                                {/*  <div> */}
-                                                {comments.map((com) => {
-                                                    return (
-                                                        <>
+                                                    <Accordion.Body>
                                                             <fieldset className="active">
                                                                 <h5>
                                                                     {
@@ -406,15 +390,15 @@ export const PatientProfile = ({
                                                                     }
                                                                 </p>
                                                             </fieldset>
+                                                            </Accordion.Body>
                                                         </>
                                                     );
                                                 })}
                                                 {/*                                                 DEF   { Comment.pComment} 
                                                  <p>D:{Medicine.medicineName}</p>   */}
                                                 {/* </div> */}
-                                            </Accordion.Body>
                                         </Accordion.Item>
-
+{/* --------------------------------comment--------------------------------------------- */}
                                         <Accordion.Item eventKey="2">
                                             <Accordion.Header>
                                                 REPORT

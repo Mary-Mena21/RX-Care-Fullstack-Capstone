@@ -87,8 +87,8 @@ namespace RXCareServer.Repositories
                     var comments = new List<CommentInfo>();
                     while (reader.Read())
                     {
-                        if (comment == null)
-                        {
+                        //if (comment == null)
+                        //{
                             comment = new CommentInfo
                             {
                                 Id = DbUtils.GetInt(reader, "ComId"),
@@ -110,7 +110,7 @@ namespace RXCareServer.Repositories
                                 }
                             };
                             comments.Add(comment);
-                        }
+                        //}
                     }
                     conn.Close();
                     return comments;
