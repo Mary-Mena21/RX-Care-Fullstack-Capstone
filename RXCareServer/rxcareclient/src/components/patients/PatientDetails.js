@@ -61,10 +61,9 @@ export const PatientDetails = () => {
         var age = currentYear - YoB;
         setUser3(age)
         console.log(age);
-        // //-------------------------------------
-        // //const Prescriptions = singlePatient.patient.prescriptions;
-        // //setUser5(Prescriptions);
-        // //console.log(Prescriptions);
+        //--------------Comments-----------------------
+        var comments = Patient.comments
+        
     };
 
     //-----------------DoctorInfo--------------------

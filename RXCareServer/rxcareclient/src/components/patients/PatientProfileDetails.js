@@ -7,7 +7,8 @@ import Tabs from "react-bootstrap/Tabs";
 import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
 import { CommentList } from "../comments/CommentList";
-import { Comment } from "../comments/Comment";
+import { Comment, TESTComment } from "../comments/TESTComment";
+import { TESTCommentList } from "../comments/TESTCommentList";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -84,10 +85,11 @@ export const PatientProfileDetails = ({
                             {/* ******Accordion****** */}
                             <Accordion>
                                 <PrescriptionList patient_Id={patient_Id} />
-                                 <CommentList patient_Id={patient_Id} /> 
+                               {/*  <CommentList patient_Id={patient_Id} /> */}
                                 {/* <Comment patient_Id={patient_Id} /> */}
-                            </Accordion>
-                            {/* ************ */}
+                                <TESTCommentList patient_Id={patient_Id}/>
+                                </Accordion>
+                                {/* ************ */}
                         </div>
                         <div class="col-md-2">
                             <br />

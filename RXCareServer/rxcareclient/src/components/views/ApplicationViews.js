@@ -34,6 +34,7 @@ import { AddPrescription } from "../prescription/AddPrescription";
 import { AddComment } from "../comments/AddComment";
 import { AddCommentFromDoctor } from "../comments/AddCommentFromDoctor";
 import { AddCommentFromPatient } from "../comments/AddCommentFromPatient";
+import { UpdateComment } from "../comments/UpdateComment";
 
 
 export const ApplicationViews = () => {
@@ -86,6 +87,17 @@ export const ApplicationViews = () => {
                         path="patientsList/:patient_Id/addCommentFromDoctor/addComment/:patient_Id"
                         element={<AddCommentFromDoctor />}
                     />
+                    
+{/*                     <Route
+                    path="UpdateComment/:patient_Id"
+                    element={<UpdateComment />}
+                /> */}
+                    
+                    
+                <Route
+                path="UpdateComment/edit/:Id"
+                element={<UpdateComment />}
+            />
                     
 {/*                     <Route
                         path="patientsList/:patient_Id/addCommentFromDoctor/add/:patient_Id"
