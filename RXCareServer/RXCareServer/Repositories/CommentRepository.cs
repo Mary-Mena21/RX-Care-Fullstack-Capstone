@@ -79,7 +79,7 @@ namespace RXCareServer.Repositories
                                               ,[Medicine].SideEffects
                                               ,[Medicine].DrugInfo
                                           FROM [RXCareDb].[dbo].[Comment]
-                                          LEFT JOIN [Medicine] ON [Comment].MedicineId = [Medicine].Id 
+                                         LEFT JOIN [Medicine] ON [Comment].MedicineId = [Medicine].Id 
                                           WHERE [Comment].PatientId = @PatientId";
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();

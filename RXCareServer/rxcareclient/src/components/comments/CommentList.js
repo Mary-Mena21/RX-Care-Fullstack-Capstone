@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
-
+import { Comment } from "./Comment";
 
 export const CommentList = ({ patient_Id }) => {
-    const [Comment, setComment] = useState([]);
+    const [comment, setComment] = useState([]);
     const [Medicine, setMedicine] = useState([]);
     console.log(patient_Id);
     /* -------------Display CommentList----------------- */
@@ -13,9 +13,8 @@ export const CommentList = ({ patient_Id }) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-                `https://localhost:7183/api/Comment/${patient_Id}`
-                //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
+                //`https://localhost:7183/api/Comment/${patient_Id}`
+                `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
             );
             const CommentData = await response.json();
             setComment(CommentData);
@@ -23,36 +22,53 @@ export const CommentList = ({ patient_Id }) => {
         };
         fetchData();
     }, []);
-
-    /* -------------Display Medicine----------------- */
-    // useEffect(() => {
-    //     const fetchMedicineData = async () => {
-    //         const response = await fetch(
-    //             `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}}`
-    //         );
-    //         const CommentData = await response.json();
-    //         setMedicine(CommentData.medicine);
-    //         console.log(CommentData.medicine);
-    //     };
-    //     fetchMedicineData();
-    // }, []);
-//---------------------------------------------------------------
-
-    return (
-        <>
+    //-----------------------------------------------------
+//TODO: DISPLAY CommentList----------------
+    return(<>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>COMMENTS</Accordion.Header>
-                <Accordion.Body>
-                    {Comment.map((comment) => {
-                        return <>
-                            <p>P:{comment.pComment }</p>
-                            <p>D:{comment.dComment }</p>
-                            </>;
-                        })}
-                        {/* DEF   { Comment.pComment} */}{" "}
-                       {/*  <p>D:{Medicine.medicineName}</p>  */}
-                </Accordion.Body>
+
+                    {comment.map((com) => {
+                        console.log(com);
+                        return (
+                            <>
+                            <Accordion.Body>
+                                <h5>
+                                    medicineName:{com.medicine.medicineName}
+                                </h5>
+                                <p>P:{com.pComment}</p>
+                                <p>D:{com.dComment}</p>
+                                </Accordion.Body>
+                            </>
+                        );
+                    })}
+  
             </Accordion.Item>
-        </>
-    );
+        </>)
+
 };
+
+
+
+
+/*     (
+        <>
+{            <section key={`books`} className="books">
+                {comment.map((com) => {
+                    return (
+                        <>
+                            <Comment
+                                patient_Id={patient_Id}
+                                medicineId={com?.medicineId}
+                                pComment={com?.pComment}
+                                pCommentDate={com?.pCommentDate}
+                                dComment={com?.dComment}
+                                dCommentDate={com?.dCommentDate}
+                                medicineName={com?.medicine?.medicineName}
+                            />
+                        </>
+                    );
+                })}
+            </section>}
+        </>
+    ); */

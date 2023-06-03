@@ -7,6 +7,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
 import { CommentList } from "../comments/CommentList";
+import { Comment } from "../comments/Comment";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -83,7 +84,8 @@ export const PatientProfileDetails = ({
                             {/* ******Accordion****** */}
                             <Accordion>
                                 <PrescriptionList patient_Id={patient_Id} />
-                                <CommentList patient_Id={patient_Id} />
+                                 <CommentList patient_Id={patient_Id} /> 
+                                {/* <Comment patient_Id={patient_Id} /> */}
                             </Accordion>
                             {/* ************ */}
                         </div>
@@ -126,12 +128,25 @@ export const PatientProfileDetails = ({
                                     name="btnAddMore"
                                     value="Add Comment"
                                     onClick={() =>
-                                        navigate(
-                                            `addComment/add/${patient_Id}`
-                                        )
+                                        navigate(`addComment/add/${patient_Id}`)
                                     }
                                 />
                                 <br />
+
+                                <div>
+                                    <input
+                                        type="submit"
+                                        class="profile-edit-btn"
+                                        name="btnAddMore"
+                                        value="AddCFDoctor"
+                                        onClick={() =>
+                                            navigate(
+                                                `addCommentFromDoctor/addComment/${patient_Id}`
+                                            )
+                                        }
+                                    />
+                                    <br />
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./ProfilePatient.css";
 import { PrescriptionList } from "../prescription/PrescriptionList";
 import Accordion from "react-bootstrap/Accordion";
@@ -37,9 +37,15 @@ export const PatientProfile = ({
     comments,
     medicine,
 }) => {
+    const navigate = useNavigate();
+    console.log(patient_Id);
     console.log(comments);
+    console.log(prescriptions);
+    let commentsX = [...new Set(comments)]
+    console.log(commentsX);
+    //console.log(comments);
     // const [Prescriptions, setPrescriptions] = useState([]);
-    // const [Comment, setComment] = useState([]);
+    const [CommentOnly, setCommentOnly] = useState([]);
     // //const {patient_Id} = useParams()
     // console.log(patient_Id);
 
@@ -57,27 +63,28 @@ export const PatientProfile = ({
     //     fetchData();
     // }, []);
 
-    // /* -------------Display CommentList----------------- */
+    // /* -------------Display ----------------- */
     // //TODO: Cant read {patient_Id} in fech call ???????
     // //TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
-    // useEffect(() => {
-    //     const fetchData2 = async () => {
-    //         const response = await fetch(
-    //             //`https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-    //             `https://localhost:7183/api/Comment/${patient_Id}`
-    //         );
-    //         const CommentData = await response.json();
-    //         setComment(CommentData);
-    //         console.log(CommentData);
 
-    //         // if(!CommentData) {
-    //         //     setComment(CommentData)
-    //         // } else {
-    //         //     CommentData = {}
-    //         // }
-    //     };
-    //     fetchData2();
-    // }, []);
+        const fetchData2 = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
+                //`https://localhost:7183/api/Comment/${patient_Id}`
+            );
+            const CommentData = await response.json();
+            setCommentOnly(CommentData);
+            console.log(CommentData);
+
+            // if(!CommentData) {
+            //     setComment(CommentData)
+            // } else {
+            //     CommentData = {}
+            // }
+    };
+    useEffect(() => {
+        fetchData2();
+    }, []);
     //----------------------------------------------------------------
     //typeof products.map() !== undefined
 
@@ -112,6 +119,38 @@ export const PatientProfile = ({
                                 {/*-------------------------------------- */}
 
                                 <div>
+                                    
+                                <div class="profile-head">
+                                        <ul class="nav nav-tabs ">
+                                        <li class="nav-item">
+                                        <a class="nav-link "></a>
+                                    </li>                                   
+
+                                                
+                                                <input
+                                                type="submit"
+                                                class="profile-edit-btn nav-item"
+                                                name="btnAddMore"
+                                                value="ADD-COMMENT"
+                                                onClick={() =>
+                                                    navigate(
+                                                        `AddCommentFromPatient/${patient_Id}`
+                                                    )
+                                                }/>
+                                                                            
+                                    <li class="nav-item">
+                                        <a class="nav-link "> TEST </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link "> TEST </a>
+                                    </li>
+                                </ul>
+                            </div>
+                                    
+                                    
+                                    
+                                    
+                                    
                                     <Accordion>
                                         <Accordion.Item eventKey="0">
                                             <Accordion.Header>
@@ -148,10 +187,33 @@ export const PatientProfile = ({
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="nav-item">
-                                                                                    <a class="nav-link ">
+                                                                                    <a class="nav-link "
+                                                                                    
+                                                                                    onClick={() =>
+                                                                                        navigate(
+                                                                                            `AddCommentFromPatient/${patient_Id}`
+                                                                                        )
+                                                                                    }
+                                                                                    
+                                                                                    >
                                                                                         {" "}
                                                                                         ADD-COMMENT{" "}
-                                                                                    </a>
+                                                                                    </a> 
+
+
+
+                                                                     {/*                 <input
+                                                                                    type="submit"
+                                                                                    class="profile-edit-btn"
+                                                                                    name="btnAddMore"
+                                                                                    value="ADD-COMMENT"
+                                                                                    onClick={() =>
+                                                                                        navigate(
+                                                                                            `AddCommentFromPatient/${patient_Id}`
+                                                                                        )
+                                                                                    }
+                                                                                />  */}
+
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -305,13 +367,13 @@ export const PatientProfile = ({
                                                 {/* <p>P: {comment.pComment}</p>
                                                 <p>D: {comment.dComment}</p> */}
                                                 {/*  <div> */}
-                                                {comments.map((comment) => {
+                                                {comments.map((com) => {
                                                     return (
                                                         <>
                                                             <fieldset className="active">
                                                                 <h5>
                                                                     {
-                                                                        comment
+                                                                        com
                                                                             .medicine
                                                                             .medicineName
                                                                     }
@@ -320,27 +382,27 @@ export const PatientProfile = ({
                                                                     {" "}
                                                                     (
                                                                     {
-                                                                        comment.pCommentDate
+                                                                        com.pCommentDate
                                                                     }
                                                                     )
                                                                 </span>
                                                                 <p>
                                                                     P:
                                                                     {
-                                                                        comment.pComment
+                                                                        com.pComment
                                                                     }
                                                                 </p>
                                                                 <span>
                                                                     (
                                                                     {
-                                                                        comment.dCommentDate
+                                                                        com.dCommentDate
                                                                     }
                                                                     )
                                                                 </span>
                                                                 <p>
                                                                     D:
                                                                     {
-                                                                        comment.dComment
+                                                                        com.dComment
                                                                     }
                                                                 </p>
                                                             </fieldset>
