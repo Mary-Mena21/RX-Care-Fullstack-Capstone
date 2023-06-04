@@ -39,13 +39,31 @@ body{
 }
 .profile-edit-btn{
     border: none;
+    border: 1px solid #dbdada;
+    box-shadow: #c1c1c1 1px 1px 1px;
     border-radius: 1.5rem;
-    width: 70%;
+    width: 90%;
     padding: 2%;
     font-weight: 600;
     color: #6c757d;
     cursor: pointer;
 }
+/* .accordion-body{
+  padding: 2px;
+} */
+.profile-edit-btn-comment{
+  border: 1px solid #c1c1c1;
+  box-sizing: border-box;
+/*   box-shadow: #c1c1c1 1px 1px 1px; */
+  border-radius: 1.5rem;
+  width: 120px;
+  padding: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #164f80;
+  cursor: pointer;
+}
+
 .proile-rating{
     font-size: 12px;
     color: #818182;
@@ -55,6 +73,20 @@ body{
     color: #495057;
     font-size: 15px;
     font-weight: 600;
+}
+
+.profile-comment{
+  margin: 2px;
+  font-size: 13px;
+  color: #818182;
+  font-weight: 600;
+}
+
+.p-comment{
+margin: 2px;
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
 }
 .profile-head .nav-tabs{
     margin-bottom:5%;
@@ -69,20 +101,13 @@ body{
 }
 
 .active2{
-
-/*   content: "";
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% + 2px);
-  height: 5px; */
-  background: rgb(170, 226, 185);
   /* background: #009688 ; */
   background: #00a99e83 ;
+  background: #e6e6e6;
 }
-
+.active3{
+  background: #e6e6e6;
+}
 .profile-work{
     padding: 14%;
     margin-top: -15%;

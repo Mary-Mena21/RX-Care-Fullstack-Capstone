@@ -38,8 +38,8 @@ export const TESTCommentList = ({ patient_Id }) => {
 
                     <TESTComment
                     Id={com.id}
-                    PatientId={com.patient}
-                    patient_Id={patient_Id}
+                    PatientId={com.patientId}
+                    patient_Id={com.patientId}
                     PComment={com.pComment}
                     PCommentDate={com.pCommentDate}
                     DComment={com.dComment}

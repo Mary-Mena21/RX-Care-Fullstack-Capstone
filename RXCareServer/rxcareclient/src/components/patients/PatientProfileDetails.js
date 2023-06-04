@@ -123,7 +123,7 @@ export const PatientProfileDetails = ({
                             </div>
                             <br />
 
-                            <div>
+{/*                             <div>
                                 <input
                                     type="submit"
                                     class="profile-edit-btn"
@@ -149,7 +149,7 @@ export const PatientProfileDetails = ({
                                     />
                                     <br />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

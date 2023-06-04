@@ -34,8 +34,8 @@ namespace RXCareServer.Repositories
                     var comments = new List<Comment>();
                     while (reader.Read())
                     {
-                        if(comment == null)
-                        {
+                        //if(comment == null)
+                        //{
                             comment = new Comment
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
@@ -46,7 +46,7 @@ namespace RXCareServer.Repositories
                                 DComment = DbUtils.GetString(reader, "DComment"),
                                 DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
                             };
-                        }
+                        //}
                         comments.Add(comment);
                     }
             conn.Close();
@@ -117,7 +117,68 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+        //------------------------------Backend-GetPatientComment( )#33----------BY CommentId-------------------------
 
+        public CommentInfo GetCommentByCommentId(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT 
+                                               [Comment].Id 
+                                              ,[Comment].PatientId
+                                              ,[Comment].MedicineId
+                                              ,[Comment].PComment
+                                              ,[Comment].PCommentDate
+                                              ,[Comment].DComment
+                                              ,[Comment].DCommentDate
+                                              ,[Medicine].Id As MedId
+                                              ,[Medicine].MedicineName
+                                              ,[Medicine].ImgUrl
+                                              ,[Medicine].Form
+                                              ,[Medicine].SideEffects
+                                              ,[Medicine].DrugInfo
+                                          FROM [RXCareDb].[dbo].[Comment]
+                                         LEFT JOIN [Medicine] ON [Comment].MedicineId = [Medicine].Id 
+                                          WHERE [Comment].Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    CommentInfo comment = null;
+                    //var comments = new CommentInfo();
+                    while (reader.Read())
+                    {
+                        //if (comment == null)
+                        //{
+                        comment = new CommentInfo
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            PatientId = DbUtils.GetInt(reader, "PatientId"),
+                            MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                            PComment = DbUtils.GetString(reader, "PComment"),
+                            PCommentDate = DbUtils.GetDateTime(reader, "PCommentDate"),
+                            DComment = DbUtils.GetString(reader, "DComment"),
+                            DCommentDate = DbUtils.GetDateTime(reader, "DCommentDate"),
+                            Medicine = new Medicine()
+                            {
+                                Id = DbUtils.GetInt(reader, "MedId"),
+                                MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                Form = DbUtils.GetString(reader, "Form"),
+                                SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+
+                            }
+                        };
+                        //comments.Add(comment);
+                        //}
+                    }
+                    conn.Close();
+                    return comment;
+                }
+            }
+        }
         //------------------------------Backend-AddPatientComment( )#34-----------------------------------
 
         public void AddPatientComment(Comment comment)
