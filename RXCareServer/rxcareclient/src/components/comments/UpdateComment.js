@@ -4,73 +4,63 @@ import Form from "react-bootstrap/Form";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdateComment = () => {
-    console.log(patient_Id);
+    // console.log(PatientId);
 
     const navigate = useNavigate();
-    const { patient_Id } = useParams();
-    const [comment, setComment] = useState([]);
-    const [Prescription, setPrescription] = useState([]);
+    const { Id, patient_Id } = useParams();
+    //const [UComment, setUpdateComment] = useState([]);
+    //const [Prescription, setPrescription] = useState([]);
 
-    const [Comment, setAddComment] = useState({
+    const [Comment, setUpdateComment] = useState({
         patientId: patient_Id,
         medicineId: 0,
-        pComment: "comment",
-        pCommentDate: new Date().toISOString(),
+        pComment: "",
+        pCommentDate: Date().toLocaleString(),
         dComment: "",
-        dCommentDate: new Date().toISOString(),
+        dCommentDate: Date.now().toLocaleString(),
+        medicine: { medicineName:"" }
     });
-    /* --------------AddComment---------------- */
-    const fetchData = async (SendToAPI) => {
+    console.log(Id);
+    console.log(patient_Id);
+    //------------------------Display-----------------------------
+    //https://localhost:7183/api/Comment/GetCommentByCommentId/39
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/Comment/GetCommentByCommentId/${Id}`
+            );
+            //console.log(bookEditId);
+            const data = await response.json();
+            setUpdateComment(data);
+            console.log(data);
+        };
+        fetchData();
+    }, []);
+
+    /* -------------Edit----------------- */
+    const fetchUpdateComment = async (SendToAPI) => {
         const fetchOptions = {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(SendToAPI),
         };
-        console.log(fetchOptions);
         const response = await fetch(
-            `https://localhost:7183/api/Comment`,
+            `https://localhost:7183/api/Comment/UpdateComment/${Id}`,
             fetchOptions
         );
         navigate(`../patientsList/${patient_Id}`);
         const responseJson = await response.json();
+        //console.log(responseJson);
         return responseJson;
     };
 
     const submissionHandler = (event) => {
         event.preventDefault();
-        fetchData(Comment);
+        fetchUpdateComment(Comment);
     };
-    // //TODO: implement Rest of Patient Form
-    /* -------------Display CommentList----------------------- */
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                //`https://localhost:7183/api/Comment/${patient_Id}`
-                `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-            );
-            const CommentData = await response.json();
-            setComment(CommentData);
-            console.log(CommentData);
-        };
-        fetchData();
-    }, []);
-
-    /* -------------Display PrescriptionList----------------- */
-        useEffect(() => {
-            const fetchData = async () => {
-                const response = await fetch(
-                    `https://localhost:7183/api/prescription/Patient/${patient_Id}`
-                );
-                const PrescriptionListArray = await response.json();
-                setPrescription(PrescriptionListArray);
-                console.log(PrescriptionListArray);
-            };
-            fetchData();
-        }, []);
-    //-----------------------------------------------------
-
+    // // //TODO: implement Rest of Patient Form
     return (
         <>
             <div class=" register">
@@ -87,7 +77,7 @@ export const UpdateComment = () => {
                             name=""
                             value="Back to Patient"
                             onClick={() =>
-                                navigate(`../patientsList/${patient_Id}`)
+                                navigate(`/patientsList/${patient_Id}`)
                             }
                         />
                         <br />
@@ -97,17 +87,26 @@ export const UpdateComment = () => {
                         <div class="tab-content" id="myTabContent">
                             <div id="home">
                                 <h3 class="register-heading">
-                                    Add new Comment [To EDIT]
+                                Response from the Doctor
                                 </h3>
                                 <div class="row register-form">
                                     <div class="col-md-12">
                                         {/* ---------------------- */}
+                                        {/*                                         {Comment.map((com) => {
+                                            return (
+                                
+                                                <h1>{ com.pComment}</h1>
+                                                   
+                                                    );
+                                        })}  */}
+                                        {/* ---------------------- */}
 
                                         <Form onSubmit={submissionHandler}>
                                             <div className="row g-3">
-                                                 <Form.Floating className="form-group  col-sm-8">
+                                                <Form.Floating className="form-group  col-sm-6">
                                                     <Form.Select
                                                         required
+                                                        readOnly="true"
                                                         value={
                                                             Comment.medicineId
                                                         }
@@ -120,12 +119,17 @@ export const UpdateComment = () => {
                                                                 evt.target.value
                                                             );
 
-                                                            setAddComment(copy);
+                                                            setUpdateComment(
+                                                                copy
+                                                            );
                                                         }}
                                                     >
-                                                        <option value="">
-                                                            Open this select
-                                                            menu
+                                                        <option
+                                                            value={
+                                                                Comment.medicineId
+                                                            }
+                                                        >
+                                                        {Comment.medicine.medicineName}
                                                         </option>
                                                         <option value="1">
                                                             Levothyroxine
@@ -146,41 +150,43 @@ export const UpdateComment = () => {
                                                             TheraTears
                                                         </option>
                                                     </Form.Select>
-                                                </Form.Floating> 
+                                                    <label htmlFor="select">
+                                                    Medicine Name
+                                                </label>
+                                                </Form.Floating>
 
-                                               {/*  //----------------------Medicine Options----------------------------- */}
-{/*                                                  <Form.Floating className="form-group  col-sm-8">
-                                                    <Form.Select
+                                                {/*  //----------------------Medicine Options----------------------------- */}
+                                                <Form.Floating className="form-group  col-sm-12">
+                                                    <Form.Control
                                                         required
-                                                        value={
-                                                            Comment.medicineId
-                                                        }
-                                                        className="form-select"
+                                                        autoFocus
+                                                        readOnly="true"
+                                                        wrap="soft"
+                                                        as="textarea"
+                                                        style={{
+                                                            height: "100px",
+                                                        }}
+                                                        name="pComment"
+                                                        placeholder="pComment"
+                                                        value={Comment.pComment}
                                                         onChange={(evt) => {
                                                             const copy = {
                                                                 ...Comment,
                                                             };
-                                                            copy.medicineId = parseInt(
-                                                                evt.target.value
+                                                            copy.pComment =
+                                                                evt.target.value;
+                                                            setUpdateComment(
+                                                                copy
                                                             );
-
-                                                            setAddComment(copy);
                                                         }}
-                                                    >
-                                                        {Prescription.map((pre) => {
-                                                        console.log(comment);
-                                                        return <>
-                                                        <option value={pre.medicineId}>
-                                                        {pre.medicine.medicineName}
-                                                    </option>
-                                                        
-                                                        </>;
-                                                    })}                                                       
-                                                    </Form.Select>
-                                                </Form.Floating>  */}
+                                                    />
+                                                    <label htmlFor="pComment">
+                                                        Patient Comment
+                                                    </label>
+                                                </Form.Floating>
 
                                                 {/* //----------------------P------------------------------- */}
-{/*                                                 <Form.Floating className="form-group  col-sm-8">
+                                                {/*                                                 <Form.Floating className="form-group  col-sm-8">
                                                 <Form.Control
                                                     required
                                                     autoFocus
@@ -196,7 +202,7 @@ export const UpdateComment = () => {
                                                         };
                                                         copy.pComment =
                                                             evt.target.value;
-                                                        setAddComment(
+                                                        setUpdateComment(
                                                             copy
                                                         );
                                                     }}
@@ -207,11 +213,14 @@ export const UpdateComment = () => {
                                             </Form.Floating> */}
                                                 {/* //----------------------D------------------------------- */}
 
-                                                <Form.Floating className="form-group  col-sm-8">
+                                                <Form.Floating className="form-group  col-sm-12">
                                                     <Form.Control
                                                         required
                                                         autoFocus
-                                                        type="text"
+                                                        as="textarea"
+                                                        style={{
+                                                            height: "100px",
+                                                        }}
                                                         name="dComment"
                                                         placeholder="dComment"
                                                         value={Comment.dComment}
@@ -221,7 +230,9 @@ export const UpdateComment = () => {
                                                             };
                                                             copy.dComment =
                                                                 evt.target.value;
-                                                            setAddComment(copy);
+                                                            setUpdateComment(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="dComment">
@@ -256,3 +267,54 @@ export const UpdateComment = () => {
   "dCommentDate": "2023-06-02T18:41:21.332Z"
 */
 //https://localhost:7183/api/Comment
+
+/* --------------AddComment---------------- */
+// const fetchData = async (SendToAPI) => {
+//     const fetchOptions = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(SendToAPI),
+//     };
+//     console.log(fetchOptions);
+//     const response = await fetch(
+//         `https://localhost:7183/api/Comment`,
+//         fetchOptions
+//     );
+//     navigate(`../patientsList/${patient_Id}`);
+//     const responseJson = await response.json();
+//     return responseJson;
+// };
+
+// const submissionHandler = (event) => {
+//     event.preventDefault();
+//     fetchData(Comment);
+// };
+// // //TODO: implement Rest of Patient Form
+/* -------------Display CommentList----------------------- */
+// useEffect(() => {
+//     const fetchData = async () => {
+//         const response = await fetch(
+//             //`https://localhost:7183/api/Comment/${patient_Id}`
+//             `https://localhost:7183/api/Comment/CommentOnMedicine/${patient_Id}`
+//         );
+//         const CommentData = await response.json();
+//         setComment(CommentData);
+//         console.log(CommentData);
+//     };
+//     fetchData();
+// }, []);
+
+/* -------------Display PrescriptionList----------------- */
+// useEffect(() => {
+//     const fetchData = async () => {
+//         const response = await fetch(
+//             `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+//         );
+//         const PrescriptionListArray = await response.json();
+//         setPrescription(PrescriptionListArray);
+//         console.log(PrescriptionListArray);
+//     };
+//     fetchData();
+// }, []);

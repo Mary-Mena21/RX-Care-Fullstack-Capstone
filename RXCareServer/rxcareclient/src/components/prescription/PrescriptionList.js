@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
@@ -20,17 +20,18 @@ export const PrescriptionList = ({ patient_Id }) => {
         };
         fetchData();
     }, []);
-
+    //TODO: Update FORM
     return (
         <>
             {/* <div> */}
             {/*  <Accordion> */}
             <Accordion.Item eventKey="0">
                 <Accordion.Header>PRESCRIPTION</Accordion.Header>
-                <Accordion.Body>
-                    {Prescription.map((pres) => {
-                        return (
-                            <>
+
+                {Prescription.map((pres) => {
+                    return (
+                        <>
+                            <Accordion.Body>
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
                                         <div class="tab-pane show active2">
@@ -38,32 +39,70 @@ export const PrescriptionList = ({ patient_Id }) => {
 
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
+                                                &nbsp;&nbsp;
                                                     <li class="nav-item">
-                                                        <a class="nav-link ">
-                                                            {" "}
-                                                            UPDATE
-                                                        </a>
-                                                    </li>
+                                                        {/*  <a class="nav-link ">
+                                                            </a> */}
 
+                                                        <Link
+                                                            to={`UpdatePrescription/edit/${pres.id}`}
+                                                        >
+                                                            {" "}
+                                                            <input
+                                                                type="submit"
+                                                                class="profile-edit-btn-comment"
+                                                                name="btnAddMore"
+                                                                value="Update"
+                                                            />
+                                                        </Link>
+                                                    </li>
+                                                    &nbsp;&nbsp;
                                                     <li class="nav-item">
+                                                        {/*    <a class="nav-link ">
+                                                            {" "}
+                                                            DELETE
+                                                            </a> */}
+                                                        {/* <Link to={`UpdatePrescription/edit/${pres.id}`}>
+                                                            {" "} */}
+                                                        <input
+                                                            type="submit"
+                                                            class="profile-edit-btn-comment"
+                                                            name="btnAddMore"
+                                                            value="Delete"
+                                                            onClick={() => {
+                                                                window.confirm(
+                                                                    `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
+                                                                ) &&
+                                                                    fetch(
+                                                                        `https://localhost:7183/api/prescription/${pres.id}`,
+                                                                        {
+                                                                            method:
+                                                                                "DELETE",
+                                                                        }
+                                                                    ).then();
+                                                                navigate(
+                                                                    "/Students"
+                                                                );
+                                                            }}
+                                                        />
+                                                        {/* </Link> */}
+                                                    </li>
+                                                    {/*                                                     <li class="nav-item">
                                                         <a class="nav-link ">
                                                             {" "}
                                                             REPORT{" "}
                                                         </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link ">
-                                                            {" "}
-                                                            DELETE
-                                                        </a>
-                                                    </li>
+                                                        </li>
+
+                                                        
                                                     <li class="nav-item">
                                                         <a class="nav-link ">
                                                             {" "}
                                                             ADD-COMMENT{" "}
                                                         </a>
-                                                    </li>
+                                                    </li> */}
                                                 </ul>
+                                                <hr />
                                             </div>
 
                                             <div class="row">
@@ -149,11 +188,11 @@ export const PrescriptionList = ({ patient_Id }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </>
-                        );
-                    })}
-                    {/* <p>{Prescription. dosage}</p> */}
-                </Accordion.Body>
+                            </Accordion.Body>
+                        </>
+                    );
+                })}
+                {/* <p>{Prescription. dosage}</p> */}
             </Accordion.Item>
 
             {/*                     <Accordion.Item eventKey="1">

@@ -159,7 +159,7 @@ export const PatientEdit = () => {
                                                         placeholder={
                                                             patient.doB
                                                         }
-                                                        value={new Date(patient.doB)}
+                                                        value={new Date(patient.doB).toLocaleDateString()}
                                                         // onChange={(evt) => {
                                                         //     new Date(DoB);
                                                         //     setUpdatePatient(

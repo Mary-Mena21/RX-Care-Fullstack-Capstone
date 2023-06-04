@@ -38,6 +38,15 @@ namespace RXCareServer.Controllers
             if (Comments == null) { return NotFound(); }
             return Ok(Comments);
         }
+        //-----------------------------------------------------------
+        // GET: api/<CommentController>
+        [HttpGet("GetCommentByCommentId/{Id}")]
+        public IActionResult GetCommentByCommentId(int Id)
+        {
+            var Comments = _commentRepository.GetCommentByCommentId(Id);
+            if (Comments == null) { return NotFound(); }
+            return Ok(Comments);
+        }
 
         //-----------------------------------------------------------
         // POST api/<CommentController>
