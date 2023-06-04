@@ -8,6 +8,8 @@ import { PrescriptionListUser } from "../prescription/PrescriptionListUser";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { CommentList } from "../comments/CommentList";
+import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
+import { TESTCommentList } from "../comments/TESTCommentList";
 
 export const PatientProfile = ({
     patient_Id,
@@ -67,20 +69,20 @@ export const PatientProfile = ({
     // //TODO: Cant read {patient_Id} in fech call ???????
     // //TODO: Solution for null comment : if (Comments == null) { return NotFound(); } added in CommentController
 
-        const fetchData2 = async () => {
-            const response = await fetch(
-                `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
-                //`https://localhost:7183/api/Comment/${patient_Id}`
-            );
-            const CommentData = await response.json();
-            setCommentOnly(CommentData);
-            console.log(CommentData);
+    const fetchData2 = async () => {
+        const response = await fetch(
+            `https://localhost:7183/api/Comment/commentOnMedicine/${patient_Id}`
+            //`https://localhost:7183/api/Comment/${patient_Id}`
+        );
+        const CommentData = await response.json();
+        setCommentOnly(CommentData);
+        console.log(CommentData);
 
-            // if(!CommentData) {
-            //     setComment(CommentData)
-            // } else {
-            //     CommentData = {}
-            // }
+        // if(!CommentData) {
+        //     setComment(CommentData)
+        // } else {
+        //     CommentData = {}
+        // }
     };
     useEffect(() => {
         fetchData2();
@@ -119,15 +121,13 @@ export const PatientProfile = ({
                                 {/*-------------------------------------- */}
 
                                 <div>
-                                    
-                                <div class="profile-head">
+                                    <div class="profile-head">
                                         <ul class="nav nav-tabs ">
-                                        <li class="nav-item">
-                                        <a class="nav-link "></a>
-                                    </li>                                   
+                                            <li class="nav-item">
+                                                <a class="nav-link "></a>
+                                            </li>
 
-                                                
-                                                <input
+                                            <input
                                                 type="submit"
                                                 class="profile-edit-btn nav-item"
                                                 name="btnAddMore"
@@ -136,21 +136,18 @@ export const PatientProfile = ({
                                                     navigate(
                                                         `AddCommentFromPatient/${patient_Id}`
                                                     )
-                                                }/>
-                                                                            
-                                    <li class="nav-item">
-                                        <a class="nav-link "> TEST </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link "> TEST </a>
-                                    </li>
-                                </ul>
-                            </div>
-                                    
-                                    
-                                    
-                                    
-                                    
+                                                }
+                                            />
+
+                                            <li class="nav-item">
+                                                <a class="nav-link "> TEST </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link "> TEST </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                     <Accordion>
                                         <Accordion.Item eventKey="0">
                                             <Accordion.Header>
@@ -159,7 +156,7 @@ export const PatientProfile = ({
                                             {prescriptions.map((pres) => {
                                                 return (
                                                     <>
-                                                    <Accordion.Body>
+                                                        <Accordion.Body>
                                                             <div class="content-tabs profile-tab">
                                                                 <div class="row">
                                                                     <div class="tab-pane show active2">
@@ -187,22 +184,19 @@ export const PatientProfile = ({
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="nav-item">
-                                                                                    <a class="nav-link "
-                                                                                    
-                                                                                    onClick={() =>
-                                                                                        navigate(
-                                                                                            `AddCommentFromPatient/${patient_Id}`
-                                                                                        )
-                                                                                    }
-                                                                                    
+                                                                                    <a
+                                                                                        class="nav-link "
+                                                                                        onClick={() =>
+                                                                                            navigate(
+                                                                                                `AddCommentFromPatient/${patient_Id}`
+                                                                                            )
+                                                                                        }
                                                                                     >
                                                                                         {" "}
                                                                                         ADD-COMMENT{" "}
-                                                                                    </a> 
+                                                                                    </a>
 
-
-
-                                                                     {/*                 <input
+                                                                                    {/*                 <input
                                                                                     type="submit"
                                                                                     class="profile-edit-btn"
                                                                                     name="btnAddMore"
@@ -213,7 +207,6 @@ export const PatientProfile = ({
                                                                                         )
                                                                                     }
                                                                                 />  */}
-
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -336,24 +329,24 @@ export const PatientProfile = ({
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            </Accordion.Body>
-                                                        </>
-                                                    );
-                                                })}
-                                                {/* <p>{Prescription. dosage}</p> */}
+                                                        </Accordion.Body>
+                                                    </>
+                                                );
+                                            })}
+                                            {/* <p>{Prescription. dosage}</p> */}
                                         </Accordion.Item>
-{/* --------------------------------comment--------------------------------------------- */}
+                                        {/* --------------------------------comment--------------------------------------------- */}
 
                                         <Accordion.Item eventKey="1">
                                             <Accordion.Header>
                                                 COMMENTS
                                             </Accordion.Header>
-                                            
+
                                             {comments.map((com) => {
                                                 console.log(com);
                                                 return (
                                                     <>
-                                                    <Accordion.Body>
+                                                        <Accordion.Body>
                                                             <fieldset className="active">
                                                                 <h5>
                                                                     {
@@ -361,28 +354,23 @@ export const PatientProfile = ({
                                                                             .medicine
                                                                             .medicineName
                                                                     }
-                                                                </h5>
-                                                                <span>
-                                                                    {" "}
-                                                                    (
-                                                                    {
-                                                                        com.pCommentDate
-                                                                    }
-                                                                    )
-                                                                </span>
+                                                                </h5>{" "}
+                                                                (
+                                                                {
+                                                                    com.pCommentDate
+                                                                }
+                                                                )
                                                                 <p>
                                                                     P:
                                                                     {
                                                                         com.pComment
                                                                     }
                                                                 </p>
-                                                                <span>
-                                                                    (
-                                                                    {
-                                                                        com.dCommentDate
-                                                                    }
-                                                                    )
-                                                                </span>
+                                                                (
+                                                                {
+                                                                    com.dCommentDate
+                                                                }
+                                                                )
                                                                 <p>
                                                                     D:
                                                                     {
@@ -390,21 +378,40 @@ export const PatientProfile = ({
                                                                     }
                                                                 </p>
                                                             </fieldset>
-                                                            </Accordion.Body>
-                                                        </>
-                                                    );
-                                                })}
-                                                {/*                                                 DEF   { Comment.pComment} 
+                                                        </Accordion.Body>
+                                                    </>
+                                                );
+                                            })}
+                                            {/*                                                 DEF   { Comment.pComment} 
                                                  <p>D:{Medicine.medicineName}</p>   */}
-                                                {/* </div> */}
+                                            {/* </div> */}
                                         </Accordion.Item>
-{/* --------------------------------comment--------------------------------------------- */}
-                                        <Accordion.Item eventKey="2">
+                                        {/* --------------------------------comment--------------------------------------------- */}
+                                        {/* <Accordion.Item eventKey="2">
                                             <Accordion.Header>
                                                 REPORT
                                             </Accordion.Header>
                                             <Accordion.Body>DEF</Accordion.Body>
-                                        </Accordion.Item>
+                                        </Accordion.Item> */}
+                                        //------------------
+{/*                                         <PrescriptionCheck
+                                            patient_Id={patient_Id}
+                                        /> */}
+                                        //----------------------------
+
+
+                            {/* ******Accordion****** */}//TODO:------------------------
+                            <Accordion>
+                               {/*  <PrescriptionList patient_Id={patient_Id} /> */}
+                               {/*  <CommentList patient_Id={patient_Id} /> */}
+                                {/* <Comment patient_Id={patient_Id} /> */}
+                                {/* <TESTCommentList patient_Id={patient_Id}/> */}
+                               {/*  <PrescriptionCheck patient_Id={patient_Id}/> */}
+                                </Accordion>
+                                {/* ************ */}
+
+
+
                                     </Accordion>
                                     <br />
                                 </div>

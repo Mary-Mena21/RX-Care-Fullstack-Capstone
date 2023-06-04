@@ -9,6 +9,7 @@ import { Button } from "bootstrap";
 import { CommentList } from "../comments/CommentList";
 import { Comment, TESTComment } from "../comments/TESTComment";
 import { TESTCommentList } from "../comments/TESTCommentList";
+import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -88,6 +89,7 @@ export const PatientProfileDetails = ({
                                {/*  <CommentList patient_Id={patient_Id} /> */}
                                 {/* <Comment patient_Id={patient_Id} /> */}
                                 <TESTCommentList patient_Id={patient_Id}/>
+                                <PrescriptionCheck patient_Id={patient_Id}/>
                                 </Accordion>
                                 {/* ************ */}
                         </div>

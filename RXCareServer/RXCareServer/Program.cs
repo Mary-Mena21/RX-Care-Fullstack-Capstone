@@ -14,6 +14,7 @@ builder.Services.AddTransient<IPatientRepository, PatientRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IprescriptionRepository, prescriptionRepository>();
 builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+builder.Services.AddTransient<IAdminsteredDoseRepository, AdminsteredDoseRepository>();
 builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 
 var app = builder.Build();
