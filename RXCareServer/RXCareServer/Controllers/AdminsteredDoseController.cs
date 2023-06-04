@@ -32,6 +32,19 @@ namespace RXCareServer.Controllers
         //AddAdminsteredDose(AdminsteredDose adminsteredDose)
 
 
+        //-------------------------GetAdminsteredDosesById()----------------------------------
+
+        // GET api/<AdminsteredDoseController>/5
+        [HttpGet("GetAdminsteredDoseById/{Id}")]
+        public IActionResult GetAdminsteredDoseById(int Id)
+        {
+            var AdminsteredDose = _adminsteredDoseRepository.GetAdminsteredDoseById(Id);
+            if (AdminsteredDose == null) { return NotFound(); }
+
+            return Ok(AdminsteredDose);
+        }
+
+        //AddAdminsteredDose(AdminsteredDose adminsteredDose)
         //-----------------------------------------------------------
         // POST api/<AdminsteredDoseController>
         [HttpPost("Add")]

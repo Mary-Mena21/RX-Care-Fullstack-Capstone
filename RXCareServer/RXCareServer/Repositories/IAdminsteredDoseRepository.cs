@@ -8,5 +8,6 @@ namespace RXCareServer.Repositories
         void DeleteAdminsteredDose(int Id);
         void EditAdminsteredDose(AdminsteredDose adminsteredDose);
         List<AdminsteredDose> GetAdminsteredDoses(int PrescriptionId);
+        AdminsteredDose GetAdminsteredDoseById(int Id);
     }
 }

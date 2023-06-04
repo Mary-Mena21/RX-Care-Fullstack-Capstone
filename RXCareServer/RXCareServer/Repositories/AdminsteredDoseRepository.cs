@@ -43,6 +43,40 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+        //-------------------------GetAdminsteredDosesById()---------------------------------
+
+        public AdminsteredDose GetAdminsteredDoseById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Id]
+                                              ,[Day]
+                                              ,[prescriptionId]
+                                          FROM [RXCareDb].[dbo].[AdminsteredDose]
+                                          WHERE [Id] = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    AdminsteredDose? adminsteredDose = null;
+                    while (reader.Read())
+                    {
+                        //if(comment == null)
+                        //{
+                        adminsteredDose = new AdminsteredDose
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Day = DbUtils.GetDateTime(reader, "Day"),
+                            PrescriptionId = DbUtils.GetInt(reader, "prescriptionId"),
+                        };
+
+                    }
+                    conn.Close();
+                    return adminsteredDose;
+                }
+            }
+        }
         //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
         public void AddAdminsteredDose(AdminsteredDose adminsteredDose)

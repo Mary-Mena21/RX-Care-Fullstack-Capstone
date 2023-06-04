@@ -5,8 +5,10 @@ import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
 
-export const PrescriptionList = ({ patient_Id }) => {
+
+export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
+
 
     /* -------------Display PrescriptionList----------------- */
     useEffect(() => {
@@ -23,15 +25,14 @@ export const PrescriptionList = ({ patient_Id }) => {
     //TODO: Update FORM
     return (
         <>
-            {/* <div> */}
-            {/*  <Accordion> */}
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>PRESCRIPTIONXX</Accordion.Header>
+            
+{/*             <Accordion.Item eventKey="2">
+                <Accordion.Header>REPORT</Accordion.Header>
 
                 {Prescription.map((pres) => {
                     return (
-                        <>
-                            <Accordion.Body>
+                        <> */}
+{/*                             <Accordion.Body>
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
                                         <div class="tab-pane show active2">
@@ -39,11 +40,8 @@ export const PrescriptionList = ({ patient_Id }) => {
 
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
-                                                &nbsp;&nbsp;
+                                                    &nbsp;&nbsp;
                                                     <li class="nav-item">
-                                                        {/*  <a class="nav-link ">
-                                                            </a> */}
-
                                                         <Link
                                                             to={`UpdatePrescription/edit/${pres.id}`}
                                                         >
@@ -58,12 +56,6 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                     </li>
                                                     &nbsp;&nbsp;
                                                     <li class="nav-item">
-                                                        {/*    <a class="nav-link ">
-                                                            {" "}
-                                                            DELETE
-                                                            </a> */}
-                                                        {/* <Link to={`UpdatePrescription/edit/${pres.id}`}>
-                                                            {" "} */}
                                                         <input
                                                             type="submit"
                                                             class="profile-edit-btn-comment"
@@ -85,22 +77,22 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                 );
                                                             }}
                                                         />
-                                                        {/* </Link> */}
+                                                       
                                                     </li>
-                                                    {/*                                                     <li class="nav-item">
-                                                        <a class="nav-link ">
-                                                            {" "}
-                                                            REPORT{" "}
-                                                        </a>
-                                                        </li>
-
-                                                        
+                                                    &nbsp;&nbsp;
                                                     <li class="nav-item">
-                                                        <a class="nav-link ">
+                                                        <Link
+                                                            to={`reportDose/report/${pres.id}`}
+                                                        >
                                                             {" "}
-                                                            ADD-COMMENT{" "}
-                                                        </a>
-                                                    </li> */}
+                                                            <input
+                                                                type="submit"
+                                                                class="profile-edit-btn-comment"
+                                                                name="btnAddMore"
+                                                                value="Report"
+                                                            />
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                                 <hr />
                                             </div>
@@ -109,7 +101,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                 <div class="col-md-3">
                                                     <label>Drug Name</label>
                                                 </div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-3">
                                                     <p>
                                                         {
                                                             pres.medicine
@@ -123,7 +115,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                 <div class="col-md-3">
                                                     <label></label>
                                                 </div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-3">
                                                     <p>
                                                         <img
                                                             src={
@@ -134,79 +126,21 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                         />
                                                     </p>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
                                                 <div class="col-md-3">
-                                                    <label>Dosage</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.dosage}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Quantity</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.quantity}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Form</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.medicine.form}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>SideEffects</label>
-                                                </div>
-                                                <div class="col-md-9">
                                                     <p>
-                                                        {
-                                                            pres.medicine
-                                                                .sideEffects
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Drug Info</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        {pres.medicine.drugInfo}
+                                                        <input type="checkbox"></input>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </Accordion.Body>
-                        </>
+                            </Accordion.Body> */}
+{/*                         </>
                     );
                 })}
-                {/* <p>{Prescription. dosage}</p> */}
-            </Accordion.Item>
-
-            {/*                     <Accordion.Item eventKey="1">
-                        <Accordion.Header>COMMENTS</Accordion.Header>
-                        <Accordion.Body>DEF</Accordion.Body>
-                    </Accordion.Item>
-
-                    <Accordion.Item eventKey="2">
-                        <Accordion.Header>REPORT</Accordion.Header>
-                        <Accordion.Body>DEF</Accordion.Body>
-                    </Accordion.Item>
-                </Accordion> */}
-            {/*       <br />
-            </div> */}
+            </Accordion.Item> */}
         </>
     );
 };
