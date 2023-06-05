@@ -39,9 +39,18 @@ export const PatientProfileDetails = ({
     const [toggleState, setToggleState] = useState(1);
     const navigate = useNavigate();
 
-    const toggleTab = (index) => {
-        setToggleState(index);
-    };
+
+//--------------------------------
+var appUser = localStorage.getItem("app_user");
+var appUserObject = JSON.parse(appUser);
+console.log(appUserObject.type);
+    const Type = appUserObject.type;
+    console.log(Type)
+
+
+    // const toggleTab = (index) => {
+    //     setToggleState(index);
+    // };
     console.log(DoB);
     return (
         <>
@@ -110,6 +119,9 @@ export const PatientProfileDetails = ({
                                 />
                             </div>
                             <br />
+
+                            {appUserObject.type == "Doctor" ? (
+                            <>
                             <div>
                                 <input
                                     type="submit"
@@ -123,8 +135,11 @@ export const PatientProfileDetails = ({
                                     }
                                 />
                             </div>
-                            <br />
+                            </>
+                            ):("")}
 
+
+                            <br />
 {/*                             <div>
                                 <input
                                     type="submit"

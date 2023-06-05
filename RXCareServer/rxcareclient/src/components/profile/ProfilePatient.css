@@ -238,3 +238,11 @@ margin: 2px;
 }
 .k
 {background: #3931af, #00c6ff} */
+/* -----------------Report------------------ */
+
+.checkbox {
+  margin: 1rem;
+  height: 30px;
+  width: 20px;
+  cursor: pointer;
+}

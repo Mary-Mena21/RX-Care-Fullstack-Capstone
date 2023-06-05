@@ -36,6 +36,8 @@ import { AddCommentFromDoctor } from "../comments/AddCommentFromDoctor";
 import { AddCommentFromPatient } from "../comments/AddCommentFromPatient";
 import { UpdateComment } from "../comments/UpdateComment";
 import { UpdatePrescription } from "../prescription/UpdatePrescription";
+import { PrescriptionCheckUser } from "../prescription/PrescriptionCheckUser";
+import { Profile2 } from "../profile/Profile2";
 
 
 export const ApplicationViews = () => {
@@ -58,7 +60,8 @@ export const ApplicationViews = () => {
                     <Route path="profileDoctor" element={<ProfileDoctor />} />
                     {/*  <Route path="doctor" element={<Doctor />} /> */}
                     <Route path="doctorList" element={<DoctorsList />} />
-                    <Route path="profile" element={<Profile />} />
+                  {/*   <Route path="profile" element={<Profile />} /> */}
+                    <Route path="profile2" element={<Profile2 />} />
                     {/* <Route path="patientsList/:patient_Id" element={<Profile />}/> */}
                     <Route
                         path="patientsList/:patient_Id"
@@ -79,10 +82,31 @@ export const ApplicationViews = () => {
                         element={<AddPrescription />}
                     />
  
-                    <Route
+{/*                     <Route
                         path="profile/AddCommentFromPatient/:patient_Id"
                         element={<AddCommentFromPatient/>}
                     /> 
+ */}
+                    <Route
+                        path="patientsList/:patient_Id/profile2/AddCommentFromPatient/:patient_Id"
+                        element={<AddCommentFromPatient/>}
+                    /> 
+
+                    <Route
+                    path="patientsList/:patient_Id/profile2/AddCommentFromPatient/:patient_Id"
+                    element={<AddCommentFromPatient/>}
+                /> 
+
+                    <Route
+                        path="profile2/AddCommentFromPatient/:patient_Id"
+                        element={<AddCommentFromPatient/>}
+                    /> 
+
+                    
+                    <Route
+                    path="profile2/prescriptionCheckUser/:patient_Id"
+                    element={<PrescriptionCheckUser/>}
+                /> 
 
                     <Route
                         path="patientsList/:patient_Id/addCommentFromDoctor/addComment/:patient_Id"

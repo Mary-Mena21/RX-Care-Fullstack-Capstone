@@ -200,9 +200,15 @@ export const NavBar = ({ children }) => {
                 icon: <FaHome />,
                 className: "sidebar_2",
             },
+            // {
+            //     path: "/profile",
+            //     name: "Profile",
+            //     icon: <BsEmojiSmileFill />,
+            //     className: "sidebar_2",
+            // },
             {
-                path: "/profile",
-                name: "Profile",
+                path: "/profile2",
+                name: "Profile2",
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",
             },

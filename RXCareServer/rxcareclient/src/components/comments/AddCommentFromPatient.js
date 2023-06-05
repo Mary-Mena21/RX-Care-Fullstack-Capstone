@@ -33,8 +33,7 @@ export const AddCommentFromPatient = () => {
             `https://localhost:7183/api/Comment`,
             fetchOptions
         );
-        //navigate(`../patientsList/${patient_Id}`);
-        navigate(`../profile`);
+        navigate(`../patientsList/${patient_Id}`);
         const responseJson = await response.json();
         return responseJson;
     };
@@ -88,7 +87,7 @@ export const AddCommentFromPatient = () => {
                             name=""
                             value="Back to Patient"
                             onClick={() =>
-                                navigate(`../profile`)
+                                navigate(`../profile2`)
                             }
                         />
                         <br />

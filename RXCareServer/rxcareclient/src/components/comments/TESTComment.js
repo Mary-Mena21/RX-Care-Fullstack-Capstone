@@ -13,31 +13,31 @@ export const TESTComment = ({
     DCommentDate,
     MedicineName,
 }) => {
-{/*     return (
-        <>
 
-                <Accordion.Body>
-                    {<h5>medicineName:{MedicineName}</h5>}
-                    <p>P:{PComment}whyyyyyyyy</p>
-                    <p>D:{DComment}</p>
-                </Accordion.Body>
-
-        </>
-    ); */}
+    //--------------------------------
+var appUser = localStorage.getItem("app_user");
+var appUserObject = JSON.parse(appUser);
+console.log(appUserObject.type);
+    const Type = appUserObject.type;
+    console.log(Type)
 
 
     return (
         <>
 
                             <Accordion.Body>
-                                <div className="container active3">
+                <div className="container active3">
                                     <h6>
                                     {MedicineName}Doctor
                                     </h6>
                                     <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p>
                                     <p class="p-comment">P: {PComment}</p>
                                     <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p>  
-                                    <p class="p-comment">D: {DComment}</p>
+                    
+
+                    <p class="p-comment">D: {DComment}</p>
+                    {appUserObject.type == "Doctor" ? (
+                                    <>
                                     <Link to={`UpdateComment/edit/${Id}`}>
                                         {" "}
                                         <input
@@ -47,6 +47,8 @@ export const TESTComment = ({
                                             value="ADD-REPLY"
                                         />
                                     </Link>
+                                    </>
+                                    ):("")}
                                 </div>
                             </Accordion.Body>
         </>
