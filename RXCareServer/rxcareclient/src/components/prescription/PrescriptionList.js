@@ -8,6 +8,13 @@ import { Button } from "bootstrap";
 export const PrescriptionList = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
 
+        //--------------------------------
+var appUser = localStorage.getItem("app_user");
+var appUserObject = JSON.parse(appUser);
+console.log(appUserObject.type);
+    const Type = appUserObject.type;
+    console.log(Type)
+
     /* -------------Display PrescriptionList----------------- */
     useEffect(() => {
         const fetchData = async () => {
@@ -39,7 +46,10 @@ export const PrescriptionList = ({ patient_Id }) => {
 
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
-                                                &nbsp;&nbsp;
+                                                    &nbsp;&nbsp;
+                                                    {/* --------------------------------Doctor */}
+                                                    {appUserObject.type == "Doctor" ? (
+                                                        <>
                                                     <li class="nav-item">
                                                         {/*  <a class="nav-link ">
                                                             </a> */}
@@ -80,25 +90,45 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                                 "DELETE",
                                                                         }
                                                                     ).then();
-                                                                navigate(
-                                                                    "/Students"
-                                                                );
+                                                                // navigate(
+                                                                //     "/Students"
+                                                                // );
                                                             }}
                                                         />
                                                         {/* </Link> */}
-                                                    </li>
+                                                            </li>
+                                                            </>
+                                                            ):("")}
+                                                    {/* --------------------------------Patient */}
+                                                    &nbsp;&nbsp;
+                                                    {appUserObject.type == "Patient" ? (
+                                                        <>
+                                                    <li class="nav-item">
+                                                        <Link
+                                                            to={`profile2/addCommentFromPatient/${patient_Id}`}
+                                                        >
+                                                            <input
+                                                                type="submit"
+                                                                class="profile-edit-btn-comment"
+                                                                name="btnAddMore"
+                                                                value="Add Comment"
+                                                            />
+                                                        </Link>
+                                                            </li>
+                                                            </>
+                                                            ):("")}
+                                                    {/* --------------------------------Patient */}
+
                                                     {/*                                                     <li class="nav-item">
                                                         <a class="nav-link ">
                                                             {" "}
                                                             REPORT{" "}
                                                         </a>
-                                                        </li>
-
-                                                        
-                                                    <li class="nav-item">
+                                                        </li>*/}
+                                                    {/*          <li class="nav-item">
                                                         <a class="nav-link ">
                                                             {" "}
-                                                            ADD-COMMENT{" "}
+                                                            U_ADD-COMMENT-USER{" "}
                                                         </a>
                                                     </li> */}
                                                 </ul>

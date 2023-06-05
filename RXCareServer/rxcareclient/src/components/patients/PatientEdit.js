@@ -44,6 +44,14 @@ export const PatientEdit = () => {
             email: "",
         },
     });
+//--------------------------------
+var appUser = localStorage.getItem("app_user");
+var appUserObject = JSON.parse(appUser);
+console.log(appUserObject.type);
+    const Type = appUserObject.type;
+    console.log(Type)
+
+
     /* -------------Display----------------- */
     useEffect(() => {
         const fetchData = async () => {
@@ -264,7 +272,8 @@ export const PatientEdit = () => {
                                                         }
                                                     />
                                                 </Form.Floating> */}
-
+                                                {appUserObject.type == "Doctor" ? (
+                                                    <>
                                                 <Form.Floating className="form-group  col-sm-6">
                                                     <Form.Select
                                                         required
@@ -348,12 +357,16 @@ export const PatientEdit = () => {
                                                     </label>
                                                 </Form.Floating>
 
+
+
+                                                
                                                 <Form.Floating className="form-group ">
                                                     <FloatingLabel
                                                         required
                                                         controlId="floatingTextarea2"
                                                         label="Leave a Note here"
                                                     >
+                                                        
                                                         <Form.Control
                                                             as="textarea"
                                                             name="note"
@@ -370,6 +383,9 @@ export const PatientEdit = () => {
                                                         />
                                                     </FloatingLabel>
                                                 </Form.Floating>
+                                                </>
+                                                ):("")}
+
                                             </div>
                                             {/* ---------------------- */}
 {/*                                             <input

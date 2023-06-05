@@ -4,17 +4,16 @@ import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
-
+import Form from 'react-bootstrap/Form';
 
 export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
-
 
     /* -------------Display PrescriptionList----------------- */
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                `https://localhost:7183/api/prescription/Patient/${ patient_Id }`
+                `https://localhost:7183/api/prescription/Patient/${patient_Id}`
             );
             const PrescriptionListArray = await response.json();
             setPrescription(PrescriptionListArray);
@@ -24,17 +23,14 @@ export const PrescriptionCheck = ({ patient_Id }) => {
     }, []);
     //TODO: Update FORM
 
-
-
-    
     return (
         <>
-             <Accordion.Item eventKey="2">
+            <Accordion.Item eventKey="2">
                 <Accordion.Header>REPORT</Accordion.Header>
 
                 {Prescription.map((pres) => {
                     return (
-                        <> 
+                        <>
                             <Accordion.Body>
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
@@ -75,12 +71,11 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                 "DELETE",
                                                                         }
                                                                     ).then();
-                                                                navigate(
-                                                                    "/Students"
-                                                                );
+                                                                // navigate(
+                                                                //     "/Students"
+                                                                // );
                                                             }}
                                                         />
-                                                       
                                                     </li>
                                                     &nbsp;&nbsp;
                                                     <li class="nav-item">
@@ -129,21 +124,38 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                         />
                                                     </p>
                                                 </div>
-
+                                                {/* --------------check---------------- */}
                                                 <div class="col-md-3">
                                                     <p>
-                                                        <input type="checkbox"></input>
+                                                        <input type="checkbox" className="checkbox"></input>
                                                     </p>
+{/* 
+                                                    <Form.Check aria-label="option 1"  className="checkbox"/> */}
+                                                  
+
+
                                                 </div>
+                                                {/* --------------check---------------- */}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </Accordion.Body> 
-                         </>
+                            </Accordion.Body>
+                        </>
                     );
                 })}
-            </Accordion.Item> 
+            </Accordion.Item>
         </>
     );
 };
+
+
+// <style>
+
+// .checkbox {
+//     margin: 1rem;
+//     height: 30px;
+//     width: 20px;
+//     cursor: pointer;
+// }
+// </style>
