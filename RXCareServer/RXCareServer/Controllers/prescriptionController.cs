@@ -71,9 +71,18 @@ namespace RXCareServer.Controllers
             return Ok(Prescriptions);
 
         }
-            //-----------------------------------------------------------
-            // POST api/<prescriptionController>
-            [HttpPost("/AddPrescription")]
+        //-----------------------------------------------------------
+        [HttpGet("PrescriptionByPrescriptionId/{Id}")]
+        public IActionResult GetPrescriptionByPrescriptionId(int Id)
+        {
+            var Prescription = _prescriptionRepository.GetPrescriptionByPrescriptionId(Id);
+            if (Prescription == null) { return NotFound(); }
+            return Ok(Prescription);
+
+        }
+        //-----------------------------------------------------------
+        // POST api/<prescriptionController>
+        [HttpPost("/AddPrescription")]
         public IActionResult Post(Prescription prescription)
         {
             _prescriptionRepository.AddPrescription(prescription);

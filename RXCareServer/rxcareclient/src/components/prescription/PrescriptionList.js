@@ -33,7 +33,7 @@ console.log(appUserObject.type);
             {/* <div> */}
             {/*  <Accordion> */}
             <Accordion.Item eventKey="0">
-                <Accordion.Header>PRESCRIPTIONXX</Accordion.Header>
+                <Accordion.Header>PRESCRIPTIONXX0000</Accordion.Header>
 
                 {Prescription.map((pres) => {
                     return (

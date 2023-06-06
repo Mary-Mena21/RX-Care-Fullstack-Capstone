@@ -15,7 +15,7 @@
 //                 `https://localhost:7183/api/AdminsteredDose/GetAdminsteredDoses/${patient_Id}`
 //             );
 //             const AdministeredDoseArray = await response.json();
-//             setPrescription(AdministeredDoseArray);
+//             setAdministeredDose(AdministeredDoseArray);
 //             console.log(AdministeredDoseArray);
 //         };
 //         fetchData();
@@ -26,7 +26,7 @@
 //             <Accordion.Item eventKey="1">
 //                 <Accordion.Header>COMMENTS TEST</Accordion.Header>
 //                 <section key={`com_${patient_Id}`} className="">
-//                     {comment.map((com) => {
+//                     {AdministeredDose.map((com) => {
 //                         return <AdministeredDose Id={com.id} />;
 //                     })}
 //                 </section>

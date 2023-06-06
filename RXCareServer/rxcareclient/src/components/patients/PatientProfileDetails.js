@@ -119,7 +119,20 @@ console.log(appUserObject.type);
                                 />
                             </div>
                             <br />
-
+{/*                             <div>
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn"
+                                    name="btnAddMore"
+                                    value="Check Dose"
+                                    onClick={() =>
+                                        navigate(
+                                            `patientsList/edit/${patient_Id}`
+                                        )
+                                    }
+                                />
+                            </div>
+                            <br /> */}
                             {appUserObject.type == "Doctor" ? (
                             <>
                             <div>
