@@ -4,14 +4,21 @@ import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
+import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
 
 export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
 
+            //--------------------------------
+var appUser = localStorage.getItem("app_user");
+var appUserObject = JSON.parse(appUser);
+console.log(appUserObject.type);
+    const Type = appUserObject.type;
+    console.log(Type)
     /* -------------Display PrescriptionList----------------- */
-    useEffect(() => {
-        const fetchData = async () => {
+
+        const fetchDataPrescriptionList = async () => {
             const response = await fetch(
                 `https://localhost:7183/api/prescription/Patient/${patient_Id}`
             );
@@ -19,9 +26,45 @@ export const PrescriptionCheck = ({ patient_Id }) => {
             setPrescription(PrescriptionListArray);
             console.log(PrescriptionListArray);
         };
-        fetchData();
+
+
+        useEffect(() => {
+        fetchDataPrescriptionList();
     }, []);
     //TODO: Update FORM
+
+    //-------------------------------------------------------------
+
+    const [AdministeredDose, setAddAdministeredDose] = useState({
+        //id: 0,
+        day: new Date(),
+        prescriptionId: 0,
+    });
+    /* --------------Add-AdministeredDose---------------- */
+    const fetchData = async (SendToAPI) => {
+        const fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(SendToAPI),
+        };
+        console.log(fetchOptions);
+        const response = await fetch(
+            ` https://localhost:7183/api/AdminsteredDose/Add`,
+            fetchOptions
+        );
+        //navigate(`../patientsList/${patient_Id}`);
+        const responseJson = await response.json();
+        return responseJson;
+    };
+    /* ------------------------------ */
+    // const submissionHandler = (event) => {
+    //     event.preventDefault();
+    //     fetchData(AdministeredDose);
+    // };
+    // //TODO: implement Rest of Patient Form
+    /* ------------------------------ */
 
     return (
         <>
@@ -40,6 +83,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
                                                     &nbsp;&nbsp;
+                                                                                                        {/* --------------------------------Doctor */}
+                                                                                                        {appUserObject.type == "Doctor" ? (
+                                                                                                            <>
                                                     <li class="nav-item">
                                                         <Link
                                                             to={`UpdatePrescription/edit/${pres.id}`}
@@ -77,6 +123,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                             }}
                                                         />
                                                     </li>
+                                                    </>
+                                                    ):("")}
+                                                    {/* --------------------------------Patient */}
                                                     &nbsp;&nbsp;
                                                     <li class="nav-item">
                                                         <Link
@@ -127,15 +176,30 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                 {/* --------------check---------------- */}
                                                 <div class="col-md-3">
                                                     <p>
-                                                        <input type="checkbox" className="checkbox"></input>
+                                                        <input
+                                                            type="checkbox"
+                                                            className="checkbox"
+                                                            onChange={(evt) => {
+                                                                const copy = { ...AdministeredDose };
+                                                                copy.prescriptionId = pres.id
+                                                                console.log(pres.id);
+                                                                if (
+                                                                    (evt.target.checked)
+                                                                ) {
+                                                                    setAddAdministeredDose(copy);
+                                                                    fetchData(copy);
+                                                                    window.confirm(
+                                                                        `Are you sure you want to Check Prescription ${pres.medicine.medicineName}?`);
+                                                                }
+                                                            }}
+                                                        ></input>
                                                     </p>
-{/* 
-                                                    <Form.Check aria-label="option 1"  className="checkbox"/> */}
-                                                  
-
-
                                                 </div>
                                                 {/* --------------check---------------- */}
+                                                <div class="col-md-3">
+                                               {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/> */}
+                                                
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -148,14 +212,3 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         </>
     );
 };
-
-
-// <style>
-
-// .checkbox {
-//     margin: 1rem;
-//     height: 30px;
-//     width: 20px;
-//     cursor: pointer;
-// }
-// </style>
