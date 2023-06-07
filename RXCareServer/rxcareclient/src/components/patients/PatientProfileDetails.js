@@ -10,6 +10,7 @@ import { CommentList } from "../comments/CommentList";
 import { Comment, TESTComment } from "../comments/TESTComment";
 import { TESTCommentList } from "../comments/TESTCommentList";
 import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
+import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
 
 export const PatientProfileDetails = ({
     patient_Id,
@@ -99,6 +100,7 @@ console.log(appUserObject.type);
                                 {/* <Comment patient_Id={patient_Id} /> */}
                                 <TESTCommentList patient_Id={patient_Id}/>
                                 <PrescriptionCheck patient_Id={patient_Id}/>
+                                <PieChartAdministeredDose patient_Id={patient_Id}/>
                                 </Accordion>
                                 {/* ************ */}
                         </div>
@@ -119,20 +121,7 @@ console.log(appUserObject.type);
                                 />
                             </div>
                             <br />
-{/*                             <div>
-                                <input
-                                    type="submit"
-                                    class="profile-edit-btn"
-                                    name="btnAddMore"
-                                    value="Check Dose"
-                                    onClick={() =>
-                                        navigate(
-                                            `patientsList/edit/${patient_Id}`
-                                        )
-                                    }
-                                />
-                            </div>
-                            <br /> */}
+
                             {appUserObject.type == "Doctor" ? (
                             <>
                             <div>

@@ -6,29 +6,43 @@ import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
 import Form from "react-bootstrap/Form";
 import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
+import { PieChart } from "react-minimal-pie-chart";
 
 export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
-
-            //--------------------------------
-var appUser = localStorage.getItem("app_user");
-var appUserObject = JSON.parse(appUser);
-console.log(appUserObject.type);
+    const [Administered, setAdministered] = useState([]);
+    //--------------------------------
+    var appUser = localStorage.getItem("app_user");
+    var appUserObject = JSON.parse(appUser);
+    console.log(appUserObject.type);
     const Type = appUserObject.type;
-    console.log(Type)
+    console.log(Type);
+
+    //     /* -------------Display AdministeredDoseList----------------- */
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/prescription/GetPrescriptionDosesByPatientId/${patient_Id}`
+            );
+            const AdministeredDoseArray = await response.json();
+            setAdministered(AdministeredDoseArray);
+            // console.log(AdministeredDoseArray);
+        };
+        fetchData();
+    }, []);
     /* -------------Display PrescriptionList----------------- */
 
-        const fetchDataPrescriptionList = async () => {
-            const response = await fetch(
-                `https://localhost:7183/api/prescription/Patient/${patient_Id}`
-            );
-            const PrescriptionListArray = await response.json();
-            setPrescription(PrescriptionListArray);
-            console.log(PrescriptionListArray);
-        };
+    const fetchDataPrescriptionList = async () => {
+        const response = await fetch(
+            `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+            //`https://localhost:7183/api/prescription/GetPrescriptionDosesByPatientId/${patient_Id}`
+        );
+        const PrescriptionListArray = await response.json();
+        setPrescription(PrescriptionListArray);
+        console.log(PrescriptionListArray);
+    };
 
-
-        useEffect(() => {
+    useEffect(() => {
         fetchDataPrescriptionList();
     }, []);
     //TODO: Update FORM
@@ -59,11 +73,7 @@ console.log(appUserObject.type);
         return responseJson;
     };
     /* ------------------------------ */
-    // const submissionHandler = (event) => {
-    //     event.preventDefault();
-    //     fetchData(AdministeredDose);
-    // };
-    // //TODO: implement Rest of Patient Form
+
     /* ------------------------------ */
 
     return (
@@ -83,48 +93,51 @@ console.log(appUserObject.type);
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
                                                     &nbsp;&nbsp;
-                                                                                                        {/* --------------------------------Doctor */}
-                                                                                                        {appUserObject.type == "Doctor" ? (
-                                                                                                            <>
-                                                    <li class="nav-item">
-                                                        <Link
-                                                            to={`UpdatePrescription/edit/${pres.id}`}
-                                                        >
-                                                            {" "}
-                                                            <input
-                                                                type="submit"
-                                                                class="profile-edit-btn-comment"
-                                                                name="btnAddMore"
-                                                                value="Update"
-                                                            />
-                                                        </Link>
-                                                    </li>
-                                                    &nbsp;&nbsp;
-                                                    <li class="nav-item">
-                                                        <input
-                                                            type="submit"
-                                                            class="profile-edit-btn-comment"
-                                                            name="btnAddMore"
-                                                            value="Delete"
-                                                            onClick={() => {
-                                                                window.confirm(
-                                                                    `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
-                                                                ) &&
-                                                                    fetch(
-                                                                        `https://localhost:7183/api/prescription/${pres.id}`,
-                                                                        {
-                                                                            method:
-                                                                                "DELETE",
-                                                                        }
-                                                                    ).then();
-                                                                // navigate(
-                                                                //     "/Students"
-                                                                // );
-                                                            }}
-                                                        />
-                                                    </li>
-                                                    </>
-                                                    ):("")}
+                                                    {/* --------------------------------Doctor */}
+                                                    {appUserObject.type ==
+                                                    "Doctor" ? (
+                                                        <>
+                                                            <li class="nav-item">
+                                                                <Link
+                                                                    to={`UpdatePrescription/edit/${pres.id}`}
+                                                                >
+                                                                    {" "}
+                                                                    <input
+                                                                        type="submit"
+                                                                        class="profile-edit-btn-comment"
+                                                                        name="btnAddMore"
+                                                                        value="Update"
+                                                                    />
+                                                                </Link>
+                                                            </li>
+                                                            &nbsp;&nbsp;
+                                                            <li class="nav-item">
+                                                                <input
+                                                                    type="submit"
+                                                                    class="profile-edit-btn-comment"
+                                                                    name="btnAddMore"
+                                                                    value="Delete"
+                                                                    onClick={() => {
+                                                                        window.confirm(
+                                                                            `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
+                                                                        ) &&
+                                                                            fetch(
+                                                                                `https://localhost:7183/api/prescription/${pres.id}`,
+                                                                                {
+                                                                                    method:
+                                                                                        "DELETE",
+                                                                                }
+                                                                            ).then();
+                                                                        // navigate(
+                                                                        //     "/Students"
+                                                                        // );
+                                                                    }}
+                                                                />
+                                                            </li>
+                                                        </>
+                                                    ) : (
+                                                        ""
+                                                    )}
                                                     {/* --------------------------------Patient */}
                                                     &nbsp;&nbsp;
                                                     <li class="nav-item">
@@ -180,16 +193,27 @@ console.log(appUserObject.type);
                                                             type="checkbox"
                                                             className="checkbox"
                                                             onChange={(evt) => {
-                                                                const copy = { ...AdministeredDose };
-                                                                copy.prescriptionId = pres.id
-                                                                console.log(pres.id);
+                                                                const copy = {
+                                                                    ...AdministeredDose,
+                                                                };
+                                                                copy.prescriptionId =
+                                                                    pres.id;
+                                                                console.log(
+                                                                    pres.id
+                                                                );
                                                                 if (
-                                                                    (evt.target.checked)
+                                                                    evt.target
+                                                                        .checked
                                                                 ) {
-                                                                    setAddAdministeredDose(copy);
-                                                                    fetchData(copy);
+                                                                    setAddAdministeredDose(
+                                                                        copy
+                                                                    );
+                                                                    fetchData(
+                                                                        copy
+                                                                    );
                                                                     window.confirm(
-                                                                        `Are you sure you want to Check Prescription ${pres.medicine.medicineName}?`);
+                                                                        `Are you sure you want to Check Prescription ${pres.medicine.medicineName}?`
+                                                                    );
                                                                 }
                                                             }}
                                                         ></input>
@@ -197,8 +221,23 @@ console.log(appUserObject.type);
                                                 </div>
                                                 {/* --------------check---------------- */}
                                                 <div class="col-md-3">
-                                               {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/> */}
-                                                
+                                                    {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
+                                                    <PieChart
+                                                        data={[
+                                                            {
+                                                                title: "One",
+                                                                value: pres.quantity,
+                                                                color:
+                                                                    "#00A99D",
+                                                            },
+                                                            {
+                                                                title: "Two",
+                                                                value: 15,
+                                                                color:
+                                                                    "#0072CE",
+                                                            },
+                                                        ]}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
