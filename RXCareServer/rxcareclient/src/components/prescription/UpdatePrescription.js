@@ -18,7 +18,7 @@ export const UpdatePrescription = () => {
         medicine: { medicineName: "" },
     });
 
-    //------------------------Display-----------------------------
+    //------------------------Display------------FORM-----------------
     //https://localhost:7183/api/prescription/GetPrescriptionMedicineByPrescriptionId/34
     useEffect(() => {
         const fetchData = async () => {

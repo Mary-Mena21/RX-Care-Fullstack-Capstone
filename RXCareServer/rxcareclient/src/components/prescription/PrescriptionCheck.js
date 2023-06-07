@@ -10,13 +10,26 @@ import { PieChart } from "react-minimal-pie-chart";
 
 export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
-
+    const [Administered, setAdministered] = useState([]);
     //--------------------------------
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject.type);
     const Type = appUserObject.type;
     console.log(Type);
+
+    //     /* -------------Display AdministeredDoseList----------------- */
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `https://localhost:7183/api/prescription/GetPrescriptionDosesByPatientId/${patient_Id}`
+            );
+            const AdministeredDoseArray = await response.json();
+            setAdministered(AdministeredDoseArray);
+            // console.log(AdministeredDoseArray);
+        };
+        fetchData();
+    }, []);
     /* -------------Display PrescriptionList----------------- */
 
     const fetchDataPrescriptionList = async () => {
@@ -208,12 +221,12 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                 </div>
                                                 {/* --------------check---------------- */}
                                                 <div class="col-md-3">
-                                                    {/* <PieChartAdministeredDose  patient_Id={patient_Id}/>  */}
+                                                    {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
                                                     <PieChart
                                                         data={[
                                                             {
                                                                 title: "One",
-                                                                value: pres.id,
+                                                                value: pres.quantity,
                                                                 color:
                                                                     "#00A99D",
                                                             },

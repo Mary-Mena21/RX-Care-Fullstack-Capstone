@@ -12,7 +12,8 @@ namespace RXCareServer.Repositories
         List<Prescription> GetPrescriptionOnlyByPatientId(int Id);
         Prescription GetPrescriptionByPrescriptionId(int Id);
         PrescriptionInfo GetPrescriptionMedicineByPrescriptionId(int Id);
-        List<PrescriptionMedicineDoses> GetPrescriptionDosesByPatientId(int Id);
+        List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id);
+        List<PrescriptionMedicineDoses> GetPrescriptionDosesByPatientIdAll(int PatientId);
     }
 
     //GetPrescriptionByPrescriptionId

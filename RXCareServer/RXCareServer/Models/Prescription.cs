@@ -27,6 +27,7 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
+        //public Medicine? Medicine { get; set; }
         public List<AdminsteredDose>? AdminsteredDose { get; set; }
 
     }
