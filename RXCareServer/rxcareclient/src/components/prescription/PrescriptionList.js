@@ -20,7 +20,7 @@ console.log(appUserObject.type);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+                `https://localhost:7183/api/prescription/Patient/${patient_Id}` 
             );
             const PrescriptionListArray = await response.json();
             setPrescription(PrescriptionListArray);
@@ -40,6 +40,7 @@ console.log(appUserObject.type);
                     return (
                         <>
                             <Accordion.Body>
+                            {pres.active == true ? (
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
                                         <div class="tab-pane show active2">
@@ -76,25 +77,24 @@ console.log(appUserObject.type);
                                                         {/* <Link to={`UpdatePrescription/edit/${pres.id}`}>
                                                             {" "} */}
                                                         <input
-                                                            type="submit"
-                                                            class="profile-edit-btn-comment"
-                                                            name="btnAddMore"
-                                                            value="Delete"
-                                                            onClick={() => {
-                                                                window.confirm(
-                                                                    `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
-                                                                ) &&
-                                                                    fetch(
-                                                                        `https://localhost:7183/api/prescription/${pres.id}`,
-                                                                        {
-                                                                            method:
-                                                                                "DELETE",
-                                                                        }
-                                                                    ).then();
-                                                                // navigate(
-                                                                //     "/Students"
-                                                                // );
-                                                            }}
+                                                                        type="submit"
+                                                                        class="profile-edit-btn-comment"
+                                                                        name="btnAddMore"
+                                                                        value="Delete"
+                                                                        onClick={() => {
+                                                                            window.confirm(
+                                                                                `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
+                                                                            )
+                                                                                && `${ pres.active == false }`
+                                                                        
+                                                            //         fetch(
+                                                            //             `https://localhost:7183/api/prescription/${pres.id}`,
+                                                            //             {
+                                                            //                 method:
+                                                            //                     "DELETE",
+                                                            //             }
+                                                            //         ).then();
+                                                             }}
                                                         />
                                                         {/* </Link> */}
                                                             </li>
@@ -218,7 +218,10 @@ console.log(appUserObject.type);
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                    ) : (
+                                        ""
+                                    )}
                             </Accordion.Body>
                         </>
                     );

@@ -20,6 +20,20 @@
 
     }
 
+    public class PrescriptionInfo2
+    {
+        public int Id { get; set; }
+        public int? MedicineId { get; set; }
+        public string? Dosage { get; set; }
+        public int? Quantity { get; set; }
+        public int? PatientId { get; set; }
+        public bool? Active { get; set; }
+        public Medicine? Medicine { get; set; }
+
+    }
+
+
+
     public class PrescriptionDose
     {
         public int Id { get; set; }
@@ -27,7 +41,7 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
-        //public Medicine? Medicine { get; set; }
+        //   public Medicine? Medicine { get; set; }
         public List<AdminsteredDose>? AdminsteredDose { get; set; }
 
     }
