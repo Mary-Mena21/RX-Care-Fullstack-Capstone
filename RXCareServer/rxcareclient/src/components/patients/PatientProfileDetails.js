@@ -100,7 +100,7 @@ console.log(appUserObject.type);
                                 {/* <Comment patient_Id={patient_Id} /> */}
                                 <TESTCommentList patient_Id={patient_Id}/>
                                 <PrescriptionCheck patient_Id={patient_Id}/>
-                                <PieChartAdministeredDose patient_Id={patient_Id}/>
+                                {/* <PieChartAdministeredDose patient_Id={patient_Id}/> */}
                                 </Accordion>
                                 {/* ************ */}
                         </div>

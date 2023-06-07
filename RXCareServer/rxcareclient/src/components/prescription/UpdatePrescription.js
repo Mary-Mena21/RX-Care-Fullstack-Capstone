@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdatePrescription = () => {
     const navigate = useNavigate();
-    const { Id, patient_Id } = useParams();
+    const {  patient_Id , Id } = useParams();
     console.log(patient_Id);
     console.log(Id);
 
@@ -24,6 +24,7 @@ export const UpdatePrescription = () => {
         const fetchData = async () => {
             const response = await fetch(
                 `https://localhost:7183/api/prescription/GetPrescriptionMedicineByPrescriptionId/${Id}`
+                //`https://localhost:7183/api/prescription/PrescriptionByPrescriptionId/${Id}`
             );
             //console.log(bookEditId);
             const data = await response.json();
@@ -107,7 +108,6 @@ export const UpdatePrescription = () => {
                                                         copy.medicineId = parseInt(
                                                             evt.target.value
                                                         );
-
                                                         setUpdatePrescription(
                                                             copy
                                                             );
