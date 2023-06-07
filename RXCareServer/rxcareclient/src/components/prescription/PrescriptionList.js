@@ -6,6 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 import { Button } from "bootstrap";
 
 export const PrescriptionList = ({ patient_Id }) => {
+    console.log(patient_Id);
     const [Prescription, setPrescription] = useState([]);
 
         //--------------------------------

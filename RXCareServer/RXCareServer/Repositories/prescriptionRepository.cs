@@ -463,7 +463,7 @@ namespace RXCareServer.Repositories
         //        }
         //    }
         //}
-        //-----------------------------------works1-----------------------------------------------------
+        //-----------------------------------works1---Brain Thanks--------------------------------------------------
         public List<PrescriptionMedicineDoses> GetPrescriptionDosesByPatientIdAll(int PatientId)
         {
             using (var conn = Connection)
@@ -498,23 +498,32 @@ namespace RXCareServer.Repositories
 
                     while (reader.Read())
                     {
-                        PrescriptionMedicineDose = new PrescriptionMedicineDoses()
+
+                        var currentId = DbUtils.GetInt(reader, "Id");
+
+                        if (PrescriptionMedicineDose == null || PrescriptionMedicineDose.Id != currentId) 
+
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                            Dosage = DbUtils.GetString(reader, "Dosage"),
-                            Quantity = DbUtils.GetInt(reader, "Quantity"),
-                            PatientId = DbUtils.GetInt(reader, "PatientId"),
-                            MedicineName = DbUtils.GetString(reader, "MedicineName"),
-                            ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
-                            Form = DbUtils.GetString(reader, "Form"),
-                            SideEffects = DbUtils.GetString(reader, "SideEffects"),
-                            DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
-                            AdminsteredDose = new List<AdminsteredDose>()
-                        };
-
-                        PrescriptionMedicineDoses.Add(PrescriptionMedicineDose);
-
+                            if (PrescriptionMedicineDose != null)
+                            {
+                                PrescriptionMedicineDoses.Add(PrescriptionMedicineDose);
+                            }
+                                PrescriptionMedicineDose = new PrescriptionMedicineDoses()
+                                {
+                                    Id = DbUtils.GetInt(reader, "Id"),
+                                    MedicineId = DbUtils.GetInt(reader, "MedicineId"),
+                                    Dosage = DbUtils.GetString(reader, "Dosage"),
+                                    Quantity = DbUtils.GetInt(reader, "Quantity"),
+                                    PatientId = DbUtils.GetInt(reader, "PatientId"),
+                                    MedicineName = DbUtils.GetString(reader, "MedicineName"),
+                                    ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
+                                    Form = DbUtils.GetString(reader, "Form"),
+                                    SideEffects = DbUtils.GetString(reader, "SideEffects"),
+                                    DrugInfo = DbUtils.GetString(reader, "DrugInfo"),
+                                    AdminsteredDose = new List<AdminsteredDose>()
+                                };
+                           
+                        }
 
                         AdminsteredDose adminsteredDose = new AdminsteredDose
                         {
@@ -525,6 +534,11 @@ namespace RXCareServer.Repositories
 
                         PrescriptionMedicineDose.AdminsteredDose.Add(adminsteredDose);
 
+                    }
+                    if (PrescriptionMedicineDose != null)
+                    {
+
+                        PrescriptionMedicineDoses.Add(PrescriptionMedicineDose);
                     }
 
                     conn.Close();

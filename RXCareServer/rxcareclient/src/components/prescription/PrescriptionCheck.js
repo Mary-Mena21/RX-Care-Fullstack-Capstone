@@ -34,8 +34,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
 
     const fetchDataPrescriptionList = async () => {
         const response = await fetch(
-            `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+            //`https://localhost:7183/api/prescription/Patient/${patient_Id}`
             //`https://localhost:7183/api/prescription/GetPrescriptionDosesByPatientId/${patient_Id}`
+            `https://localhost:7183/api/prescription/GetPrescriptionDosesByPatientIdAll/${patient_Id}`
         );
         const PrescriptionListArray = await response.json();
         setPrescription(PrescriptionListArray);
@@ -119,7 +120,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                     value="Delete"
                                                                     onClick={() => {
                                                                         window.confirm(
-                                                                            `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
+                                                                            `Are you sure you want to delete Prescription ${pres.medicineName}?`
                                                                         ) &&
                                                                             fetch(
                                                                                 `https://localhost:7183/api/prescription/${pres.id}`,
@@ -164,7 +165,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                 <div class="col-md-3">
                                                     <p>
                                                         {
-                                                            pres.medicine
+                                                            pres
                                                                 .medicineName
                                                         }
                                                     </p>
@@ -179,7 +180,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                     <p>
                                                         <img
                                                             src={
-                                                                pres.medicine
+                                                                pres
                                                                     .imgUrl
                                                             }
                                                             className="medical-img"
@@ -212,7 +213,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         copy
                                                                     );
                                                                     window.confirm(
-                                                                        `Are you sure you want to Check Prescription ${pres.medicine.medicineName}?`
+                                                                        `Are you sure you want to Check Prescription ${pres.medicineName}?`
                                                                     );
                                                                 }
                                                             }}
@@ -232,7 +233,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                             },
                                                             {
                                                                 title: "Two",
-                                                                value: 15,
+                                                                value: pres.adminsteredDose.length,
                                                                 color:
                                                                     "#0072CE",
                                                             },
