@@ -259,3 +259,6 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         </>
     );
 };
+
+//react-minimal-pie-chart
+//https://www.npmjs.com/package/react-minimal-pie-chart
