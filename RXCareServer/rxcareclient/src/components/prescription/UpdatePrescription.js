@@ -202,32 +202,6 @@ export const UpdatePrescription = () => {
                                                     </label>
                                                 </Form.Floating>
 {/* --------------------------- */}
-{/*                                                 <Form.Floating className="form-group  col-sm-6">
-                                                    <Form.Control
-                                                        required
-                                                        autoFocus
-                                                        type="text"
-                                                        name="active"
-                                                        placeholder="Active"
-                                                        value={
-                                                            Prescription.active
-                                                        }
-                                                        onChange={(evt) => {
-                                                            const copy = {
-                                                                ...Prescription,
-                                                            };
-                                                            copy.active =
-                                                                evt.target.value;
-                                                            setUpdatePrescription(
-                                                                copy
-                                                            );
-                                                        }}
-                                                    />
-                                                    <label htmlFor="active">
-                                                        Active
-                                                    </label>
-                                                </Form.Floating> */}
-
                                                 <Form.Floating className="form-group  col-sm-6">
                                                 <Form.Select
                                                     required
@@ -268,7 +242,6 @@ export const UpdatePrescription = () => {
                                                 Active {Prescription.active}
                                             </label>
                                             </Form.Floating>
-
 
                                             </div>
                                             {/* ---------------------- */}
