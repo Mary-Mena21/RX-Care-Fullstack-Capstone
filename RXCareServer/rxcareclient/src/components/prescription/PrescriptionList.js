@@ -104,10 +104,15 @@ console.log(appUserObject.type);
                                                         >
                                                             {" "}
                                                             <input
-                                                                type="submit"
-                                                                class="profile-edit-btn-comment"
-                                                                name="btnAddMore"
-                                                                value="Update"
+                                                                            type="submit"
+                                                                            class="profile-edit-btn-comment"
+                                                                            name="btnAddMore"
+                                                                            value="Update"
+                                                                            onClick={(evt) => {
+                                                                                window.confirm(
+                                                                                    `Are you sure you want to Update Prescription ${pres.medicine.medicineName}?`
+                                                                                )
+                                                                            }}
                                                             />
                                                         </Link>
                                                     </li>
@@ -128,41 +133,12 @@ console.log(appUserObject.type);
                                                                             window.confirm(
                                                                                 `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
                                                                             )
-                                                                                &&
-                                                                                PrescriptionActive.active == false;
-                                                                            { handleActiveButtonClick }
+                          
                                                                       
                                                                                 //`${pres.active == false}`
                                                                         
-                                                                                    /* -------------Edit----------------- */
+                                                                                    /* -------------Delete----------------- */
                                                                         
-            // const fetchOptions = {
-            //     method: "PUT",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify(SendToAPI),
-            // };
-            // const response = fetch(
-            //     `https://localhost:7183/api/prescription/UpdatePrescriptionByIdActive/${pres.id}`,
-            //     fetchOptions
-            //     );
-            //     console.log(pres.id);
-            //     const responseJson = response.json();
-            //     setUpdatePrescriptionActive(responseJson)
-            // //console.log(responseJson);
-            // return responseJson;
-       
-
-                                                                            
-
-
-
-
-
-
-
-
                                                                             
                                                             //         fetch(
                                                             //             `https://localhost:7183/api/prescription/${pres.id}`,
