@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
-import {useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const AddPrescription = () => {
     console.log(patient_Id);
@@ -15,6 +15,7 @@ export const AddPrescription = () => {
         dosage: "",
         quantity: 0,
         patientId: patient_Id,
+        active: true,
     });
     /* --------------AddComment---------------- */
     const fetchData = async (SendToAPI) => {

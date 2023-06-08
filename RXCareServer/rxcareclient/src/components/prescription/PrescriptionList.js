@@ -9,6 +9,49 @@ export const PrescriptionList = ({ patient_Id }) => {
     console.log(patient_Id);
     const [Prescription, setPrescription] = useState([]);
 
+        //--------------Active/false------------------
+        const [PrescriptionActive, setUpdatePrescriptionActive] = useState({
+            //id: 0,
+            active: true,
+        });
+        // /* -------------Edit----------------- */
+        // const fetchUpdatePrescription = async (SendToAPI) => {
+        //     const fetchOptions = {
+        //         method: "PUT",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify(SendToAPI),
+        //     };
+        //     const response = await fetch(
+        //         `https://localhost:7183/api/prescription/UpdatePrescriptionByIdActive/${Id}`,
+        //         fetchOptions
+        //         );
+        //         console.log(Id);
+        //     const responseJson = await response.json();
+        //     //console.log(responseJson);
+        //     return responseJson;
+        // };
+        const fetchUpdatePrescription = async (SendToAPI) => {
+        };
+    
+        const handleActiveButtonClick = (event) => {
+            event.preventDefault();
+            fetchUpdatePrescription(PrescriptionActive);
+            setUpdatePrescriptionActive(PrescriptionActive)
+
+        };
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
         //--------------------------------
 var appUser = localStorage.getItem("app_user");
 var appUserObject = JSON.parse(appUser);
@@ -80,13 +123,47 @@ console.log(appUserObject.type);
                                                                         type="submit"
                                                                         class="profile-edit-btn-comment"
                                                                         name="btnAddMore"
-                                                                        value="Delete"
-                                                                        onClick={() => {
+                                                                        value="Deletex"
+                                                                        onClick={(evt) => {
                                                                             window.confirm(
                                                                                 `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
                                                                             )
-                                                                                && `${ pres.active == false }`
+                                                                                &&
+                                                                                PrescriptionActive.active == false;
+                                                                            { handleActiveButtonClick }
+                                                                      
+                                                                                //`${pres.active == false}`
                                                                         
+                                                                                    /* -------------Edit----------------- */
+                                                                        
+            // const fetchOptions = {
+            //     method: "PUT",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(SendToAPI),
+            // };
+            // const response = fetch(
+            //     `https://localhost:7183/api/prescription/UpdatePrescriptionByIdActive/${pres.id}`,
+            //     fetchOptions
+            //     );
+            //     console.log(pres.id);
+            //     const responseJson = response.json();
+            //     setUpdatePrescriptionActive(responseJson)
+            // //console.log(responseJson);
+            // return responseJson;
+       
+
+                                                                            
+
+
+
+
+
+
+
+
+                                                                            
                                                             //         fetch(
                                                             //             `https://localhost:7183/api/prescription/${pres.id}`,
                                                             //             {
@@ -94,6 +171,7 @@ console.log(appUserObject.type);
                                                             //                     "DELETE",
                                                             //             }
                                                             //         ).then();
+                                                                            
                                                              }}
                                                         />
                                                         {/* </Link> */}

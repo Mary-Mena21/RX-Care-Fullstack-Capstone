@@ -15,6 +15,7 @@ export const UpdatePrescription = () => {
         dosage: "",
         quantity: 0,
         patientId: patient_Id,
+        active: true,
         medicine: { medicineName: "" },
     });
 
@@ -42,6 +43,7 @@ export const UpdatePrescription = () => {
             },
             body: JSON.stringify(SendToAPI),
         };
+        console.log(fetchOptions.body.active);
         const response = await fetch(
             `https://localhost:7183/api/prescription/UpdatePrescriptionById/${Id}`,
             fetchOptions
@@ -99,7 +101,7 @@ export const UpdatePrescription = () => {
                                                     }
                                                     className="form-select"
                                                         onChange={(evt) => {
-                                                        console.log(evt);
+                                                        //console.log(evt);
                                                         const copy = {
                                                             ...Prescription,
                                                             };
@@ -117,7 +119,7 @@ export const UpdatePrescription = () => {
                                                 >
                                                     <option
                                                         value={
-                                                            Prescription.medicineId
+                                                            Prescription.medicine.medicineName
                                                         }
                                                     >
                                                     {Prescription.medicine.medicineName}
@@ -199,6 +201,75 @@ export const UpdatePrescription = () => {
                                                         Quantity
                                                     </label>
                                                 </Form.Floating>
+{/* --------------------------- */}
+{/*                                                 <Form.Floating className="form-group  col-sm-6">
+                                                    <Form.Control
+                                                        required
+                                                        autoFocus
+                                                        type="text"
+                                                        name="active"
+                                                        placeholder="Active"
+                                                        value={
+                                                            Prescription.active
+                                                        }
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            copy.active =
+                                                                evt.target.value;
+                                                            setUpdatePrescription(
+                                                                copy
+                                                            );
+                                                        }}
+                                                    />
+                                                    <label htmlFor="active">
+                                                        Active
+                                                    </label>
+                                                </Form.Floating> */}
+
+                                                <Form.Floating className="form-group  col-sm-6">
+                                                <Form.Select
+                                                    required
+                                                    //readOnly="true"
+                                                    boolValue={
+                                                        Prescription.active
+                                                    }
+                                                    className="form-select"
+                                                    onChange={(evt) => {
+                                                        const copy = {
+                                                            ...Prescription,
+                                                        };
+                                                        copy.active = 
+                                                        Boolean( evt.target.boolValue)
+                                                        console.log( evt)
+
+                                                        setUpdatePrescription(
+                                                            copy
+                                                        );
+                                                    }}
+                                                    >
+                                                        
+                                                    <option
+                                                    boolValue={
+                                                            Prescription.active
+                                                        }
+                                                    >
+                                                    {Prescription.active}
+                                                    </option>
+                                                    <option Value= {true}>
+                                                        Active
+                                                    </option>
+                                                    <option Value= {false}>
+                                                       Not Active
+                                                    </option>                                       
+                                                </Form.Select>
+                                                <label htmlFor="select">
+                                                Active {Prescription.active}
+                                            </label>
+                                            </Form.Floating>
+
+
                                             </div>
                                             {/* ---------------------- */}
                                             <input
