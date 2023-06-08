@@ -481,7 +481,7 @@ namespace RXCareServer.Repositories
                                       ,[Prescription].[Quantity]
                                       ,[Prescription].[PatientId]
                                       ,[Prescription].[Active]
-                                      ,[AdminsteredDose].[Id] AS AdmId
+                                 
                                       ,[AdminsteredDose].[Day]
                                       ,[AdminsteredDose].[PrescriptionId]
                                       ,[Medicine].[Id] AS MedId
@@ -491,19 +491,21 @@ namespace RXCareServer.Repositories
                                       ,[Medicine].[SideEffects]
                                       ,[Medicine].[DrugInfo]
                                   FROM [RXCareDb].[dbo].[Prescription]
-                                  JOIN [AdminsteredDose] ON [AdminsteredDose].[PrescriptionId] = [Prescription].[Id]
-                                  JOIN [Medicine] ON [Prescription].[MedicineId] = [Medicine].[Id]
+                                  Left JOIN [AdminsteredDose] ON [AdminsteredDose].[PrescriptionId] = [Prescription].[Id]
+                                  Left JOIN [Medicine] ON [Prescription].[MedicineId] = [Medicine].[Id]
                                   WHERE [Prescription].[PatientId] = @PatientId
                                   Order by [Prescription].[Id]";
 
                     DbUtils.AddParameter(cmd, "@PatientId", PatientId);
                     var reader = cmd.ExecuteReader();
                     PrescriptionMedicineDoses? PrescriptionMedicineDose = null;
+                    AdminsteredDose adminsteredDose = null;
+
                     var PrescriptionMedicineDoses = new List<PrescriptionMedicineDoses>();
 
                     while (reader.Read())
                     {
-
+                        //     ,[AdminsteredDose].[Id] AS AdmId
                         var currentId = DbUtils.GetInt(reader, "Id");
 
                         if (PrescriptionMedicineDose == null || PrescriptionMedicineDose.Id != currentId)
@@ -530,16 +532,17 @@ namespace RXCareServer.Repositories
                             };
 
                         }
+                        //if (adminsteredDose != null) {
+                        // AdminsteredDose adminsteredDose = new AdminsteredDose
+                            adminsteredDose = new AdminsteredDose
+                            {
+                                //Id = DbUtils.GetNullableInt(reader, "AdmId"),
+                                Day = DbUtils.GetNullableDateTime(reader, "Day"),
+                                PrescriptionId = DbUtils.GetNullableInt(reader, "PrescriptionId"),
+                            };
 
-                        AdminsteredDose adminsteredDose = new AdminsteredDose
-                        {
-                            Id = DbUtils.GetInt(reader, "AdmId"),
-                            Day = DbUtils.GetDateTime(reader, "Day"),
-                            PrescriptionId = DbUtils.GetInt(reader, "PrescriptionId"),
-                        };
-
-                        PrescriptionMedicineDose.AdminsteredDose.Add(adminsteredDose);
-
+                            PrescriptionMedicineDose.AdminsteredDose.Add(adminsteredDose);
+                        //};
                     }
                     if (PrescriptionMedicineDose != null)
                     {

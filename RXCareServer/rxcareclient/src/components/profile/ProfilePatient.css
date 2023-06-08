@@ -141,6 +141,11 @@ margin: 2px;
   width: auto !important;
 }
 
+.medical-img2{
+  height: 50px !important;
+  width: auto !important;
+}
+
 /* ----------------------------------------- */
 .bloc-tabs {
     display: flex;

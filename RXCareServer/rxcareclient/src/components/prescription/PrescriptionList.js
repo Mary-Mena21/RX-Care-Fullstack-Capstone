@@ -34,9 +34,12 @@ console.log(appUserObject.type);
             {/* <div> */}
             {/*  <Accordion> */}
             <Accordion.Item eventKey="0">
-                <Accordion.Header>PRESCRIPTIONXX0000</Accordion.Header>
+                <Accordion.Header>PRESCRIPTIONS</Accordion.Header>
 
                 {Prescription.map((pres) => {
+                    console.log(pres.quantity);
+                    console.log(`${pres.adminsteredDose}`.length);
+                    //console.log(count(pres.adminsteredDose));
                     return (
                         <>
                             <Accordion.Body>
@@ -49,13 +52,10 @@ console.log(appUserObject.type);
                                             <div class="profile-head">
                                                 <ul class="nav nav-tabs ">
                                                     &nbsp;&nbsp;
-                                                    {/* --------------------------------Doctor */}
+                                                    {/* ---------------Doctor-----------------*/}
                                                     {appUserObject.type == "Doctor" ? (
                                                         <>
                                                     <li class="nav-item">
-                                                        {/*  <a class="nav-link ">
-                                                            </a> */}
-
                                                         <Link
                                                             to={`UpdatePrescription/edit/${pres.id}`}
                                                         >
@@ -118,20 +118,8 @@ console.log(appUserObject.type);
                                                             </li>
                                                             </>
                                                             ):("")}
-                                                    {/* --------------------------------Patient */}
+                                                    {/*-------------Patient----------- */}
 
-                                                    {/*                                                     <li class="nav-item">
-                                                        <a class="nav-link ">
-                                                            {" "}
-                                                            REPORT{" "}
-                                                        </a>
-                                                        </li>*/}
-                                                    {/*          <li class="nav-item">
-                                                        <a class="nav-link ">
-                                                            {" "}
-                                                            U_ADD-COMMENT-USER{" "}
-                                                        </a>
-                                                    </li> */}
                                                 </ul>
                                                 <hr />
                                             </div>

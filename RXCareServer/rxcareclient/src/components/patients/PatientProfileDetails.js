@@ -72,7 +72,7 @@ console.log(appUserObject.type);
                                 <h5>
                                     {FirstName} {LastName}
                                 </h5>
-                                <h6>------------X------------</h6>
+                                <div><br></br></div>
                                 {/*                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
@@ -193,9 +193,9 @@ console.log(appUserObject.type);
                             </div>
                         </div>
                         {/* -------------TABS-------------- */}
-                        <div className="col-md-8">
+                        <div className="col-md-6">
                             <Tabs
-                                defaultActiveKey="profile"
+                                defaultActiveKey="home"
                                 id="fill-tab-example"
                                 className="mb-3"
                             >
@@ -321,14 +321,6 @@ console.log(appUserObject.type);
                                                     <p>Report</p>
                                                 </div>
                                             </div>
-
-                                            {/*<div class="row">
-      <div class="col-md-12">
-          <p>
-          Prescription
-          </p>
-      </div>
-  </div> */}
                                         </div>
                                     </div>
                                 </Tab>
