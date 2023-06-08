@@ -46,7 +46,7 @@ export const Profile2 = () => {
                 singlePatient.id +
                 singlePatient.firstName.slice(0, 3);
             setUserId(patientIdNumber);
-            console.log(patientIdNumber);
+            console.log(patientIdNumber.toUpperCase());
             /* -------------patient---------------*/
             const Patient = singlePatient.patient;
             PatientId = singlePatient.patient.id;

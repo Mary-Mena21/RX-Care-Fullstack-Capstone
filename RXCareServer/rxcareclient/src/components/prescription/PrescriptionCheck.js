@@ -166,7 +166,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                     </ul>
                                                     <hr />
                                                 </div>
-                                                <div class="row row-md-12">
+                                                <div class="row row-md-10">
                                                     <div class="col">
                                                         <p class="col-md-3">
                                                             <label>
@@ -181,14 +181,14 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                     </div>
 
                                                     <div class="col">
-                                                        <p class="col-md-3">
+                                                        <p class="col-md-6">
                                                             <label>
                                                                 {
                                                                     pres.medicineName
                                                                 }
                                                             </label>
                                                         </p>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
                                                             <img
                                                                 src={
                                                                     pres.imgUrl
@@ -243,12 +243,12 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                     </div>
                                                     {/* --------------check---------------- */}
                                                     <div class="col">
-                                                        <p class="col-md-3">
+                                                        <p class="col-md-6">
                                                             <label>
                                                                 REPORT
                                                             </label>
                                                         </p>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
                                                             {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
                                                             <PieChart
                                                                 totalValue={parseInt(
@@ -273,14 +273,13 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                 //     totalValue= {pres.quantity}
                                                                 //     paddingAngle = {1}
                                                                 data={[
-                                                                    // {
-                                                                    //     title: `${pres.adminsteredDose}`
-                                                                    //         .length,
-                                                                    //     value: `${pres.adminsteredDose}`
-                                                                    //         .length,
-                                                                    //     color:
-                                                                    //         "#0072CE",
-                                                                    // },
+                                                                    {
+                                                                        title:
+                                                                            "",
+                                                                        value: `${pres.quantity}`,
+                                                                        color:
+                                                                            "#0072CE",
+                                                                    },
                                                                     {
                                                                         title: `Doses`,
                                                                         value:

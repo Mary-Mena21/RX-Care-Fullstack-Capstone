@@ -72,7 +72,7 @@ console.log(appUserObject.type);
                                 <h5>
                                     {FirstName} {LastName}
                                 </h5>
-                                <h6>------------X------------</h6>
+                                <div><br></br></div>
                                 {/*                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
@@ -195,7 +195,7 @@ console.log(appUserObject.type);
                         {/* -------------TABS-------------- */}
                         <div className="col-md-6">
                             <Tabs
-                                defaultActiveKey="profile"
+                                defaultActiveKey="home"
                                 id="fill-tab-example"
                                 className="mb-3"
                             >
