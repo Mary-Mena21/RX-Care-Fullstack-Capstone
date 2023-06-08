@@ -901,7 +901,7 @@ namespace RXCareServer.Repositories
 
         //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
-        public void AddPrescription(Prescription prescription)
+        public void AddPrescription(PrescriptionActive prescription)
         {
             using (var conn = Connection)
             {
@@ -912,17 +912,20 @@ namespace RXCareServer.Repositories
                                                    ([MedicineId]
                                                    ,[Dosage]
                                                    ,[Quantity]
-                                                   ,[PatientId])
+                                                   ,[PatientId]
+                                                   ,[Active])
                                              OUTPUT INSERTED.Id APID
                                              VALUES
                                                    (@MedicineId
                                                    ,@Dosage
                                                    ,@Quantity
-                                                   ,@PatientId)";
+                                                   ,@PatientId
+                                                   ,@Active)";
                     DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
                     DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
                     DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
                     DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+                    DbUtils.AddParameter(cmd, "@Active", prescription.Active);
 
                     prescription.Id = (int)cmd.ExecuteScalar();//needs output inserted.id
                 }
@@ -932,7 +935,7 @@ namespace RXCareServer.Repositories
         //------------------------------Backend-EditPrescription( )#16---------works!---------------------
 
 
-        public void EditPrescription(Prescription prescription)
+        public void EditPrescription(PrescriptionActive prescription)
         {
             using (var conn = Connection)
             {
@@ -944,11 +947,13 @@ namespace RXCareServer.Repositories
                                               ,[Dosage] = @Dosage
                                               ,[Quantity] = @Quantity
                                               ,[PatientId] = @PatientId
+                                              ,[Active] = @Active
                                          WHERE [Id] = @Id";
                     DbUtils.AddParameter(cmd, "@MedicineId", prescription.MedicineId);
                     DbUtils.AddParameter(cmd, "@Dosage", prescription.Dosage);
                     DbUtils.AddParameter(cmd, "@Quantity", prescription.Quantity);
                     DbUtils.AddParameter(cmd, "@PatientId", prescription.PatientId);
+                    DbUtils.AddParameter(cmd, "@Active", prescription.Active);
                     DbUtils.AddParameter(cmd, "@Id", prescription.Id);
 
                     cmd.ExecuteNonQuery();
@@ -956,6 +961,26 @@ namespace RXCareServer.Repositories
             }
         }
 
+        //------------------------------Active/false---------works!---------------------
+
+
+        public void EditNotActivePrescription(PrescriptionActiveFalse prescription)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE [dbo].[Prescription]
+                                           SET [Active] = @Active
+                                         WHERE [Id] = @Id";
+                    DbUtils.AddParameter(cmd, "@Active", prescription.Active);
+                    DbUtils.AddParameter(cmd, "@Id", prescription.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         //-------------------------------Backend-DeletePrescription( )#17--------------------------------------
 
 
