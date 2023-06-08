@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 //import { useParams } from "react-router-dom"
 import React from "react";
-import { ProfilePatient } from "./ProfilePatient";
-import { Link } from "react-router-dom";
-import { DataTexture } from "three";
+// import { ProfilePatient } from "./ProfilePatient";
+// import { Link } from "react-router-dom";
+// import { DataTexture } from "three";
 import { ProfilePatient2 } from "./ProfilePatient2";
 
 //from user prespective

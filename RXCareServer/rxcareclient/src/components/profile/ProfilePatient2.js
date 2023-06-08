@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./ProfilePatient.css";
 import { PrescriptionList } from "../prescription/PrescriptionList";
-import Accordion from "react-bootstrap/Accordion";
-import { PrescriptionListUser } from "../prescription/PrescriptionListUser";
+// import Accordion from "react-bootstrap/Accordion";
+// import { PrescriptionListUser } from "../prescription/PrescriptionListUser";
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import { CommentList } from "../comments/CommentList";
-import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
-import { TESTCommentList } from "../comments/TESTCommentList";
-import { PrescriptionCheckUser } from "../prescription/PrescriptionCheckUser";
+// import Tab from "react-bootstrap/Tab";
+// import Tabs from "react-bootstrap/Tabs";
+// import { CommentList } from "../comments/CommentList";
+// import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
+// import { TESTCommentList } from "../comments/TESTCommentList";
+// import { PrescriptionCheckUser } from "../prescription/PrescriptionCheckUser";
 
 export const ProfilePatient2 = ({
     patient_Id,

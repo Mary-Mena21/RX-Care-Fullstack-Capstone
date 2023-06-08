@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
-import { Button } from "bootstrap";
-import Form from "react-bootstrap/Form";
-import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
+// import { Button } from "bootstrap";
+// import Form from "react-bootstrap/Form";
+// import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
 import { PieChart } from "react-minimal-pie-chart";
 
 export const PrescriptionCheck = ({ patient_Id }) => {

@@ -1,17 +1,17 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 // Setup
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./Login3D.css";
 import LoginBackGroundPhoto from "../images/LoginBackGroundPhoto.jpg";
-import moon from "../images/moon.jpg";
-import space from "../images/space.jpg";
-import normal from "../images/normal.jpg";
-import { Link } from "react-router-dom";
+// import moon from "../images/moon.jpg";
+// import space from "../images/space.jpg";
+// import normal from "../images/normal.jpg";
+// import { Link } from "react-router-dom";
 //-------------------------------------------------------
 export const Login3D = () => {
     useEffect(() => {

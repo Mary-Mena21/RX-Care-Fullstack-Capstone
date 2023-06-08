@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
-import Accordion from "react-bootstrap/Accordion";
-import { Button } from "bootstrap";
-import Form from 'react-bootstrap/Form';
+// import Accordion from "react-bootstrap/Accordion";
+// import { Button } from "bootstrap";
+// import Form from 'react-bootstrap/Form';
 
 
 

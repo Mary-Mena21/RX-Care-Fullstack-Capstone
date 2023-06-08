@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 //import "./PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
-import { Button } from "bootstrap";
+//import { Button } from "bootstrap";
 
 export const PrescriptionList = ({ patient_Id }) => {
     console.log(patient_Id);
