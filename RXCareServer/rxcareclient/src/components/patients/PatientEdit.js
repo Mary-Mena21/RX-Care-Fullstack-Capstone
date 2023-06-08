@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Button from "react-bootstrap/Button";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 export const PatientEdit = () => {

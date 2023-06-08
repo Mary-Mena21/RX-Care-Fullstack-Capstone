@@ -5,12 +5,12 @@ import { PrescriptionList } from "../prescription/PrescriptionList";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Accordion from "react-bootstrap/Accordion";
-import { Button } from "bootstrap";
-import { CommentList } from "../comments/CommentList";
-import { Comment, TESTComment } from "../comments/TESTComment";
+// import { Button } from "bootstrap";
+// import { CommentList } from "../comments/CommentList";
+// import { Comment, TESTComment } from "../comments/TESTComment";
 import { TESTCommentList } from "../comments/TESTCommentList";
 import { PrescriptionCheck } from "../prescription/PrescriptionCheck";
-import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
+// import { PieChartAdministeredDose } from "../adminsteredDose/PieChartAdministeredDose";
 
 export const PatientProfileDetails = ({
     patient_Id,

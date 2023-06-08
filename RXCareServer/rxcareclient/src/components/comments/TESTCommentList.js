@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
 import {TESTComment } from "./TESTComment";
-import { Button } from "bootstrap";
+// import { Button } from "bootstrap";
 
 export const TESTCommentList = ({ patient_Id }) => {
     const [comment, setComment] = useState([]);

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import LoginBackGroundPhoto from "../images/LoginBackGroundPhoto.jpg";
+// import LoginBackGroundPhoto from "../images/LoginBackGroundPhoto.jpg";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
