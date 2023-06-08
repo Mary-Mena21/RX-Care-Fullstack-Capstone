@@ -193,7 +193,7 @@ console.log(appUserObject.type);
                             </div>
                         </div>
                         {/* -------------TABS-------------- */}
-                        <div className="col-md-8">
+                        <div className="col-md-6">
                             <Tabs
                                 defaultActiveKey="profile"
                                 id="fill-tab-example"
@@ -321,14 +321,6 @@ console.log(appUserObject.type);
                                                     <p>Report</p>
                                                 </div>
                                             </div>
-
-                                            {/*<div class="row">
-      <div class="col-md-12">
-          <p>
-          Prescription
-          </p>
-      </div>
-  </div> */}
                                         </div>
                                     </div>
                                 </Tab>

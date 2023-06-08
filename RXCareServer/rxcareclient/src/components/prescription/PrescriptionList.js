@@ -37,6 +37,9 @@ console.log(appUserObject.type);
                 <Accordion.Header>PRESCRIPTIONXX0000</Accordion.Header>
 
                 {Prescription.map((pres) => {
+                    console.log(pres.quantity);
+                    console.log(`${pres.adminsteredDose}`.length);
+                    //console.log(count(pres.adminsteredDose));
                     return (
                         <>
                             <Accordion.Body>

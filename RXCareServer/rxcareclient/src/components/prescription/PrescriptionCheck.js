@@ -41,6 +41,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         const PrescriptionListArray = await response.json();
         setPrescription(PrescriptionListArray);
         console.log(PrescriptionListArray);
+        for (const Prescription of PrescriptionListArray) {
+            console.log(Prescription.adminsteredDose.length);
+        }
     };
 
     useEffect(() => {
@@ -81,8 +84,14 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         <>
             <Accordion.Item eventKey="2">
                 <Accordion.Header>REPORT</Accordion.Header>
-
                 {Prescription.map((pres) => {
+                    for (const x of Prescription) {
+                        console.log(x.adminsteredDose.length);
+                    }
+                    console.log(Prescription);
+                    console.log(pres);
+                    let TOTAL = `${pres.adminsteredDose}`.length;
+                    console.log(TOTAL);
                     return (
                         <>
                             <Accordion.Body>
@@ -122,15 +131,16 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         onClick={() => {
                                                                             window.confirm(
                                                                                 `Are you sure you want to delete Prescription ${pres.medicineName}?`
-                                                                            )
-                                                                                 && `${ pres.active == false }`
-                                                                                // fetch(
-                                                                                //     `https://localhost:7183/api/prescription/${pres.id}`,
-                                                                                //     {
-                                                                                //         method:
-                                                                                //             "DELETE",
-                                                                                //     }
-                                                                                // ).then();
+                                                                            ) &&
+                                                                                `${pres.active ==
+                                                                                    false}`;
+                                                                            // fetch(
+                                                                            //     `https://localhost:7183/api/prescription/${pres.id}`,
+                                                                            //     {
+                                                                            //         method:
+                                                                            //             "DELETE",
+                                                                            //     }
+                                                                            // ).then();
                                                                         }}
                                                                     />
                                                                 </li>
@@ -156,93 +166,133 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                     </ul>
                                                     <hr />
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Drug Name</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <p>
-                                                            {pres.medicineName}
+                                                <div class="row row-md-12">
+                                                    <div class="col">
+                                                        <p class="col-md-3">
+                                                            <label>
+                                                                Quantity
+                                                            </label>
                                                         </p>
+                                                        <div class="col-md-3">
+                                                            <p>
+                                                                {pres.quantity}
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label></label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <p>
+                                                    <div class="col">
+                                                        <p class="col-md-3">
+                                                            <label>
+                                                                {
+                                                                    pres.medicineName
+                                                                }
+                                                            </label>
+                                                        </p>
+                                                        <div class="col-md-3">
                                                             <img
                                                                 src={
                                                                     pres.imgUrl
                                                                 }
-                                                                className="medical-img"
+                                                                className="medical-img2"
                                                             />
-                                                        </p>
+                                                        </div>
                                                     </div>
+
                                                     {/* --------------check---------------- */}
-                                                    <div class="col-md-3">
-                                                        <p>
-                                                            <input
-                                                                type="checkbox"
-                                                                className="checkbox"
-                                                                onChange={(
-                                                                    evt
-                                                                ) => {
-                                                                    const copy = {
-                                                                        ...AdministeredDose,
-                                                                    };
-                                                                    copy.prescriptionId =
-                                                                        pres.id;
-                                                                    console.log(
-                                                                        pres.id
-                                                                    );
-                                                                    if (
+                                                    <div class="col">
+                                                        <p class="col-md-3">
+                                                            <label>
+                                                                checkbox
+                                                            </label>
+                                                        </p>
+                                                        <div class="col-md-3">
+                                                            <p>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="checkbox"
+                                                                    onChange={(
                                                                         evt
-                                                                            .target
-                                                                            .checked
-                                                                    ) {
-                                                                        setAddAdministeredDose(
-                                                                            copy
+                                                                    ) => {
+                                                                        const copy = {
+                                                                            ...AdministeredDose,
+                                                                        };
+                                                                        copy.prescriptionId =
+                                                                            pres.id;
+                                                                        console.log(
+                                                                            pres.id
                                                                         );
-                                                                        fetchData(
-                                                                            copy
-                                                                        );
-                                                                        window.confirm(
-                                                                            `Are you sure you want to Check Prescription ${pres.medicineName}?`
-                                                                        );
-                                                                    }
-                                                                }}
-                                                            ></input>
-                                                        </p>
+                                                                        if (
+                                                                            evt
+                                                                                .target
+                                                                                .checked
+                                                                        ) {
+                                                                            setAddAdministeredDose(
+                                                                                copy
+                                                                            );
+                                                                            fetchData(
+                                                                                copy
+                                                                            );
+                                                                            window.confirm(
+                                                                                `Are you sure you want to Check Prescription ${pres.medicineName}?`
+                                                                            );
+                                                                        }
+                                                                    }}
+                                                                ></input>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                     {/* --------------check---------------- */}
-                                                    <div class="col-md-3">
-                                                        {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
-                                                        <PieChart
-                                                            data={[
-                                                                {
-                                                                    title:
-                                                                        "One",
-                                                                    value:
-                                                                        pres.quantity,
-                                                                    color:
-                                                                        "#00A99D",
-                                                                },
-                                                                {
-                                                                    title:
-                                                                        "Two",
-                                                                    value:
-                                                                        pres
-                                                                            .adminsteredDose
-                                                                            .length,
-                                                                    color:
-                                                                        "#0072CE",
-                                                                },
-                                                            ]}
-                                                        />
+                                                    <div class="col">
+                                                        <p class="col-md-3">
+                                                            <label>
+                                                                REPORT
+                                                            </label>
+                                                        </p>
+                                                        <div class="col-md-3">
+                                                            {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
+                                                            <PieChart
+                                                                totalValue={parseInt(
+                                                                    pres.quantity
+                                                                )}
+                                                                animationDuration={
+                                                                    300
+                                                                }
+                                                                labelPosition={
+                                                                    30
+                                                                }
+                                                                label={({
+                                                                    dataEntry,
+                                                                }) =>
+                                                                    dataEntry.value
+                                                                }
+                                                                // color={ "#00A99D"}
+                                                                //segmentsTabIndex={2}
+                                                                //radius = {70}
+                                                                //     //     {`${pres.adminsteredDose}`
+                                                                //     //         .length}
+                                                                //     totalValue= {pres.quantity}
+                                                                //     paddingAngle = {1}
+                                                                data={[
+                                                                    // {
+                                                                    //     title: `${pres.adminsteredDose}`
+                                                                    //         .length,
+                                                                    //     value: `${pres.adminsteredDose}`
+                                                                    //         .length,
+                                                                    //     color:
+                                                                    //         "#0072CE",
+                                                                    // },
+                                                                    {
+                                                                        title: `Doses`,
+                                                                        value:
+                                                                            pres
+                                                                                .adminsteredDose
+                                                                                .length,
+                                                                        color:
+                                                                            "#00A99D",
+                                                                    },
+                                                                ]}
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
