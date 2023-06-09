@@ -119,6 +119,23 @@ namespace RXCareServer.Controllers
 
         }
         //======================================
+        //-------------------------------------------------------------------------
+        [HttpGet("GetUserInfoByUserId/{Id}")]
+        public IActionResult GetUserInfoByUserId(int Id)
+        {
+            if (Id == null)
+            {
+                return BadRequest();
+            }
+            UserInfo2 user = _userRepository.GetUserInfoByUserId(Id);
+            if (user == null)
+            {
+                return NotFound($"{Id} Not Found!");
+            }
+            return Ok(user);
+
+        }
+        //======================================
 
         [HttpGet("GetLoginByEmail/{Email}")]
         public IActionResult GetByEmail(string Email)

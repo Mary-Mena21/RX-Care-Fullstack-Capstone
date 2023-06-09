@@ -12,6 +12,7 @@ namespace RXCareServer.Repositories
         List<User> GetDctorsList();
         UserInfo3 GetUserById(int id);
         UserInfo2 GetUserInfoById(int id);
+        UserInfo2 GetUserInfoByUserId(int Id);
         UserLogin GetUserLoginByEmail(string Email);
         User GetUserProfileById(int Id);
     }

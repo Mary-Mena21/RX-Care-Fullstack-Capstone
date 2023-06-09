@@ -15,35 +15,35 @@ import { PrescriptionList } from "../prescription/PrescriptionList";
 export const ProfilePatient2 = ({
     patient_Id,
     image,
-    patientUser,
     firstName,
     lastName,
     email,
-    doB,
-    yoB,
-    age,
-    address,
-    phone,
-    patientIdNumber,
-    height,
-    weight,
-    note,
     doctorFirstName,
     doctorLastName,
-    doctorEmail,
-    clinicPhone,
-    clinicAddress,
-    clinicFacility,
-    clinicType,
-    clinicLocation,
-    prescriptions,
-    comments,
-    medicine,
+    // patientUser,
+    // doB,
+    // yoB,
+    // age,
+    // address,
+    // phone,
+    // patientIdNumber,
+    // height,
+    // weight,
+    // note,
+    // doctorEmail,
+    // clinicPhone,
+    // clinicAddress,
+    // clinicFacility,
+    // clinicType,
+    // clinicLocation,
+    // prescriptions,
+    // comments,
+    // medicine,
 }) => {
     const navigate = useNavigate();
     console.log(patient_Id);
-    console.log(comments);
-    console.log(prescriptions);
+    // console.log(comments);
+    // console.log(prescriptions);
     //let commentsX = [...new Set(comments)]
     //console.log(commentsX);
     //console.log(comments);

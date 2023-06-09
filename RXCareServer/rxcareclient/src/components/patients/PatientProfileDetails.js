@@ -96,13 +96,13 @@ console.log(appUserObject.type);
                             {/* ******Accordion****** */}
                             <Accordion>
                                 <PrescriptionList patient_Id={patient_Id} />
-                               {/*  <CommentList patient_Id={patient_Id} /> */}
-                                {/* <Comment patient_Id={patient_Id} /> */}
                                 <TESTCommentList patient_Id={patient_Id}/>
                                 <PrescriptionCheck patient_Id={patient_Id}/>
+                            </Accordion>
+                                {/*  <CommentList patient_Id={patient_Id} /> */}
+                                {/* <Comment patient_Id={patient_Id} /> */}
                                 {/* <PieChartAdministeredDose patient_Id={patient_Id}/> */}
-                                </Accordion>
-                                {/* ************ */}
+                            {/* ************ */}
                         </div>
                         <div class="col-md-2">
                             <br />
