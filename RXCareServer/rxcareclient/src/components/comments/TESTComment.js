@@ -13,51 +13,63 @@ export const TESTComment = ({
     DCommentDate,
     MedicineName,
 }) => {
-
     //--------------------------------
-var appUser = localStorage.getItem("app_user");
-var appUserObject = JSON.parse(appUser);
-console.log(appUserObject.type);
+    var appUser = localStorage.getItem("app_user");
+    var appUserObject = JSON.parse(appUser);
+    console.log(appUserObject.type);
     const Type = appUserObject.type;
-    console.log(Type)
+    console.log(Type);
+    console.log(Id);
 
+    /* -------------Delete Comment----------------- */
+    const handleDelete = () => {
+        fetch(` https://localhost:7183/api/Comment/DeleteCommentById/${Id}`, {
+            method: "DELETE",
+        }).then();
+    };
 
     return (
         <>
-
-                            <Accordion.Body>
+            <Accordion.Body>
                 <div className="container active3">
-                                    <h6>
-                                    {MedicineName}Doctor
-                                    </h6>
-                                    <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p>
-                                    <p class="p-comment">P: {PComment}</p>
-                                    <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p>  
-                    
+                    <h6>{MedicineName}</h6>
+                    <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> 
+                    <p class="p-comment">P: {PComment}</p>
+                    <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p>   
 
                     <p class="p-comment">D: {DComment}</p>
                     {appUserObject.type == "Doctor" ? (
-                                    <>
-                                    <Link to={`UpdateComment/edit/${Id}`}>
-                                        {" "}
-                                        <input
-                                            type="submit"
-                                            class="profile-edit-btn-comment"
-                                            name="btnAddMore"
-                                            value="ADD-REPLY"
-                                        />
-                                    </Link>
-                                    </>
-                                    ):("")}
-                                </div>
-                            </Accordion.Body>
+                        <>
+                            <Link to={`UpdateComment/edit/${Id}`}>
+                                {" "}
+                                <input
+                                    type="submit"
+                                    class="profile-edit-btn-comment"
+                                    name="btnAddMore"
+                                    value="ADD-REPLY"
+                                />
+                            </Link>
+                        </>
+                    ) : (
+                        ""
+                    )}
+
+                    <input
+                        type="submit"
+                        class="profile-edit-btn-comment"
+                        name="btnAddMore"
+                        value="Delete"
+                        onClick={(click) => {
+                            window.confirm(
+                                `Are you sure you want to delete Comment ${Id}?`
+                            ) && handleDelete(click);
+                        }}
+                    />
+                </div>
+            </Accordion.Body>
         </>
     );
-
-
-
 };
-
 
 // {/* <p>P:{new Date(DCommentDate).toLocaleDateString('en-GB', { timeZone: 'UTC' })}</p> */}
 // {/*  <p class="proile-comment">{new Date(DCommentDate).toLocaleString()}</p>  */ }
