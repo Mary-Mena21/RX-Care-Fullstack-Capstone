@@ -215,9 +215,9 @@ export const ProfilePatient2 = ({
                                                 <li class="nav-item">
                                                     <input
                                                         type="submit"
-                                                        class="profile-edit-btn nav-item"
+                                                        class="profile-edit-btn-comment"
                                                         name="btnAddMore"
-                                                        value="ADD-COMMENT ...."
+                                                        value="ADD-COMMENT"
                                                         onClick={() =>
                                                             navigate(
                                                                 `addCommentFromPatient/${patient_Id}`
@@ -225,13 +225,13 @@ export const ProfilePatient2 = ({
                                                         }
                                                     />
                                                 </li>
-
+                                                &nbsp;&nbsp;
                                                 <li class="nav-item">
                                                     <input
                                                         type="submit"
-                                                        class="profile-edit-btn nav-item"
+                                                        class="profile-edit-btn-comment"
                                                         name="btnAddMore"
-                                                        value="CHECK-DRUG ...."
+                                                        value="CHECK-DOSER"
                                                         onClick={() =>
                                                             navigate(
                                                                 `/profile/prescriptionCheckUser/${patient_Id}`
@@ -239,8 +239,7 @@ export const ProfilePatient2 = ({
                                                         }
                                                     />
                                                 </li>
-
-                                                <li class="nav-item">
+{/*                                                 <li class="nav-item">
                                                     <a class="nav-link ">
                                                         {" "}
                                                         TEST{" "}
@@ -251,12 +250,11 @@ export const ProfilePatient2 = ({
                                                         {" "}
                                                         TEST{" "}
                                                     </a>
-                                                </li>
+                                                </li> */}
                                             </ul>
                                         </div>
-
+                                        </div>
                                         <br />
-                                    </div>
                                     {/* ------------------------------------- */}
 
                                     <ul class="nav nav-tabs">
@@ -281,7 +279,7 @@ export const ProfilePatient2 = ({
                                                 role="tab"
                                                 aria-controls="profile"
                                             >
-                                                Comment
+                                                Comments
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -291,7 +289,7 @@ export const ProfilePatient2 = ({
                                                 role="tab"
                                                 aria-controls="profile"
                                             >
-                                                Prescription
+                                                Prescriptions
                                             </a>
                                         </li>
                                     </ul>
