@@ -548,7 +548,73 @@ namespace RXCareServer.Repositories
                 }
             }
         }
+        //------------------------------------------------------------------------
 
+
+        public UserInfo2 GetUserInfoByUserId(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [User].[Id] 
+                                              ,[User].Type
+                                              ,[User].Img
+                                              ,[User].FirstName
+                                              ,[User].LastName
+                                              ,[User].Email
+                                              ,[Patient].[Id] As PatId
+                                              ,[Patient].[DoctorId]
+                                              ,[Patient].[UserId]
+                                              ,[Patient].[DoB]
+                                              ,[Patient].[Address]
+                                              ,[Patient].[Phone]
+                                              ,[Patient].[Height]
+                                              ,[Patient].[Weight]
+                                              ,[Patient].[Note]
+                                          FROM [RXCareDb].[dbo].[User]
+                                          JOIN [Patient] ON [User].Id = [Patient].UserId
+                                          WHERE [User].[Id] = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+                    var reader = cmd.ExecuteReader();
+                    UserInfo2? user = null;
+
+                    while (reader.Read())
+                    {
+
+
+                        user = new UserInfo2()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Type = DbUtils.GetString(reader, "Type"),
+                            Img = DbUtils.GetString(reader, "Img"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+
+                            Patient = new Patient()
+                            {
+                                Id = DbUtils.GetInt(reader, "PatId"),
+                                DoctorId = DbUtils.GetInt(reader, "DoctorId"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                DoB = DbUtils.GetDateTime(reader, "DoB"),
+                                Address = DbUtils.GetString(reader, "Address"),
+                                Phone = DbUtils.GetString(reader, "Phone"),
+                                Height = DbUtils.GetDecimal(reader, "Height"),
+                                Weight = DbUtils.GetDecimal(reader, "Weight"),
+                                Note = DbUtils.GetString(reader, "Note")
+                            }
+                        };
+
+
+                    }
+                    reader.Close();
+                    return user;
+                }
+            }
+        }
         //---------------------------------------------------------------------------------------------------------------------
         //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
         public UserInfo3 GetUserById(int id)

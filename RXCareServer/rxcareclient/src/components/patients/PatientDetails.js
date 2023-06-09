@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import React from "react";
+import { PatientProfileDetails } from "./PatientProfileDetails";
 // import { ProfilePatient } from "../profile/ProfilePatient";
 // import { Link } from "react-router-dom";
 // import { DataTexture } from "three";
-import { PatientProfileDetails } from "./PatientProfileDetails";
 
 //import { User } from "./types";
 //from Doctor prespective
