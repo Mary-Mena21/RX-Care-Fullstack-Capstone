@@ -305,7 +305,7 @@ namespace RXCareServer.Repositories
                             Id = DbUtils.GetInt(reader, "Id"),
                             DoctorId = DbUtils.GetInt(reader, "DoctorId"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
-                            Doctor = new DoctorInfo()
+                            Doctor = new DoctorInformation()
                             {
                                 Id = DbUtils.GetInt(reader, "DId"),
                                 User = new User()
@@ -386,7 +386,7 @@ namespace RXCareServer.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             DoctorId = DbUtils.GetInt(reader, "DoctorId"),
-                            Doctor = new DoctorInfo()
+                            Doctor = new DoctorInformation()
                             {
                                 Id = DbUtils.GetInt(reader, "DId"),
                                 User = new User()
