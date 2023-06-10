@@ -99,7 +99,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                     {pres.active == "active" ? (
                                         <div class="content-tabs profile-tab">
                                             <div class="row">
-                                                <div class="tab-pane show active2 Container">
+                                                <div class="tab-pane show active2">
                                                     <br />
 
                                                     <div class="profile-head">
