@@ -10,7 +10,7 @@ export const Home = () => {
     return (
         <>
             <div className="container">
-                <h1>WElcome home</h1>
+                {/* <h1>WElcome home</h1> */}
                 <DoctorsList />
             </div>
         </>

@@ -13,10 +13,12 @@
   display: flex;
   flex-direction: column;
   height: 500px;
+
 }
 .doctorCard{
-
+background-color: aliceblue;
 border:1px solid gray;
+border-radius: 0.5rem;
 margin:10px 30px;
 
 /* display: grid;
