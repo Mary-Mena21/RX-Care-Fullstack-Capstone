@@ -7,7 +7,7 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
-        public bool? Active { get; set; }
+        public string? Active { get; set; }
         public string? MedicineName { get; set; }
         public string? ImgUrl { get; set; }
         public string? Form { get; set; }
@@ -24,7 +24,7 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
-        public bool? Active { get; set; }
+        public string? Active { get; set; }
         public string? MedicineName { get; set; }
         public string? ImgUrl { get; set; }
         public string? Form { get; set; }

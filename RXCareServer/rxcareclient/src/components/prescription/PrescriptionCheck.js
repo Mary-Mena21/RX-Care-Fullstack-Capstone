@@ -95,7 +95,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                     return (
                         <>
                             <Accordion.Body>
-                                {pres.active == true ? (
+                                {pres.active == "active" ? (
                                     <div class="content-tabs profile-tab">
                                         <div class="row">
                                             <div class="tab-pane show active2">
@@ -121,7 +121,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         />
                                                                     </Link>
                                                                 </li>
-                                                                &nbsp;&nbsp;
+{/*                                                                 &nbsp;&nbsp;
                                                                 <li class="nav-item">
                                                                     <input
                                                                         type="submit"
@@ -143,7 +143,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                             // ).then();
                                                                         }}
                                                                     />
-                                                                </li>
+                                                                </li> */}
                                                             </>
                                                         ) : (
                                                             ""

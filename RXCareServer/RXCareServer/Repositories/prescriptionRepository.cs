@@ -45,7 +45,7 @@ namespace RXCareServer.Repositories
                             Dosage = DbUtils.GetString(reader, "Dosage"),
                             Quantity = DbUtils.GetInt(reader, "Quantity"),
                             PatientId = DbUtils.GetInt(reader, "PatientId"),
-                            Active = DbUtils.GetBoolean(reader, "Active"),
+                            Active = DbUtils.GetString(reader, "Active"),
                             Medicine = new Medicine()
                             {
                                 Id = DbUtils.GetInt(reader, "MedId"),
@@ -121,7 +121,7 @@ namespace RXCareServer.Repositories
         }
 
         //------------------------------GetPrescriptionMedicineByPrescriptionId---------------------------------
-        public PrescriptionInfo GetPrescriptionMedicineByPrescriptionId(int Id)//5
+        public PrescriptionInfo2 GetPrescriptionMedicineByPrescriptionId(int Id)//5
         {
             using (var conn = Connection)
             {
@@ -133,6 +133,7 @@ namespace RXCareServer.Repositories
                                               ,[Prescription].Dosage
                                               ,[Prescription].Quantity
                                               ,[Prescription].PatientId
+                                              ,[Prescription].active
                                               ,[Medicine].Id As MedId
                                               ,[Medicine].MedicineName
                                               ,[Medicine].ImgUrl
@@ -144,18 +145,19 @@ namespace RXCareServer.Repositories
                              WHERE [Prescription].Id = @Id";
                     DbUtils.AddParameter(cmd, "@Id", Id);
                     var reader = cmd.ExecuteReader();
-                    PrescriptionInfo prescription = null;
+                    PrescriptionInfo2 prescription = null;
                     while (reader.Read())
                     {
                         //if (prescription == null)
                         //{
-                        prescription = new PrescriptionInfo()
+                        prescription = new PrescriptionInfo2()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             MedicineId = DbUtils.GetInt(reader, "MedicineId"),
                             Dosage = DbUtils.GetString(reader, "Dosage"),
                             Quantity = DbUtils.GetInt(reader, "Quantity"),
                             PatientId = DbUtils.GetInt(reader, "PatientId"),
+                            Active = DbUtils.GetString(reader, "Active"),
                             Medicine = new Medicine()
                             {
                                 Id = DbUtils.GetInt(reader, "MedId"),
@@ -522,7 +524,7 @@ namespace RXCareServer.Repositories
                                 Dosage = DbUtils.GetString(reader, "Dosage"),
                                 Quantity = DbUtils.GetInt(reader, "Quantity"),
                                 PatientId = DbUtils.GetInt(reader, "PatientId"),
-                                Active = DbUtils.GetBoolean(reader, "Active"),
+                                Active = DbUtils.GetString(reader, "Active"),  
                                 MedicineName = DbUtils.GetString(reader, "MedicineName"),
                                 ImgUrl = DbUtils.GetString(reader, "ImgUrl"),
                                 Form = DbUtils.GetString(reader, "Form"),

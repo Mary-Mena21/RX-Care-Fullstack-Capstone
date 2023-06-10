@@ -11,7 +11,7 @@ namespace RXCareServer.Repositories
         List<PrescriptionInfo> GetPrescriptionByPatientId2(int Id);
         List<Prescription> GetPrescriptionOnlyByPatientId(int Id);
         Prescription GetPrescriptionByPrescriptionId(int Id);
-        PrescriptionInfo GetPrescriptionMedicineByPrescriptionId(int Id);
+        PrescriptionInfo2 GetPrescriptionMedicineByPrescriptionId(int Id);
         List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id);
         List<PrescriptionMedicineDoses> GetPrescriptionDosesByPatientIdAll(int PatientId);
         void EditNotActivePrescription(PrescriptionActiveFalse prescription);

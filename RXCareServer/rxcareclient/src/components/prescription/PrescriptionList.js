@@ -12,7 +12,7 @@ export const PrescriptionList = ({ patient_Id }) => {
         //--------------Active/false------------------
         const [PrescriptionActive, setUpdatePrescriptionActive] = useState({
             //id: 0,
-            active: true,
+            active: "active",
         });
         // /* -------------Edit----------------- */
         // const fetchUpdatePrescription = async (SendToAPI) => {
@@ -86,7 +86,7 @@ console.log(appUserObject.type);
                     return (
                         <>
                             <Accordion.Body>
-                            {pres.active == true ? (
+                            {pres.active == "active" ? (
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
                                         <div class="tab-pane show active2">
@@ -135,7 +135,7 @@ console.log(appUserObject.type);
                                                                             )
                           
                                                                       
-                                                                                //`${pres.active == false}`
+                                                                                `${pres.active == "active"}`
                                                                         
                                                                                     /* -------------Delete----------------- */
                                                                         
