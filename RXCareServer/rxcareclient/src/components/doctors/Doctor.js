@@ -8,6 +8,16 @@ export const Doctor = ({
     doctorFirstName,
     doctorLastName,
     doctorEmail,
+    doctorSpecialty,
+    doctorAbout,
+    doctorPhone,
+    doctorLocation,
+    doctorLanguage,
+    doctorGender,
+    doctorEducation,
+    doctorQualifications,
+    doctorFacility,
+    doctorType,
 }) => {
     return (
         <div className="container doctorCard">
@@ -22,14 +32,14 @@ export const Doctor = ({
             {/* ------------------------------------------------- */}
             <div class="container main">
                 <div class="row">
-                    <div class="col-md-6 img">
+                    <div class="col-md-4 img">
                         <img
                             //src={require(`../images/${doctorImg}`)}
                             src={doctorImg}
                             className="doctorImg"
                         />
                     </div>
-                    <div className="col-md-6 details">
+                    <div className="col-md-8 details">
                         <div>
                             <h5>
                                 Dr. {doctorFirstName} {doctorLastName}
@@ -40,13 +50,32 @@ export const Doctor = ({
                                     <i class="icon-map-marker"></i>
                                 </cite>
                             </small>
-                        </div>
-                        <p>
+
+
+                            <h6>Specialties: {doctorSpecialty}</h6>
                             {doctorEmail}
+                            <small>
+                                <cite title="Source Title">
+                                    "{doctorAbout}"{" "}
+                                </cite>
+                            </small>
+                            {/* <p>Education: { doctorEducation}</p> */}
+
+                            <p>
                             <br />
-                            www.bootsnipp.com <br />
-                            June 18, 1990
+                            www.RxCare.com <br />
+                                June 18, 2023
+                                <br />
+                                <h6><a href={`tel : ${doctorPhone}`}>
+                                    {doctorPhone}
+                                </a>{" "}</h6>
+                                <p>
+{/*                                 <h6 className="proile-rating">
+                                    LOCATION : {doctorLocation}
+                                </h6> */}
+                                </p>
                         </p>
+                        </div>
                     </div>
                 </div>
             </div>

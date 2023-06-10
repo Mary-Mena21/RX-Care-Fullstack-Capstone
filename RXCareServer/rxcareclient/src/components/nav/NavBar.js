@@ -44,6 +44,12 @@ export const NavBar = ({ children }) => {
                 className: "sidebar_2",
             },
             {
+                path: "/doctorList",
+                name: "Home",
+                icon: <FaHome />,
+                className: "sidebar_2",
+            },
+            {
                 path: "/profileDoctor",
                 name: "ProfileDoctor",
                 icon: <CgProfile />,

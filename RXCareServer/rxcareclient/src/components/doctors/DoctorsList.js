@@ -14,7 +14,8 @@ export const DoctorsList = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                `https://localhost:7183/api/User/GetDoctorList`
+                //`https://localhost:7183/api/User/GetDoctorList`
+                `https://localhost:7183/api/Doctor/GetDoctorsInformationProfileList`
             );
             const DoctorsData = await response.json();
             setDoctors(DoctorsData);
@@ -37,6 +38,16 @@ export const DoctorsList = () => {
                                     doctorFirstName={doctor.firstName}
                                     doctorLastName={doctor.lastName}
                                     doctorEmail={doctor.email}
+                                    doctorSpecialty={doctor.specialty}
+                                    doctorLanguage={doctor.language}
+                                    doctorGender={doctor.gender}
+                                    doctorAbout={doctor.about}
+                                    doctorEducation={doctor.education}
+                                    doctorQualifications={doctor.qualifications}
+                                    doctorPhone={doctor.phone}
+                                    doctorFacility={doctor.facility}
+                                    doctorType={doctor.type}
+                                    doctorLocation={doctor.location}
                                 />
                             </>
                         );
