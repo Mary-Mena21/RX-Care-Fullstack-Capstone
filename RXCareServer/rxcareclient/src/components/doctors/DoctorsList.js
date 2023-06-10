@@ -26,7 +26,7 @@ export const DoctorsList = () => {
     return (
         <>
             <div className="container ">
-                <h1>All Providers</h1>
+                {/* <h1>All Providers</h1> */}
                 <section key={`Doctors`} className="Doctors doctorContainer">
                     {Doctors.map((doctor) => {
                         return (
