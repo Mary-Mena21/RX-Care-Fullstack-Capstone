@@ -142,7 +142,7 @@ margin: 2px;
 }
 
 .medical-img2{
-  height: 50px !important;
+  height: 80px !important;
   width: auto !important;
 }
 
@@ -246,7 +246,7 @@ margin: 2px;
 /* -----------------Report------------------ */
 
 .checkbox {
-  margin: 1rem;
+  /* margin: 1rem; */
   height: 30px;
   width: 20px;
   cursor: pointer;

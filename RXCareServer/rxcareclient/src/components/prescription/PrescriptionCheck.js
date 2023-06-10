@@ -99,7 +99,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                     {pres.active == "active" ? (
                                         <div class="content-tabs profile-tab">
                                             <div class="row">
-                                                <div class="tab-pane show active2">
+                                                <div class="tab-pane show active2 Container">
                                                     <br />
 
                                                     <div class="profile-head">
@@ -150,7 +150,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                 ""
                                                             )}
                                                             {/* --------------------------------Patient */}
-                                                            &nbsp;&nbsp;
+                                              {/*               &nbsp;&nbsp;
                                                             <li class="nav-item">
                                                                 <Link
                                                                     to={`reportDose/report/${pres.id}`}
@@ -163,35 +163,33 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         value="Report"
                                                                     />
                                                                 </Link>
-                                                            </li>
+                                                            </li> */}
                                                         </ul>
                                                         <hr />
                                                     </div>
-                                                    <div class="row row-md-10">
+                                                    <div class="row col-md-12">
                                                         <div class="col">
-                                                            <p class="col-md-3">
+                                                            <p class="col-md-4">
                                                                 <label>
-                                                                    Quantity
+                                                                    QUANTITY
                                                                 </label>
                                                             </p>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <p>
                                                                     {
                                                                         pres.quantity
                                                                     }
                                                                 </p>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col">
-                                                            <p class="col-md-6">
+                                                            <p class="col-md-4">
                                                                 <label>
                                                                     {
                                                                         pres.medicineName
                                                                     }
                                                                 </label>
                                                             </p>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <img
                                                                     src={
                                                                         pres.imgUrl
@@ -202,56 +200,55 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                         </div>
 
                                                         {/* --------------check---------------- */}
+
                                                         <div class="col">
-                                                            <p class="col-md-3">
+                                                            <p class="col-md-8">
                                                                 <label>
-                                                                    checkbox
+                                                                    CHECK
                                                                 </label>
                                                             </p>
-                                                            <div class="col-md-3">
-                                                                <p>
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        className="checkbox"
-                                                                        onChange={(
+                                                            <div class="col-md-8">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="checkbox"
+                                                                    onChange={(
+                                                                        evt
+                                                                    ) => {
+                                                                        const copy = {
+                                                                            ...AdministeredDose,
+                                                                        };
+                                                                        copy.prescriptionId =
+                                                                            pres.id;
+                                                                        console.log(
+                                                                            pres.id
+                                                                        );
+                                                                        if (
                                                                             evt
-                                                                        ) => {
-                                                                            const copy = {
-                                                                                ...AdministeredDose,
-                                                                            };
-                                                                            copy.prescriptionId =
-                                                                                pres.id;
-                                                                            console.log(
-                                                                                pres.id
+                                                                                .target
+                                                                                .checked
+                                                                        ) {
+                                                                            setAddAdministeredDose(
+                                                                                copy
                                                                             );
-                                                                            if (
-                                                                                evt
-                                                                                    .target
-                                                                                    .checked
-                                                                            ) {
-                                                                                setAddAdministeredDose(
-                                                                                    copy
-                                                                                );
-                                                                                fetchData(
-                                                                                    copy
-                                                                                );
-                                                                                window.confirm(
-                                                                                    `Are you sure you want to Check Prescription ${pres.medicineName}?`
-                                                                                );
-                                                                            }
-                                                                        }}
-                                                                    ></input>
-                                                                </p>
+                                                                            fetchData(
+                                                                                copy
+                                                                            );
+                                                                            window.confirm(
+                                                                                `Are you sure you want to Check Prescription ${pres.medicineName}?`
+                                                                            );
+                                                                        }
+                                                                    }}
+                                                                ></input>
                                                             </div>
-                                                        </div>
-                                                        {/* --------------check---------------- */}
-                                                        <div class="col">
-                                                            <p class="col-md-6">
+
+                                                            {/* --------------check---------6------- */}
+
+                                                            <p class="col-md-8">
                                                                 <label>
                                                                     REPORT
                                                                 </label>
                                                             </p>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-8">
                                                                 {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
                                                                 <PieChart
                                                                     totalValue={parseInt(
@@ -270,7 +267,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                     }
                                                                     // color={ "#00A99D"}
                                                                     //segmentsTabIndex={2}
-                                                                    //radius = {70}
+                                                                    //radius = {50}
                                                                     //     //     {`${pres.adminsteredDose}`
                                                                     //     //         .length}
                                                                     //     totalValue= {pres.quantity}

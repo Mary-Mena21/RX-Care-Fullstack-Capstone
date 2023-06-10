@@ -36,7 +36,6 @@ export const TESTComment = ({
                     <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> 
                     <p class="p-comment">P: {PComment}</p>
                     <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p>   
-
                     <p class="p-comment">D: {DComment}</p>
                     {appUserObject.type == "Doctor" ? (
                         <>
@@ -54,6 +53,8 @@ export const TESTComment = ({
                         ""
                     )}
 
+                    {appUserObject.type == "Patient" ? (
+                        <>
                     <input
                         type="submit"
                         class="profile-edit-btn-comment"
@@ -65,6 +66,10 @@ export const TESTComment = ({
                             ) && handleDelete(click);
                         }}
                     />
+                        </>
+                    ) : (
+                        ""
+                    )}
                 </div>
             </Accordion.Body>
         </>
