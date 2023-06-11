@@ -42,7 +42,7 @@ export const ApplicationViews = () => {
                     }
                 >
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} /> 
+                   {/*  <Route path="/login" element={<Login />} />  */}
                     <Route path="profileDoctor" element={<ProfileDoctor />} />
                     <Route path="doctorList" element={<DoctorsList />} />
                     <Route path="profile2" element={<Profile2 />} />
