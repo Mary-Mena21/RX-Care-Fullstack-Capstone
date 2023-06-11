@@ -18,13 +18,13 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
-        public bool? Active { get; set; }
+        public string? Active { get; set; }
     }
 
     public class PrescriptionActiveFalse
     {
         public int Id { get; set; }
-        public bool? Active { get; set; }
+        public string? Active { get; set; }
     }
 
     public class PrescriptionInfo
@@ -45,7 +45,7 @@
         public string? Dosage { get; set; }
         public int? Quantity { get; set; }
         public int? PatientId { get; set; }
-        public bool? Active { get; set; }
+        public string? Active { get; set; }
         public Medicine? Medicine { get; set; }
 
     }

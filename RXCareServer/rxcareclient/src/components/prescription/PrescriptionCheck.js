@@ -84,44 +84,45 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         <>
             <Accordion.Item eventKey="2">
                 <Accordion.Header>REPORT</Accordion.Header>
-                {Prescription.map((pres) => {
-                    for (const x of Prescription) {
-                        console.log(x.adminsteredDose.length);
-                    }
-                    console.log(Prescription);
-                    console.log(pres);
-                    let TOTAL = `${pres.adminsteredDose}`.length;
-                    console.log(TOTAL);
-                    return (
-                        <>
-                            <Accordion.Body>
-                                {pres.active == true ? (
-                                    <div class="content-tabs profile-tab">
-                                        <div class="row">
-                                            <div class="tab-pane show active2">
-                                                <br />
+                <Accordion.Body>
+                    {Prescription.map((pres) => {
+                        for (const x of Prescription) {
+                            console.log(x.adminsteredDose.length);
+                        }
+                        console.log(Prescription);
+                        console.log(pres);
+                        let TOTAL = `${pres.adminsteredDose}`.length;
+                        console.log(TOTAL);
+                        return (
+                            <>
+                                <div>
+                                    {pres.active == "active" ? (
+                                        <div class="content-tabs profile-tab">
+                                            <div class="row">
+                                                <div class="tab-pane show active2">
+                                                    <br />
 
-                                                <div class="profile-head">
-                                                    <ul class="nav nav-tabs ">
-                                                        &nbsp;&nbsp;
-                                                        {/* --------------------------------Doctor */}
-                                                        {appUserObject.type ==
-                                                        "Doctor" ? (
-                                                            <>
-                                                                <li class="nav-item">
-                                                                    <Link
-                                                                        to={`UpdatePrescription/edit/${pres.id}`}
-                                                                    >
-                                                                        {" "}
-                                                                        <input
-                                                                            type="submit"
-                                                                            class="profile-edit-btn-comment"
-                                                                            name="btnAddMore"
-                                                                            value="Update"
-                                                                        />
-                                                                    </Link>
-                                                                </li>
-                                                                &nbsp;&nbsp;
+                                                    <div class="profile-head">
+                                                        <ul class="nav nav-tabs ">
+                                                            &nbsp;&nbsp;
+                                                            {/* --------------------------------Doctor */}
+                                                            {appUserObject.type ==
+                                                            "Doctor" ? (
+                                                                <>
+                                                                    <li class="nav-item">
+                                                                        <Link
+                                                                            to={`UpdatePrescription/edit/${pres.id}`}
+                                                                        >
+                                                                            {" "}
+                                                                            <input
+                                                                                type="submit"
+                                                                                class="profile-edit-btn-comment"
+                                                                                name="btnAddMore"
+                                                                                value="Update"
+                                                                            />
+                                                                        </Link>
+                                                                    </li>
+                                                                    {/*                                                                 &nbsp;&nbsp;
                                                                 <li class="nav-item">
                                                                     <input
                                                                         type="submit"
@@ -143,70 +144,70 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                             // ).then();
                                                                         }}
                                                                     />
-                                                                </li>
-                                                            </>
-                                                        ) : (
-                                                            ""
-                                                        )}
-                                                        {/* --------------------------------Patient */}
-                                                        &nbsp;&nbsp;
-                                                        <li class="nav-item">
-                                                            <Link
-                                                                to={`reportDose/report/${pres.id}`}
-                                                            >
-                                                                {" "}
-                                                                <input
-                                                                    type="submit"
-                                                                    class="profile-edit-btn-comment"
-                                                                    name="btnAddMore"
-                                                                    value="Report"
-                                                                />
-                                                            </Link>
-                                                        </li>
-                                                    </ul>
-                                                    <hr />
-                                                </div>
-                                                <div class="row row-md-10">
-                                                    <div class="col">
-                                                        <p class="col-md-3">
-                                                            <label>
-                                                                Quantity
-                                                            </label>
-                                                        </p>
-                                                        <div class="col-md-3">
-                                                            <p>
-                                                                {pres.quantity}
+                                                                </li> */}
+                                                                </>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                            {/* --------------------------------Patient */}
+                                              {/*               &nbsp;&nbsp;
+                                                            <li class="nav-item">
+                                                                <Link
+                                                                    to={`reportDose/report/${pres.id}`}
+                                                                >
+                                                                    {" "}
+                                                                    <input
+                                                                        type="submit"
+                                                                        class="profile-edit-btn-comment"
+                                                                        name="btnAddMore"
+                                                                        value="Report"
+                                                                    />
+                                                                </Link>
+                                                            </li> */}
+                                                        </ul>
+                                                        <hr />
+                                                    </div>
+                                                    <div class="row col-md-12">
+                                                        <div class="col">
+                                                            <p class="col-md-4">
+                                                                <label>
+                                                                    QUANTITY
+                                                                </label>
                                                             </p>
-                                                        </div>
-                                                    </div>
+                                                            <div class="col-md-4">
+                                                                <p>
+                                                                    {
+                                                                        pres.quantity
+                                                                    }
+                                                                </p>
+                                                            </div>
 
-                                                    <div class="col">
-                                                        <p class="col-md-6">
-                                                            <label>
-                                                                {
-                                                                    pres.medicineName
-                                                                }
-                                                            </label>
-                                                        </p>
-                                                        <div class="col-md-6">
-                                                            <img
-                                                                src={
-                                                                    pres.imgUrl
-                                                                }
-                                                                className="medical-img2"
-                                                            />
+                                                            <p class="col-md-4">
+                                                                <label>
+                                                                    {
+                                                                        pres.medicineName
+                                                                    }
+                                                                </label>
+                                                            </p>
+                                                            <div class="col-md-4">
+                                                                <img
+                                                                    src={
+                                                                        pres.imgUrl
+                                                                    }
+                                                                    className="medical-img2"
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    {/* --------------check---------------- */}
-                                                    <div class="col">
-                                                        <p class="col-md-3">
-                                                            <label>
-                                                                checkbox
-                                                            </label>
-                                                        </p>
-                                                        <div class="col-md-3">
-                                                            <p>
+                                                        {/* --------------check---------------- */}
+
+                                                        <div class="col">
+                                                            <p class="col-md-8">
+                                                                <label>
+                                                                    CHECK
+                                                                </label>
+                                                            </p>
+                                                            <div class="col-md-8">
                                                                 <input
                                                                     type="checkbox"
                                                                     className="checkbox"
@@ -238,72 +239,72 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         }
                                                                     }}
                                                                 ></input>
+                                                            </div>
+
+                                                            {/* --------------check---------6------- */}
+
+                                                            <p class="col-md-8">
+                                                                <label>
+                                                                    REPORT
+                                                                </label>
                                                             </p>
-                                                        </div>
-                                                    </div>
-                                                    {/* --------------check---------------- */}
-                                                    <div class="col">
-                                                        <p class="col-md-6">
-                                                            <label>
-                                                                REPORT
-                                                            </label>
-                                                        </p>
-                                                        <div class="col-md-6">
-                                                            {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
-                                                            <PieChart
-                                                                totalValue={parseInt(
-                                                                    pres.quantity
-                                                                )}
-                                                                animationDuration={
-                                                                    300
-                                                                }
-                                                                labelPosition={
-                                                                    30
-                                                                }
-                                                                label={({
-                                                                    dataEntry,
-                                                                }) =>
-                                                                    dataEntry.value
-                                                                }
-                                                                // color={ "#00A99D"}
-                                                                //segmentsTabIndex={2}
-                                                                //radius = {70}
-                                                                //     //     {`${pres.adminsteredDose}`
-                                                                //     //         .length}
-                                                                //     totalValue= {pres.quantity}
-                                                                //     paddingAngle = {1}
-                                                                data={[
-                                                                    {
-                                                                        title:
-                                                                            "",
-                                                                        value: `${pres.quantity}`,
-                                                                        color:
-                                                                            "#0072CE",
-                                                                    },
-                                                                    {
-                                                                        title: `Doses`,
-                                                                        value:
-                                                                            pres
-                                                                                .adminsteredDose
-                                                                                .length,
-                                                                        color:
-                                                                            "#00A99D",
-                                                                    },
-                                                                ]}
-                                                            />
+                                                            <div class="col-md-8">
+                                                                {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
+                                                                <PieChart
+                                                                    totalValue={parseInt(
+                                                                        pres.quantity
+                                                                    )}
+                                                                    animationDuration={
+                                                                        300
+                                                                    }
+                                                                    labelPosition={
+                                                                        30
+                                                                    }
+                                                                    label={({
+                                                                        dataEntry,
+                                                                    }) =>
+                                                                        dataEntry.value
+                                                                    }
+                                                                    // color={ "#00A99D"}
+                                                                    //segmentsTabIndex={2}
+                                                                    //radius = {50}
+                                                                    //     //     {`${pres.adminsteredDose}`
+                                                                    //     //         .length}
+                                                                    //     totalValue= {pres.quantity}
+                                                                    //     paddingAngle = {1}
+                                                                    data={[
+                                                                        {
+                                                                            title:
+                                                                                "",
+                                                                            value: `${pres.quantity}`,
+                                                                            color:
+                                                                                "#0072CE",
+                                                                        },
+                                                                        {
+                                                                            title: `Doses`,
+                                                                            value:
+                                                                                pres
+                                                                                    .adminsteredDose
+                                                                                    .length,
+                                                                            color:
+                                                                                "#00A99D",
+                                                                        },
+                                                                    ]}
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                            </Accordion.Body>
-                        </>
-                    );
-                })}
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                            </>
+                        );
+                    })}
+                </Accordion.Body>
             </Accordion.Item>
         </>
     );

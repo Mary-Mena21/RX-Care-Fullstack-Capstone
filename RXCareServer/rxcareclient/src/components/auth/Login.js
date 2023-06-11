@@ -84,10 +84,21 @@ export const Login = () => {
         </div>
         </div> */}
 
-            <div class="container">
-                {/*   <div class="InputContainer"> */}
-                <div class="login-form">
-                    <div class="main-div">
+            <div class="register">
+            <div class="row g-3">
+            <div class="col-md-3 register-left">
+            <img
+                src="https://image.ibb.co/n7oTvU/logo_white.png"
+                alt=""
+            />
+            <h3>Welcome</h3>
+            <p>RX-Care Your Health Gard!</p>
+            <br />
+        </div>
+                
+                   <div class="col-md-7 register-right"> 
+                <div class="login-form ">
+                    <div class="main-div2">
                         <div class="panel">
                             <h2>Login for RX-Care</h2>
                             <p>Please enter your email</p>
@@ -130,6 +141,8 @@ export const Login = () => {
                     </div>
                 </div>
                 {/* </div> */}
+            </div>
+            </div>
             </div>
         </>
     );

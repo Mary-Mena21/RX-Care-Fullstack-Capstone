@@ -15,7 +15,7 @@ export const AddPrescription = () => {
         dosage: "",
         quantity: 0,
         patientId: patient_Id,
-        active: true,
+        active: "active",
     });
     /* --------------AddComment---------------- */
     const fetchData = async (SendToAPI) => {

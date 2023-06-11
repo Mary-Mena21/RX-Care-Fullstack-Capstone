@@ -12,7 +12,7 @@ export const PrescriptionList = ({ patient_Id }) => {
         //--------------Active/false------------------
         const [PrescriptionActive, setUpdatePrescriptionActive] = useState({
             //id: 0,
-            active: true,
+            active: "active",
         });
         // /* -------------Edit----------------- */
         // const fetchUpdatePrescription = async (SendToAPI) => {
@@ -79,14 +79,15 @@ console.log(appUserObject.type);
             <Accordion.Item eventKey="0">
                 <Accordion.Header>PRESCRIPTIONS</Accordion.Header>
 
+                <Accordion.Body>
                 {Prescription.map((pres) => {
                     console.log(pres.quantity);
                     console.log(`${pres.adminsteredDose}`.length);
                     //console.log(count(pres.adminsteredDose));
                     return (
                         <>
-                            <Accordion.Body>
-                            {pres.active == true ? (
+                                <div>
+                            {pres.active == "active" ? (
                                 <div class="content-tabs profile-tab">
                                     <div class="row">
                                         <div class="tab-pane show active2">
@@ -135,7 +136,7 @@ console.log(appUserObject.type);
                                                                             )
                           
                                                                       
-                                                                                //`${pres.active == false}`
+                                                                                `${pres.active == "active"}`
                                                                         
                                                                                     /* -------------Delete----------------- */
                                                                         
@@ -264,11 +265,13 @@ console.log(appUserObject.type);
                                     ) : (
                                         ""
                                     )}
-                            </Accordion.Body>
-                        </>
-                    );
-                })}
-                {/* <p>{Prescription. dosage}</p> */}
+                            </div>
+                                    </>
+                                    );
+                                })}
+                                {/* <p>{Prescription. dosage}</p> */}
+                               
+                </Accordion.Body>
             </Accordion.Item>
 
             {/*                     <Accordion.Item eventKey="1">

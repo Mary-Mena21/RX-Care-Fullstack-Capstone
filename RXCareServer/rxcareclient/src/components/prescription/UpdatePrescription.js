@@ -15,7 +15,7 @@ export const UpdatePrescription = () => {
         dosage: "",
         quantity: 0,
         patientId: patient_Id,
-        active: true,
+        active: "",
         medicine: { medicineName: "" },
     });
 
@@ -206,7 +206,7 @@ export const UpdatePrescription = () => {
                                                 <Form.Select
                                                     required
                                                     //readOnly="true"
-                                                    boolValue={
+                                                    value={
                                                         Prescription.active
                                                     }
                                                     className="form-select"
@@ -214,8 +214,8 @@ export const UpdatePrescription = () => {
                                                         const copy = {
                                                             ...Prescription,
                                                         };
-                                                        copy.active = 
-                                                        Boolean( evt.target.boolValue)
+                                                        copy.active =
+                                                        evt.target.value
                                                         console.log( evt)
 
                                                         setUpdatePrescription(
@@ -225,21 +225,21 @@ export const UpdatePrescription = () => {
                                                     >
                                                         
                                                     <option
-                                                    boolValue={
+                                                    value={
                                                             Prescription.active
                                                         }
                                                     >
                                                     {Prescription.active}
                                                     </option>
-                                                    <option Value= {true}>
-                                                        Active
-                                                    </option>
-                                                    <option Value= {false}>
-                                                       Not Active
+                                                    <option value= {"active"}>
+                                                    Active
                                                     </option>                                       
+                                                    <option value= {"inactive"}>
+                                                    Not Active
+                                                    </option>
                                                 </Form.Select>
                                                 <label htmlFor="select">
-                                                Active {Prescription.active}
+                                                Active 
                                             </label>
                                             </Form.Floating>
 

@@ -22,6 +22,7 @@ import { AddCommentFromPatient } from "../comments/AddCommentFromPatient";
 import { UpdateComment } from "../comments/UpdateComment";
 import { UpdatePrescription } from "../prescription/UpdatePrescription";
 import { Profile2 } from "../profile/Profile2";
+import { Login } from "../auth/Login";
 
 
 export const ApplicationViews = () => {
@@ -41,6 +42,7 @@ export const ApplicationViews = () => {
                     }
                 >
                     <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} /> 
                     <Route path="profileDoctor" element={<ProfileDoctor />} />
                     <Route path="doctorList" element={<DoctorsList />} />
                     <Route path="profile2" element={<Profile2 />} />
