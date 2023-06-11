@@ -77,7 +77,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
         return responseJson;
     };
     /* ------------------------------ */
-
+    const handleUpdate = () => {
+        fetchData();
+      };
     /* ------------------------------ */
 
     return (
@@ -230,12 +232,13 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                 .target
                                                                                 .checked
                                                                         ) {
-                                                                            setAddAdministeredDose(
+                                                                        /*     setAddAdministeredDose(
                                                                                 copy
-                                                                            );
+                                                                            ); */
                                                                             fetchData(
                                                                                 copy
                                                                             );
+                                                                            handleUpdate(evt)
                                                                         /*     window.confirm(
                                                                                 `Are you sure you want to Check Prescription ${pres.medicineName}?`
                                                                             ); */
