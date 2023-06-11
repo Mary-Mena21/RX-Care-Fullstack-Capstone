@@ -976,10 +976,10 @@ namespace RXCareServer.Repositories
                     cmd.CommandText = @"UPDATE [dbo].[Prescription]
                                            SET [Active] = @Active
                                          WHERE [Id] = @Id";
-                    DbUtils.AddParameter(cmd, "@Active", prescription.Active);
+                    DbUtils.AddParameter(cmd, "@Active", prescription.Active = "inactive");
                     DbUtils.AddParameter(cmd, "@Id", prescription.Id);
-
                     cmd.ExecuteNonQuery();
+
                 }
             }
         }

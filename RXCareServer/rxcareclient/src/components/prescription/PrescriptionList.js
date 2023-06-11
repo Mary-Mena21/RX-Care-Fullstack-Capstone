@@ -7,70 +7,51 @@ import Accordion from "react-bootstrap/Accordion";
 
 export const PrescriptionList = ({ patient_Id }) => {
     console.log(patient_Id);
-    const [Prescription, setPrescription] = useState([]);
-
-        //--------------Active/false------------------
-        const [PrescriptionActive, setUpdatePrescriptionActive] = useState({
-            //id: 0,
-            active: "active",
-        });
-        // /* -------------Edit----------------- */
-        // const fetchUpdatePrescription = async (SendToAPI) => {
-        //     const fetchOptions = {
-        //         method: "PUT",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(SendToAPI),
-        //     };
-        //     const response = await fetch(
-        //         `https://localhost:7183/api/prescription/UpdatePrescriptionByIdActive/${Id}`,
-        //         fetchOptions
-        //         );
-        //         console.log(Id);
-        //     const responseJson = await response.json();
-        //     //console.log(responseJson);
-        //     return responseJson;
-        // };
-        const fetchUpdatePrescription = async (SendToAPI) => {
-        };
-    
-        const handleActiveButtonClick = (event) => {
-            event.preventDefault();
-            fetchUpdatePrescription(PrescriptionActive);
-            setUpdatePrescriptionActive(PrescriptionActive)
-
-        };
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-        //--------------------------------
-var appUser = localStorage.getItem("app_user");
-var appUserObject = JSON.parse(appUser);
-console.log(appUserObject.type);
+    var appUser = localStorage.getItem("app_user");
+    var appUserObject = JSON.parse(appUser);
+    console.log(appUserObject.type);
     const Type = appUserObject.type;
-    console.log(Type)
+    console.log(Type);
+
+    const [Prescription, setPrescription] = useState([]);
+    //--------------Active/false------------------
+    const [PrescriptionActive, setUpdatePrescriptionActive] = useState({
+        id: 0,
+        active: "inactive",
+    });
 
     /* -------------Display PrescriptionList----------------- */
+    const fetchData = async () => {
+        const response = await fetch(
+            `https://localhost:7183/api/prescription/Patient/${patient_Id}`
+        );
+        const PrescriptionListArray = await response.json();
+        setPrescription(PrescriptionListArray);
+        console.log(PrescriptionListArray);
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(
-                `https://localhost:7183/api/prescription/Patient/${patient_Id}` 
-            );
-            const PrescriptionListArray = await response.json();
-            setPrescription(PrescriptionListArray);
-            console.log(PrescriptionListArray);
-        };
         fetchData();
     }, []);
+
+    /* -------------Edit----------------- */
+    const handleActiveButtonClick = (e) => {
+        e.preventDefault();
+        return fetch(
+            `https://localhost:7183/api/prescription/UpdatePrescriptionByIdActive/${PrescriptionActive.id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(PrescriptionActive),
+            }
+        )
+            .then((response) => response.json())
+            .then(() => {
+                fetchData();
+            });
+    };
+
     //TODO: Update FORM
     return (
         <>
@@ -80,197 +61,215 @@ console.log(appUserObject.type);
                 <Accordion.Header>PRESCRIPTIONS</Accordion.Header>
 
                 <Accordion.Body>
-                {Prescription.map((pres) => {
-                    console.log(pres.quantity);
-                    console.log(`${pres.adminsteredDose}`.length);
-                    //console.log(count(pres.adminsteredDose));
-                    return (
-                        <>
+                    {Prescription.map((pres) => {
+                        console.log(pres);
+                        console.log(`${pres.adminsteredDose}`.length);
+                        //console.log(count(pres.adminsteredDose));
+                        return (
+                            <>
                                 <div>
-                            {pres.active == "active" ? (
-                                <div class="content-tabs profile-tab">
-                                    <div class="row">
-                                        <div class="tab-pane show active2">
-                                            <br />
+                                    {pres.active == "active" ? (
+                                        <div class="content-tabs profile-tab">
+                                            <div class="row">
+                                                <div class="tab-pane show active2">
+                                                    <br />
 
-                                            <div class="profile-head">
-                                                <ul class="nav nav-tabs ">
-                                                    &nbsp;&nbsp;
-                                                    {/* ---------------Doctor-----------------*/}
-                                                    {appUserObject.type == "Doctor" ? (
-                                                        <>
-                                                    <li class="nav-item">
-                                                        <Link
-                                                            to={`UpdatePrescription/edit/${pres.id}`}
-                                                        >
-                                                            {" "}
-                                                            <input
+                                                    <div class="profile-head">
+                                                        <ul class="nav nav-tabs ">
+                                                            &nbsp;&nbsp;
+                                                            {/* ---------------Doctor-----------------*/}
+                                                            {appUserObject.type ==
+                                                            "Doctor" ? (
+                                                                <>
+                                                                    <li class="nav-item">
+                                                                        <Link
+                                                                            to={`UpdatePrescription/edit/${pres.id}`}
+                                                                        >
+                                                                            {" "}
+                                                                            <input
+                                                                                type="submit"
+                                                                                class="profile-edit-btn-comment"
+                                                                                name="btnAddMore"
+                                                                                value="Update"
+                                                                                onClick={(
+                                                                                    evt
+                                                                                ) => {
+                                                                                    /*             window.confirm(
+                                                                                    `Are you sure you want to Update Prescription ${pres.medicine.medicineName}?`
+                                                                                ) */
+                                                                                }}
+                                                                            />
+                                                                        </Link>
+                                                                    </li>
+                                                                    &nbsp;&nbsp;
+                                                                    <li class="nav-item">
+                                                                        <input
                                                                             type="submit"
                                                                             class="profile-edit-btn-comment"
                                                                             name="btnAddMore"
-                                                                            value="Update"
-                                                                            onClick={(evt) => {
-                                                                    /*             window.confirm(
-                                                                                    `Are you sure you want to Update Prescription ${pres.medicine.medicineName}?`
-                                                                                ) */
+                                                                            value="Delete"
+                                                                            onClick={(
+                                                                                click
+                                                                            ) => {
+                                                                                PrescriptionActive.id =
+                                                                                    pres.id;
+                                                                                PrescriptionActive.active =
+                                                                                    "inactive";
+                                                                                setUpdatePrescriptionActive(
+                                                                                    PrescriptionActive
+                                                                                );
+                                                                                handleActiveButtonClick(
+                                                                                    click
+                                                                                );
+                                                                                fetchData();
                                                                             }}
-                                                            />
-                                                        </Link>
-                                                    </li>
-                                                    &nbsp;&nbsp;
-                                                    <li class="nav-item">
-                                                        {/*    <a class="nav-link ">
-                                                            {" "}
-                                                            DELETE
-                                                            </a> */}
-                                                        {/* <Link to={`UpdatePrescription/edit/${pres.id}`}>
-                                                            {" "} */}
-                                                        <input
-                                                                        type="submit"
-                                                                        class="profile-edit-btn-comment"
-                                                                        name="btnAddMore"
-                                                                        value="Deletex"
-                                                                        onClick={(evt) => {
-                                                                            window.confirm(
-                                                                                `Are you sure you want to delete Prescription ${pres.medicine.medicineName}?`
-                                                                            )
-                          
-                                                                      
-                                                                                `${pres.active == "active"}`
-                                                                        
-                                                                                    /* -------------Delete----------------- */
-                                                                        
-                                                                            
-                                                            //         fetch(
-                                                            //             `https://localhost:7183/api/prescription/${pres.id}`,
-                                                            //             {
-                                                            //                 method:
-                                                            //                     "DELETE",
-                                                            //             }
-                                                            //         ).then();
-                                                                            
-                                                             }}
-                                                        />
-                                                        {/* </Link> */}
-                                                            </li>
-                                                            </>
-                                                            ):("")}
-                                                    {/* --------------------------------Patient */}
-                                                    &nbsp;&nbsp;
-                                                    {appUserObject.type == "Patient" ? (
-                                                        <>
-                                                    <li class="nav-item">
-                                                        <Link
-                                                            to={`profile2/addCommentFromPatient/${patient_Id}`}
-                                                        >
-                                                            <input
-                                                                type="submit"
-                                                                class="profile-edit-btn-comment"
-                                                                name="btnAddMore"
-                                                                value="Add Comment"
-                                                            />
-                                                        </Link>
-                                                            </li>
-                                                            </>
-                                                            ):("")}
-                                                    {/*-------------Patient----------- */}
+                                                                        />
+                                                                    </li>
+                                                                </>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                            {/*-------------Patient-----Comment------ */}
+                                                            &nbsp;&nbsp;
+                                                            {appUserObject.type ==
+                                                            "Patient" ? (
+                                                                <>
+                                                                    <li class="nav-item">
+                                                                        <Link
+                                                                            to={`profile2/addCommentFromPatient/${patient_Id}`}
+                                                                        >
+                                                                            <input
+                                                                                type="submit"
+                                                                                class="profile-edit-btn-comment"
+                                                                                name="btnAddMore"
+                                                                                value="Add Comment"
+                                                                            />
+                                                                        </Link>
+                                                                    </li>
+                                                                </>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                            {/*-------------Patient----------- */}
+                                                        </ul>
+                                                        <hr />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>
+                                                                Drug Name
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                {
+                                                                    pres
+                                                                        .medicine
+                                                                        .medicineName
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
 
-                                                </ul>
-                                                <hr />
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                <img
+                                                                    src={
+                                                                        pres
+                                                                            .medicine
+                                                                            .imgUrl
+                                                                    }
+                                                                    className="medical-img"
+                                                                />
+                                                            </p>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Drug Name</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        {
-                                                            pres.medicine
-                                                                .medicineName
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>
+                                                                Dosage
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>{pres.dosage}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>
+                                                                Quantity
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                {pres.quantity}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>Form</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                {
+                                                                    pres
+                                                                        .medicine
+                                                                        .form
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label></label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        <img
-                                                            src={
-                                                                pres.medicine
-                                                                    .imgUrl
-                                                            }
-                                                            className="medical-img"
-                                                        />
-                                                    </p>
-                                                </div>
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>
+                                                                SideEffects
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                {
+                                                                    pres
+                                                                        .medicine
+                                                                        .sideEffects
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Dosage</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.dosage}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Quantity</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.quantity}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Form</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>{pres.medicine.form}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>SideEffects</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        {
-                                                            pres.medicine
-                                                                .sideEffects
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Drug Info</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        {pres.medicine.drugInfo}
-                                                    </p>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>
+                                                                Drug Info
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <p>
+                                                                {
+                                                                    pres
+                                                                        .medicine
+                                                                        .drugInfo
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    </div>
                                     ) : (
                                         ""
                                     )}
-                            </div>
-                                    </>
-                                    );
-                                })}
-                                {/* <p>{Prescription. dosage}</p> */}
-                               
+                                </div>
+                            </>
+                        );
+                    })}
+                    {/* <p>{Prescription. dosage}</p> */}
                 </Accordion.Body>
             </Accordion.Item>
 
