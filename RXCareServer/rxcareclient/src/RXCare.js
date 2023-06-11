@@ -12,7 +12,7 @@ import { Login } from "./components/auth/Login";
 export const RXCare = () => {
     return (
         <Routes>
-            <Route path="/login" element={<Login />} /> 
+            {/* <Route path="/login" element={<Login />} />  */}
             <Route path="/login3d" element={<Login3D />} />
             <Route path="/register" element={<Register />} />
             <Route
