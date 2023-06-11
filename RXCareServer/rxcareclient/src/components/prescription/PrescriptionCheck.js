@@ -202,6 +202,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                         {/* --------------check---------------- */}
 
                                                         <div class="col">
+                                                        {appUserObject.type == "Patient" ? (
+                                                            <>
+                                                            {/* **** */}
                                                             <p class="col-md-8">
                                                                 <label>
                                                                     CHECK
@@ -233,14 +236,18 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                             fetchData(
                                                                                 copy
                                                                             );
-                                                                            window.confirm(
+                                                                        /*     window.confirm(
                                                                                 `Are you sure you want to Check Prescription ${pres.medicineName}?`
-                                                                            );
+                                                                            ); */
                                                                         }
                                                                     }}
                                                                 ></input>
                                                             </div>
-
+                                                            {/* **** */}
+                                                            </>
+                                                            ) : (
+                                                                ""
+                                                            )}
                                                             {/* --------------check---------6------- */}
 
                                                             <p class="col-md-8">
