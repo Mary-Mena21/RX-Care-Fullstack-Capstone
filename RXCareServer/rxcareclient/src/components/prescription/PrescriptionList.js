@@ -110,9 +110,9 @@ console.log(appUserObject.type);
                                                                             name="btnAddMore"
                                                                             value="Update"
                                                                             onClick={(evt) => {
-                                                                                window.confirm(
+                                                                    /*             window.confirm(
                                                                                     `Are you sure you want to Update Prescription ${pres.medicine.medicineName}?`
-                                                                                )
+                                                                                ) */
                                                                             }}
                                                             />
                                                         </Link>
