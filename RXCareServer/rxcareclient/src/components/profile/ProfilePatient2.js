@@ -300,7 +300,7 @@ export const ProfilePatient2 = ({
                                     type="submit"
                                     class="profile-edit-btn"
                                     name="btnAddMore"
-                                    value="Edit Profile"
+                                    value="📝Edit Profile"
                                     onClick={() =>
                                         navigate(
                                             `/patientsList/${patient_Id}/patientsList/edit/${patient_Id}`

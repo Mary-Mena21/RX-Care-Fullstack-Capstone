@@ -30,25 +30,24 @@ export const TESTComment = ({
 
     return (
         <>
-            <Accordion.Body>
-                <div className="container active3">
-                    <p class=" profile-tab">{MedicineName}</p>
-                    {/* <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> */} 
-                    <p class="p-comment pd-comment"> ✋ {PComment}</p>
-                    <br/>
-                    {/* <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p> */}
-                    <p class="d-comment pd-comment">{DComment} 🩺 </p>
-                    <br/>
-                    
-                    <br/>
-                    
+            
+                <div className=" active3 container">
+                    <div>
+                        <p class=" profile-tab">{MedicineName}</p>
+                        {/* <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> */}
+                        <p class="p-comment pd-comment">✋ {PComment}</p>
+                        <br />
+                        {/* <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p> */}
+                        <p class="d-comment pd-comment">{DComment} 🩺 </p>
+                    </div>
+
                     {appUserObject.type == "Doctor" ? (
                         <>
                             <Link to={`UpdateComment/edit/${Id}`}>
                                 {" "}
                                 <input
                                     type="submit"
-                                    class="profile-edit-btn-comment"
+                                    class="profile-edit-btn-comment margin-ptn"
                                     name="btnAddMore"
                                     value="ADD-REPLY"
                                 />
@@ -60,23 +59,23 @@ export const TESTComment = ({
 
                     {appUserObject.type == "Patient" ? (
                         <>
-                    <input
-                        type="submit"
-                        class="profile-edit-btn-comment"
-                        name="btnAddMore"
-                        value="Delete"
-                        onClick={(click) => {
-                            window.confirm(
-                                `Are you sure you want to delete Comment ${Id}?`
-                            ) && handleDelete(click);
-                        }}
-                    />
+                            <input
+                                type="submit"
+                                class="profile-edit-btn-comment float-ptn margin-ptn"
+                                name="btnAddMore"
+                                value="Delete"
+                                onClick={(click) => {
+                                    window.confirm(
+                                        `Are you sure you want to delete Comment ${Id}?`
+                                    ) && handleDelete(click);
+                                }}
+                            />
                         </>
                     ) : (
                         ""
                     )}
                 </div>
-            </Accordion.Body>
+            
         </>
     );
 };

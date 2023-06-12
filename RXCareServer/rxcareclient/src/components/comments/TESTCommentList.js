@@ -32,7 +32,8 @@ export const TESTCommentList = ({ patient_Id }) => {
         <>
         <Accordion.Item eventKey="1">
                 <Accordion.Header>COMMENTS</Accordion.Header>
-            <section key={`com_${patient_Id}`} className="books">
+                <Accordion.Body>
+            <div key={`com_${patient_Id}`} className=""> 
             {comment.map((com) => {
             return (
 
@@ -48,8 +49,9 @@ export const TESTCommentList = ({ patient_Id }) => {
                     />
                    
                     );
-                })} 
-                </section>
+            })} 
+                     </div> 
+                    </Accordion.Body>
                 </Accordion.Item> 
         </>
     );

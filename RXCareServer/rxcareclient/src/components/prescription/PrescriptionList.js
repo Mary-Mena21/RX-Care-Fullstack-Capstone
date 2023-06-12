@@ -88,7 +88,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                             {" "}
                                                                             <input
                                                                                 type="submit"
-                                                                                class="profile-edit-btn-comment"
+                                                                                class="profile-edit-btn-comment margin-ptn"
                                                                                 name="btnAddMore"
                                                                                 value="Update"
                                                                                 onClick={(
@@ -105,7 +105,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                     <li class="nav-item">
                                                                         <input
                                                                             type="submit"
-                                                                            class="profile-edit-btn-comment"
+                                                                            class="profile-edit-btn-comment margin-ptn"
                                                                             name="btnAddMore"
                                                                             value="Delete"
                                                                             onClick={(

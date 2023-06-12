@@ -167,7 +167,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                             {" "}
                                                                             <input
                                                                                 type="submit"
-                                                                                class="profile-edit-btn-comment"
+                                                                                class="profile-edit-btn-comment margin-ptn"
                                                                                 name="btnAddMore"
                                                                                 value="Update"
                                                                             />
