@@ -202,7 +202,7 @@ export const UpdatePrescription = () => {
                                                     </label>
                                                 </Form.Floating>
 {/* --------------------------- */}
-                                               {/*  <Form.Floating className="form-group  col-sm-6">
+                                                <Form.Floating className="form-group  col-sm-6">
                                                 <Form.Select
                                                     required
                                                     //readOnly="true"
@@ -242,7 +242,7 @@ export const UpdatePrescription = () => {
                                                 Active 
                                             </label>
                                             </Form.Floating>
- */}
+ 
                                             </div>
                                             {/* ---------------------- */}
                                             <input

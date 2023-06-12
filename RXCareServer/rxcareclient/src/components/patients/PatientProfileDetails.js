@@ -40,14 +40,12 @@ export const PatientProfileDetails = ({
     const [toggleState, setToggleState] = useState(1);
     const navigate = useNavigate();
 
-
-//--------------------------------
-var appUser = localStorage.getItem("app_user");
-var appUserObject = JSON.parse(appUser);
-console.log(appUserObject.type);
+    //--------------------------------
+    var appUser = localStorage.getItem("app_user");
+    var appUserObject = JSON.parse(appUser);
+    console.log(appUserObject.type);
     const Type = appUserObject.type;
-    console.log(Type)
-
+    console.log(Type);
 
     // const toggleTab = (index) => {
     //     setToggleState(index);
@@ -72,7 +70,9 @@ console.log(appUserObject.type);
                                 <h5>
                                     {FirstName} {LastName}
                                 </h5>
-                                <div><br></br></div>
+                                <div>
+                                    <br></br>
+                                </div>
                                 {/*                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
@@ -96,12 +96,12 @@ console.log(appUserObject.type);
                             {/* ******Accordion****** */}
                             <Accordion>
                                 <PrescriptionList patient_Id={patient_Id} />
-                                <TESTCommentList patient_Id={patient_Id}/>
-                                <PrescriptionCheck patient_Id={patient_Id}/>
+                                <TESTCommentList patient_Id={patient_Id} />
+                                <PrescriptionCheck patient_Id={patient_Id} />
                             </Accordion>
-                                {/*  <CommentList patient_Id={patient_Id} /> */}
-                                {/* <Comment patient_Id={patient_Id} /> */}
-                                {/* <PieChartAdministeredDose patient_Id={patient_Id}/> */}
+                            {/*  <CommentList patient_Id={patient_Id} /> */}
+                            {/* <Comment patient_Id={patient_Id} /> */}
+                            {/* <PieChartAdministeredDose patient_Id={patient_Id}/> */}
                             {/* ************ */}
                         </div>
                         <div class="col-md-2">
@@ -112,7 +112,7 @@ console.log(appUserObject.type);
                                     type="submit"
                                     class="profile-edit-btn"
                                     name="btnAddMore"
-                                    value="Edit Profile"
+                                    value="📝Edit Profile"
                                     onClick={() =>
                                         navigate(
                                             `patientsList/edit/${patient_Id}`
@@ -123,26 +123,55 @@ console.log(appUserObject.type);
                             <br />
 
                             {appUserObject.type == "Doctor" ? (
-                            <>
-                            <div>
-                                <input
-                                    type="submit"
-                                    class="profile-edit-btn"
-                                    name="btnAddMore"
-                                    value="Add Prescription"
-                                    onClick={() =>
-                                        navigate(
-                                            `addPrescription/add/${patient_Id}`
-                                        )
-                                    }
-                                />
-                            </div>
-                            </>
-                            ):("")}
-
+                                <>
+                                    <div>
+                                        <input
+                                            type="submit"
+                                            class="profile-edit-btn"
+                                            name="btnAddMore"
+                                            value="Add Prescription"
+                                            onClick={() =>
+                                                navigate(
+                                                    `addPrescription/add/${patient_Id}`
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                    <br />
+                                    
+                                    <div>
+                                    <input
+                                        type="submit"
+                                        class="profile-edit-btn"
+                                        name="btnAddMore"
+                                        value="Patients List"
+                                        onClick={() =>
+                                            navigate(
+                                                `/patientsList`
+                                            )
+                                        }
+                                    />
+                                </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div>
+                                        <input
+                                            type="submit"
+                                            class="profile-edit-btn"
+                                            name="btnAddMore"
+                                            value="🔙 Back"
+                                            onClick={() =>
+                                                navigate(`/profile2`)
+                                            }
+                                        />
+                                    </div>
+                                    <br />
+                                </>
+                            )}
 
                             <br />
-{/*                             <div>
+                            {/*                             <div>
                                 <input
                                     type="submit"
                                     class="profile-edit-btn"
@@ -193,7 +222,9 @@ console.log(appUserObject.type);
                             </div>
                         </div>
                         {/* -------------TABS-------------- */}
+
                         <div className="col-md-6">
+                            <br />
                             <Tabs
                                 defaultActiveKey="home"
                                 id="fill-tab-example"
