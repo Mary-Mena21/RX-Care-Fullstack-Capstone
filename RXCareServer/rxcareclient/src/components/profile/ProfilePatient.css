@@ -82,12 +82,30 @@ body{
   font-weight: 600;
 }
 
-.p-comment{
-margin: 2px;
+.pd-comment{
   color: #495057;
   font-size: 15px;
   font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+ max-width: 70%;
 }
+
+.p-comment{
+margin: 2px;
+  background-color: #9be7fc;
+  background-color: #b8fff7;
+  float: left;
+}
+.d-comment{
+  margin: 2px;
+  background-color: #6ffceb;
+  background-color: #b8fff7;
+    float: right;
+  }
+
+
+
 .profile-head .nav-tabs{
     margin-bottom:5%;
 }
@@ -106,7 +124,10 @@ margin: 2px;
   background: #e6e6e6;
 }
 .active3{
-  background: #e6e6e6;
+  /* background: #e6e6e6; */
+  border: #0062cc 1px solid;
+/*   border: #7ab6f6 1px solid; */
+  border-radius: 5px;
 }
 .profile-work{
     padding: 14%;

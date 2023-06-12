@@ -32,11 +32,16 @@ export const TESTComment = ({
         <>
             <Accordion.Body>
                 <div className="container active3">
-                    <h6>{MedicineName}</h6>
-                    <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> 
-                    <p class="p-comment">P: {PComment}</p>
-                    <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p>   
-                    <p class="p-comment">D: {DComment}</p>
+                    <p class=" profile-tab">{MedicineName}</p>
+                    {/* <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> */} 
+                    <p class="p-comment pd-comment"> ✋ {PComment}</p>
+                    <br/>
+                    {/* <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p> */}
+                    <p class="d-comment pd-comment">{DComment} 🩺 </p>
+                    <br/>
+                    
+                    <br/>
+                    
                     {appUserObject.type == "Doctor" ? (
                         <>
                             <Link to={`UpdateComment/edit/${Id}`}>
