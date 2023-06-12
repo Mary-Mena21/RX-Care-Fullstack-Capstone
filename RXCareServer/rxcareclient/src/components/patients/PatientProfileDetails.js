@@ -237,7 +237,7 @@ export const PatientProfileDetails = ({
                                     className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div class="tab-pane show active">
+                                        <div class="tab-pane show">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -302,7 +302,7 @@ export const PatientProfileDetails = ({
                                     className="content-tabs profile-tab container"
                                 >
                                     <div class="row">
-                                        <div class="tab-pane show active">
+                                        <div class="tab-pane show">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">

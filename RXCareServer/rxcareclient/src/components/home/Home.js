@@ -65,7 +65,7 @@ export const Home = () => {
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                  <div class="container">
                      <a class="navbar-brand" href="index.html">
-                         <h3 class="my-heading ">MOJO<span class="bg-main">AVE</span></h3>
+                         <h3 class="my-heading ">* RX-<span class="bg-main">CARE *</span></h3>
                      </a>
                      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="fa fa-bars mfa-white"></span>

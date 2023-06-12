@@ -169,8 +169,10 @@ margin: 2px;
     font-weight: 600;
 }
 .profile-tab p{
-    font-weight: 600;
-    color: #0062cc;
+/*     font-weight: 600;
+    color: #04766c; */
+    text-align: left  ;
+    /* ----------------------- */
 }
 
 
@@ -218,7 +220,7 @@ margin: 2px;
     transform: translateX(-50%);
     width: calc(100% + 2px);
     height: 5px;
-    background: rgb(88, 147, 241);
+    /* background: rgb(88, 147, 241); */
   }
   
   
