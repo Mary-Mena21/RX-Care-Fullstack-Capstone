@@ -6,10 +6,10 @@ import "../prescription/PrescriptionList.css";
 import Accordion from "react-bootstrap/Accordion";
 import { PieChart } from "react-minimal-pie-chart";
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-import {badge} from '../images/badge.gif';
+import { badge } from "../images/badge.gif";
 
 export const PrescriptionCheck = ({ patient_Id }) => {
     const [Prescription, setPrescription] = useState([]);
@@ -80,46 +80,43 @@ export const PrescriptionCheck = ({ patient_Id }) => {
     };
     /* --------------Modal---------------- */
 
-    const [modalShow, setModalShow] = React.useState(false);
-    function MyVerticallyCenteredModal(props) {
-        return (
-          <Modal
-            {...props}
-                size="sm"
-                transparent={true}
-                //className="bg-dark "
-                //variant =" dark"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-           {/*  <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
-              </Modal.Title>
-            </Modal.Header> */}
-                <Modal.Body
-                transparent={true}
-                >
-              {/*  <p>
-              <img src={badge} alt="loading..." />
-              </p> */}
-                    
-                    
-              <iframe src="https://giphy.com/embed/kjDQ00nkmCrCezmje0" width="300" height="400" ></iframe>
-  
-                    
-              {/* <Button onClick={props.onHide}>Close</Button> */}
-            </Modal.Body>
-{/*             <Modal.Footer>
-            </Modal.Footer> */}
-          </Modal>
-        );
-      }
+    // const [modalShow, setModalShow] = React.useState(false);
+    // function MyVerticallyCenteredModal(props) {
+    //     return (
+    //         <Modal
+    //             {...props}
+    //             size="sm"
+    //             transparent={true}
+    //             //className="bg-dark "
+    //             //variant =" dark"
+    //             aria-labelledby="contained-modal-title-vcenter"
+    //             centered
+    //         >
+    //             {/*  <Modal.Header closeButton>
+    //           <Modal.Title id="contained-modal-title-vcenter">
+    //             Modal heading
+    //           </Modal.Title>
+    //         </Modal.Header> */}
+    //             <Modal.Body transparent={true}>
+    //                 {/*  <p>
+    //           <img src={badge} alt="loading..." />
+    //           </p> */}
+
+    //                 <iframe
+    //                     src="https://giphy.com/embed/kjDQ00nkmCrCezmje0"
+    //                     width="300"
+    //                     height="400"
+    //                 ></iframe>
+
+    //                 {/* <Button onClick={props.onHide}>Close</Button> */}
+    //             </Modal.Body>
+    //             {/*             <Modal.Footer>
+    //         </Modal.Footer> */}
+    //         </Modal>
+    //     );
+    // }
 
     /* --------------Modal---------------- */
-
-
-
 
     return (
         <>
@@ -130,7 +127,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                         for (const x of Prescription) {
                             console.log(x.adminsteredDose.length);
                         }
-                      /*   console.log(Prescription);
+                        /*   console.log(Prescription);
                         console.log(pres);
                         let TOTAL = `${pres.adminsteredDose}`.length;
                         console.log(TOTAL);
@@ -199,19 +196,6 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                         <div class="col">
                                                             <p class="col-md-2">
                                                                 <label>
-                                                                    QUANTITY
-                                                                </label>
-                                                            </p>
-                                                            <div class="col-md-2">
-                                                                <p>
-                                                                    {
-                                                                        pres.quantity
-                                                                    }
-                                                                </p>
-                                                            </div>
-
-                                                            <p class="col-md-2">
-                                                                <label>
                                                                     {
                                                                         pres.medicineName
                                                                     }
@@ -224,6 +208,19 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                     }
                                                                     className="medical-img2"
                                                                 />
+                                                            </div>
+                                                            <br />
+                                                            <p class="col-md-2">
+                                                                <label>
+                                                                    Quantity
+                                                                </label>
+                                                            </p>
+                                                            <div class="col-md-2">
+                                                                <p>
+                                                                    {
+                                                                        pres.quantity
+                                                                    }
+                                                                </p>
                                                             </div>
                                                         </div>
 
@@ -240,8 +237,8 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         </label>
                                                                     </p>
                                                                     <div class="col-md-10">
-                                                                            <input
-                                                                                variant="success"
+                                                                        <input
+                                                                            variant="success"
                                                                             type="checkbox"
                                                                             className="checkbox"
                                                                             onChange={(
@@ -263,22 +260,26 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                     fetchData(
                                                                                         copy
                                                                                     );
-                                                                                };
-                                                                               /*  window.confirm(
+                                                                                }
+                                                                                /*  window.confirm(
                                                                                     `You Take your dose of ${pres.medicineName}! 👏`) */
-                                                                                    setModalShow(true)
+                                                                               /*  setModalShow(
+                                                                                    true
+                                                                                ); */
                                                                             }}
-                                                                            ></input>
-                                                                            
+                                                                        ></input>
 
-                                                                            <MyVerticallyCenteredModal
+                                                                 {/*        <MyVerticallyCenteredModal
                                                                             size="sm"
-                                                                            show={modalShow}
-                                                                            onHide={() => setModalShow(false)}
-                                                                          />
-
-
-
+                                                                            show={
+                                                                                modalShow
+                                                                            }
+                                                                            onHide={() =>
+                                                                                setModalShow(
+                                                                                    false
+                                                                                )
+                                                                            }
+                                                                        /> */}
                                                                     </div>
                                                                     {/* **** */}
                                                                 </>
@@ -336,7 +337,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                 />
                                                             </div>
                                                         </div>
-                                                        <div class="row col-md-12">&nbsp;</div>
+                                                        <div class="row col-md-12">
+                                                            &nbsp;
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -345,15 +348,11 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                         ""
                                     )}
                                 </div>
-
-
-
-                                
                             </>
                         );
                     })}
 
-{/* 
+                    {/* 
                 Modal 
                     {<a class="btn btn-success" href="#success" data-toggle="modal"><h4><i class="glyphicon glyphicon-eye-open"></i> Success</h4></a>}
                     <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -363,9 +362,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     <h1><i class="glyphicon glyphicon-thumbs-up"></i> Success Modal</h1>
                                 </div> */}
-                                {/* <div class="modal-body">
+                    {/* <div class="modal-body">
                                 </div> */}
-                               {/*  <div class="modal-footer">
+                    {/*  <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                 </div> 
                                 <iframe src="https://giphy.com/embed/kjDQ00nkmCrCezmje0"  ></iframe>
@@ -373,7 +372,6 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                             </div>
                         </div>
                     </div> */}
-
                 </Accordion.Body>
             </Accordion.Item>
         </>

@@ -1,4 +1,9 @@
- 
+/* body {
+	font-family: 'Open Sans', sans-serif !important;
+    background: #fff;
+    color: #222;
+} */
+
 .navbar-shrink{
     padding-top: 0;
     padding-bottom: 0;
@@ -11,8 +16,7 @@ header.masthead {
     position: relative;
     height: 100vh;
     background-color: #343a40;
-    background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') 
-    no-repeat center center;
+    background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -41,7 +45,7 @@ header.masthead .overlay{position:absolute;background-color:#212529;height:100%;
 
 .myform-control {
     display: block;
-    width: 100%;
+    width: 50%;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -54,11 +58,11 @@ header.masthead .overlay{position:absolute;background-color:#212529;height:100%;
 }
 
 button.btn.btn-light {
-    position: absolute;
+    /* position: absolute; */
     background: transparent;
     border: none;
     height: 38px;
-    right: 23px;
+    /* right: 23px;  */
 }
 
 a.btn.btn-default.btn-scroll {
@@ -151,7 +155,7 @@ section#about {
     background: #ff3921;
 }
 
-
+/* ------------------ */
 a.btn.btn-circle.my-social-btn.fb:hover {
     background: #205b9f;
 }
@@ -163,7 +167,7 @@ a.btn.btn-circle.my-social-btn.twitter:hover {
 a.btn.btn-circle.my-social-btn.google:hover {
     background: #ff3921;
 }
-
+/* ------------------ */
 
 a.btn.btn-circle.my-social-btn {
     color: #fff;
@@ -204,7 +208,7 @@ hr.my-border {
 }
 
 .mybg-events {
-    background: url('https://i.ibb.co/TcRyd9N/with-love-white-background.jpg') no-repeat center center fixed;
+    background: url('https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg?auto=compress&cs=tinysrgb&h=650&w=940') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -370,14 +374,13 @@ overflow: hidden;
 
 overflow: hidden;
 }
-.box img {
+nav-itemN#mySidenav.box img {
 height: 160px;
 width: 100%;
 object-fit: cover;
 -o-object-fit: cover;
 }
 /****/
-
 .item {
 position: relative;
 }
@@ -392,17 +395,17 @@ transition: all 0.3s;
 -webkit-transform: scale(1.4);
 transform: scale(1.4);
 }
- 
+
 
 
 /*sidebar navigation*/
 .sidenav {
-    height: 100%;
+     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
-    right: 0;
+    right: 0; 
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
@@ -460,11 +463,15 @@ a.openNav {
     color: #008ba3;
 }
 
-li.nav-item a:hover {
+li.nav-itemN a:hover {
     background: #008ba3;
-    color: #ffffff !important;
+    color: #ffffff !important; 
+   /*  padding:10px 10px; */
 }
 
+#mySidenav{
+    background-color: #000000;
+}
 
 
 .floating-arrow {
@@ -663,4 +670,29 @@ p.myp-font {
 	.header-wrap .sub-menu {width: 250px;}
 	.box img {height: 100%;}
 }
- 
+
+/* -----navbarNew------- */
+.navbarNew{
+    margin-bottom: 150px !important;
+}
+
+/* ---------sideNavBar---------- */
+.sideNavBar{
+    
+}
+.nav-itemN{
+    margin-bottom: 20PX;
+    /* margin: 20PX; */
+  /*   margin-top: 20PX; */
+    border-bottom: #dadbdb 1px solid;
+    padding: 10px 10px;
+    color:#111
+    
+}
+.offcanvas{
+    horizontal-width:200px;
+}
+.test{
+    background-color: #1fc6d8;
+    width: 200px;
+}
