@@ -3,7 +3,7 @@
     background: #fff;
     color: #222;
 } */
-
+/* .navbar{margin-left: 150px !important} */
 .navbar-shrink{
     padding-top: 0;
     padding-bottom: 0;
@@ -45,7 +45,7 @@ header.masthead .overlay{position:absolute;background-color:#212529;height:100%;
 
 .myform-control {
     display: block;
-    width: 50%;
+    width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -118,6 +118,7 @@ p.myp-slider.text-center {
     width: 138px;
     background: #1fc6d8 !important;
     border: 1px solid #1fc6d8 !important;
+    box-shadow: #111 1px 1px 1px;
 }
 
 
@@ -674,6 +675,7 @@ p.myp-font {
 /* -----navbarNew------- */
 .navbarNew{
     margin-bottom: 150px !important;
+
 }
 
 /* ---------sideNavBar---------- */

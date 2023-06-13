@@ -16,7 +16,7 @@ export const Navbar2 = ({ children }) => {
     if (appUserObject.type == "Doctor") {
         return (
             <>
-                 {/* ----------------DoctorNav------------------ */}
+                {/* ----------------DoctorNav------------------ */}
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
@@ -102,15 +102,15 @@ export const Navbar2 = ({ children }) => {
                                                     </a>
                                                 </li>
 
-                                                <li class="nav-itemN">
+                                               {/*  <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="/profile2"
                                                     >
                                                         Patient Profile
                                                     </a>
-                                                </li>
-
+                                                </li> */
+}
                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
@@ -119,22 +119,22 @@ export const Navbar2 = ({ children }) => {
                                                         Logout
                                                     </a>
                                                 </li>
-                                                <li class="nav-itemN">
+                                           {/*      <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
                                                     >
                                                         Login
                                                     </a>
-                                                </li>
-                                                <li class="nav-itemN">
+                                                </li> */
+                                           /*      <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
                                                     >
                                                         Register
                                                     </a>
-                                                </li>
+                                                </li> */}
                                             </ul>
                                         </div>
                                         .
@@ -180,7 +180,7 @@ export const Navbar2 = ({ children }) => {
                                         >
                                             Home
                                         </a>
-                                    </li>                                  
+                                    </li>
 
                                     <li class="nav-link">
                                         <a
@@ -211,7 +211,7 @@ export const Navbar2 = ({ children }) => {
     } else {
         return (
             <>
-                 {/* ----------------PatientNav------------------ */}
+                {/* ----------------PatientNav------------------ */}
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
@@ -280,6 +280,23 @@ export const Navbar2 = ({ children }) => {
                                                     </a>
                                                 </li>
 
+                                              {/*   <li class="nav-itemN">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/profileDoctor"
+                                                    >
+                                                        Doctor Profile
+                                                    </a>
+                                                </li> */}
+                                                 <li class="nav-itemN">
+                                                    <a
+                                                        class="nav-link"
+                                                        href= "/doctorList"
+                                                    >
+                                                    Doctors List
+                                                    </a>
+                                                </li> 
+
                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
@@ -292,22 +309,27 @@ export const Navbar2 = ({ children }) => {
                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
-                                                        href="/about"
-                                                    >
-                                                        About
-                                                    </a>
-                                                </li>
-
-                                                <li class="nav-itemN">
-                                                    <a
-                                                        class="nav-link"
                                                         href="/login3d"
                                                     >
                                                         Logout
                                                     </a>
                                                 </li>
-                                                {/* <li class="nav-itemN"><a class="nav-link" href="#">Login</a></li>
-                       <li class="nav-itemN"><a class="nav-link" href="#">Register</a></li> */}
+                                           {/*      <li class="nav-itemN">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="#"
+                                                    >
+                                                        Login
+                                                    </a>
+                                                </li> */}
+                                                <li class="nav-itemN">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="#"
+                                                    >
+                                                        Register
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                         .
@@ -332,11 +354,11 @@ export const Navbar2 = ({ children }) => {
                                 </form>
                                 <ul class="navbar-nav ml-auto">
                                     {/*                    <li class="nav-link">
-                        <a class="btn btn-primary btn-block btn-login" href="#">Login</a>
-                    </li>
-                    <li class="nav-link">
-                        <a class="btn btn-primary btn-block btn-register" href="#">Register</a>
-                    </li> */}
+                     <a class="btn btn-primary btn-block btn-login" href="#">Login</a>
+                 </li>
+                 <li class="nav-link">
+                     <a class="btn btn-primary btn-block btn-register" href="#">Register</a>
+                 </li> */}
                                     <li class="nav-link">
                                         <a
                                             class="btn btn-primary btn-block btn-register"
@@ -355,23 +377,21 @@ export const Navbar2 = ({ children }) => {
                                         </a>
                                     </li>
 
-                                    {/* ----------------DoctorNav------------------ */}
-
                                     <li class="nav-link">
                                         <a
                                             class="btn btn-primary btn-block btn-register"
-                                            href="/profileDoctor"
+                                            href="/profile2"
                                         >
-                                            Doctor Profile
+                                            Patient Profile
                                         </a>
                                     </li>
 
                                     <li class="nav-link">
                                         <a
                                             class="btn btn-primary btn-block btn-register"
-                                            href="/patientsList"
+                                            href="/doctorList"
                                         >
-                                            Patient List
+                                            Doctor List
                                         </a>
                                     </li>
                                 </ul>
