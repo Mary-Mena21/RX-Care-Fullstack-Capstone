@@ -51,7 +51,7 @@ export const Login3D = () => {
                             <div class="col-md-12 text-center">
                                 <h3 class="my-heading">
                                     WELCOME TO
-                                    <span class="bg-main">RX-CARE</span>
+                                    <span class="bg-main"> RX-CARE</span>
                                 </h3>
                                 <p class="myp-slider text-center">
                                     Where we walk together

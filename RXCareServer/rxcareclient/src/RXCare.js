@@ -21,8 +21,8 @@ export const RXCare = () => {
                 element={
                     <Authorized>
                         <>
-                            <NavBar />
-                          {/*   <Navbar2 /> */}
+                        <Navbar2 /> 
+                        {/* <NavBar />  */}
                             <ApplicationViews />
                         </>
                     </Authorized>
