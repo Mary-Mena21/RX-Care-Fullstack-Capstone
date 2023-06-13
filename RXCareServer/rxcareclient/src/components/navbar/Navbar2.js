@@ -48,9 +48,9 @@ export const Navbar2 = ({ children }) => {
                                     ></span>
                                 </a>
                             </div>
-                            <div class="sideNavBar">
+                            <div class="sideNavBar"> {/*  */}
                                 <Offcanvas
-                                    class="offcanvas"
+                                    /* class="closebtn" */
                                     show={show}
                                     onHide={handleClose}
                                 >
@@ -64,8 +64,8 @@ export const Navbar2 = ({ children }) => {
                                         </Offcanvas.Title>
                                     </Offcanvas.Header>
                                     <Offcanvas.Body>
-                                        <div id="" class="sideNavBar">
-                                            {/* <div id="" class="sidenav"> */}
+                                        <div id="mySidenav" class=""> {/*  */}
+                                            {/* <div id="" class="sidenav"> 
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
@@ -146,7 +146,7 @@ export const Navbar2 = ({ children }) => {
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive"
                             >
-                                <form class="form-inline my-2 my-lg-0 col-md-7">
+                                <form class="form-inline my-2 my-lg-0 col-md-4">
                                     <input
                                         class="myform-control mr-sm-2"
                                         type="search"
@@ -215,7 +215,7 @@ export const Navbar2 = ({ children }) => {
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="/aboutApp">
                                 <h3 class="my-heading ">
                                     RX-<span class="bg-main">CARE</span>
                                 </h3>
@@ -243,9 +243,9 @@ export const Navbar2 = ({ children }) => {
                                     ></span>
                                 </a>
                             </div>
-                            <div class="sideNavBar">
+                            <div class="sideNavBar">{/*  */}
                                 <Offcanvas
-                                    class="offcanvas"
+                                    /* class="closebtn" */
                                     show={show}
                                     onHide={handleClose}
                                 >
@@ -259,7 +259,7 @@ export const Navbar2 = ({ children }) => {
                                         </Offcanvas.Title>
                                     </Offcanvas.Header>
                                     <Offcanvas.Body>
-                                        <div id="" class="sideNavBar">
+                                        <div id="mySidenav" class=""> {/*  */}
                                             {/* <div id="" class="sidenav"> */}
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
                                             <ul class="mob-ul">
@@ -322,14 +322,14 @@ export const Navbar2 = ({ children }) => {
                                                         Login
                                                     </a>
                                                 </li> */}
-                                                <li class="nav-itemN">
+                                             {/*    <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
                                                     >
                                                         Register
                                                     </a>
-                                                </li>
+                                                </li> */}
                                             </ul>
                                         </div>
                                         .
@@ -341,7 +341,7 @@ export const Navbar2 = ({ children }) => {
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive"
                             >
-                                <form class="form-inline my-2 my-lg-0 col-md-7">
+                                <form class="form-inline my-2 my-lg-0 col-md-4">
                                     <input
                                         class="myform-control mr-sm-2"
                                         type="search"
