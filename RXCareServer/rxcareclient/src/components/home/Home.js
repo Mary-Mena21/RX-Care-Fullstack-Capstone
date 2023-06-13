@@ -59,7 +59,7 @@ export const Home = () => {
 
 
 
-
+{/* 
             <body>
  
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
@@ -573,7 +573,7 @@ export const Home = () => {
 
 
 
-                </body>
+                </body> */}
 
         </>
     );

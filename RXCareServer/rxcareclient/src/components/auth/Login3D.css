@@ -121,3 +121,8 @@ font-size: 60px !important;
   .left {
     grid-column: 6 / 12;
   }
+
+  .mybg-music {
+    background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') no-repeat center center fixed;
+    background-size: cover;
+}

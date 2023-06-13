@@ -14,6 +14,8 @@ import {
     BsEmojiSmileFill,
     BsGithub,
 } from "react-icons/bs";
+
+import { AiFillDatabase, AiFillBank } from "react-icons/ai";
 //import { Teacher } from "../teacher/Teacher";
 
 export const NavBar = ({ children }) => {
@@ -31,12 +33,12 @@ export const NavBar = ({ children }) => {
 
 
         const menuItem = [
-            {
+/*             {
                 path: "/#",
                 name: "dashboard",
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",
-            },
+            }, */
             {
                 path: "/",
                 name: "Home",
@@ -45,20 +47,20 @@ export const NavBar = ({ children }) => {
             },
             {
                 path: "/doctorList",
-                name: "Home",
-                icon: <FaHome />,
+                name: "Doctor List",
+                icon: <AiFillBank />,
                 className: "sidebar_2",
             },
             {
                 path: "/profileDoctor",
-                name: "ProfileDoctor",
+                name: "Profile Doctor",
                 icon: <CgProfile />,
                 className: "sidebar_2",
             },
             {
                 path: "/patientsList",
                 name: "PatientList",
-                icon: <BsEmojiSmileFill />,
+                icon: <AiFillDatabase />,
                 className: "sidebar_2",
             },
             // {
@@ -194,16 +196,22 @@ export const NavBar = ({ children }) => {
         //----------------PatientNav-----------------------------
     } else { 
         const menuItem = [
-            {
+/*             {
                 path: "/#",
                 name: "dashboard",
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",
-            },
+            }, */
             {
                 path: "/",
                 name: "Home",
                 icon: <FaHome />,
+                className: "sidebar_2",
+            },
+            {
+                path: "/doctorList",
+                name: "Doctor List",
+                icon: <AiFillBank />,
                 className: "sidebar_2",
             },
             // {
@@ -218,12 +226,12 @@ export const NavBar = ({ children }) => {
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",
             },
-            {
+    /*         {
                 path: "/#",
                 name: "About",
                 icon: <BsEmojiSmileFill />,
                 className: "sidebar_2",
-            },
+            }, */
             // {
             //     path: "/#",
             //     name: "dashboard",

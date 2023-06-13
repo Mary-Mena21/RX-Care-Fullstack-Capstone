@@ -1,7 +1,7 @@
 import { Login } from "./Login";
 import React from "react";
-import "./Login3D.css";
-import "../home/Home.css";
+import "./Login3D.css"; 
+import "../home/Home.css"; 
 
 //-------------------------------------------------------
 export const Login3D = () => {
@@ -12,7 +12,7 @@ export const Login3D = () => {
                     <div class="container">
                         <a class="navbar-brand" href="index.html">
                             <h3 class="my-heading shadows">
-                                Rx<span class="bg-main">CARE</span>
+                                RX<span class="bg-main">CARE</span>
                             </h3>
                            {/*  <h1 className="shadows">RX-CARE</h1> */}
                         </a>
