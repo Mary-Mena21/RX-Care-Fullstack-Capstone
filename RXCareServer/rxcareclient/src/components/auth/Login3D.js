@@ -8,9 +8,9 @@ export const Login3D = () => {
     return (
         <>
             <body>
-                <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+                <nav class="navbar fixed-top navbar-expand-lg navbar-dark ">
                     <div class="container">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="/aboutApp">
                             <h3 class="my-heading shadows">
                                 RX<span class="bg-main">CARE</span>
                             </h3>
@@ -18,11 +18,11 @@ export const Login3D = () => {
                         </a>
 
 
-                        <div
-                            class="collapse navbar-collapse"
-                            id="navbarResponsive"
+                        <div  /* class= "col-md-4"  */
+                            /* class="collapse navbar-collapse"
+                            id="navbarResponsive" */
                         >
-                            <ul class="navbar-nav ml-auto">
+                            <ul class="navbar-nav ml-auto btns">
                                 <li class="nav-link">
                                     <a
                                         class="btn btn-primary btn-block btn-login"
@@ -48,12 +48,12 @@ export const Login3D = () => {
                     <div class="overlay"></div>
                     <div class="container slider-top-text">
                         <div class="row">
-                            <div class="col-md-12 text-center">
+                            <div class="col-md-12 text-center topSpace">
                                 <h3 class="my-heading">
                                     WELCOME TO
                                     <span class="bg-main"> RX-CARE</span>
                                 </h3>
-                                <p class="myp-slider text-center">
+                                <p class="myp-slider text-center centerText">
                                     Where we walk together
                                 </p>
                                 <p class="myp text-center">

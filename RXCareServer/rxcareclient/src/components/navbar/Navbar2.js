@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../navbar/Navbar2.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { UserImg } from "../user/UserImg";
 
 export const Navbar2 = ({ children }) => {
     const [show, setShow] = useState(false);
@@ -12,6 +13,7 @@ export const Navbar2 = ({ children }) => {
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject);
+
 
     if (appUserObject.type == "Doctor") {
         return (
@@ -26,6 +28,18 @@ export const Navbar2 = ({ children }) => {
                                 </h3>
                             </a>
 
+                            {/* img */}
+                         {/*    <div class="d-flex justify-content-center h-100">
+                                <div class="image_outer_container">
+                                    <div class="green_icon"></div>
+                                    <div class="image_inner_container">
+                                        <img src="https://i.pinimg.com/originals/43/96/61/439661dcc0d410d476d6d421b1812540.jpg"/>
+                                    </div>
+                                </div>
+                            </div> */}
+                            {/*  */}
+
+                            <UserImg/>
                             <button
                                 class="navbar-toggler navbar-toggler-right"
                                 type="button"
@@ -76,14 +90,14 @@ export const Navbar2 = ({ children }) => {
                                                         Home
                                                     </a>
                                                 </li>
-                                                <li class="nav-itemN">
+                                                {/* <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="/aboutApp"
                                                     >
                                                         About
                                                     </a>
-                                                </li>
+                                                </li> */}
 
                                                 <li class="nav-itemN">
                                                     <a
