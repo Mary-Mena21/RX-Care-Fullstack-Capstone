@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../navbar/Navbar2.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -14,7 +14,6 @@ export const Navbar2 = ({ children }) => {
     var appUserObject = JSON.parse(appUser);
     console.log(appUserObject);
 
-
     if (appUserObject.type == "Doctor") {
         return (
             <>
@@ -28,18 +27,7 @@ export const Navbar2 = ({ children }) => {
                                 </h3>
                             </a>
 
-                            {/* img */}
-                         {/*    <div class="d-flex justify-content-center h-100">
-                                <div class="image_outer_container">
-                                    <div class="green_icon"></div>
-                                    <div class="image_inner_container">
-                                        <img src="https://i.pinimg.com/originals/43/96/61/439661dcc0d410d476d6d421b1812540.jpg"/>
-                                    </div>
-                                </div>
-                            </div> */}
-                            {/*  */}
-
-                            <UserImg/>
+                            <UserImg />  
                             <button
                                 class="navbar-toggler navbar-toggler-right"
                                 type="button"
@@ -81,6 +69,7 @@ export const Navbar2 = ({ children }) => {
                                         <div id="mySidenav" class=""> {/*  */}
                                             {/* <div id="" class="sidenav"> 
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
+                                            <UserImg /> 
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a
@@ -151,7 +140,7 @@ export const Navbar2 = ({ children }) => {
                                                 </li> */}
                                             </ul>
                                         </div>
-                                        .
+                                        
                                     </Offcanvas.Body>
                                 </Offcanvas>
                             </div>
@@ -219,7 +208,7 @@ export const Navbar2 = ({ children }) => {
 
                         <main>{children}</main>
                     </nav>
-                </div>
+                        </div>
             </>
         );
     } else {
@@ -234,6 +223,8 @@ export const Navbar2 = ({ children }) => {
                                     RX-<span class="bg-main">CARE</span>
                                 </h3>
                             </a>
+
+                            <UserImg />  
 
                             <button
                                 class="navbar-toggler navbar-toggler-right"
@@ -276,6 +267,7 @@ export const Navbar2 = ({ children }) => {
                                         <div id="mySidenav" class=""> {/*  */}
                                             {/* <div id="" class="sidenav"> */}
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
+                                            <UserImg /> 
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a

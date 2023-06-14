@@ -24,3 +24,11 @@
   background-color: transparent !important;
   
 }
+/* -----------PieChart------------ */
+.PieChart{
+  border: #1fc5d83d 3px solid;
+  border: #ffffff3d 3px solid;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #385f6372;
+
+}

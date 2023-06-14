@@ -190,7 +190,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                 </Link>
                                                             </li> */}
                                                         </ul>
-                                                        <hr />
+                                                        {/* <hr /> */}
                                                     </div>
                                                     <div class="row col-md-12">
                                                         <div class="col">
@@ -296,6 +296,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                             <div class="col-md-10">
                                                                 {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
                                                                 <PieChart
+                                                                    className="PieChart"
                                                                     totalValue={parseInt(
                                                                         pres.quantity
                                                                     )}
@@ -324,14 +325,14 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                 "",
                                                                             value: `${pres.quantity}`,
                                                                             color:
-                                                                                "#0072CE",
+                                                                                "#3683a1",
                                                                         },
                                                                         {
                                                                             title: `Doses`,
                                                                             value:
                                                                                 doseArray.length,
                                                                             color:
-                                                                                "#00A99D",
+                                                                                "#1fc6d8",
                                                                         },
                                                                     ]}
                                                                 />

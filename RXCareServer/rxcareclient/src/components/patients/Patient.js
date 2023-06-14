@@ -8,6 +8,16 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
     return (
         <>
             <div className="">
+                
+{/*             <div class="d-flex justify-content-center h-100">
+            <div class="image_outer_container">
+                <div class="green_icon"></div>
+                <div class="image_inner_container">
+                    <img src={Img} />
+                </div>
+            </div>
+        </div>  */}
+                
                 {/* -------------------------- */}
                 <div class=" emp-profile">
                     <form method="post">

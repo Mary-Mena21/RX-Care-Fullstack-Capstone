@@ -476,7 +476,7 @@ li.nav-itemN a:hover {
     background: #008ba3;
     background: #b2e3ec;
     color: #ffffff !important; 
-    font-weight: bold;
+    /* font-weight: bold; */
    /*  padding:10px 10px; */
 }
 
