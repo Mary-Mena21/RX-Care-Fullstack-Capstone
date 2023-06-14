@@ -152,7 +152,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                             )}
                                                             {/*-------------Patient----------- */}
                                                         </ul>
-                                                        <hr />
+                                                        {/* <hr /> */}
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">

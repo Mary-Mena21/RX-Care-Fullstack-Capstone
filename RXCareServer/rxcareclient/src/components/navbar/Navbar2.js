@@ -69,6 +69,7 @@ export const Navbar2 = ({ children }) => {
                                         <div id="mySidenav" class=""> {/*  */}
                                             {/* <div id="" class="sidenav"> 
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
+                                            <UserImg /> 
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a
@@ -266,6 +267,7 @@ export const Navbar2 = ({ children }) => {
                                         <div id="mySidenav" class=""> {/*  */}
                                             {/* <div id="" class="sidenav"> */}
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
+                                            <UserImg /> 
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a

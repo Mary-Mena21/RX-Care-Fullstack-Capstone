@@ -233,11 +233,11 @@ export const PatientProfileDetails = ({
                                 <Tab
                                     eventKey="home"
                                     title="Home"
-                                    tabClassName="Tabs"
-                                    className="content-tabs profile-tab container"
+                                    tabClassName=""
+                                    className=""
                                 >
                                     <div class="row">
-                                        <div class="tab-pane show">
+                                        <div class="">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -298,11 +298,11 @@ export const PatientProfileDetails = ({
                                 <Tab
                                     eventKey="profile"
                                     title="Profile"
-                                    tabClassName="Tabs"
-                                    className="content-tabs profile-tab container"
+                                    tabClassName=""
+                                    className=""
                                 >
                                     <div class="row">
-                                        <div class="tab-pane show">
+                                        <div class="">
                                             <br />
                                             <div class="row">
                                                 <div class="col-md-3">
