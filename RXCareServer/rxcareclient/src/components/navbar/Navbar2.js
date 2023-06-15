@@ -21,14 +21,14 @@ export const Navbar2 = ({ children }) => {
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
-                        <div></div>
+                            <div></div>
                             <a class="navbar-brand" href="index.html">
                                 <h3 class="my-heading ">
                                     RX-<span class="bg-main">CARE</span>
                                 </h3>
                             </a>
 
-                            <UserImg />  
+                            <UserImg />
                             <button
                                 class="navbar-toggler navbar-toggler-right"
                                 type="button"
@@ -52,7 +52,9 @@ export const Navbar2 = ({ children }) => {
                                 </a>
                             </div>
                             <div></div>
-                            <div class="sideNavBar"> {/*  */}
+                            <div class="sideNavBar">
+                                {" "}
+                                {/*  */}
                                 <Offcanvas
                                     /* class="closebtn" */
                                     show={show}
@@ -68,10 +70,12 @@ export const Navbar2 = ({ children }) => {
                                         </Offcanvas.Title>
                                     </Offcanvas.Header>
                                     <Offcanvas.Body>
-                                        <div id="mySidenav" class=""> {/*  */}
+                                        <div id="mySidenav" class="">
+                                            {" "}
+                                            {/*  */}
                                             {/* <div id="" class="sidenav"> 
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
-                                            <UserImg /> 
+                                            <UserImg />
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a
@@ -107,15 +111,14 @@ export const Navbar2 = ({ children }) => {
                                                     </a>
                                                 </li>
 
-                                               {/*  <li class="nav-itemN">
+                                                {/*  <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="/profile2"
                                                     >
                                                         Patient Profile
                                                     </a>
-                                                </li> */
-}
+                                                </li> */}
                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
@@ -124,7 +127,7 @@ export const Navbar2 = ({ children }) => {
                                                         Logout
                                                     </a>
                                                 </li>
-                                           {/*      <li class="nav-itemN">
+                                                {/*      <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
@@ -132,7 +135,7 @@ export const Navbar2 = ({ children }) => {
                                                         Login
                                                     </a>
                                                 </li> */
-                                           /*      <li class="nav-itemN">
+                                                /*      <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
@@ -142,7 +145,6 @@ export const Navbar2 = ({ children }) => {
                                                 </li> */}
                                             </ul>
                                         </div>
-                                        
                                     </Offcanvas.Body>
                                 </Offcanvas>
                             </div>
@@ -169,14 +171,6 @@ export const Navbar2 = ({ children }) => {
                     <li class="nav-link">
                         <a class="btn btn-primary btn-block btn-register" href="#">Register</a>
                     </li> */}
-                                    <li class="nav-link">
-                                        <a
-                                            class="btn btn-primary btn-block btn-register"
-                                            href="/login3d"
-                                        >
-                                            Logout
-                                        </a>
-                                    </li>
 
                                     <li class="nav-link">
                                         <a
@@ -204,13 +198,21 @@ export const Navbar2 = ({ children }) => {
                                             Patient List
                                         </a>
                                     </li>
+                                    <li class="nav-link">
+                                        <a
+                                            class="btn btn-primary btn-block btn-register"
+                                            href="/login3d"
+                                        >
+                                            Logout
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
 
                         <main>{children}</main>
                     </nav>
-                        </div>
+                </div>
             </>
         );
     } else {
@@ -220,14 +222,14 @@ export const Navbar2 = ({ children }) => {
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
-                        <div></div>
+                            <div></div>
                             <a class="navbar-brand" href="/aboutApp">
                                 <h3 class="my-heading ">
                                     RX-<span class="bg-main">CARE</span>
                                 </h3>
                             </a>
 
-                            <UserImg />  
+                            <UserImg />
 
                             <button
                                 class="navbar-toggler navbar-toggler-right"
@@ -252,7 +254,8 @@ export const Navbar2 = ({ children }) => {
                                 </a>
                             </div>
                             <div></div>
-                            <div class="sideNavBar">{/*  */}
+                            <div class="sideNavBar">
+                                {/*  */}
                                 <Offcanvas
                                     /* class="closebtn" */
                                     show={show}
@@ -268,10 +271,12 @@ export const Navbar2 = ({ children }) => {
                                         </Offcanvas.Title>
                                     </Offcanvas.Header>
                                     <Offcanvas.Body>
-                                        <div id="mySidenav" class=""> {/*  */}
+                                        <div id="mySidenav" class="">
+                                            {" "}
+                                            {/*  */}
                                             {/* <div id="" class="sidenav"> */}
                                             {/*  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> */}
-                                            <UserImg /> 
+                                            <UserImg />
                                             <ul class="mob-ul">
                                                 <li class="nav-itemN">
                                                     <a
@@ -290,7 +295,7 @@ export const Navbar2 = ({ children }) => {
                                                     </a>
                                                 </li>
 
-                                              {/*   <li class="nav-itemN">
+                                                {/*   <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="/profileDoctor"
@@ -298,14 +303,14 @@ export const Navbar2 = ({ children }) => {
                                                         Doctor Profile
                                                     </a>
                                                 </li> */}
-                                                 <li class="nav-itemN">
+                                                <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
-                                                        href= "/doctorList"
+                                                        href="/doctorList"
                                                     >
-                                                    Doctors List
+                                                        Doctors List
                                                     </a>
-                                                </li> 
+                                                </li>
 
                                                 <li class="nav-itemN">
                                                     <a
@@ -324,7 +329,7 @@ export const Navbar2 = ({ children }) => {
                                                         Logout
                                                     </a>
                                                 </li>
-                                           {/*      <li class="nav-itemN">
+                                                {/*      <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
@@ -332,7 +337,7 @@ export const Navbar2 = ({ children }) => {
                                                         Login
                                                     </a>
                                                 </li> */}
-                                             {/*    <li class="nav-itemN">
+                                                {/*    <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="#"
@@ -369,14 +374,7 @@ export const Navbar2 = ({ children }) => {
                  <li class="nav-link">
                      <a class="btn btn-primary btn-block btn-register" href="#">Register</a>
                  </li> */}
-                                    <li class="nav-link">
-                                        <a
-                                            class="btn btn-primary btn-block btn-register"
-                                            href="/login3d"
-                                        >
-                                            Logout
-                                        </a>
-                                    </li>
+
 
                                     <li class="nav-link">
                                         <a
@@ -404,6 +402,14 @@ export const Navbar2 = ({ children }) => {
                                             Doctor List
                                         </a>
                                     </li>
+                                    <li class="nav-link">
+                                    <a
+                                        class="btn btn-primary btn-block btn-register"
+                                        href="/login3d"
+                                    >
+                                        Logout
+                                    </a>
+                                </li>
                                 </ul>
                             </div>
                         </div>

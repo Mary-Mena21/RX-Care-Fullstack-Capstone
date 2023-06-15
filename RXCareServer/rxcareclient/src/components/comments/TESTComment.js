@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
+import { UserImg } from "../user/UserImg";
 
 export const TESTComment = ({
     Id,
@@ -33,9 +34,9 @@ export const TESTComment = ({
             
                 <div className=" active3 container">
                     <div>
-                        <p class=" profile-tab">{MedicineName}</p>
+                     <p class=" profile-tab">{MedicineName}</p>
                         {/* <p class="profile-comment">{new Date(PCommentDate).toLocaleString()}</p> */}
-                        <p class="p-comment pd-comment">✋ {PComment}</p>
+                    <p class="p-comment pd-comment">✋{PComment}</p>
                         <br />
                         {/* <p class="profile-comment">{new Date(DCommentDate).toLocaleString()}</p> */}
                         <p class="d-comment pd-comment">{DComment} 🩺 </p>

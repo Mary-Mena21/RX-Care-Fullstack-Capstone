@@ -29,9 +29,9 @@ export const ProfileDoctor = () => {
     //const DrProfileImg = require(`../images/${User.img}`)
     return (
         <>
-            <div class="container">
+            <div class="container"> 
                  {/* -------------------------- */}
-                 <div class=" emp-profile">
+                 <div class="emp-profile">
                  <form method="post">
                 <div class="row">
                     <div class="col-md-6 img">
@@ -64,7 +64,7 @@ export const ProfileDoctor = () => {
                         </p>
                     </div>
                 </div>
-                </form>
+                </form> 
                 </div>
             </div>
         </>

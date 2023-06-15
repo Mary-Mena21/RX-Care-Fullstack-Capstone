@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import "../prescription/PrescriptionList.css";
+import loading from "../images/loading.gif"
 
 import Accordion from "react-bootstrap/Accordion";
 import { PieChart } from "react-minimal-pie-chart";
@@ -246,38 +247,62 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         <label>
                                                                             CHECK
                                                                         </label>
-                                                                    
+                                                                        
                                                                      <div class="col-md-10"> 
                                                                         <input
                                                                             variant="success"
                                                                             type="checkbox"
-                                                                            className="checkbox"
-                                                                            onChange={(
-                                                                                evt
-                                                                            ) => {
-                                                                                const copy = {
-                                                                                    ...AdministeredDose,
-                                                                                };
-                                                                                copy.prescriptionId =
-                                                                                    pres.id;
-                                                                                if (
-                                                                                    evt
-                                                                                        .target
-                                                                                        .checked
-                                                                                ) {
-                                                                                    setAddAdministeredDose(
-                                                                                        copy
-                                                                                    );
-                                                                                    fetchData(
-                                                                                        copy
-                                                                                    );
-                                                                                }
+                                                                                    className="checkbox"
+                                                                                    /* Style = {{   backgroundImage: `url(${loading.gif})` }} */
+                                                                                    onChange={(
+                                                                                        evt
+                                                                                    ) => {
+                                                                                        const copy = {
+                                                                                            ...AdministeredDose,
+                                                                                        };
+                                                                                        copy.prescriptionId =
+                                                                                            pres.id;
+                                                                                        if (
+                                                                                            evt
+                                                                                                .target
+                                                                                                .checked
+                                                                                        ) {
+                                                                                            setAddAdministeredDose(
+                                                                                                copy
+                                                                                            );
+                                                                                            fetchData(
+                                                                                                copy
+                                                                                            );
+                                                                                        };
+                                                                                       /* <img src={loading} alt="loading..." /> */
+                                                                                        /* loading */
+                                                                                        /*   <div class="container">
+                                                                                          <div class="row">
+                                                                                              <div id="loader">
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="dot"></div>
+                                                                                                  <div class="lading"></div>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          </div> */
+                                                                                            /* style={backgroundImage: "url(" + loading + ")"} */
+                                                                                         /*  { handleLoading } */  
+                                                                                        /* className = "loader lading " */
+                                                                                        /* Style = {   backgroundImage: `url(${loading.gif})` } */
                                                                                 /*  window.confirm(
                                                                                     `You Take your dose of ${pres.medicineName}! 👏`) */
                                                                                 /*  setModalShow(
                                                                                     true
                                                                                 ); */
-                                                                            }}
+                                                                                    }}
+                                                                                    
+                                                                                       
                                                                         ></input>
 
                                                                         {/*        <MyVerticallyCenteredModal
@@ -325,6 +350,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                             </span>
 
                                                                             <PieChart
+                                                                            /* style={{backgroundImage: "url(" + loading + ")"}} */
                                                                                 className="PieChart"
                                                                                 totalValue={parseInt(
                                                                                     pres.quantity
