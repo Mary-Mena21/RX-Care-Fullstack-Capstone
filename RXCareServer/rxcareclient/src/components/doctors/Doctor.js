@@ -31,7 +31,7 @@ export const Doctor = ({
                 </h5>
             </section> */}
             {/* ------------------------------------------------- */}
-            <div class="container main">
+            <div class=" main">
                 <div class="row">
                     <div class="col-md-4 img">
                         <img
@@ -40,33 +40,35 @@ export const Doctor = ({
                             className="doctorImg"
                         />
                     </div>
-                    <div className="col-md-8 details">
+                    <div className="col-md-8 details padding-text">
                         <div>
                             <h5>
                                 Dr. {doctorFirstName} {doctorLastName}
                             </h5>
-                            <small>
-                                <cite title="Source Title">
-                                    Tennessee, United States of America{" "}
-                                    <i class="icon-map-marker"></i>
-                                </cite>
-                            </small>
+                            <small><cite>{doctorEmail}</cite></small>
+                            <br />
 
-
+                            
                             <h6>Specialties: {doctorSpecialty}</h6>
-                            {doctorEmail}
                             <small>
                                 <cite title="Source Title">
                                     "{doctorAbout}"{" "}
                                 </cite>
                             </small>
                             {/* <p>Education: { doctorEducation}</p> */}
-
                             <p>
+                                <br/>   
+                            <small>
+                            <cite title="Source Title">
+                                Tennessee, United States of America{" "}
+                                <i class="icon-map-marker"></i>
+                            </cite>
+                        </small>
+                            
                             <br />
-                            www.RxCare.com <br />
-                                June 18, 2023
-                                <br />
+                            <small><h6>www.RxCare.com </h6></small>
+                               {/*  June 18, 2023
+                                <br /> */}
                                 <h6><a href={`tel : ${doctorPhone}`}>
                                     {doctorPhone}
                                 </a>{" "}</h6>

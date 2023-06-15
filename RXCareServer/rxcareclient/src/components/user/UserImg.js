@@ -21,13 +21,11 @@ export const UserImg = () => {
 
     return (
         <>
-            <div>
-                <div class="d-flex justify-content-center h-100">
-                    <div class="image_outer_container">
-                        <div class="green_icon"></div>
-                        <div class="image_inner_container">
-                            <img src={UserData.img} />
-                        </div>
+            <div class="d-flex justify-content-center h-100">
+                <div class="image_outer_container">
+                    <div class="green_icon"></div>
+                    <div class="image_inner_container">
+                        <img src={UserData.img} />
                     </div>
                 </div>
             </div>

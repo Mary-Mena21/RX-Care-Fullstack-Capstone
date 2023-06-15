@@ -8,9 +8,18 @@
 .img{
     text-align:center;}
 
+@media screen and (min-width: 520px) {
 .container .details{
     border-left:3px solid #c13689;
 }
+
+}
+
+.doctorImg{
+    margin-bottom: 30px !important;
+    margin-top: 10px !important;
+}
+
 .container .details p{
     font-size:15px;
     font-weight:bold;

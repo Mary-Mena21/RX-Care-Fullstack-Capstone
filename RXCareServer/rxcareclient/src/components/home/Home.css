@@ -181,7 +181,7 @@ a.btn.btn-circle.my-social-btn {
     font-weight:bold;
 }
 
-.inner-section h3:after {
+/* .inner-section h3:after {
     content: '';
     position: absolute;
     border-bottom: 4px solid #008ba3;
@@ -189,7 +189,7 @@ a.btn.btn-circle.my-social-btn {
     max-width: 10%;
     top: 37px;
     left: 0;
-}
+} */
 span.bg-main {
     color: #008ba3;
 }
@@ -501,6 +501,10 @@ li.list-inline-item a {
     text-decoration: none;
 }
 
+.textStyle{
+    font-size: 17px;
+    font-weight:400;
+}
 
 /*-------------------responsive-----------------*/
 
@@ -670,10 +674,13 @@ p.myp-font {
 	.box img {height: 100%;}
 }
  /* --------footer-------- */
- .footer{
-/*     background-color:#BD996D ;
-    padding-bottom: 0px;
+/*  .footer{
+    background-color:#BD996D ;
+    background-color: #1fc6d8;
+    background-color: #1c3034;
+   /*  background-color: #16383e; */
+    /* padding-bottom: 0px;
     bottom: 0px; */
-   /*  margin-top: auto !important; */
+   /*  margin-top: auto !important; 
     margin-bottom: -50px;
- }
+ } */
