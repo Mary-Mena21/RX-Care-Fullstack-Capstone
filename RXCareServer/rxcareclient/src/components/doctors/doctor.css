@@ -7,22 +7,12 @@
    /*  border: #72a075 solid 4px; */
 }
 
-.doctorContainer {
-  width:100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  height: 500px;
 
-}
 .doctorCard{
-background-color: aliceblue;
-border:1px solid gray;
+background-color: rgb(255, 255, 255);
+/* border:1px solid gray; */
 border-radius: 0.5rem;
-margin:10px 30px;
-
-/* display: grid;
-grid-column: 2 / span 5; */
+margin-bottom: 10px;
 }
 
 .main {
@@ -38,3 +28,12 @@ grid-column: 2 / span 5; */
   grid-template-columns: repeat(12, 1fr); */
   /* height: 500px; */
 }
+
+.doctorContainer {
+  /*   width:100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 500px; */
+  
+  }

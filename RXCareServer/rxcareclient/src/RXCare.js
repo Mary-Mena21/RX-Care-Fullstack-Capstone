@@ -9,6 +9,7 @@ import { Authorized } from "./components/views/Authorized";
 import { Login3D } from "./components/auth/Login3D";
 import { Login } from "./components/auth/Login";
 import { Navbar2 } from "./components/navbar/Navbar2";
+import { Footer } from "./components/footer/Footer";
 
 export const RXCare = () => {
     return (
@@ -24,6 +25,7 @@ export const RXCare = () => {
                         <Navbar2 />  
                         {/* <NavBar />  */}
                             <ApplicationViews />
+                            <Footer />
                         </>
                     </Authorized>
                 }

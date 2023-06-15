@@ -19,7 +19,7 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
         </div>  */}
                 
                 {/* -------------------------- */}
-                <div class=" emp-profile">
+                <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
                             <div class="col-md-4">
