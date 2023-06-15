@@ -1,11 +1,16 @@
- 
+/* body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+} */
+
 .navbar-shrink{
     padding-top: 0;
     padding-bottom: 0;
 }
-.mybg-dark {
+/* .mybg-dark {
     background: #000000 !important;
-}
+} */
 
 header.masthead {
     position: relative;
@@ -152,7 +157,7 @@ section#about {
 }
 
 
-a.btn.btn-circle.my-social-btn.fb:hover {
+/* a.btn.btn-circle.my-social-btn.fb:hover {
     background: #205b9f;
 }
 
@@ -162,7 +167,7 @@ a.btn.btn-circle.my-social-btn.twitter:hover {
 
 a.btn.btn-circle.my-social-btn.google:hover {
     background: #ff3921;
-}
+} */
 
 
 a.btn.btn-circle.my-social-btn {
@@ -315,6 +320,7 @@ section#group {
     color: rgba(0, 0, 0, .4);
     border-top: 1px solid rgba(0, 0, 0, .05) !important;
     background: #fff;
+    padding-bottom:0px ;
 }
 
 .card-inverse .btn {
@@ -663,4 +669,11 @@ p.myp-font {
 	.header-wrap .sub-menu {width: 250px;}
 	.box img {height: 100%;}
 }
- 
+ /* --------footer-------- */
+ .footer{
+/*     background-color:#BD996D ;
+    padding-bottom: 0px;
+    bottom: 0px; */
+   /*  margin-top: auto !important; */
+    margin-bottom: -50px;
+ }

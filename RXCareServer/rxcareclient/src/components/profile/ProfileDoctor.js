@@ -30,6 +30,9 @@ export const ProfileDoctor = () => {
     return (
         <>
             <div class="container">
+                 {/* -------------------------- */}
+                 <div class=" emp-profile">
+                 <form method="post">
                 <div class="row">
                     <div class="col-md-6 img">
                         <img
@@ -60,6 +63,8 @@ export const ProfileDoctor = () => {
                             June 18, 1990
                         </p>
                     </div>
+                </div>
+                </form>
                 </div>
             </div>
         </>

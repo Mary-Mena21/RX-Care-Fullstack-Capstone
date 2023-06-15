@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import "./doctor.css";
 import { Doctor } from "./Doctor";
+import { Footer } from "../footer/Footer";
 
 export const DoctorsList = () => {
     const [Doctors, setDoctors] = useState([]);

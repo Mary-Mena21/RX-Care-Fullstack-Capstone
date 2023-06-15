@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
 import React from "react";
 import "./doctor.css";
+import { Footer } from "../footer/Footer";
 
 export const Doctor = ({
     Id,

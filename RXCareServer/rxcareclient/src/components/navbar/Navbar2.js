@@ -21,6 +21,7 @@ export const Navbar2 = ({ children }) => {
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
+                        <div></div>
                             <a class="navbar-brand" href="index.html">
                                 <h3 class="my-heading ">
                                     RX-<span class="bg-main">CARE</span>
@@ -50,6 +51,7 @@ export const Navbar2 = ({ children }) => {
                                     ></span>
                                 </a>
                             </div>
+                            <div></div>
                             <div class="sideNavBar"> {/*  */}
                                 <Offcanvas
                                     /* class="closebtn" */
@@ -218,6 +220,7 @@ export const Navbar2 = ({ children }) => {
                 <div className="navbarNew">
                     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                         <div class="container">
+                        <div></div>
                             <a class="navbar-brand" href="/aboutApp">
                                 <h3 class="my-heading ">
                                     RX-<span class="bg-main">CARE</span>
@@ -248,6 +251,7 @@ export const Navbar2 = ({ children }) => {
                                     ></span>
                                 </a>
                             </div>
+                            <div></div>
                             <div class="sideNavBar">{/*  */}
                                 <Offcanvas
                                     /* class="closebtn" */

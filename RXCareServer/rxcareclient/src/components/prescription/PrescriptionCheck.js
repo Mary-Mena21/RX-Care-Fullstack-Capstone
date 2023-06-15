@@ -141,6 +141,14 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                       pres.adminsteredDose.length)
                         );
 
+                        let progress = (doseArray.length / pres.quantity) * 100;
+                        progress = Math.round(progress);
+                        console.log(progress);
+                        {
+                            /*    value: ${pres.quantity},      
+                                value:doseArray.length, */
+                        }
+
                         return (
                             <>
                                 <div>
@@ -212,16 +220,19 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                             <br />
                                                             <p class="col-md-2">
                                                                 <label>
-                                                                    Quantity
+                                                                    Quantity {pres.quantity}
+                                                                    
+                                                                        
+                                                                   
                                                                 </label>
                                                             </p>
-                                                            <div class="col-md-2">
+                                                           {/*  <div class="col-md-2">
                                                                 <p>
                                                                     {
                                                                         pres.quantity
                                                                     }
                                                                 </p>
-                                                            </div>
+                                                            </div> */}
                                                         </div>
 
                                                         {/* --------------check---------------- */}
@@ -235,8 +246,8 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                         <label>
                                                                             CHECK
                                                                         </label>
-                                                                    </p>
-                                                                    <div class="col-md-10">
+                                                                    
+                                                                     <div class="col-md-10"> 
                                                                         <input
                                                                             variant="success"
                                                                             type="checkbox"
@@ -263,13 +274,13 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                 }
                                                                                 /*  window.confirm(
                                                                                     `You Take your dose of ${pres.medicineName}! 👏`) */
-                                                                               /*  setModalShow(
+                                                                                /*  setModalShow(
                                                                                     true
                                                                                 ); */
                                                                             }}
                                                                         ></input>
 
-                                                                 {/*        <MyVerticallyCenteredModal
+                                                                        {/*        <MyVerticallyCenteredModal
                                                                             size="sm"
                                                                             show={
                                                                                 modalShow
@@ -280,8 +291,9 @@ export const PrescriptionCheck = ({ patient_Id }) => {
                                                                                 )
                                                                             }
                                                                         /> */}
-                                                                    </div>
-                                                                    {/* **** */}
+                                                                     </div> 
+                                                                            {/* **** */}
+                                                                            </p>
                                                                 </>
                                                             ) : (
                                                                 ""
@@ -290,53 +302,86 @@ export const PrescriptionCheck = ({ patient_Id }) => {
 
                                                             <p class="col-md-10">
                                                                 <label>
-                                                                    REPORT
+                                                                    Progress{" "}
+                                                                    <div class="progress-value">
+                                                                        {
+                                                                            progress
+                                                                        }
+                                                                        %
+                                                                    </div>
                                                                 </label>
                                                             </p>
                                                             <div class="col-md-10">
                                                                 {/*  <PieChartAdministeredDose  patient_Id={patient_Id}/>   */}
-                                                                <PieChart
-                                                                    className="PieChart"
-                                                                    totalValue={parseInt(
-                                                                        pres.quantity
-                                                                    )}
-                                                                    animationDuration={
-                                                                        300
-                                                                    }
-                                                                    labelPosition={
-                                                                        30
-                                                                    }
-                                                                    label={({
-                                                                        dataEntry,
-                                                                    }) =>
-                                                                        dataEntry.value
-                                                                    }
-                                                                    // color={ "#00A99D"}
-                                                                    //segmentsTabIndex={2}
-                                                                    //radius = {50}
-                                                                    //     //     {`${pres.adminsteredDose}`
-                                                                    //     //         .length}
-                                                                    //     totalValue= {pres.quantity}
-                                                                    //     paddingAngle = {1}
 
-                                                                    data={[
-                                                                        {
-                                                                            title:
-                                                                                "",
-                                                                            value: `${pres.quantity}`,
-                                                                            color:
-                                                                                "#3683a1",
-                                                                        },
-                                                                        {
-                                                                            title: `Doses`,
-                                                                            value:
-                                                                                doseArray.length,
-                                                                            color:
-                                                                                "#1fc6d8",
-                                                                        },
-                                                                    ]}
-                                                                />
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-sm-6">
+                                                                        <div class="progress blue">
+                                                                            <span class="progress-left">
+                                                                                <span class="progress-bar"></span>
+                                                                            </span>
+                                                                            <span class="progress-right">
+                                                                                <span class="progress-bar"></span>
+                                                                            </span>
+
+                                                                            <PieChart
+                                                                                className="PieChart"
+                                                                                totalValue={parseInt(
+                                                                                    pres.quantity
+                                                                                )}
+                                                                                animationDuration={
+                                                                                    300
+                                                                                }
+                                                                                labelPosition={
+                                                                                    30
+                                                                                }
+                                                                                label={({
+                                                                                    dataEntry,
+                                                                                }) =>
+                                                                                    dataEntry.value
+                                                                                }
+                                                                                // color={ "#00A99D"}
+                                                                                //segmentsTabIndex={2}
+                                                                                //radius = {50}
+                                                                                //     //     {`${pres.adminsteredDose}`
+                                                                                //     //         .length}
+                                                                                //     totalValue= {pres.quantity}
+                                                                                //     paddingAngle = {1}
+
+                                                                                data={[
+                                                                                    {
+                                                                                        title:
+                                                                                            "",
+                                                                                        value: `${pres.quantity}`,
+                                                                                        color:
+                                                                                            "#3683a1",
+                                                                                    },
+                                                                                    {
+                                                                                        title: `Doses`,
+                                                                                        value:
+                                                                                            doseArray.length,
+                                                                                        color:
+                                                                                            "#1fc6d8",
+                                                                                    },
+                                                                                ]}
+                                                                            />
+                                                                        </div>
+
+                                                                        {/* ----------check progress------------ */}
+                                                                        {/*    <div class="row">
+                                                            <div class="col-md-3 col-sm-6">
+                                                                <div class="progress blue">
+                                                                    <span class="progress-left">
+                                                                        <span class="progress-bar"></span>
+                                                                    </span>
+                                                                    <span class="progress-right">
+                                                                        <span class="progress-bar"></span>
+                                                                    </span> */}
+                                                                        {/* <div class="progress-value">{progress}%</div> */}
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            {/* ----------check progress------------ */}
                                                         </div>
                                                         <div class="row col-md-12">
                                                             &nbsp;
