@@ -37,7 +37,7 @@ export const Login = () => {
                 //userData.isAdmin = userData.userType === "Admin" ? true : false;
                 userData.isAdmin = true;
                 localStorage.setItem("app_user", JSON.stringify(userData));
-                navigate("/home");
+                navigate("/");
             } else {
                 console.log(response);
                 window.alert("Invalid login");
