@@ -12,6 +12,7 @@ export const Navbar2 = ({ children }) => {
 
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
+    let Id = appUserObject.id;
     console.log(appUserObject);
 
     if (appUserObject.type == "Doctor") {
@@ -315,7 +316,7 @@ export const Navbar2 = ({ children }) => {
                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
-                                                        href="/profile2"
+                                                         href="/profile2" 
                                                     >
                                                         Patient Profile
                                                     </a>

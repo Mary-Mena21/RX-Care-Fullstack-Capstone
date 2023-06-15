@@ -16,7 +16,12 @@ header.masthead {
     position: relative;
     height: 100vh;
     background-color: #343a40;
-    background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') no-repeat center center;
+
+     background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') no-repeat center center; 
+
+/*     background: url('https://i.ibb.co/yPtBC8Z/young-doctor-supporting-his-patient.jpg ') no-repeat center center; */
+
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -327,10 +332,10 @@ navbarNew.card-block {
     border: 1px solid rgba(0, 0, 0, .05);
 }
 
-.mybg-music {
+/* .mybg-music {
     background: url('https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380') no-repeat center center fixed;
     background-size: cover;
-}
+} */
 
 section#marketplace {
     background: #f7f7f7;

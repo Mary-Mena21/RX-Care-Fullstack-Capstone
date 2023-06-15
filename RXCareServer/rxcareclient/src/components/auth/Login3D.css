@@ -114,8 +114,11 @@ blockquote p {
 }
 
 .mybg-music {
-    background: url("https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380")
+/*     background: url("https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380")
+        no-repeat center center fixed; */
+        background: url("https://i.ibb.co/yPtBC8Z/young-doctor-supporting-his-patient.jpg")
         no-repeat center center fixed;
+        
     background-size: cover;
 }
 @media screen and (max-width: 767px) {

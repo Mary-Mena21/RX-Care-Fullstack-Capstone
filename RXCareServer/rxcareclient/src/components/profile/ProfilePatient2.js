@@ -86,7 +86,7 @@ export const ProfilePatient2 = ({
         // }
     };
     useEffect(() => {
-        fetchData2();
+       // fetchData2();
     }, []);
     //----------------------------------------------------------------
     //typeof products.map() !== undefined
