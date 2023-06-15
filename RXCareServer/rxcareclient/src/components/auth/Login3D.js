@@ -1,7 +1,7 @@
 import { Login } from "./Login";
 import React from "react";
 import "./Login3D.css"; 
-import "../home/Home.css"; 
+/* import "../home/Home.css";  */
 
 //-------------------------------------------------------
 export const Login3D = () => {
@@ -43,7 +43,7 @@ export const Login3D = () => {
                         </div>
                     </div>
                 </nav>
-
+{/* https://i.ibb.co/yPtBC8Z/young-doctor-supporting-his-patient.jpg */}
                 <header class="masthead text-white ">
                     <div class="overlay"></div>
                     <div class="container slider-top-text">

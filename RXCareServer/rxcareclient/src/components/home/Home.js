@@ -53,7 +53,7 @@ export const Home = () => {
                 </div>
             </div> */}
             {/* ---------------------------------------------------- */}
-            <section class="testimonials" id="gobottom">
+            <section class="testimonials" /* id="gobottom" */>
                 <div class="container">
                     <div class="row">
                         <div

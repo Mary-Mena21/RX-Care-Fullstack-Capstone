@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 // import LoginBackGroundPhoto from "../images/LoginBackGroundPhoto.jpg";
 import { Link } from "react-router-dom";
+import { Navbar2 } from "../navbar/Navbar2";
+import { Footer } from "../footer/Footer";
 
 export const Login = () => {
     const [Email, setEmail] = useState("");
@@ -37,7 +39,7 @@ export const Login = () => {
                 //userData.isAdmin = userData.userType === "Admin" ? true : false;
                 userData.isAdmin = true;
                 localStorage.setItem("app_user", JSON.stringify(userData));
-                navigate("/home");
+                navigate("/");
             } else {
                 console.log(response);
                 window.alert("Invalid login");
@@ -144,6 +146,7 @@ export const Login = () => {
             </div>
             </div>
             </div>
+            <Footer/>
         </>
     );
 };
