@@ -70,9 +70,13 @@ export const PatientProfileDetails = ({
                                 <h5>
                                     {FirstName} {LastName}
                                 </h5>
-                                <div>
-                                    <br></br>
-                                </div>
+                                <h6>{Email}</h6>
+                                <p class="proile-rating">
+                                    DOCTOR :{" "}
+                                    <span>
+                                        {DoctorFirstName} {DoctorLastName}
+                                    </span>
+                                </p>
                                 {/*                                 <p class="proile-rating">
                                     DOCTOR :{" "}
                                     <span>
@@ -83,13 +87,13 @@ export const PatientProfileDetails = ({
                             <div class="profile-head">
                                 <ul class="nav nav-tabs ">
                                     <li class="nav-item">
-                                        <a class="nav-link ">PRESCRIPTIONS</a>
+                                        <a class="nav-link ">Prescriptions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "> COMMENTS </a>
+                                        <a class="nav-link "> Comments </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "> REPORTS </a>
+                                        <a class="nav-link "> Reports </a>
                                     </li>
                                 </ul>
                             </div>
@@ -105,8 +109,7 @@ export const PatientProfileDetails = ({
                             {/* ************ */}
                         </div>
                         <div class="col-md-2">
-                            <br />
-
+                            
                             <div>
                                 <input
                                     type="submit"
@@ -138,20 +141,18 @@ export const PatientProfileDetails = ({
                                         />
                                     </div>
                                     <br />
-                                    
+
                                     <div>
-                                    <input
-                                        type="submit"
-                                        class="profile-edit-btn"
-                                        name="btnAddMore"
-                                        value="Patients List"
-                                        onClick={() =>
-                                            navigate(
-                                                `/patientsList`
-                                            )
-                                        }
-                                    />
-                                </div>
+                                        <input
+                                            type="submit"
+                                            class="profile-edit-btn"
+                                            name="btnAddMore"
+                                            value="Patients List"
+                                            onClick={() =>
+                                                navigate(`/patientsList`)
+                                            }
+                                        />
+                                    </div>
                                 </>
                             ) : (
                                 <>
@@ -167,23 +168,25 @@ export const PatientProfileDetails = ({
                                         />
                                     </div>
                                     <br />
+
+                                    <div>
+                                        <input
+                                            type="submit"
+                                            class="profile-edit-btn"
+                                            name="btnAddMore"
+                                            value="Add Comment"
+                                            onClick={() =>
+                                                navigate(
+                                                    `profile2/addCommentFromPatient/${patient_Id}`
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                    <br />
                                 </>
                             )}
 
-                            <br />
-                            {/*                             <div>
-                                <input
-                                    type="submit"
-                                    class="profile-edit-btn"
-                                    name="btnAddMore"
-                                    value="Add Comment"
-                                    onClick={() =>
-                                        navigate(`addComment/add/${patient_Id}`)
-                                    }
-                                />
-                                <br />
-
-                                <div>
+                            {/*  <div>
                                     <input
                                         type="submit"
                                         class="profile-edit-btn"

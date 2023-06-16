@@ -12,7 +12,7 @@ export const Login3D = () => {
                     <div class="container">
                         <a class="navbar-brand" href="/aboutApp">
                             <h3 class="my-heading shadows">
-                                RX<span class="bg-main">CARE</span>
+                                RX  <span class="bg-main">CARE</span>
                             </h3>
                            {/*  <h1 className="shadows">RX-CARE</h1> */}
                         </a>

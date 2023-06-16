@@ -205,13 +205,14 @@ export const ProfilePatient2 = ({
                                             {doctorFirstName} {doctorLastName}
                                         </span>
                                     </p>
+                                    {/*-------------------------------------- */}
 
                                     <div>
                                         <div class="profile-head">
                                             <ul class="nav nav-tabs ">
-                                                <li class="nav-item">
+                                                {/* <li class="nav-item">
                                                     <a class="nav-link "></a>
-                                                </li>
+                                                </li> */}
                                                 <li class="nav-item">
                                                     <input
                                                         type="submit"
@@ -225,6 +226,7 @@ export const ProfilePatient2 = ({
                                                         }
                                                     />
                                                 </li>
+
                                                 &nbsp;&nbsp;
                                                 <li class="nav-item">
                                                     <input
@@ -239,6 +241,22 @@ export const ProfilePatient2 = ({
                                                         }
                                                     />
                                                 </li>
+
+{/*                                                 &nbsp;&nbsp;
+                                                <li class="nav-item">
+                                                    <input
+                                                        type="submit"
+                                                        class="profile-edit-btn-comment"
+                                                        name="btnAddMore"
+                                                        value="CHECK-DOSER"
+                                                        onClick={() =>
+                                                            navigate(
+                                                                `/profile/prescriptionCheckUser/${patient_Id}`
+                                                            )
+                                                        }
+                                                    />
+                                                </li> */}
+
 {/*                                                 <li class="nav-item">
                                                     <a class="nav-link ">
                                                         {" "}
@@ -296,6 +314,7 @@ export const ProfilePatient2 = ({
                                 </div>
                             </div>
                             <div class="col-md-2">
+                            <div>
                                 <input
                                     type="submit"
                                     class="profile-edit-btn"
@@ -308,6 +327,24 @@ export const ProfilePatient2 = ({
                                     }
                                 />
                             </div>
+                            <br />
+
+                            <div>
+                            <input
+                                type="submit"
+                                class="profile-edit-btn"
+                                name="btnAddMore"
+                                value="Add Comment"
+                                onClick={() =>
+                                    navigate(
+                                        `profile2/addCommentFromPatient/${patient_Id}`
+                                    )
+                                }
+                            />
+                        </div>
+                        </div>
+                        <br />
+
                         </div>
                     </form>
                 </div>
