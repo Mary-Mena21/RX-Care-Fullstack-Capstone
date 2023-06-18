@@ -24,6 +24,8 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 
 - Database: The application utilizes an SQL database to store and retrieve data efficiently.
 
+![DB](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/d1b07d07-5477-4cb2-b83e-916217a2d10f)
+
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone.git`
