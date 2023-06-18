@@ -54,5 +54,4 @@ Include some relevant screenshots of your application to showcase its features a
 ![App-8](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/fe9f9eab-e607-4360-b4ab-0db1738d350a)
 ![App-7](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/6609d516-c9d6-45eb-8fe5-5b53a3e96b6c)
 ![App-6](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/ded42373-2a58-4a63-b422-0a73335d65c8)
-![App-5](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/94c766f7-a43a-4edf-94f8-fd16a370f189)
 ![App-4](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/d51c10f4-9792-4318-8327-7e4e986f00f2)
