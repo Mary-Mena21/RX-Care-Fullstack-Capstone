@@ -28,14 +28,14 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 
 1. Clone the repository: `git clone https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone.git`
 2. Install the required dependencies for the frontend and backend:
-   - For the frontend, navigate to the `frontend` directory and run `npm install`.
+   - For the frontend, navigate to the `rxcareclient` directory and run `npm install`.
    - For the backend, navigate to the `backend` directory and restore the NuGet packages.
 3. Set up the database:
    - Create a SQL database using the schema designed in DBDiagram.
    - Update the database connection string in the backend configuration file.
 4. Run the application:
    - Start the backend server by running the appropriate command.
-   - Start the frontend development server by navigating to the `frontend` directory and running `npm start`.
+   - Start the frontend development server by navigating to the `rxcareclient` directory and running `npm start`.
 
 ## License
 
