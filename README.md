@@ -24,8 +24,10 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 - Backend: The backend is developed using C#.NET, which powers the server-side logic and handles data processing.
 
 - Design Prototyping: Figma is used for designing and prototyping the user interface, ensuring a visually appealing and intuitive app.
+https://www.figma.com/file/SF9vmT31wpfbL2ytZiXu0r/RX-Care?type=design&node-id=0%3A1&t=cG3g1gWcXxTn4dmY-1
 
 - Database: The application utilizes an SQL database to store and retrieve data efficiently.
+https://dbdiagram.io/d/645fe830dca9fb07c4078b80
 
 ![DB](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/d1b07d07-5477-4cb2-b83e-916217a2d10f)
 
