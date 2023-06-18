@@ -29,7 +29,7 @@ This is a full-stack application developed using C#.Net and React. The purpose o
 1. Clone the repository: `git clone https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone.git`
 2. Install the required dependencies for the frontend and backend:
    - For the frontend, navigate to the `rxcareclient` directory and run `npm install`.
-   - For the backend, navigate to the `backend` directory and restore the NuGet packages.
+   - For the backend, navigate to the `RXCareSer` directory and restore the NuGet packages.
 3. Set up the database:
    - Create a SQL database using the schema designed in DBDiagram.
    - Update the database connection string in the backend configuration file.
@@ -45,3 +45,14 @@ This project is licensed under the MIT License.
 
 Include some relevant screenshots of your application to showcase its features and user interface.
 
+![App-12](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/0dde8757-864e-46c0-b84f-5316b7dd0b28)
+![App-10](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/389716e9-b676-4271-a4f7-a9881e63bc5f)
+![App-9](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/035e2020-c8bb-4c3a-92c3-bead1b60b584)
+![App-8](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/fe9f9eab-e607-4360-b4ab-0db1738d350a)
+![App-7](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/6609d516-c9d6-45eb-8fe5-5b53a3e96b6c)
+![App-6](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/ded42373-2a58-4a63-b422-0a73335d65c8)
+![App-5](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/94c766f7-a43a-4edf-94f8-fd16a370f189)
+![App-4](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/d51c10f4-9792-4318-8327-7e4e986f00f2)
+![App-3](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/f237aba6-a4e5-4e9d-b80f-ed2822780b9e)
+![App-2](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/2d3ceb78-5998-4079-b9e0-34efb477ac37)
+![App-1](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/b083d6e7-9b9d-496d-a7c1-2a42f6377e71)
