@@ -44,10 +44,6 @@ https://dbdiagram.io/d/645fe830dca9fb07c4078b80
    - Start the backend server by running the appropriate command.
    - Start the frontend development server by navigating to the `rxcareclient` directory and running `npm start`.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Screenshots
 
 Include some relevant screenshots of your application to showcase its features and user interface.
@@ -57,3 +53,8 @@ Include some relevant screenshots of your application to showcase its features a
 ![App-F-7](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/f3581a21-ec11-4b1d-ae08-d9f360d03757)
 ![App-F-4](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/0325ea0d-ac83-47a0-b229-1ae5793f48dd)
 ![App-F-6](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/26aac8f5-43e1-4917-a1cb-50114a0f58ad)
+
+
+## License
+
+This project is licensed under the MIT License.
