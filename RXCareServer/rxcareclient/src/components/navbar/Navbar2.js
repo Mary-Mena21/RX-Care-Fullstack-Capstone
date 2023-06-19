@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../navbar/Navbar2.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -10,11 +10,33 @@ export const Navbar2 = ({ children }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    // const [Person, setPerson] = useState([]);
+    // const [searchTerms, setSearchTerms] = useState("");
+
     var appUser = localStorage.getItem("app_user");
     var appUserObject = JSON.parse(appUser);
     let Id = appUserObject.id;
     console.log(appUserObject);
 
+
+    /* ------------GetAllPatients--------------- */
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await fetch(
+    //             `https://localhost:7183/api/Patient/All/${appUserObject.id}`
+    //         );
+    //         const Data = await response.json();
+    //         setPerson(Data);
+    //         //searchByTitle------------------------------------------
+    //         const searchByName = Data.filter((person) =>
+    //         person.user.firstName.toLowerCase().startsWith(searchTerms.toLowerCase())
+    //         );
+    //         setPerson(searchByName);
+    //     };
+    //     fetchData();
+    // }, [searchTerms]);
+
+//my-lg-4 col-md-2
     if (appUserObject.type == "Doctor") {
         return (
             <>
@@ -154,17 +176,18 @@ export const Navbar2 = ({ children }) => {
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive"
                             >
-                                <form class="form-inline my-2 my-lg-0 col-md-4">
+{/*                                 <form class="form-inline my-2 my-lg-0 col-md-4">
                                     <input
                                         class="myform-control mr-sm-2"
                                         type="search"
                                         placeholder="find doctors, patients and more..."
                                         aria-label="Search"
+                                        onChange={(e) => setSearchTerms(e.target.value)}
                                     />
                                     <button class="btn btn-light">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                </form>
+                                </form> */}
                                 <ul class="navbar-nav ml-auto">
                                     {/*                    <li class="nav-link">
                         <a class="btn btn-primary btn-block btn-login" href="#">Login</a>
@@ -357,7 +380,7 @@ export const Navbar2 = ({ children }) => {
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive"
                             >
-                                <form class="form-inline my-2 my-lg-0 col-md-4">
+{/*                                 <form class="form-inline my-2 my-lg-0 col-md-4">
                                     <input
                                         class="myform-control mr-sm-2"
                                         type="search"
@@ -367,7 +390,7 @@ export const Navbar2 = ({ children }) => {
                                     <button class="btn btn-light">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                </form>
+                                </form> */}
                                 <ul class="navbar-nav ml-auto">
                                     {/*                    <li class="nav-link">
                      <a class="btn btn-primary btn-block btn-login" href="#">Login</a>

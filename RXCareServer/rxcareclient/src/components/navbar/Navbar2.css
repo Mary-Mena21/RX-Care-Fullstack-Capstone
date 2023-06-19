@@ -41,6 +41,27 @@ header.masthead .overlay{position:absolute;background-color:#212529;height:100%;
         font-size: 4rem;
     }
 }
+@media (max-width:1200px) {
+    .search{
+        margin-top: 60px;
+    }
+}
+
+.search{
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.layer-z{z-index: -1;
+}
+
+.search-text{
+    font-family: 'Kaushan Script', cursive;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    margin:0;
+    /* text-shadow: #0c4444 1px 1px 5px; */
+}
 
 .testimonials{
     padding-top:5rem;
