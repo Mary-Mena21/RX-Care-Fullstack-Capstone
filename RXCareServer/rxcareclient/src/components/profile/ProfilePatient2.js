@@ -171,9 +171,9 @@ export const ProfilePatient2 = ({
                         </div>
                     </div>
                     //+-+-+-ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ */}
-            <div class="container">
+             <div class="container"> 
                 {/* -------------------------- */}
-                <div class=" emp-profile">
+                <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
                             <div class="col-md-4">
@@ -195,9 +195,6 @@ export const ProfilePatient2 = ({
                                     </h5>
                                     <h6>{email}</h6>
                                     {/*-------------------------------------- */}
-                                    {/*                     <p class="proile-rating">
-                        NOTE : <span>{note}</span>
-                                            </p> */}
 
                                     <p class="proile-rating">
                                         DOCTOR :{" "}
@@ -207,12 +204,10 @@ export const ProfilePatient2 = ({
                                     </p>
                                     {/*-------------------------------------- */}
 
-                                    <div>
+{/*                                     <div>
                                         <div class="profile-head">
                                             <ul class="nav nav-tabs ">
-                                                {/* <li class="nav-item">
-                                                    <a class="nav-link "></a>
-                                                </li> */}
+
                                                 <li class="nav-item">
                                                     <input
                                                         type="submit"
@@ -226,6 +221,7 @@ export const ProfilePatient2 = ({
                                                         }
                                                     />
                                                 </li>
+
 
                                                 &nbsp;&nbsp;
                                                 <li class="nav-item">
@@ -242,37 +238,10 @@ export const ProfilePatient2 = ({
                                                     />
                                                 </li>
 
-{/*                                                 &nbsp;&nbsp;
-                                                <li class="nav-item">
-                                                    <input
-                                                        type="submit"
-                                                        class="profile-edit-btn-comment"
-                                                        name="btnAddMore"
-                                                        value="CHECK-DOSER"
-                                                        onClick={() =>
-                                                            navigate(
-                                                                `/profile/prescriptionCheckUser/${patient_Id}`
-                                                            )
-                                                        }
-                                                    />
-                                                </li> */}
-
-{/*                                                 <li class="nav-item">
-                                                    <a class="nav-link ">
-                                                        {" "}
-                                                        TEST{" "}
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link ">
-                                                        {" "}
-                                                        TEST{" "}
-                                                    </a>
-                                                </li> */}
                                             </ul>
                                         </div>
                                         </div>
-                                        <br />
+                                        <br /> */}
                                     {/* ------------------------------------- */}
 
                                     <ul class="nav nav-tabs">
@@ -349,7 +318,7 @@ export const ProfilePatient2 = ({
                     </form>
                 </div>
                 {/* -------------------------- */}
-            </div>
+             </div> 
         </>
     );
 };

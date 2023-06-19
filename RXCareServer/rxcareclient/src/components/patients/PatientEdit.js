@@ -105,6 +105,14 @@ console.log(appUserObject.type);
                         />
                         <h3>Welcome</h3>
                         <p>RX-Care Your Health Gard!</p>
+                        <input
+                        type="submit"
+                        name=""
+                        value="Back to Patient"
+                        onClick={() =>
+                            navigate(`../patientsList/${patient_Id}`)
+                        }
+                    />
                         <br />
                     </div>
                     <div class="col-md-7 register-right">

@@ -35,7 +35,7 @@ export const PatientDetails = () => {
         );
         const singlePatient = await response.json();
         setUser1(singlePatient);
-       console.log(singlePatient);
+       console.log(singlePatient.doB);
 
         // //-------------------------------------
         const Patient = singlePatient.user;

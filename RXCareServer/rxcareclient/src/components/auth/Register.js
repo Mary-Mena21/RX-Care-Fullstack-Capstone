@@ -83,7 +83,7 @@ export const Register = () => {
                             type="submit"
                             name=""
                             value="Login"
-                            onClick={() => navigate("../login3d")}
+                            onClick={() => navigate("../login")}
                         />
                         <br />
                     </div>

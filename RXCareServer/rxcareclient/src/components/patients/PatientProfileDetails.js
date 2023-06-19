@@ -54,7 +54,7 @@ export const PatientProfileDetails = ({
     return (
         <>
             <div class="container emp-profile ">
-                <form>
+                <form method="post">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-img">
@@ -274,7 +274,7 @@ export const PatientProfileDetails = ({
                                                 </div>
                                                 <div class="col-md-9">
                                                     <p>
-                                                        {YoB} - {Age}
+                                                        {YoB} - {Age} - {DoB}
                                                     </p>
                                                 </div>
                                             </div>
