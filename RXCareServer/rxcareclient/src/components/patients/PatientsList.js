@@ -28,7 +28,6 @@ export const PatientsList = () => {
                     .startsWith(searchTerms.toLowerCase())
             );
             setPatients(searchByName);
-
         };
         fetchData();
     }, [searchTerms]);
@@ -36,33 +35,46 @@ export const PatientsList = () => {
     return (
         <>
             <div className="container ">
-                {/* ------------search------------- */}
-                
-                    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-                        <div class="container">
+                {/* ------------search----1--------- */}
+{/*                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+                    <div class="container">
                         <div class="col-md-2 mr-sm-3"></div>
-                            <div class="navbar-collapse search">
-                                {/* <div class="collapse navbar-collapse"> */}
-                <form class="form-inline my-2 my-lg-3 col-md-4">
+                        <div class="navbar-collapse search">
+                            <form class="form-inline my-2 my-lg-3 col-md-4">
+                                <input
+                                    class="myform-control mr-sm-2"
+                                    type="search"
+                                    placeholder="find patient ..."
+                                    aria-label="Search"
+                                    onChange={(e) =>
+                                        setSearchTerms(e.target.value)
+                                    }
+                                />
+                                <button class="btn btn-light">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav> */}
+                {/* ------------search------------- */}
+
+                {/* ------------search-----2-------- */}
+                <h1 class=" col-md-4 ml-auto search-text ">PATIENT LIST</h1>
+                <form class="form-inline   col-md-4 search ml-auto">
                     <input
                         class="myform-control mr-sm-2"
                         type="search"
-                        placeholder="find patients ..."
+                        placeholder="find doctor ..."
                         aria-label="Search"
                         onChange={(e) => setSearchTerms(e.target.value)}
                     />
                     <button class="btn btn-light">
                         <i class="fa fa-search"></i>
                     </button>
-                                </form>
-
-                            </div>
-                            </div>
-                    </nav>
-                   
+                </form>
                 {/* ------------search------------- */}
 
-                {/* <h1>All Patients</h1> */}
                 <section key={`Patients`} className="patients patientContainer">
                     {Patients.map((patient) => {
                         return (

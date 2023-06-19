@@ -380,7 +380,7 @@ export const Navbar2 = ({ children }) => {
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive"
                             >
-                                <form class="form-inline my-2 my-lg-0 col-md-4">
+{/*                                 <form class="form-inline my-2 my-lg-0 col-md-4">
                                     <input
                                         class="myform-control mr-sm-2"
                                         type="search"
@@ -390,7 +390,7 @@ export const Navbar2 = ({ children }) => {
                                     <button class="btn btn-light">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                </form>
+                                </form> */}
                                 <ul class="navbar-nav ml-auto">
                                     {/*                    <li class="nav-link">
                      <a class="btn btn-primary btn-block btn-login" href="#">Login</a>
