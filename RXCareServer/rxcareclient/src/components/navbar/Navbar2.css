@@ -41,6 +41,11 @@ header.masthead .overlay{position:absolute;background-color:#212529;height:100%;
         font-size: 4rem;
     }
 }
+@media (max-width:1200px) {
+    .search{
+        margin-top: 60px;
+    }
+}
 
 .testimonials{
     padding-top:5rem;
