@@ -81,7 +81,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                             {appUserObject.type ==
                                                             "Doctor" ? (
                                                                 <>
-                                                                    <li class="nav-item">
+                                                                    <li class="">
                                                                         <Link
                                                                             to={`UpdatePrescription/edit/${pres.id}`}
                                                                         >
@@ -102,7 +102,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                                         </Link>
                                                                     </li>
                                                                     &nbsp;&nbsp;
-                                                                    <li class="nav-item">
+                                                                    <li class="">
                                                                         <input
                                                                             type="submit"
                                                                             class="profile-edit-btn-comment margin-ptn"
@@ -134,7 +134,7 @@ export const PrescriptionList = ({ patient_Id }) => {
                                                             {appUserObject.type ==
                                                             "Patient" ? (
                                                                 <>
-                                                                    <li class="nav-item">
+                                                                    <li class="link-glow">
                                                                         <Link
                                                                             to={`profile2/addCommentFromPatient/${patient_Id}`}
                                                                         >

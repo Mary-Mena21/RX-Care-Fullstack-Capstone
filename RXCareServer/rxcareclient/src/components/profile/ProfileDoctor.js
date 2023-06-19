@@ -51,16 +51,16 @@ export const ProfileDoctor = () => {
                             </h5>
                             <small>
                                 <cite title="Source Title">
-                                    Chicago, United States of America{" "}
+                                Tennessee, United States of America{" "}
                                     <i class="icon-map-marker"></i>
                                 </cite>
                             </small>
                         </div>
                         <p>
                             {User.email}
-                            <br />
+                                    <br />
                             www.bootsnipp.com <br />
-                            June 18, 1990
+                            June 18, 2023
                         </p>
                     </div>
                 </div>

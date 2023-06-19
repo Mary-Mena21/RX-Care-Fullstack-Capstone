@@ -7,6 +7,7 @@ body{
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
+
 }
 .profile-img{
     text-align: center;
@@ -525,4 +526,8 @@ margin: 2px;
   opacity: 0;
   transform: scale(1);
 }
+}
+
+.link-glow :hover{
+  box-shadow: #52f6a4 1px 1px 2px;
 }

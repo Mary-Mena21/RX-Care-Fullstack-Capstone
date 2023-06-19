@@ -676,13 +676,13 @@ p.myp-font {
 	.box img {height: 100%;}
 }
  /* --------footer-------- */
-/*  .footer{
+ .footer{
     background-color:#BD996D ;
     background-color: #1fc6d8;
     background-color: #1c3034;
    /*  background-color: #16383e; */
     /* padding-bottom: 0px;
     bottom: 0px; */
-   /*  margin-top: auto !important; 
-    margin-bottom: -50px;
- } */
+     margin-top: 5% !important; 
+    bottom: 0px !important;
+ }

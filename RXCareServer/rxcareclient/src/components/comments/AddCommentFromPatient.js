@@ -87,7 +87,8 @@ export const AddCommentFromPatient = () => {
                             name=""
                             value="Back to Patient"
                             onClick={() =>
-                                navigate(`../profile2`)
+                               // navigate(`../profile2`)
+                                navigate(`../patientsList/${patient_Id}`)
                             }
                         />
                         <br />
