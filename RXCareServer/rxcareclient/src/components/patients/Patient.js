@@ -9,6 +9,7 @@ import Collapse from "react-bootstrap/Collapse";
 import { PrescriptionListContent } from "../prescription/PrescriptionListContent";
 import { TESTComment } from "../comments/TESTComment";
 import { TESTCommentListContent } from "../comments/TESTCommentListContent";
+import { PrescriptionCheckContent } from "../prescription/PrescriptionCheckContent";
 
 export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
     const navigate = useNavigate();
@@ -140,7 +141,7 @@ export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
                                         </li>
                                         {/* -----------collabse------------- */}
 
-                                        {/* -----------collabse-----Prescription-------- */}
+                                        {/* -----------collabse-----Report-------- */}
                                         <li class="nav-item">
                                         <Link>
                                             <a
@@ -157,7 +158,7 @@ export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
                                             </a>
                                             <Collapse in={open3}>
                                                 <div id="Reports-collapse-text">
-                                                <PrescriptionListContent
+                                                <PrescriptionCheckContent
                                                 patient_Id={Id}
                                             />
                                                 </div>
