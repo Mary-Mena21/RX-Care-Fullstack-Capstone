@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { PrescriptionList } from "../prescription/PrescriptionList";
+import Accordion from "react-bootstrap/Accordion";
 
-export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
+import { PrescriptionListContent } from "../prescription/PrescriptionListContent";
+import { TESTComment } from "../comments/TESTComment";
+import { TESTCommentListContent } from "../comments/TESTCommentListContent";
+
+export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
     const navigate = useNavigate();
+    const [open1, setOpen1] = useState(false);
+    const [open2, setOpen2] = useState(false);
+    const [open3, setOpen3] = useState(false);
+    const [open4, setOpen4] = useState(false);
 
     return (
         <>
             <div className="">
-                
-{/*             <div class="d-flex justify-content-center h-100">
+                {/*             <div class="d-flex justify-content-center h-100">
             <div class="image_outer_container">
                 <div class="green_icon"></div>
                 <div class="image_inner_container">
@@ -17,7 +28,7 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
                 </div>
             </div>
         </div>  */}
-                
+
                 {/* -------------------------- */}
                 <div class="container doctorCard">
                     <form method="post">
@@ -56,7 +67,7 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
                                                 </a>
                                             </Link>
                                         </li>
-                                        <li class="nav-item">
+{/*                                         <li class="nav-item">
                                             <a
                                                 class="nav-link"
                                                 href="#profile"
@@ -65,8 +76,16 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
                                             >
                                                 Comment
                                             </a>
-                                        </li>
-                                        <li class="nav-item">
+                                        </li> */}
+                                        
+{/*                                         <li
+                                            class="nav-item"
+                                            onClick={() => (
+                                                <PrescriptionList
+                                                    patient_Id={Id}
+                                                />
+                                            )}
+                                        >
                                             <a
                                                 class="nav-link"
                                                 href="#profile"
@@ -75,7 +94,78 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
                                             >
                                                 Prescription
                                             </a>
+                                        </li> */}
+
+                                        {/* -----------collabse-----Comment-------- */}
+{/*                                         <li  class="nav-item">
+                                            <a
+                                                class="nav-link"
+                                                role="tab"
+                                                onClick={() => setOpen1(!open1)}
+                                                aria-controls="Prescription-collapse-text"
+                                                aria-expanded={open1}
+                                            >
+                                            Comments
+                                            </a>
+                                            <Collapse in={open1}>
+                                                <div id="Prescription-collapse-text">
+                                                <TESTCommentListContent
+                                                patient_Id={Id}
+                                            />
+                                                </div>
+                                            </Collapse>
+                                        </li> */}
+                                        {/* -----------collabse------------- */}
+
+                                        {/* -----------collabse-----Prescription-------- */}
+                                        <li class="nav-item">
+                                            <Link>
+                                            <a
+                                                class="nav-link"
+                                                role="tab"
+                                                onClick={() => setOpen2(!open2)}
+                                                aria-controls="Prescription-collapse-text"
+                                                aria-expanded={open2}
+                                            >
+                                                Prescription
+                                            </a>
+                                            <Collapse in={open2}>
+                                                <div id="Prescription-collapse-text">
+                                                <PrescriptionListContent
+                                                patient_Id={Id}
+                                            />
+                                                </div>
+                                                </Collapse>
+                                                </Link>
                                         </li>
+                                        {/* -----------collabse------------- */}
+
+                                        {/* -----------collabse-----Prescription-------- */}
+                                        <li class="nav-item">
+                                        <Link>
+                                            <a
+                                                class="nav-link"
+                                                role="tab"
+                                                onClick={() => setOpen3(!open3)}
+                                                aria-controls="Reports-collapse-text"
+                                                aria-expanded={open3}
+                                                style={{
+                                                    color: 'primary'
+                                                }}
+                                            >
+                                                Reports
+                                            </a>
+                                            <Collapse in={open3}>
+                                                <div id="Reports-collapse-text">
+                                                <PrescriptionListContent
+                                                patient_Id={Id}
+                                            />
+                                                </div>
+                                                </Collapse>
+                                                </Link>
+                                        </li>
+                                        {/* -----------collabse------------- */}
+
                                     </ul>
                                 </div>
                             </div>
@@ -84,11 +174,10 @@ export const Patient = ({Id, Img, FirstName, LastName, Email, Note }) => {
                                     type="submit"
                                     class="profile-edit-btn"
                                     name="btnAddMore"
-                                    value="Edit Profile"
-
-
+                                    value="📝Edit Profile"
                                     onClick={() =>
-                                        navigate(`/patientsList/${Id}/patientsList/edit/${Id}`)
+                                        navigate(`/patientsList/${Id}/patientsList/edit/${Id}
+                                        `)
                                     }
                                 />
                             </div>

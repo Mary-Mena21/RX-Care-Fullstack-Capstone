@@ -59,7 +59,6 @@ export const PrescriptionList = ({ patient_Id }) => {
             {/*  <Accordion> */}
             <Accordion.Item eventKey="0">
                 <Accordion.Header>PRESCRIPTIONS</Accordion.Header>
-
                 <Accordion.Body>
                     {Prescription.map((pres) => {
                         console.log(pres);
