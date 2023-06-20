@@ -75,7 +75,7 @@ export const PatientsList = () => {
                 </form>
                 {/* ------------search------------- */}
 
-                <section key={`Patients`} className="patients patientContainer">
+                <section key={`Patients`} className="patients patientContainer register-container">
                     {Patients.map((patient) => {
                         return (
                             <>

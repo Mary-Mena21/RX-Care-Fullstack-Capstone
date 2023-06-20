@@ -37,29 +37,29 @@ export const DoctorsList = () => {
     return (
         <>
             <div class="container ">
-                                {/* ------------search----1--------- */}
-{/*                                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-                                <div class="container">
-                                    <div class="col-md-2 mr-sm-3"></div>
-                                    <div class="navbar-collapse search">
-                                        <form class="form-inline my-2 my-lg-3 col-md-4">
-                                            <input
-                                                class="myform-control mr-sm-2"
-                                                type="search"
-                                                placeholder="find patient ..."
-                                                aria-label="Search"
-                                                onChange={(e) =>
-                                                    setSearchTerms(e.target.value)
-                                                }
-                                            />
-                                            <button class="btn btn-light">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </nav> */}
-                            {/* ------------search----2--------- */}
+                {/* ------------search----1--------- */}
+{/*                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+                    <div class="container">
+                        <div class="col-md-2 mr-sm-3"></div>
+                        <div class="navbar-collapse search">
+                            <form class="form-inline my-2 my-lg-3 col-md-4">
+                                <input
+                                    class="myform-control mr-sm-2"
+                                    type="search"
+                                    placeholder="find patient ..."
+                                    aria-label="Search"
+                                    onChange={(e) =>
+                                        setSearchTerms(e.target.value)
+                                    }
+                                />
+                                <button class="btn btn-light">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav> */}
+                {/* ------------search----2--------- */}
                 {/* ------------search------------- */}
                 <h1 class=" col-md-4 ml-auto search-text ">PROVIDER LIST</h1>
                 <form class="form-inline   col-md-4 search ml-auto">
