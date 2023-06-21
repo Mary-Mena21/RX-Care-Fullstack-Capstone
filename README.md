@@ -3,7 +3,11 @@
 This is a responsive full-stack application developed using C#.Net and React. The purpose of this application is to provide an easy and efficient platform for doctors to connect with their patients, monitor prescriptions, and ensure medication adherence. The app enables doctors to assign new prescriptions, adjust dosages, and track patients' medication intake. Patients can sign in to the app, check off when they take their medicine and communicate with their doctors seamlessly.
 
 ![RX-Care](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/c2ec6dbc-33fe-4d3e-97dc-24f14c933c2e)
+![App-F-6](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/20606a86-b633-4a04-843d-a51b60a7f6df)
+![App-F-4](https://github.com/Mary-Mena21/RX-Care-Fullstack-Capstone/assets/85176043/08e0e409-2cdf-4612-9dfc-f604a21f33aa)
+
 ## Features
+
 
 - User Authentication: Patients can sign in to the app using their credentials to access their profile and medication information. Doctors can also authenticate themselves to manage patient records and prescriptions.
 
