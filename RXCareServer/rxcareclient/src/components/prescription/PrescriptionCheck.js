@@ -122,7 +122,7 @@ export const PrescriptionCheck = ({ patient_Id }) => {
     return (
         <>
             <Accordion.Item eventKey="2">
-                <Accordion.Header>REPORT</Accordion.Header>
+                <Accordion.Header>REPORTS</Accordion.Header>
                 <Accordion.Body>
                     {Prescription.map((pres) => {
                         for (const x of Prescription) {

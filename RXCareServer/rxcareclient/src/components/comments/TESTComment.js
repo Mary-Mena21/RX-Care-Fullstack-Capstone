@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "../profile/ProfilePatient.css";
 import Accordion from "react-bootstrap/Accordion";
 import { UserImg } from "../user/UserImg";
@@ -21,12 +21,15 @@ export const TESTComment = ({
     const Type = appUserObject.type;
     console.log(Type);
     console.log(Id);
-
+    const navigate = useNavigate();
     /* -------------Delete Comment----------------- */
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        //e.preventDefault();
         fetch(` https://localhost:7183/api/Comment/DeleteCommentById/${Id}`, {
             method: "DELETE",
-        }).then();
+        }).then(navigate(`../profile2`));
+        //}).then(navigate(`../patientsList/${PatientId}`));
+        //profile2
     };
 
     return (

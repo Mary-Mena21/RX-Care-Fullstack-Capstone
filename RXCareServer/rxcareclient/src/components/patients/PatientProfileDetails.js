@@ -100,8 +100,8 @@ export const PatientProfileDetails = ({
                             {/* ******Accordion****** */}
                             <Accordion>
                                 <PrescriptionList patient_Id={patient_Id} />
-                                <TESTCommentList patient_Id={patient_Id} />
                                 <PrescriptionCheck patient_Id={patient_Id} />
+                                <TESTCommentList patient_Id={patient_Id} />
                             </Accordion>
                             {/*  <CommentList patient_Id={patient_Id} /> */}
                             {/* <Comment patient_Id={patient_Id} /> */}
