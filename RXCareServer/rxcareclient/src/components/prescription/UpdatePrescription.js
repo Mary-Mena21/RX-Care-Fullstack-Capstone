@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdatePrescription = () => {
     const navigate = useNavigate();
-    const {  patient_Id , Id } = useParams();
+    const { patient_Id, Id } = useParams();
     console.log(patient_Id);
     console.log(Id);
 
@@ -47,8 +47,8 @@ export const UpdatePrescription = () => {
         const response = await fetch(
             `https://localhost:7183/api/prescription/UpdatePrescriptionById/${Id}`,
             fetchOptions
-            );
-            console.log(Id);
+        );
+        console.log(Id);
         navigate(`../patientsList/${patient_Id}`);
         const responseJson = await response.json();
         //console.log(responseJson);
@@ -86,70 +86,78 @@ export const UpdatePrescription = () => {
                         <div class="tab-content" id="myTabContent">
                             <div id="home">
                                 <h3 class="register-heading">
-                                    Update  {Prescription.medicine.medicineName} Prescription
+                                    Update {Prescription.medicine.medicineName}{" "}
+                                    Prescription
                                 </h3>
                                 <div class="row register-form">
                                     <div class="col-md-12">
                                         {/* ---------------------- */}
                                         <Form onSubmit={submissionHandler}>
                                             <div className="row g-3">
-                                            <Form.Floating className="form-group  col-sm-8">
-                                                <Form.Select
-                                                disabled
-                                                    value={
-                                                        Prescription.medicineId
-                                                    }
-                                                    className="form-select"
-                                                        onChange={(evt) => {
-                                                        //console.log(evt);
-                                                        const copy = {
-                                                            ...Prescription,
-                                                            };
-                                                        console.log(copy);
-                                                            
-                                                        copy.medicineId = parseInt(
-                                                            evt.target.value
-                                                        );
-                                                        setUpdatePrescription(
-                                                            copy
-                                                            );
-                                                            console.log(Prescription);
-
-                                                    }}
-                                                >
-                                                    <option
+                                                <Form.Floating className="form-group  col-sm-8">
+                                                    <Form.Select
+                                                        disabled
                                                         value={
-                                                            Prescription.medicine.medicineName
+                                                            Prescription.medicineId
                                                         }
+                                                        className="form-select"
+                                                        onChange={(evt) => {
+                                                            //console.log(evt);
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            console.log(copy);
+
+                                                            copy.medicineId = parseInt(
+                                                                evt.target.value
+                                                            );
+                                                            setUpdatePrescription(
+                                                                copy
+                                                            );
+                                                            console.log(
+                                                                Prescription
+                                                            );
+                                                        }}
                                                     >
-                                                    {Prescription.medicine.medicineName}
-                                                    </option>
-                                                    <option value="1">
-                                                        Levothyroxine
-                                                    </option>
-                                                    <option value="2">
-                                                        Amoxicillin
-                                                    </option>
-                                                    <option value="3">
-                                                        Bisoprolol
-                                                    </option>
-                                                    <option value="4">
-                                                        Irinotecan
-                                                    </option>
-                                                    <option value="5">
-                                                        MediHoney
-                                                    </option>
-                                                    <option value="6">
-                                                        TheraTears
-                                                    </option>
-                                                </Form.Select>
-                                                <label htmlFor="select">
-                                                Medicine Name
-                                            </label>
-                                            </Form.Floating>
+                                                        <option
+                                                            value={
+                                                                Prescription
+                                                                    .medicine
+                                                                    .medicineName
+                                                            }
+                                                        >
+                                                            {
+                                                                Prescription
+                                                                    .medicine
+                                                                    .medicineName
+                                                            }
+                                                        </option>
+                                                        <option value="1">
+                                                            Levothyroxine
+                                                        </option>
+                                                        <option value="2">
+                                                            Amoxicillin
+                                                        </option>
+                                                        <option value="3">
+                                                            Bisoprolol
+                                                        </option>
+                                                        <option value="4">
+                                                            Irinotecan
+                                                        </option>
+                                                        <option value="5">
+                                                            MediHoney
+                                                        </option>
+                                                        <option value="6">
+                                                            TheraTears
+                                                        </option>
+                                                    </Form.Select>
+                                                    <label htmlFor="select">
+                                                        Medicine Name
+                                                    </label>
+                                                </Form.Floating>
 
                                                 {/* ------------------------------- */}
-                                                
+
                                                 <Form.Floating className="form-group  col-sm-6">
                                                     <Form.Control
                                                         required
@@ -201,48 +209,52 @@ export const UpdatePrescription = () => {
                                                         Quantity
                                                     </label>
                                                 </Form.Floating>
-{/* --------------------------- */}
+                                                {/* --------------------------- */}
                                                 <Form.Floating className="form-group  col-sm-6">
-                                                <Form.Select
-                                                    required
-                                                    //readOnly="true"
-                                                    value={
-                                                        Prescription.active
-                                                    }
-                                                    className="form-select"
-                                                    onChange={(evt) => {
-                                                        const copy = {
-                                                            ...Prescription,
-                                                        };
-                                                        copy.active =
-                                                        evt.target.value
-                                                        console.log( evt)
-
-                                                        setUpdatePrescription(
-                                                            copy
-                                                        );
-                                                    }}
-                                                    >
-                                                        
-                                                    <option
-                                                    value={
+                                                    <Form.Select
+                                                        required
+                                                        //readOnly="true"
+                                                        value={
                                                             Prescription.active
                                                         }
+                                                        className="form-select"
+                                                        onChange={(evt) => {
+                                                            const copy = {
+                                                                ...Prescription,
+                                                            };
+                                                            copy.active =
+                                                                evt.target.value;
+                                                            console.log(evt);
+
+                                                            setUpdatePrescription(
+                                                                copy
+                                                            );
+                                                        }}
                                                     >
-                                                    {Prescription.active}
-                                                    </option>
-                                                    <option value= {"active"}>
-                                                    Active
-                                                    </option>                                       
-                                                    <option value= {"inactive"}>
-                                                    Not Active
-                                                    </option>
-                                                </Form.Select>
-                                                <label htmlFor="select">
-                                                Active 
-                                            </label>
-                                            </Form.Floating>
- 
+                                                        <option
+                                                            value={
+                                                                Prescription.active
+                                                            }
+                                                        >
+                                                            {
+                                                                Prescription.active
+                                                            }
+                                                        </option>
+                                                        <option
+                                                            value={"active"}
+                                                        >
+                                                            Active
+                                                        </option>
+                                                        <option
+                                                            value={"inactive"}
+                                                        >
+                                                            Not Active
+                                                        </option>
+                                                    </Form.Select>
+                                                    <label htmlFor="select">
+                                                        Active
+                                                    </label>
+                                                </Form.Floating>
                                             </div>
                                             {/* ---------------------- */}
                                             <input

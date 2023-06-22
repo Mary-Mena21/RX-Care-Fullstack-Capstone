@@ -49,6 +49,26 @@ body{
     color: #6c757d;
     cursor: pointer;
 }
+
+.profile-edit-btn:hover{
+  background: #1EC6D8;
+  background: #5976e9;
+  background: #96a1ad;
+  /* background: #b2e3ec; */
+  color: #ffffff !important; 
+box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+transition: all 0.3s;
+}
+
+.profile-edit-btn-comment:hover{
+  background: #1EC6D8;
+  background: #5976e9;
+  background: #96a1ad;
+  /* background: #b2e3ec; */
+  color: #ffffff !important; 
+box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+transition: all 0.3s;
+}
 /* .accordion-body{
   padding: 2px;
 } */
@@ -528,6 +548,6 @@ margin: 2px;
 }
 }
 
-.link-glow :hover{
+/* .link-glow :hover{
   box-shadow: #52f6a4 1px 1px 2px;
-}
+} */
