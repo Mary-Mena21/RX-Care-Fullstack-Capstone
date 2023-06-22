@@ -24,6 +24,16 @@ namespace RXCareServer.Controllers
             return Ok(Doctors);
 
         }
+        //-----------------------------------------------------------
+
+        [HttpGet("GetDoctorFullInfo")]
+        public IActionResult GetDoctorFullInfo(int Id)
+        {
+            var Doctor = _doctorRepository.GetDoctorFullInfo(Id);
+            if (Doctor == null) { return NotFound(); }
+            return Ok(Doctor);
+
+        }
         //======================================
     }
 }
