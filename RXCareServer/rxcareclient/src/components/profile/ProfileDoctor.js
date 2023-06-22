@@ -17,7 +17,8 @@ export const ProfileDoctor = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                `https://localhost:7183/api/User/GetProfileById/${Id}`
+                //`https://localhost:7183/api/User/GetProfileById/${Id}`
+                `https://localhost:7183/api/Doctor/GetDoctorFullInfo?Id=${Id}`
             );
             const singleUser = await response.json();
             setUser(singleUser);
@@ -31,11 +32,12 @@ export const ProfileDoctor = () => {
         <>
             <div class="container"> 
                 {/* -------------------------- */}
-                <h1 class=" col-md-4 ml-auto search-text ">Profile</h1>
+                <h1 class=" col-md-4 ml-auto search-text ">Provider Profile</h1>
                  <div class="emp-profile">
                  <form method="post">
                 <div class="row">
-                    <div class="col-md-6 img">
+                
+                    <div class="col-md-4 img">
                         <img
                             //src="https://i.ibb.co/xJGLf4Y/patient16.jpg"
                                     //src={require(`../images/doctor1.jpg`)}
@@ -46,7 +48,7 @@ export const ProfileDoctor = () => {
                             alt="image"
                         />
                     </div>
-                    <div className="col-md-6 details">
+{/*                     <div className="col-md-8 details">
                         <div>
                             <h5>
                                 Dr. {User.firstName} {User.lastName}
@@ -64,8 +66,63 @@ export const ProfileDoctor = () => {
                             www.rxcare.com <br />
 
                         </p>
+                    </div> */}
+                    <div className="col-md-8 details padding-text">
+                    <div>
+                        <h5>
+                            Dr. {User.firstName} {User.lastName}
+                        </h5>
+                        <small><cite>{User.email}</cite></small>
+                        <br />
+
+                        
+                        <h6>Specialties: {User.specialty}</h6>
+                        <small>
+                            <cite title="Source Title">
+                                "{User.about}"{" "}
+                            </cite>
+                        </small>
+                        {/* <p>Education: { doctorEducation}</p> */}
+                        <p>
+                            <br/>   
+                        <small>
+                        <cite title="Source Title">
+                            Tennessee, United States of America{" "}
+                            <i class="icon-map-marker"></i>
+                        </cite>
+                    </small>
+                        
+                        <br />
+                        <small><h6>www.RxCare.com </h6></small>
+                           {/*  June 18, 2023
+                            <br /> */}
+                            <h6><a href={`tel : ${User.phone}`}>
+                            {User.phone}
+                            </a>{" "}</h6>
+                            <p>
+{/*                                 <h6 className="proile-rating">
+                                LOCATION : {doctorLocation}
+                            </h6> */}
+                            </p>
+                                    </p>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                        <input
+                            type="submit"
+                            class="profile-edit-btn"
+                            name="btnAddMore"
+                            value="📝Edit Profile"
+                            onClick={() =>
+                                navigate(`/profileDoctor/edit/${User.id}
+                                `)
+                            }
+                        />
                     </div>
-                </div>
                 </form> 
                 </div>
             </div>
