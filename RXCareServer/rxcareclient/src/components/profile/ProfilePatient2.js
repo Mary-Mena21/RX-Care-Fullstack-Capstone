@@ -173,7 +173,7 @@ export const ProfilePatient2 = ({
                     //+-+-+-ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ */}
              <div class="container"> 
                 {/* -------------------------- */}
-                <h1 class=" col-md-4 ml-auto search-text ">Profile</h1>
+                <h1 class=" col-md-4 ml-auto search-text ">Profile Patient</h1>
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
@@ -307,7 +307,7 @@ export const ProfilePatient2 = ({
                                 value="Add Comment"
                                 onClick={() =>
                                     navigate(
-                                        `profile2/addCommentFromPatient/${patient_Id}`
+                                        `/patientsList/1/profile2/addCommentFromPatient/${patient_Id}`
                                     )
                                 }
                             />
