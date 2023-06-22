@@ -13,45 +13,6 @@ export const Home = () => {
 
     return (
         <>
-            {/*  <div className="container"> */}
-            {/* <h1>WElcome home</h1> */}
-            {/* <button onClick={() => Navigate("../doctorList")}> All Providers</button> */}
-            {/* <DoctorsList /> */}
-            {/* </div> */}
-
-            {/*             <div class=" register">
-                <div class="row g-3">
-                    <div class="col-md-3 register-left">
-                        <img
-                            src="https://image.ibb.co/n7oTvU/logo_white.png"
-                            alt=""
-                        />
-                        <h3>Welcome</h3>
-                        <p>RX-Care Your Health Gard!</p>
-                        <input
-                            type="submit"
-                            name=""
-                            value="All Providers"
-                            onClick={() => navigate("../doctorList")}
-                        />
-                        <br />
-                        </div>
-                        <div class="col-md-7">
-                            <div class="row register-form">
-                                <div class="col-md-12">
-                                    <div class="tab-content">
-                                        <img
-                                            //src={require(`../images/careGroup.jpg`)}
-                                            src={`https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg?w=1380`}
-                                            alt=""
-                                        />
-                                    </div>
-                                </div>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             {/* ---------------------------------------------------- */}
             <section class="testimonials" /* id="gobottom" */>
                 <div class="container">

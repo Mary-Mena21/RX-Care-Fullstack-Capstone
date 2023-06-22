@@ -1,9 +1,7 @@
 import { Login } from "./Login";
 import React from "react";
 import "./Login3D.css"; 
-/* import "../home/Home.css";  */
 
-//-------------------------------------------------------
 export const Login3D = () => {
     return (
         <>
@@ -64,7 +62,7 @@ export const Login3D = () => {
                                     JOIN THE COMMUNITY
                                 </a> */}
                             </div>
-              {/*               <div class="col-md-12 text-center mt-5">
+                             <div class="col-md-12 text-center mt-5">
                                 <div class="scroll-down">
                                     <a
                                         class="btn btn-default btn-scroll floating-arrow"
@@ -74,24 +72,11 @@ export const Login3D = () => {
                                         <i class="fa fa-angle-down"></i>
                                     </a>
                                 </div>
-                            </div> */}
+                            </div> 
 
                         </div>
                     </div>
                 </header>
-
-
-        
-
-{/*                 <main className="login_main">
-                    <header>
-                        <h1 className="shadows">RX-CARE</h1>
-                    </header>
-
-                    <div className="login-3d">
-                        <Login />
-                    </div>
-                </main> */}
 
             </body>
         </>

@@ -59,8 +59,8 @@ export const DoctorsList = () => {
                         </div>
                     </div>
                 </nav> */}
-                {/* ------------search----2--------- */}
                 {/* ------------search------------- */}
+                {/* ------------search----2--------- */}
                 <h1 class=" col-md-4 ml-auto search-text ">PROVIDER LIST</h1>
                 <form class="form-inline   col-md-4 search ml-auto">
                     <input

@@ -2,26 +2,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const PatientEdit = () => {
-    //const [Type, setType] = useState("");
-    // const [Img, setImg] = useState("");
-    // const [FirstName, setFirstName] = useState("");
-    // const [LastName, setLastName] = useState("");
-    // const [Email, setEmail] = useState("");
-    // const [PATIENT, setPATIENT] = useState("");
-    // const [UserId, setUserId] = useState("");
-    // const [DoctorId, setDoctorId] = useState("");
-    // const [DoB, setDoB] = useState("");
-    // const [Address, setAddress] = useState("");
-    // const [Phone, setPhone] = useState("");
-    // const [Height, setHeight] = useState("");
-    // const [Weight, setWeight] = useState("");
-    // const [Note, setNote] = useState("");
     const navigate = useNavigate();
 
     const { patient_Id } = useParams();
@@ -51,7 +34,6 @@ console.log(appUserObject.type);
     const Type = appUserObject.type;
     console.log(Type)
 
-
     /* -------------Display----------------- */
     useEffect(() => {
         const fetchData = async () => {
@@ -79,7 +61,6 @@ console.log(appUserObject.type);
             `https://localhost:7183/api/Patient/UpdatePatientById/${patient_Id}`,
             fetchOptions
         );
-        //navigate(`/books`);
         navigate(`/patientsList/${patient_Id}`);
         const responseJson = await response.json();
         //console.log(responseJson);
@@ -396,11 +377,6 @@ console.log(appUserObject.type);
 
                                             </div>
                                             {/* ---------------------- */}
-{/*                                             <input
-                                                type="submit"
-                                                class="btnRegister"
-                                                value="Register"
-                                            /> */}
 
                                             <button
                                             onClick={(e) => handleSaveButtonClick(e)}

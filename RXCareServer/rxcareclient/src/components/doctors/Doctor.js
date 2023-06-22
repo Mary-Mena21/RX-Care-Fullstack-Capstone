@@ -1,7 +1,5 @@
-// import { Link } from "react-router-dom";
 import React from "react";
 import "./doctor.css";
-import { Footer } from "../footer/Footer";
 
 export const Doctor = ({
     Id,
@@ -22,14 +20,6 @@ export const Doctor = ({
 }) => {
     return (
         <div className="container doctorCard">
-            {/*             <section className="doctor" key={`doctor--${Id}`}>
-                <Link to={`/doctors/${Id}`}>
-                    <img src={require(`../images/${doctorImg}`)} className="doctorImg" />
-                </Link>
-                <h5>
-                    {doctorFirstName} {doctorLastName}
-                </h5>
-            </section> */}
             {/* ------------------------------------------------- */}
             <div class=" main">
                 <div class="row">
@@ -38,46 +28,45 @@ export const Doctor = ({
                             //src={require(`../images/${doctorImg}`)}
                             src={doctorImg}
                             className="doctorImg"
+                            alt=""
                         />
+                        {/* <img src={require('./logo.jpeg').default} /> */}
                     </div>
                     <div className="col-md-8 details padding-text">
                         <div>
                             <h5>
                                 Dr. {doctorFirstName} {doctorLastName}
                             </h5>
-                            <small><cite>{doctorEmail}</cite></small>
+                            <small>
+                                <cite>{doctorEmail}</cite>
+                            </small>
                             <br />
 
-                            
                             <h6>Specialties: {doctorSpecialty}</h6>
                             <small>
                                 <cite title="Source Title">
                                     "{doctorAbout}"{" "}
                                 </cite>
                             </small>
-                            {/* <p>Education: { doctorEducation}</p> */}
                             <p>
-                                <br/>   
-                            <small>
-                            <cite title="Source Title">
-                                Tennessee, United States of America{" "}
-                                <i class="icon-map-marker"></i>
-                            </cite>
-                        </small>
-                            
-                            <br />
-                            <small><h6>www.RxCare.com </h6></small>
-                               {/*  June 18, 2023
-                                <br /> */}
-                                <h6><a href={`tel : ${doctorPhone}`}>
-                                    {doctorPhone}
-                                </a>{" "}</h6>
-                                <p>
-{/*                                 <h6 className="proile-rating">
-                                    LOCATION : {doctorLocation}
-                                </h6> */}
-                                </p>
-                        </p>
+                                <br />
+                                <small>
+                                    <cite title="Source Title">
+                                        Tennessee, United States of America{" "}
+                                        <i class="icon-map-marker"></i>
+                                    </cite>
+                                </small>
+
+                                <br />
+                                <small>
+                                    <h6>www.RxCare.com </h6>
+                                </small>
+                                <h6>
+                                    <a href={`tel : ${doctorPhone}`}>
+                                        {doctorPhone}
+                                    </a>{" "}
+                                </h6>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -86,4 +75,3 @@ export const Doctor = ({
         </div>
     );
 };
-//<img src={doctorImg} className="doctorImg" />
