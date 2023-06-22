@@ -17,22 +17,3 @@ namespace RXCareServer.Repositories
         User GetUserProfileById(int Id);
     }
 }
-
-
-
-
-
-/*
-                          if (prescription != null)
-                        
-                            prescription = new PrescriptionInfo()
-                            {
-                                Id = DbUtils.GetInt(reader, "PreId"),
-                                MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-                                Dosage = DbUtils.GetString(reader, "Dosage"),
-                                Quantity = DbUtils.GetInt(reader, "Quantity"),
-
-
-                            };
- 
- */

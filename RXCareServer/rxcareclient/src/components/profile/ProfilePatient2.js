@@ -93,87 +93,9 @@ export const ProfilePatient2 = ({
 
     return (
         <>
-            {/*                 /+-+-+-ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile-img">
-                                <img src={image} className="patientImg" />
-                                <div class="file btn btn-lg btn-primary">
-                                    Change Photo
-                                    <input type="file" name="file" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="profile-head">
-                                <h5>
-                                    {firstName} {lastName}
-                                </h5>
-                                <h6>
-                                    ------------Y----USER-Profile2---HI----
-                                    {patient_Id}
-                                </h6>
-                                <p class="proile-rating">
-                                    DOCTOR :{" "}
-                                    <span>
-                                        {doctorFirstName} {doctorLastName}
-                                    </span>
-                                </p>
-                                
-
-                                <div>
-                                    <div class="profile-head">
-                                        <ul class="nav nav-tabs ">
-                                            <li class="nav-item">
-                                                <a class="nav-link "></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <input
-                                                    type="submit"
-                                                    class="profile-edit-btn nav-item"
-                                                    name="btnAddMore"
-                                                    value="ADD-COMMENT ...."
-                                                    onClick={() =>
-                                                        navigate(
-                                                            `addCommentFromPatient/${patient_Id}`
-                                                        )
-                                                    }
-                                                />
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <input
-                                                    type="submit"
-                                                    class="profile-edit-btn nav-item"
-                                                    name="btnAddMore"
-                                                    value="CHECK-DRUG ...."
-                                                    onClick={() =>
-                                                        navigate(
-                                                            `/profile/prescriptionCheckUser/${patient_Id}`
-                                                        )
-                                                    }
-                                                />
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link "> TEST </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link "> TEST </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <br />
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    //+-+-+-ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ */}
              <div class="container"> 
                 {/* -------------------------- */}
-                <h1 class=" col-md-4 ml-auto search-text ">Profile</h1>
+                <h1 class=" col-md-4 ml-auto search-text ">Profile Patient</h1>
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
@@ -307,7 +229,7 @@ export const ProfilePatient2 = ({
                                 value="Add Comment"
                                 onClick={() =>
                                     navigate(
-                                        `profile2/addCommentFromPatient/${patient_Id}`
+                                        `/patientsList/1/profile2/addCommentFromPatient/${patient_Id}`
                                     )
                                 }
                             />
@@ -323,41 +245,5 @@ export const ProfilePatient2 = ({
         </>
     );
 };
-//TODO: Check isArray?
-/* 
- <div>
-     {Array.isArray(comments)
-         ? comments.map(
-               (com) => {
-                   return (
-                       <h2>
-                           {
-                               com
-                                   .medicine
-                                   .medicineName
-                           }
-                       </h2>
-                   );
-               }
-           )
-         : null}
- </div> 
-*/
-/* 
 
 
-
-
-    
-    {/*                 <input
-    type="submit"
-    class="profile-edit-btn"
-    name="btnAddMore"
-    value="ADD-COMMENT"
-    onClick={() =>
-        navigate(
-            `AddCommentFromPatient/${patient_Id}`
-        )
-    }
-/>  
-*/

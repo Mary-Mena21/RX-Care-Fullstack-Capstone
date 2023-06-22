@@ -558,7 +558,7 @@ namespace RXCareServer.Repositories
             }
         }
 
-        //****************************************************************************************************************
+        //**********************************************************************************************************
         //-----------------------------------works1---Brain Thanks--------------------------------------------------
         //public List<PrescriptionMedicineDoses> GetPrescriptionDosesByPatientIdAll(int PatientId)
         //{
@@ -646,74 +646,6 @@ namespace RXCareServer.Repositories
         //    }
         //}
 
-
-
-
-
-
-
-        ////-------------------------------------works2--------------------------------------
-        //public List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"SELECT [Prescription].[Id] 
-        //                              ,[Prescription].[MedicineId]
-        //                              ,[Prescription].[Dosage]
-        //                              ,[Prescription].[Quantity]
-        //                              ,[Prescription].[PatientId]
-        //                              ,[AdminsteredDose].[Id] AS AdmId
-        //                              ,[AdminsteredDose].[Day]
-        //                              ,[AdminsteredDose].[PrescriptionId]
-        //                          FROM [RXCareDb].[dbo].[Prescription]
-        //                          LEFT JOIN [AdminsteredDose] ON [AdminsteredDose].[PrescriptionId] = [Prescription].[Id]
-        //                          WHERE [Prescription].[PatientId] = @Id";
-        //            DbUtils.AddParameter(cmd, "@Id", Id);
-        //            var reader = cmd.ExecuteReader();
-        //            PrescriptionDose prescription = null;
-        //            var prescriptions = new List<PrescriptionDose>();
-
-        //            while (reader.Read())
-        //            {
-        //                int prescriptionId = DbUtils.GetInt(reader, "Id");
-
-        //                if (prescription == null || prescription.Id != prescriptionId)
-        //                {
-        //                    prescription = new PrescriptionDose()
-        //                    {
-        //                        Id = prescriptionId,
-        //                        MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-        //                        Dosage = DbUtils.GetString(reader, "Dosage"),
-        //                        Quantity = DbUtils.GetInt(reader, "Quantity"),
-        //                        PatientId = DbUtils.GetInt(reader, "PatientId"),
-        //                        AdminsteredDose = new List<AdminsteredDose>()
-        //                    };
-
-        //                    prescriptions.Add(prescription);
-        //                }
-
-        //                int admId = DbUtils.GetInt(reader, "AdmId");
-        //                if (admId == 0)
-        //                {
-        //                    AdminsteredDose adminsteredDose = new AdminsteredDose
-        //                    {
-        //                        Id = admId,
-        //                        Day = DbUtils.GetDateTime(reader, "Day"),
-        //                        PrescriptionId = DbUtils.GetInt(reader, "PrescriptionId"),
-        //                    };
-
-        //                    prescription.AdminsteredDose.Add(adminsteredDose);
-        //                }
-        //            }
-
-        //            conn.Close();
-        //            return prescriptions;
-        //        }
-        //    }
-        //}
         //-------------------------------------works2---!!!!!!!!!!!!!👌-----------------------------------
         public List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id)
         {
@@ -775,132 +707,6 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //---------------------------------TEST-------------------------------------------------------
-        //public List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"SELECT [Prescription].[Id] 
-        //                              ,[Prescription].[MedicineId]
-        //                              ,[Prescription].[Dosage]
-        //                              ,[Prescription].[Quantity]
-        //                              ,[Prescription].[PatientId]
-        //                              ,[AdminsteredDose].[Id] AS AdmId
-        //                              ,[AdminsteredDose].[Day]
-        //                              ,[AdminsteredDose].[PrescriptionId]
-        //                          FROM [RXCareDb].[dbo].[Prescription]
-        //                          JOIN [AdminsteredDose] ON [AdminsteredDose].[PrescriptionId] = [Prescription].[Id]
-        //                          WHERE [Prescription].[PatientId] = @Id";
-        //            DbUtils.AddParameter(cmd, "@Id", Id);
-        //            var reader = cmd.ExecuteReader();
-        //            PrescriptionDose prescription = null;
-        //            var prescriptions = new List<PrescriptionDose>();
-
-        //            while (reader.Read())
-        //            {
-        //                int prescriptionId = DbUtils.GetInt(reader, "Id");
-
-        //                if (prescription == null || prescription.Id != prescriptionId)
-        //                {
-        //                    prescription = new PrescriptionDose()
-        //                    {
-        //                        Id = prescriptionId,
-        //                        MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-        //                        Dosage = DbUtils.GetString(reader, "Dosage"),
-        //                        Quantity = DbUtils.GetInt(reader, "Quantity"),
-        //                        PatientId = DbUtils.GetInt(reader, "PatientId"),
-        //                        AdminsteredDose = new List<AdminsteredDose>()
-        //                    };
-
-        //                    prescriptions.Add(prescription);
-        //                }
-
-        //                int admId = DbUtils.GetInt(reader, "AdmId");
-        //                if (admId != 0)
-        //                {
-        //                    AdminsteredDose adminsteredDose = new AdminsteredDose
-        //                    {
-        //                        Id = admId,
-        //                        Day = DbUtils.GetDateTime(reader, "Day"),
-        //                        PrescriptionId = DbUtils.GetInt(reader, "PrescriptionId"),
-        //                    };
-
-        //                    prescription.AdminsteredDose.Add(adminsteredDose);
-        //                }
-        //            }
-
-        //            conn.Close();
-        //            return prescriptions;
-        //        }
-        //    }
-        //}
-
-        //---------------------------------------------------------------------------------------
-        //public List<PrescriptionDose> GetPrescriptionDosesByPatientId(int Id)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"SELECT [Prescription].[Id] 
-        //                              ,[Prescription].[MedicineId]
-        //                              ,[Prescription].[Dosage]
-        //                              ,[Prescription].[Quantity]
-        //                              ,[Prescription].[PatientId]
-        //                              ,[AdminsteredDose].[Id] AS AdmId
-        //                              ,[AdminsteredDose].[Day]
-        //                              ,[AdminsteredDose].[PrescriptionId]
-        //                          FROM [RXCareDb].[dbo].[Prescription]
-        //                          LEFT JOIN [AdminsteredDose] ON [AdminsteredDose].[PrescriptionId] = [Prescription].[Id]
-        //                          WHERE [Prescription].[PatientId] = @Id";
-        //            DbUtils.AddParameter(cmd, "@Id", Id);
-        //            var reader = cmd.ExecuteReader();
-        //            PrescriptionDose prescription = null;
-        //            var prescriptions = new List<PrescriptionDose>();
-
-        //            while (reader.Read())
-        //            {
-        //                int prescriptionId = DbUtils.GetInt(reader, "Id");
-
-        //                if (prescription == null || prescription.Id != prescriptionId)
-        //                {
-        //                    prescription = new PrescriptionDose()
-        //                    {
-        //                        Id = prescriptionId,
-        //                        MedicineId = DbUtils.GetInt(reader, "MedicineId"),
-        //                        Dosage = DbUtils.GetString(reader, "Dosage"),
-        //                        Quantity = DbUtils.GetInt(reader, "Quantity"),
-        //                        PatientId = DbUtils.GetInt(reader, "PatientId"),
-        //                        AdminsteredDose = new List<AdminsteredDose>()
-        //                    };
-
-        //                    prescriptions.Add(prescription);
-        //                }
-
-        //                int admId = DbUtils.GetInt(reader, "AdmId");
-        //                if (admId != 0)
-        //                {
-        //                    AdminsteredDose adminsteredDose = new AdminsteredDose
-        //                    {
-        //                        Id = admId,
-        //                        Day = DbUtils.GetDateTime(reader, "Day"),
-        //                        PrescriptionId = DbUtils.GetInt(reader, "PrescriptionId"),
-        //                    };
-
-        //                    prescription.AdminsteredDose.Add(adminsteredDose);
-        //                }
-        //            }
-
-        //            conn.Close();
-        //            return prescriptions;
-        //        }
-        //    }
-        //}
-
         //------------------------------Backend-AddPrescription( )#15----------works!-------------
 
         public void AddPrescription(PrescriptionActive prescription)
@@ -935,8 +741,6 @@ namespace RXCareServer.Repositories
         }
 
         //------------------------------Backend-EditPrescription( )#16---------works!---------------------
-
-
         public void EditPrescription(PrescriptionActive prescription)
         {
             using (var conn = Connection)
@@ -965,7 +769,6 @@ namespace RXCareServer.Repositories
 
         //------------------------------Active/false---------works!---------------------
 
-
         public void EditNotActivePrescription(PrescriptionActiveFalse prescription)
         {
             using (var conn = Connection)
@@ -985,7 +788,6 @@ namespace RXCareServer.Repositories
         }
         //-------------------------------Backend-DeletePrescription( )#17--------------------------------------
 
-
         public void DeletePrescriptionByPrescriptionId(int id)
         {
             using (var conn = Connection)
@@ -999,25 +801,6 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,26 +2,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const DoctorEdit = () => {
-    //const [Type, setType] = useState("");
-    // const [Img, setImg] = useState("");
-    // const [FirstName, setFirstName] = useState("");
-    // const [LastName, setLastName] = useState("");
-    // const [Email, setEmail] = useState("");
-    // const [PATIENT, setPATIENT] = useState("");
-    // const [UserId, setUserId] = useState("");
-    // const [DoctorId, setDoctorId] = useState("");
-    // const [DoB, setDoB] = useState("");
-    // const [Address, setAddress] = useState("");
-    // const [Phone, setPhone] = useState("");
-    // const [Height, setHeight] = useState("");
-    // const [Weight, setWeight] = useState("");
-    // const [Note, setNote] = useState("");
     const navigate = useNavigate();
 
     const { doctor_Id } = useParams();
@@ -44,13 +27,12 @@ export const DoctorEdit = () => {
             email: "",
         },
     });
-//--------------------------------
-var appUser = localStorage.getItem("app_user");
-var appUserObject = JSON.parse(appUser);
-console.log(appUserObject.type);
+    //--------------------------------
+    var appUser = localStorage.getItem("app_user");
+    var appUserObject = JSON.parse(appUser);
+    console.log(appUserObject.type);
     const Type = appUserObject.type;
-    console.log(Type)
-
+    console.log(Type);
 
     /* -------------Display----------------- */
     useEffect(() => {
@@ -79,7 +61,6 @@ console.log(appUserObject.type);
             `https://localhost:7183/api/Doctor/UpdatePatientById/${doctor_Id}`,
             fetchOptions
         );
-        //navigate(`/books`);
         navigate(`/patientsList/${doctor_Id}`);
         const responseJson = await response.json();
         //console.log(responseJson);
@@ -106,13 +87,13 @@ console.log(appUserObject.type);
                         <h3>Welcome</h3>
                         <p>RX-Care Your Health Gard!</p>
                         <input
-                        type="submit"
-                        name=""
-                        value="Back to Doctor"
-                        onClick={() =>
-                            navigate(`../patientsList/${doctor_Id}`)
-                        }
-                    />
+                            type="submit"
+                            name=""
+                            value="Back to Doctor"
+                            onClick={() =>
+                                navigate(`../patientsList/${doctor_Id}`)
+                            }
+                        />
                         <br />
                     </div>
                     <div class="col-md-7 register-right">
@@ -123,7 +104,7 @@ console.log(appUserObject.type);
                                     <div class="col-md-12">
                                         {/* ---------------------- */}
 
-                                        <Form >
+                                        <Form>
                                             <div className="row g-3">
                                                 <Form.Floating className="form-group">
                                                     <Form.Control
@@ -132,11 +113,19 @@ console.log(appUserObject.type);
                                                         type="text"
                                                         name="firstName"
                                                         placeholder="First Name"
-                                                        value={doctor.user.firstName}
+                                                        value={
+                                                            doctor.user
+                                                                .firstName
+                                                        }
                                                         onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.user.firstName= evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.user.firstName =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="firstName">
@@ -152,13 +141,17 @@ console.log(appUserObject.type);
                                                         name="lastName"
                                                         placeholder="Last Name"
                                                         value={
-                                                            doctor.user
-                                                                .lastName
+                                                            doctor.user.lastName
                                                         }
                                                         onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.user.lastName= evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.user.lastName =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="lastName">
@@ -172,10 +165,10 @@ console.log(appUserObject.type);
                                                         autoFocus
                                                         type="date"
                                                         name="dob"
-                                                        placeholder={
+                                                        placeholder={doctor.doB}
+                                                        value={new Date(
                                                             doctor.doB
-                                                        }
-                                                        value={new Date(doctor.doB).toLocaleDateString()}
+                                                        ).toLocaleDateString()}
                                                         // onChange={(evt) => {
                                                         //     new Date(DoB);
                                                         //     setUpdatePatient(
@@ -184,9 +177,14 @@ console.log(appUserObject.type);
                                                         // }}
                                                         onChange={(evt) => {
                                                             //new Date(doB);
-                                                            const copy = { ...doctor };
-                                                            copy.doB =  evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.doB =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="dob">
@@ -205,9 +203,14 @@ console.log(appUserObject.type);
                                                         //pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                                         value={doctor.phone}
                                                         onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.phone= evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.phone =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="phone">
@@ -226,9 +229,14 @@ console.log(appUserObject.type);
                                                             doctor.user.email
                                                         }
                                                         onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.user.email= evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.user.email =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="email">
@@ -245,9 +253,14 @@ console.log(appUserObject.type);
                                                         placeholder="Address"
                                                         value={doctor.address}
                                                         onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.address= evt.target.value;
-                                                            setUpdatePatient(copy);
+                                                            const copy = {
+                                                                ...doctor,
+                                                            };
+                                                            copy.address =
+                                                                evt.target.value;
+                                                            setUpdatePatient(
+                                                                copy
+                                                            );
                                                         }}
                                                     />
                                                     <label htmlFor="address">
@@ -280,136 +293,176 @@ console.log(appUserObject.type);
                                                         }
                                                     />
                                                 </Form.Floating> */}
-                                                {appUserObject.type == "Doctor" ? (
+                                                {appUserObject.type ==
+                                                "Doctor" ? (
                                                     <>
-                                                <Form.Floating className="form-group  col-sm-6">
-                                                    <Form.Select
-                                                        required
-                                                        value={doctor.doctorId}
-                                                        className="form-select"
-                                                        // onChange={(evt) =>
-                                                        //     setUpdatePatient(
-                                                        //         parseInt(
-                                                        //             evt.target
-                                                        //                 .value
-                                                        //         )
-                                                        //     )
-                                                        // }
+                                                        <Form.Floating className="form-group  col-sm-6">
+                                                            <Form.Select
+                                                                required
+                                                                value={
+                                                                    doctor.doctorId
+                                                                }
+                                                                className="form-select"
+                                                                // onChange={(evt) =>
+                                                                //     setUpdatePatient(
+                                                                //         parseInt(
+                                                                //             evt.target
+                                                                //                 .value
+                                                                //         )
+                                                                //     )
+                                                                // }
 
-                                                        onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.doctorId = parseInt(
-                                                                evt.target.value
-                                                            );
-                                                            setUpdatePatient( copy );
-                                                        }}
+                                                                onChange={(
+                                                                    evt
+                                                                ) => {
+                                                                    const copy = {
+                                                                        ...doctor,
+                                                                    };
+                                                                    copy.doctorId = parseInt(
+                                                                        evt
+                                                                            .target
+                                                                            .value
+                                                                    );
+                                                                    setUpdatePatient(
+                                                                        copy
+                                                                    );
+                                                                }}
+                                                            >
+                                                                <option value="">
+                                                                    Open this
+                                                                    select menu
+                                                                </option>
+                                                                <option value="1">
+                                                                    Dr. John Doe
+                                                                </option>
+                                                                <option value="2">
+                                                                    Dr. Jane
+                                                                    Smith
+                                                                </option>
+                                                                <option value="3">
+                                                                    Dr. Michael
+                                                                    Johnson
+                                                                </option>
+                                                                <option value="4">
+                                                                    Dr. Emily
+                                                                    Williams
+                                                                </option>
+                                                                <option value="5">
+                                                                    Dr. David
+                                                                    Brown
+                                                                </option>
+                                                            </Form.Select>
+                                                        </Form.Floating>
 
-                                                    >
-                                                        <option value="">
-                                                            Open this select
-                                                            menu
-                                                        </option>
-                                                        <option value="1">
-                                                            Dr. John Doe
-                                                        </option>
-                                                        <option value="2">
-                                                            Dr. Jane Smith
-                                                        </option>
-                                                        <option value="3">
-                                                            Dr. Michael Johnson
-                                                        </option>
-                                                        <option value="4">
-                                                            Dr. Emily Williams
-                                                        </option>
-                                                        <option value="5">
-                                                            Dr. David Brown
-                                                        </option>
-                                                    </Form.Select>
-                                                </Form.Floating>
+                                                        <Form.Floating className="form-group  col-sm-3">
+                                                            <Form.Control
+                                                                required
+                                                                autoFocus
+                                                                type="number"
+                                                                name="height"
+                                                                placeholder="Height"
+                                                                value={
+                                                                    doctor.height
+                                                                }
+                                                                onChange={(
+                                                                    evt
+                                                                ) => {
+                                                                    const copy = {
+                                                                        ...doctor,
+                                                                    };
+                                                                    copy.height =
+                                                                        evt.target.value;
+                                                                    setUpdatePatient(
+                                                                        copy
+                                                                    );
+                                                                }}
+                                                            />
+                                                            <label htmlFor="height">
+                                                                Height
+                                                            </label>
+                                                        </Form.Floating>
 
-                                                <Form.Floating className="form-group  col-sm-3">
-                                                    <Form.Control
-                                                        required
-                                                        autoFocus
-                                                        type="number"
-                                                        name="height"
-                                                        placeholder="Height"
-                                                        value={doctor.height}
-                                                        onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.height= evt.target.value;
-                                                            setUpdatePatient(copy);
-                                                        }}
-                                                    />
-                                                    <label htmlFor="height">
-                                                        Height
-                                                    </label>
-                                                </Form.Floating>
+                                                        <Form.Floating className="form-group  col-sm-3">
+                                                            <Form.Control
+                                                                required
+                                                                autoFocus
+                                                                type="number"
+                                                                name="weight"
+                                                                placeholder="Weight"
+                                                                value={
+                                                                    doctor.weight
+                                                                }
+                                                                onChange={(
+                                                                    evt
+                                                                ) => {
+                                                                    const copy = {
+                                                                        ...doctor,
+                                                                    };
+                                                                    copy.weight =
+                                                                        evt.target.value;
+                                                                    setUpdatePatient(
+                                                                        copy
+                                                                    );
+                                                                }}
+                                                            />
+                                                            <label htmlFor="weight">
+                                                                Weight
+                                                            </label>
+                                                        </Form.Floating>
 
-                                                <Form.Floating className="form-group  col-sm-3">
-                                                    <Form.Control
-                                                        required
-                                                        autoFocus
-                                                        type="number"
-                                                        name="weight"
-                                                        placeholder="Weight"
-                                                        value={doctor.weight}
-                                                        onChange={(evt) => {
-                                                            const copy = { ...doctor };
-                                                            copy.weight= evt.target.value;
-                                                            setUpdatePatient(copy);
-                                                        }}
-                                                    />
-                                                    <label htmlFor="weight">
-                                                        Weight
-                                                    </label>
-                                                </Form.Floating>
-
-
-
-                                                
-                                                <Form.Floating className="form-group ">
-                                                    <FloatingLabel
-                                                        required
-                                                        controlId="floatingTextarea2"
-                                                        label="Leave a Note here"
-                                                    >
-                                                        
-                                                        <Form.Control
-                                                            as="textarea"
-                                                            name="note"
-                                                            value={doctor.note}
-                                                            placeholder="Leave a Note here"
-                                                            onChange={(evt) => {
-                                                                const copy = { ...doctor };
-                                                                copy.note= evt.target.value;
-                                                                setUpdatePatient(copy);
-                                                            }}
-                                                            style={{
-                                                                height: "100px",
-                                                            }}
-                                                        />
-                                                    </FloatingLabel>
-                                                </Form.Floating>
-                                                </>
-                                                ):("")}
-
+                                                        <Form.Floating className="form-group ">
+                                                            <FloatingLabel
+                                                                required
+                                                                controlId="floatingTextarea2"
+                                                                label="Leave a Note here"
+                                                            >
+                                                                <Form.Control
+                                                                    as="textarea"
+                                                                    name="note"
+                                                                    value={
+                                                                        doctor.note
+                                                                    }
+                                                                    placeholder="Leave a Note here"
+                                                                    onChange={(
+                                                                        evt
+                                                                    ) => {
+                                                                        const copy = {
+                                                                            ...doctor,
+                                                                        };
+                                                                        copy.note =
+                                                                            evt.target.value;
+                                                                        setUpdatePatient(
+                                                                            copy
+                                                                        );
+                                                                    }}
+                                                                    style={{
+                                                                        height:
+                                                                            "100px",
+                                                                    }}
+                                                                />
+                                                            </FloatingLabel>
+                                                        </Form.Floating>
+                                                    </>
+                                                ) : (
+                                                    ""
+                                                )}
                                             </div>
                                             {/* ---------------------- */}
-{/*                                             <input
+                                            {/*                                             <input
                                                 type="submit"
                                                 class="btnRegister"
                                                 value="Register"
                                             /> */}
 
                                             <button
-                                            onClick={(e) => handleSaveButtonClick(e)}
-                                            className="btnRegister"
-                                            type="submit"
-                                        >
-                                            Update Doctor
-                                        </button>
-
+                                                onClick={(e) =>
+                                                    handleSaveButtonClick(e)
+                                                }
+                                                className="btnRegister"
+                                                type="submit"
+                                            >
+                                                Update Doctor
+                                            </button>
                                         </Form>
                                     </div>
                                 </div>

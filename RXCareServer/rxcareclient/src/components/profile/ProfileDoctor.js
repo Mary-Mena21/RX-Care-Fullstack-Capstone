@@ -111,7 +111,7 @@ export const ProfileDoctor = () => {
                             </div>
 
                         </div>
-                        <div class="col-md-2">
+{/*                         <div class="col-md-2">
                         <input
                             type="submit"
                             class="profile-edit-btn"
@@ -122,7 +122,7 @@ export const ProfileDoctor = () => {
                                 `)
                             }
                         />
-                    </div>
+                    </div> */}
                 </form> 
                 </div>
             </div>

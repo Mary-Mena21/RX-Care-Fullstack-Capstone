@@ -9,7 +9,6 @@ namespace RXCareServer.Repositories
         void EditPatientComment(Comment comment);
         CommentInfo GetCommentByCommentId(int Id);
         List<Comment> GetPatientComment(int PatientId);
-
         List<CommentInfo> GetPatientCommentOnMedicine(int PatientId);
     }
 }

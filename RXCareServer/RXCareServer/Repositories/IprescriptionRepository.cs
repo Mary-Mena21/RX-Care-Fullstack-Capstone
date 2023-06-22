@@ -17,5 +17,4 @@ namespace RXCareServer.Repositories
         void EditNotActivePrescription(PrescriptionActiveFalse prescription);
     }
 
-    //GetPrescriptionByPrescriptionId
 }

@@ -190,5 +190,4 @@ export const Patient = ({ Id, Img, FirstName, LastName, Email, Note }) => {
         </>
     );
 };
-//http://localhost:3002/patientsList/7/patientsList/edit/7
-//http://localhost:3002/patientsList/7patientsList/edit/7
+
