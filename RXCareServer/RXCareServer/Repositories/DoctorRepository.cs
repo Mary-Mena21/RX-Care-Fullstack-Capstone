@@ -140,7 +140,45 @@ namespace RXCareServer.Repositories
             }
         }
 
+        //------------------------------EditPatient( )--------Test 2------------------------------
+        //public void EditDoctor(DoctorInformationProfile Doctor)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                               UPDATE [dbo].[Patient]
+        //                                      SET
+        //                                           [DoctorId] = @DoctorId
+        //                                           ,[UserId] = @UserId
+        //                                           ,[DoB] = @DoB
+        //                                           ,[Address] = @Address
+        //                                           ,[Phone] = @Phone
+        //                                           ,[Height] = @Height
+        //                                           ,[Weight] = @Weight
+        //                                           ,[Note] = @Note)
+        //                                            WHERE [Id] = @Id";
 
+        //            DbUtils.AddParameter(cmd, "@DoctorId", Patient.DoctorId);
+        //            DbUtils.AddParameter(cmd, "@UserId", Patient.UserId);
+        //            DbUtils.AddParameter(cmd, "@DoB", Patient.DoB);
+        //            DbUtils.AddParameter(cmd, "@Address", Patient.Address);
+        //            DbUtils.AddParameter(cmd, "@Phone", Patient.Phone);
+        //            DbUtils.AddParameter(cmd, "@Height", Patient.Height);
+        //            DbUtils.AddParameter(cmd, "@Weight", Patient.Weight);
+        //            DbUtils.AddParameter(cmd, "@Note", Patient.Note);
+
+        //            // Patient.User.Id = Patient.UserId;
+
+        //            cmd.ExecuteNonQuery();
+
+
+        //        }
+        //    }
+
+        //}
 
 
     }

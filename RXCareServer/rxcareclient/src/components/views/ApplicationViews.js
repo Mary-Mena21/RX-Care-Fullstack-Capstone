@@ -66,6 +66,11 @@ export const ApplicationViews = () => {
                     />
 
                     <Route
+                    path="profileDoctor/edit/:patient_Id"
+                    element={<PatientEdit />}
+                />
+
+                    <Route
                         path="patientsList/:patient_Id/addPrescription/add/:patient_Id"
                         element={<AddPrescription />}
                     />
