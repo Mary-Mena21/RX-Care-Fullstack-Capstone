@@ -86,16 +86,16 @@ export const ProfilePatient2 = ({
         // }
     };
     useEffect(() => {
-       // fetchData2();
+        // fetchData2();
     }, []);
     //----------------------------------------------------------------
     //typeof products.map() !== undefined
 
     return (
         <>
-             <div class="container"> 
+            <div class="container">
                 {/* -------------------------- */}
-                <h1 class=" col-md-4 ml-auto search-text ">Profile Patient</h1>
+                <h1 class=" col-md-4 ml-auto search-text ">Patient Profile</h1>
                 <div class="container emp-profile">
                     <form method="post">
                         <div class="row">
@@ -127,7 +127,7 @@ export const ProfilePatient2 = ({
                                     </p>
                                     {/*-------------------------------------- */}
 
-{/*                                     <div>
+                                    {/*                                     <div>
                                         <div class="profile-head">
                                             <ul class="nav nav-tabs ">
 
@@ -206,44 +206,41 @@ export const ProfilePatient2 = ({
                                 </div>
                             </div>
                             <div class="col-md-2">
-                            <div>
-                                <input
-                                    type="submit"
-                                    class="profile-edit-btn"
-                                    name="btnAddMore"
-                                    value="📝Edit Profile"
-                                    onClick={() =>
-                                        navigate(
-                                            `/patientsList/${patient_Id}/patientsList/edit/${patient_Id}`
-                                        )
-                                    }
-                                />
+                                <div>
+                                    <input
+                                        type="submit"
+                                        class="profile-edit-btn"
+                                        name="btnAddMore"
+                                        value="📝Edit Profile"
+                                        onClick={() =>
+                                            navigate(
+                                                `/patientsList/${patient_Id}/patientsList/edit/${patient_Id}`
+                                            )
+                                        }
+                                    />
+                                </div>
+                                <br />
+
+                                <div>
+                                    <input
+                                        type="submit"
+                                        class="profile-edit-btn"
+                                        name="btnAddMore"
+                                        value="Add Comment"
+                                        onClick={() =>
+                                            navigate(
+                                                `/patientsList/1/profile2/addCommentFromPatient/${patient_Id}`
+                                            )
+                                        }
+                                    />
+                                </div>
                             </div>
                             <br />
-
-                            <div>
-                            <input
-                                type="submit"
-                                class="profile-edit-btn"
-                                name="btnAddMore"
-                                value="Add Comment"
-                                onClick={() =>
-                                    navigate(
-                                        `/patientsList/1/profile2/addCommentFromPatient/${patient_Id}`
-                                    )
-                                }
-                            />
-                        </div>
-                        </div>
-                        <br />
-
                         </div>
                     </form>
                 </div>
                 {/* -------------------------- */}
-             </div> 
+            </div>
         </>
     );
 };
-
-
