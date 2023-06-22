@@ -30,14 +30,16 @@ export const ProfileDoctor = () => {
     return (
         <>
             <div class="container"> 
-                 {/* -------------------------- */}
+                {/* -------------------------- */}
+                <h1 class=" col-md-4 ml-auto search-text ">Profile</h1>
                  <div class="emp-profile">
                  <form method="post">
                 <div class="row">
                     <div class="col-md-6 img">
                         <img
                             //src="https://i.ibb.co/xJGLf4Y/patient16.jpg"
-                            //src={require(`../images/doctor2.jpg`)}
+                                    //src={require(`../images/doctor1.jpg`)}
+                                    //src={require(`../images/${User.img}`)}
                             src={User.img}
                             //style={{ width: "300px", height: "300px" }}
                             className="doctorImg"
@@ -59,8 +61,8 @@ export const ProfileDoctor = () => {
                         <p>
                             {User.email}
                                     <br />
-                            www.bootsnipp.com <br />
-                            June 18, 2023
+                            www.rxcare.com <br />
+
                         </p>
                     </div>
                 </div>
