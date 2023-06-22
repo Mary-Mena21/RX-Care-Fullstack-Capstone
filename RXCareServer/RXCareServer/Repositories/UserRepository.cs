@@ -218,9 +218,6 @@ namespace RXCareServer.Repositories
 
         }
 
-
-
-
         //----------------AddPatient( )------Test3-----Works !!!👌👏---------//
 
         public void AddLoginUser(UserLogin User)
@@ -482,8 +479,6 @@ namespace RXCareServer.Repositories
         }
 
         //------------------------------------------------------------------------
-
-
         public UserInfo2 GetUserInfoById(int Id)
         {
             using (var conn = Connection)
@@ -549,8 +544,6 @@ namespace RXCareServer.Repositories
             }
         }
         //------------------------------------------------------------------------
-
-
         public UserInfo2 GetUserInfoByUserId(int Id)
         {
             using (var conn = Connection)
@@ -615,7 +608,7 @@ namespace RXCareServer.Repositories
                 }
             }
         }
-        //---------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------
         //----------------.GetUserById(id) ---------------Works need To handle null Data---------------------//
         public UserInfo3 GetUserById(int id)
         {
