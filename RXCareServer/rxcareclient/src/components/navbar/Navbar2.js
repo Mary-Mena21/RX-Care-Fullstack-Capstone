@@ -130,7 +130,7 @@ export const Navbar2 = ({ children }) => {
                                                         class="nav-link"
                                                         href="/patientsList"
                                                     >
-                                                        PatientList
+                                                        Patient List
                                                     </a>
                                                 </li>
 
@@ -310,14 +310,14 @@ export const Navbar2 = ({ children }) => {
                                                         Home
                                                     </a>
                                                 </li>
-                                                <li class="nav-itemN">
+{/*                                                 <li class="nav-itemN">
                                                     <a
                                                         class="nav-link"
                                                         href="/aboutApp"
                                                     >
                                                         About
                                                     </a>
-                                                </li>
+                                                </li> */}
 
                                                 {/*   <li class="nav-itemN">
                                                     <a
